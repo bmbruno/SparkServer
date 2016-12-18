@@ -23,7 +23,9 @@ namespace SparkServer.Controllers
 
         public ActionResult Index()
         {
-            Article test = _articleRepo.Get();
+            int ID = 0;
+
+            Article test = _articleRepo.Get(ID);
 
             return View();
         }

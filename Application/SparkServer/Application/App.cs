@@ -18,9 +18,6 @@ namespace SparkServer.Application
             // Repository registration
             container.Register<Core.Repositories.IArticleRepository<Article>, Infrastructure.Repositories.ArticleRepository>(Lifestyle.Transient);
 
-            // Class registration
-            container.Register<Core.Entities.IArticle, Infrastructure.Entities.Article>(Lifestyle.Transient);
-
             container.Verify();
 
             return new SimpleInjectorDependencyResolver(container);
