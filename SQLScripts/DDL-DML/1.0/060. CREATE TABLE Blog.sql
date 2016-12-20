@@ -1,0 +1,22 @@
+USE [SparkServer]
+GO
+
+CREATE TABLE [Blog] (
+	
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+
+	[Title] VARCHAR(500) NOT NULL,
+
+	[Subtitle] VARCHAR(500) NULL,
+
+	[Body] VARCHAR(MAX) NULL,
+
+	[PublishDate] DATETIME NULL,
+
+	[AuthorID] INT NOT NULL,
+	CONSTRAINT [FK_Blog_Author] FOREIGN KEY ([AuthorID]) REFERENCES [Author]([ID]),
+
+	[Active] BIT NOT NULL DEFAULT 1,
+
+	[CreateDate] DATETIME NOT NULL DEFAULT GETDATE()
+)

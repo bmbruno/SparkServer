@@ -1,0 +1,15 @@
+USE [SparkServer]
+GO
+
+CREATE TABLE [Category] (
+	
+	[ID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+
+	[Name] VARCHAR(250) NOT NULL,
+
+	[SortOrder] INT NULL,
+
+	[Active] BIT NOT NULL DEFAULT 1,
+
+	[CreateDate] DATETIME NOT NULL DEFAULT GETDATE()
+)

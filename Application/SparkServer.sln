@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer.Infrastructure"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer.Core", "SparkServer.Core\SparkServer.Core.csproj", "{1CB33146-ED8E-43EE-8F14-1325DC3EC148}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer.Data", "SparkServer.Data\SparkServer.Data.csproj", "{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{1CB33146-ED8E-43EE-8F14-1325DC3EC148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB33146-ED8E-43EE-8F14-1325DC3EC148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB33146-ED8E-43EE-8F14-1325DC3EC148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
