@@ -11,12 +11,12 @@ namespace SparkServer.Infrastructure.Repositories
 {
     public class BlogRepository : IBlogRepository<BlogArticle>
     {
-        public Article Get(int ID)
+        public BlogArticle Get(int ID)
         {
-            return new Article();
+            return new BlogArticle();
         }
 
-        public IQueryable<Article> Get(Func<Article, bool> whereClause)
+        public IQueryable<BlogArticle> Get(Func<BlogArticle, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
@@ -24,7 +24,7 @@ namespace SparkServer.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Article> GetAll()
+        public IEnumerable<BlogArticle> GetAll()
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace SparkServer.Infrastructure.Repositories
             return 0;
         }
 
-        public int Create(Article newArticle)
+        public int Create(BlogArticle newArticle)
         {
             throw new NotImplementedException();
         }
