@@ -36,6 +36,12 @@ namespace SparkServer.Core
         int Create(T newItem);
 
         /// <summary>
+        /// Should implement an update at the field level of an item in the database based on the given item.
+        /// </summary>
+        /// <param name="updateItem">Item with updated fields.</param>
+        void Update(T updateItem);
+
+        /// <summary>
         /// Should implement a soft database delete (when possible). A 'soft delete' refers to deactivating a row rather than a true deletion.
         /// </summary>
         /// <param name="ID">Primary Key ID of the item to delete.</param>

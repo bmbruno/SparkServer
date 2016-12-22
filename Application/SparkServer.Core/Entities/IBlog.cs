@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SparkServer.Core.Entities
 {
-    public interface IBlogArticle
+    public interface IBlog
     {
 
     }

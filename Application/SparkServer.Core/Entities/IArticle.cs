@@ -8,6 +8,6 @@ namespace SparkServer.Core.Entities
 {
     public interface IArticle
     {
-
+        string Title { get; set; }
     }
 }

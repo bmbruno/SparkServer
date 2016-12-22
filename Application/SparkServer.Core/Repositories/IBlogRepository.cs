@@ -9,6 +9,6 @@ namespace SparkServer.Core.Repositories
 {
     public interface IBlogRepository<T> : IRepositoryBase<T>
     {
-        
+
     }
 }

@@ -5,7 +5,7 @@ using System.Web;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using System.Web.Mvc;
-using SparkServer.Infrastructure.Entities;
+using SparkServer.Data;
 
 namespace SparkServer.Application
 {

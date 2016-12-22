@@ -1,5 +1,5 @@
 ﻿using SparkServer.Application.Enum;
-using SparkServer.Infrastructure.Entities;
+using SparkServer.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;

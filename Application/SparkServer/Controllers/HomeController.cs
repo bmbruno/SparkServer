@@ -8,8 +8,8 @@ using SparkServer.Infrastructure;
 using SimpleInjector;
 using SparkServer.Core.Repositories;
 using SparkServer.Core.Entities;
-using SparkServer.Infrastructure.Entities;
 using SparkServer.ViewModels;
+using SparkServer.Data;
 
 namespace SparkServer.Controllers
 {

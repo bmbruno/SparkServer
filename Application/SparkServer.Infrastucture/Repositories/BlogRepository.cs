@@ -1,47 +1,91 @@
-﻿using SparkServer.Core.Repositories;
+﻿using SparkServer.Data;
+using SparkServer.Core.Repositories;
 using SparkServer.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SparkServer.Infrastructure.Entities;
 
 namespace SparkServer.Infrastructure.Repositories
 {
-    public class BlogRepository : IBlogRepository<BlogArticle>
+    public class BlogRepository : IBlogRepository<Blog>
     {
-        public BlogArticle Get(int ID)
+        public Blog Get(int ID)
         {
-            return new BlogArticle();
+            Blog blogArticle;
+
+            using (var db = new SparkServerEntities())
+            {
+                blogArticle = db.Blog.FirstOrDefault(u => u.ID == ID);
+            }
+
+            return blogArticle;
         }
 
-        public IQueryable<BlogArticle> Get(Func<BlogArticle, bool> whereClause)
+        public IQueryable<Blog> Get(Func<Blog, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            throw new NotImplementedException();
+            IQueryable<Blog> results;
+
+            using (var db = new SparkServerEntities())
+            {
+                results = db.Blog.Where(whereClause).AsQueryable();
+            }
+
+            return results;
         }
 
-        public IEnumerable<BlogArticle> GetAll()
+        public IEnumerable<Blog> GetAll()
         {
-            throw new NotImplementedException();
+            IEnumerable<Blog> results;
+
+            using (var db = new SparkServerEntities())
+            {
+                results = db.Blog;
+            }
+
+            return results;
         }
 
-        public int Create()
+        public int Create(Blog newBlog)
         {
-            return 0;
+            using (var db = new SparkServerEntities())
+            {
+                db.Blog.Add(newBlog);
+                db.SaveChanges();
+            }
+
+            return newBlog.ID;
         }
 
-        public int Create(BlogArticle newArticle)
+        public void Update(Blog updateBlog)
         {
-            throw new NotImplementedException();
+            using (var db = new SparkServerEntities())
+            {
+                Blog toUpdate = db.Blog.FirstOrDefault(u => u.ID == updateBlog.ID);
+
+                if (toUpdate == null)
+                    throw new Exception($"Could not find Blog with ID of {updateBlog.ID}");
+
+                toUpdate = updateBlog;
+                db.Entry(updateBlog).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
         }
 
         public void Delete(int ID)
         {
+            using (var db = new SparkServerEntities())
+            {
+                Blog toDelete = db.Blog.FirstOrDefault(u => u.ID == ID);
 
+                toDelete.Active = false;
+
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿using SparkServer.Core.Repositories;
+﻿using SparkServer.Data;
+using SparkServer.Core.Repositories;
 using SparkServer.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using SparkServer.Infrastructure.Entities;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -35,6 +35,11 @@ namespace SparkServer.Infrastructure.Repositories
         }
 
         public int Create(Article newArticle)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Article updateArticle)
         {
             throw new NotImplementedException();
         }
