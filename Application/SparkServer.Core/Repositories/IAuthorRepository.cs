@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SparkServer.Core.Entities
+namespace SparkServer.Core.Repositories
 {
-    public interface IArticle
+    public interface IAuthorRepository<T> : IRepositoryBase<T>
     {
-        string Title { get; set; }
+
     }
 }

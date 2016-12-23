@@ -40,14 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\IBlog.cs" />
-    <Compile Include="Entities\IArticle.cs" />
     <Compile Include="IRepositoryBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAuthorRepository.cs" />
     <Compile Include="Repositories\IBlogRepository.cs" />
     <Compile Include="Repositories\IArticleRepository.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Entities\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

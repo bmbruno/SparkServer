@@ -1,6 +1,5 @@
 ﻿using SparkServer.Data;
 using SparkServer.Core.Repositories;
-using SparkServer.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;

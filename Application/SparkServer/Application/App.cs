@@ -17,6 +17,7 @@ namespace SparkServer.Application
 
             // Repository registration
             container.Register<Core.Repositories.IArticleRepository<Article>, Infrastructure.Repositories.ArticleRepository>(Lifestyle.Transient);
+            container.Register<Core.Repositories.IBlogRepository<Blog>, Infrastructure.Repositories.BlogRepository>(Lifestyle.Transient);
 
             container.Verify();
 

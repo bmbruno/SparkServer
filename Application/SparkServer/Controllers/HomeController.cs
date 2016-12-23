@@ -7,7 +7,6 @@ using SparkServer.Core;
 using SparkServer.Infrastructure;
 using SimpleInjector;
 using SparkServer.Core.Repositories;
-using SparkServer.Core.Entities;
 using SparkServer.ViewModels;
 using SparkServer.Data;
 

@@ -8,63 +8,63 @@ using System.Threading.Tasks;
 
 namespace SparkServer.Infrastructure.Repositories
 {
-    public class BlogRepository : IBlogRepository<Blog>
+    public class AuthorRepository : IAuthorRepository<Author>
     {
-        public Blog Get(int ID)
+        public Author Get(int ID)
         {
-            Blog item;
+            Author item;
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Blog.FirstOrDefault(u => u.ID == ID);
+                item = db.Author.FirstOrDefault(u => u.ID == ID);
             }
 
             return item;
         }
 
-        public IQueryable<Blog> Get(Func<Blog, bool> whereClause)
+        public IQueryable<Author> Get(Func<Author, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            IQueryable<Blog> results;
+            IQueryable<Author> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).AsQueryable();
+                results = db.Author.Where(whereClause).AsQueryable();
             }
 
             return results;
         }
 
-        public IEnumerable<Blog> GetAll()
+        public IEnumerable<Author> GetAll()
         {
-            IEnumerable<Blog> results;
+            IEnumerable<Author> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog;
+                results = db.Author;
             }
 
             return results;
         }
 
-        public int Create(Blog newBlog)
+        public int Create(Author newItem)
         {
             using (var db = new SparkServerEntities())
             {
-                db.Blog.Add(newBlog);
+                db.Author.Add(newItem);
                 db.SaveChanges();
             }
 
-            return newBlog.ID;
+            return newItem.ID;
         }
 
-        public void Update(Blog updateItem)
+        public void Update(Author updateItem)
         {
             using (var db = new SparkServerEntities())
             {
-                Blog toUpdate = db.Blog.FirstOrDefault(u => u.ID == updateItem.ID);
+                Author toUpdate = db.Author.FirstOrDefault(u => u.ID == updateItem.ID);
 
                 if (toUpdate == null)
                     throw new Exception($"Could not find Blog with ID of {updateItem.ID}");
@@ -79,7 +79,7 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                Blog toDelete = db.Blog.FirstOrDefault(u => u.ID == ID);
+                Author toDelete = db.Author.FirstOrDefault(u => u.ID == ID);
 
                 toDelete.Active = false;
 
