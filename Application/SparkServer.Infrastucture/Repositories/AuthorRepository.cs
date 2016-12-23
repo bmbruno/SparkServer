@@ -67,7 +67,7 @@ namespace SparkServer.Infrastructure.Repositories
                 Author toUpdate = db.Author.FirstOrDefault(u => u.ID == updateItem.ID);
 
                 if (toUpdate == null)
-                    throw new Exception($"Could not find Blog with ID of {updateItem.ID}");
+                    throw new Exception($"Could not find Author with ID of {updateItem.ID}");
 
                 toUpdate = updateItem;
                 db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -80,6 +80,9 @@ namespace SparkServer.Infrastructure.Repositories
             using (var db = new SparkServerEntities())
             {
                 Author toDelete = db.Author.FirstOrDefault(u => u.ID == ID);
+
+                if (toDelete == null)
+                    throw new Exception($"Could not find Author with ID of {ID}");
 
                 toDelete.Active = false;
 

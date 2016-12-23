@@ -8,66 +8,66 @@ using System.Threading.Tasks;
 
 namespace SparkServer.Infrastructure.Repositories
 {
-    public class BlogRepository : IBlogRepository<Blog>
+    public class SitecoreVersionRepository : ISitecoreVersionRepository<SitecoreVersion>
     {
-        public Blog Get(int ID)
+        public SitecoreVersion Get(int ID)
         {
-            Blog item;
+            SitecoreVersion item;
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Blog.FirstOrDefault(u => u.ID == ID);
+                item = db.SitecoreVersion.FirstOrDefault(u => u.ID == ID);
             }
 
             return item;
         }
 
-        public IQueryable<Blog> Get(Func<Blog, bool> whereClause)
+        public IQueryable<SitecoreVersion> Get(Func<SitecoreVersion, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            IQueryable<Blog> results;
+            IQueryable<SitecoreVersion> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).AsQueryable();
+                results = db.SitecoreVersion.Where(whereClause).AsQueryable();
             }
 
             return results;
         }
 
-        public IEnumerable<Blog> GetAll()
+        public IEnumerable<SitecoreVersion> GetAll()
         {
-            IEnumerable<Blog> results;
+            IEnumerable<SitecoreVersion> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog;
+                results = db.SitecoreVersion;
             }
 
             return results;
         }
 
-        public int Create(Blog newBlog)
+        public int Create(SitecoreVersion newItem)
         {
             using (var db = new SparkServerEntities())
             {
-                db.Blog.Add(newBlog);
+                db.SitecoreVersion.Add(newItem);
                 db.SaveChanges();
             }
 
-            return newBlog.ID;
+            return newItem.ID;
         }
 
-        public void Update(Blog updateItem)
+        public void Update(SitecoreVersion updateItem)
         {
             using (var db = new SparkServerEntities())
             {
-                Blog toUpdate = db.Blog.FirstOrDefault(u => u.ID == updateItem.ID);
+                SitecoreVersion toUpdate = db.SitecoreVersion.FirstOrDefault(u => u.ID == updateItem.ID);
 
                 if (toUpdate == null)
-                    throw new Exception($"Could not find Blog with ID of {updateItem.ID}");
+                    throw new Exception($"Could not find SitecoreVersion with ID of {updateItem.ID}");
 
                 toUpdate = updateItem;
                 db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
@@ -79,10 +79,10 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                Blog toDelete = db.Blog.FirstOrDefault(u => u.ID == ID);
+                SitecoreVersion toDelete = db.SitecoreVersion.FirstOrDefault(u => u.ID == ID);
 
                 if (toDelete == null)
-                    throw new Exception($"Could not find Blog with ID of {ID}");
+                    throw new Exception($"Could not find SitecoreVersion with ID of {ID}");
 
                 toDelete.Active = false;
 
