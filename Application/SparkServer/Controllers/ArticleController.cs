@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SparkServer.Core.Repositories;
+using SparkServer.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,11 @@ namespace SparkServer.Controllers
 {
     public class ArticleController : Controller
     {
-        public ActionResult Index()
+        private IArticleRepository<Article> _articleRepo;
+
+        public ArticleController(IArticleRepository<Article> articleRepo)
         {
-            return View();
+            _articleRepo = articleRepo;
         }
     }
 }
