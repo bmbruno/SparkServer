@@ -61,7 +61,7 @@ namespace SparkServer.Controllers
 
             AddEditViewModel model = new AddEditViewModel();
             model.Article = article;
-            model.Mode = Application.Enum.EditMode.Add;
+            model.Mode = Application.Enum.EditMode.Edit;
 
             return View(viewName: "AddEdit", model: model);
         }

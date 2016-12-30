@@ -21,7 +21,6 @@ namespace SparkServer.Tests.Controllers
             base.InitIOC();
         }
 
-        [TestMethod]
         public void CreateAuthor()
         {
             // Arrange

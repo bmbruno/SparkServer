@@ -8,12 +8,20 @@ using SparkServer;
 using SparkServer.Controllers;
 using SparkServer.Core.Repositories;
 using SparkServer.Data;
+using SparkServer.ViewModels;
+using SparkServer.Application.Enum;
 
 namespace SparkServer.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest : TestBase
     {
+        private string _validKey = "F9701A3C-080D-49A1-98E6-027FA1D03DDA";
+
+        /// <summary>
+        /// Inits IOC and instantiates the controller under testing.
+        /// </summary>
+        /// <returns></returns>
         private HomeController SetupController()
         {
             this.InitIOC();
@@ -36,11 +44,9 @@ namespace SparkServer.Tests.Controllers
         [TestMethod]
         public void HomeController_Create_ValidKey()
         {
-            string validKey = "F9701A3C-080D-49A1-98E6-027FA1D03DDA";
-
             HomeController controller = this.SetupController();
 
-            ViewResult result = controller.Create(validKey) as ViewResult;
+            ViewResult result = controller.Create(_validKey) as ViewResult;
 
             Assert.AreEqual(result.ViewName, "AddEdit");
         }
@@ -55,6 +61,28 @@ namespace SparkServer.Tests.Controllers
             ViewResult result = controller.Create(invalidKey) as ViewResult;
 
             Assert.IsNull(result);
+        }
+
+        [TestMethod]
+        public void HomeContrller_Create_AddMode()
+        {
+            HomeController controller = this.SetupController();
+
+            ViewResult result = controller.Create(_validKey) as ViewResult;
+            AddEditViewModel model = result.Model as AddEditViewModel;
+
+            Assert.AreEqual(EditMode.Add, model.Mode);
+        }
+
+        [TestMethod]
+        public void HomeContrller_Create_EditMode()
+        {
+            HomeController controller = this.SetupController();
+
+            ViewResult result = controller.Edit(_validKey, 1) as ViewResult;
+            AddEditViewModel model = result.Model as AddEditViewModel;
+
+            Assert.AreEqual(EditMode.Edit, model.Mode);
         }
     }
 }
