@@ -31,9 +31,11 @@ namespace SparkServer.Tests
             _container = new Container();
 
             // Repository registration - mocks for testing
-            _container.Register<IArticleRepository<Article>, MockArticleRepository>(Lifestyle.Transient);
-            _container.Register<IBlogRepository<Blog>, MockBlogRepository>(Lifestyle.Transient);
-            _container.Register<IAuthorRepository<Author>, MockAuthorRepository>(Lifestyle.Transient);
+            _container.Register<IArticleRepository<Article>, ArticleRepository>(Lifestyle.Transient);
+            _container.Register<ICategoryRepository<Category>, CategoryRepository>(Lifestyle.Transient);
+            _container.Register<IBlogRepository<Blog>, BlogRepository>(Lifestyle.Transient);
+            _container.Register<IAuthorRepository<Author>, AuthorRepository>(Lifestyle.Transient);
+            _container.Register<ISitecoreVersionRepository<SitecoreVersion>, SitecoreVersionRepository>(Lifestyle.Transient);
 
             _container.Verify();
         }

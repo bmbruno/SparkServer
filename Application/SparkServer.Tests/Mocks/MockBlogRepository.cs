@@ -28,7 +28,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<Blog> Get(Func<Blog, bool> whereClause)
+        public IEnumerable<Blog> Get(Func<Blog, bool> whereClause)
         {
             List<Blog> testList = new List<Blog>();
 
@@ -36,7 +36,7 @@ namespace SparkServer.Infrastructure.Repositories
             testList.Add(new Blog());
             testList.Add(new Blog());
 
-            return testList.AsQueryable<Blog>();
+            return testList.AsEnumerable<Blog>();
         }
 
         public IEnumerable<Blog> GetAll()

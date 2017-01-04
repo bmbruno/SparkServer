@@ -12,40 +12,94 @@ namespace SparkServer.Infrastructure.Repositories
     {
         public Article Get(int ID)
         {
-            return new Article();
+            Article item;
+
+            using (var db = new SparkServerEntities())
+            {
+                item = db.Article.FirstOrDefault(u => u.ID == ID);
+            }
+
+            return item;
         }
 
-        public IQueryable<Article> Get(Func<Article, bool> whereClause)
+        public IEnumerable<Article> Get(Func<Article, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            throw new NotImplementedException();
+            List<Article> results;
+
+            using (var db = new SparkServerEntities())
+            {
+                results = db.Article.Where(whereClause).ToList();
+            }
+
+            return results;
         }
 
         public IEnumerable<Article> GetAll()
         {
-            throw new NotImplementedException();
+            List<Article> results;
+
+            using (var db = new SparkServerEntities())
+            {
+                results = db.Article.ToList();
+            }
+
+            return results;
         }
 
-        public int Create()
+        public int Create(Article newItem)
         {
-            return 0;
+            using (var db = new SparkServerEntities())
+            {
+                db.Article.Add(newItem);
+                db.SaveChanges();
+            }
+
+            return newItem.ID;
         }
 
-        public int Create(Article newArticle)
+        public void Update(Article updateItem)
         {
-            throw new NotImplementedException();
-        }
+            using (var db = new SparkServerEntities())
+            {
+                Article toUpdate = db.Article.FirstOrDefault(u => u.ID == updateItem.ID);
 
-        public void Update(Article updateArticle)
-        {
-            throw new NotImplementedException();
+                if (toUpdate == null)
+                    throw new Exception($"Could not find Article with ID of {updateItem.ID}");
+
+                toUpdate = updateItem;
+                db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
         }
 
         public void Delete(int ID)
         {
+            using (var db = new SparkServerEntities())
+            {
+                Article toDelete = db.Article.FirstOrDefault(u => u.ID == ID);
 
+                if (toDelete == null)
+                    throw new Exception($"Could not find Article with ID of {ID}");
+
+                toDelete.Active = false;
+
+                db.SaveChanges();
+            }
+        }
+
+        public Article Get(string uniqueURL)
+        {
+            Article item = null;
+
+            using (var db = new SparkServerEntities())
+            {
+                item = db.Article.FirstOrDefault(u => u.UniqueURL == uniqueURL);
+            }
+
+            return item;
         }
     }
 }

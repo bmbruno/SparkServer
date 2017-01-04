@@ -22,16 +22,16 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<Author> Get(Func<Author, bool> whereClause)
+        public IEnumerable<Author> Get(Func<Author, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            IQueryable<Author> results;
+            List<Author> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Author.Where(whereClause).AsQueryable();
+                results = db.Author.Where(whereClause).ToList();
             }
 
             return results;
@@ -39,11 +39,11 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<Author> GetAll()
         {
-            IEnumerable<Author> results;
+            List<Author> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Author;
+                results = db.Author.ToList();
             }
 
             return results;

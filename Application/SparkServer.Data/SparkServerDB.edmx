@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SparkServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SparkServerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="ID" />
@@ -107,13 +107,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Article_Category">
-          <End Role="Article" Type="Self.Article" Multiplicity="1" />
-          <End Role="Article1" Type="Self.Article" Multiplicity="*" />
+          <End Role="Category" Type="Self.Category" Multiplicity="1" />
+          <End Role="Article" Type="Self.Article" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Article">
+            <Principal Role="Category">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Article1">
+            <Dependent Role="Article">
               <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
@@ -204,8 +204,8 @@
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
           <AssociationSet Name="FK_Article_Category" Association="Self.FK_Article_Category">
+            <End Role="Category" EntitySet="Category" />
             <End Role="Article" EntitySet="Article" />
-            <End Role="Article1" EntitySet="Article" />
           </AssociationSet>
           <AssociationSet Name="FK_Article_SitecoreVersion" Association="Self.FK_Article_SitecoreVersion">
             <End Role="SitecoreVersion" EntitySet="SitecoreVersion" />
@@ -232,8 +232,7 @@
             <End Role="RelatedArticle" EntitySet="RelatedArticle" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SparkServerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -257,6 +256,7 @@
           <NavigationProperty Name="SitecoreVersion" Relationship="Self.FK_Article_SitecoreVersion" FromRole="Article" ToRole="SitecoreVersion" />
           <NavigationProperty Name="RelatedArticle" Relationship="Self.FK_RelatedArticle_ArticleRelated" FromRole="Article" ToRole="RelatedArticle" />
           <NavigationProperty Name="RelatedArticle1" Relationship="Self.FK_RelatedArticle_ArticleSource" FromRole="Article" ToRole="RelatedArticle" />
+          <NavigationProperty Name="Category" Relationship="SparkServerModel.FK_Article_Category1" FromRole="Article" ToRole="Category" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -317,6 +317,7 @@
           <Property Name="SortOrder" Type="Int32" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="SparkServerModel.FK_Article_Category1" FromRole="Category" ToRole="Article" />
         </EntityType>
         <EntityType Name="RelatedArticle">
           <Key>
@@ -479,7 +480,23 @@
             <End Role="BlogTag" EntitySet="BlogTag" />
             <End Role="BlogsTags" EntitySet="BlogsTags" />
           </AssociationSet>
+          <AssociationSet Name="FK_Article_Category1" Association="SparkServerModel.FK_Article_Category1">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="Article" EntitySet="Article" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Article_Category1">
+          <End Type="SparkServerModel.Category" Role="Category" Multiplicity="1" />
+          <End Type="SparkServerModel.Article" Role="Article" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Article">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

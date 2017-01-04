@@ -20,7 +20,7 @@ namespace SparkServer.Core
         /// </summary>
         /// <param name="whereClause">LINQ Where clause predicate.</param>
         /// <returns>IQueryable of type T.</returns>
-        IQueryable<T> Get(Func<T, bool> whereClause);
+        IEnumerable<T> Get(Func<T, bool> whereClause);
 
         /// <summary>
         /// Returns all items from database.

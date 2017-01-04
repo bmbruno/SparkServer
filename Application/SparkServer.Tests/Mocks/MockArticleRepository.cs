@@ -10,12 +10,17 @@ namespace SparkServer.Infrastructure.Repositories
 {
     public class MockArticleRepository : IArticleRepository<Article>
     {
+        public Article Get (string uniqueURL)
+        {
+            return Get(2);
+        }
+
         public Article Get(int ID)
         {
             Article item;
 
             item = new Article();
-            item.ID = 1;
+            item.ID = ID;
             item.PublishDate = new DateTime(year: 2016, month: 1, day: 6);
             item.Title = "Test Article Title";
             item.Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
@@ -27,7 +32,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<Article> Get(Func<Article, bool> whereClause)
+        public IEnumerable<Article> Get(Func<Article, bool> whereClause)
         {
             List<Article> testList = new List<Article>();
 
@@ -35,7 +40,7 @@ namespace SparkServer.Infrastructure.Repositories
             testList.Add(new Article());
             testList.Add(new Article());
 
-            return testList.AsQueryable<Article>();
+            return testList.AsEnumerable<Article>();
         }
 
         public IEnumerable<Article> GetAll()

@@ -25,7 +25,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<Author> Get(Func<Author, bool> whereClause)
+        public IEnumerable<Author> Get(Func<Author, bool> whereClause)
         {
             List<Author> testList = new List<Author>();
 
@@ -33,7 +33,7 @@ namespace SparkServer.Infrastructure.Repositories
             testList.Add(new Author());
             testList.Add(new Author());
 
-            return testList.AsQueryable<Author>();
+            return testList.AsEnumerable<Author>();
         }
 
         public IEnumerable<Author> GetAll()

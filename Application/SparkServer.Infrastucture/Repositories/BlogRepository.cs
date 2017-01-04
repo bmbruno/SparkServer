@@ -22,16 +22,16 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<Blog> Get(Func<Blog, bool> whereClause)
+        public IEnumerable<Blog> Get(Func<Blog, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            IQueryable<Blog> results;
+            List<Blog> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).AsQueryable();
+                results = db.Blog.Where(whereClause).ToList();
             }
 
             return results;
@@ -39,25 +39,25 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<Blog> GetAll()
         {
-            IEnumerable<Blog> results;
+            List<Blog> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog;
+                results = db.Blog.ToList();
             }
 
             return results;
         }
 
-        public int Create(Blog newBlog)
+        public int Create(Blog newItem)
         {
             using (var db = new SparkServerEntities())
             {
-                db.Blog.Add(newBlog);
+                db.Blog.Add(newItem);
                 db.SaveChanges();
             }
 
-            return newBlog.ID;
+            return newItem.ID;
         }
 
         public void Update(Blog updateItem)

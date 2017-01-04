@@ -42,5 +42,6 @@ namespace SparkServer.Data
         public virtual ICollection<RelatedArticle> RelatedArticle { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RelatedArticle> RelatedArticle1 { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

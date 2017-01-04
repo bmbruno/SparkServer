@@ -21,6 +21,7 @@
         <AssociationConnector Association="SparkServerModel.FK_Blog_Author" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Blog" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="SparkServerModel.FK_Article_Category1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

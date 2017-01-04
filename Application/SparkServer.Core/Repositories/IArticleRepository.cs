@@ -8,6 +8,6 @@ namespace SparkServer.Core.Repositories
 {
     public interface IArticleRepository<T> : IRepositoryBase<T>
     {
-
+        T Get(string uniqueURL);
     }
 }

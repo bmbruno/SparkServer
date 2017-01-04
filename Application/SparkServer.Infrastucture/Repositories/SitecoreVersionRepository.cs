@@ -22,16 +22,16 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IQueryable<SitecoreVersion> Get(Func<SitecoreVersion, bool> whereClause)
+        public IEnumerable<SitecoreVersion> Get(Func<SitecoreVersion, bool> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
 
-            IQueryable<SitecoreVersion> results;
+            List<SitecoreVersion> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.SitecoreVersion.Where(whereClause).AsQueryable();
+                results = db.SitecoreVersion.Where(whereClause).ToList();
             }
 
             return results;
@@ -39,11 +39,11 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<SitecoreVersion> GetAll()
         {
-            IEnumerable<SitecoreVersion> results;
+            List<SitecoreVersion> results;
 
             using (var db = new SparkServerEntities())
             {
-                results = db.SitecoreVersion;
+                results = db.SitecoreVersion.ToList();
             }
 
             return results;

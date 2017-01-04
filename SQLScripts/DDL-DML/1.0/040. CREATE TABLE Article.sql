@@ -8,7 +8,7 @@ CREATE TABLE [Article] (
 	[Title] VARCHAR(500) NOT NULL,
 
 	[CategoryID] INT NOT NULL,
-	CONSTRAINT [FK_Article_Category] FOREIGN KEY ([CategoryID]) REFERENCES [Article]([ID]),
+	CONSTRAINT [FK_Article_Category] FOREIGN KEY ([CategoryID]) REFERENCES [Category]([ID]),
 
 	[Body] VARCHAR(MAX) NULL,
 

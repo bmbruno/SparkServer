@@ -13,7 +13,7 @@ using SparkServer.Core.Repositories;
 
 namespace SparkServer.Tests.Controllers
 {
-    //[TestClass]
+    [TestClass]
     public class EntityCreation : TestBase
     {
         public EntityCreation()
@@ -46,13 +46,38 @@ namespace SparkServer.Tests.Controllers
         [TestMethod]
         public void CreateCategory()
         {
-            
+            ICategoryRepository<Category> catRepo = this.GetContainer().GetInstance<ICategoryRepository<Category>>();
+
+            Category newCategory = new Category();
+
+            newCategory.Name = "Category A";
+            newCategory.SortOrder = 1;
+
+            newCategory.Active = true;
+            newCategory.CreateDate = DateTime.Now;
+
+            catRepo.Create(newCategory);
+
+            Assert.IsNotNull(newCategory.ID);
         }
 
         [TestMethod]
         public void CreateSitecoreVersion()
         {
+            ISitecoreVersionRepository<SitecoreVersion> svRepo = this.GetContainer().GetInstance<ISitecoreVersionRepository<SitecoreVersion>>();
 
+            SitecoreVersion newSV = new SitecoreVersion();
+
+            newSV.Version = "Sitecore 8.2.1";
+            newSV.Revision = "rev 12345";
+            newSV.Description = "Sitecore 8.2 Update 1 (rev 12345)";
+
+            newSV.Active = true;
+            newSV.CreateDate = DateTime.Now;
+
+            svRepo.Create(newSV);
+
+            Assert.IsNotNull(newSV.ID);
         }
 
         [TestMethod]
