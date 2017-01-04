@@ -13,7 +13,7 @@ using SparkServer.Core.Repositories;
 
 namespace SparkServer.Tests.Controllers
 {
-    [TestClass]
+    //[TestClass]
     public class EntityCreation : TestBase
     {
         public EntityCreation()
@@ -21,6 +21,7 @@ namespace SparkServer.Tests.Controllers
             base.InitIOC();
         }
 
+        [TestMethod]
         public void CreateAuthor()
         {
             // Arrange
@@ -42,16 +43,19 @@ namespace SparkServer.Tests.Controllers
             Assert.IsNotNull(newAuthor.ID);
         }
 
+        [TestMethod]
         public void CreateCategory()
         {
             
         }
 
+        [TestMethod]
         public void CreateSitecoreVersion()
         {
 
         }
 
+        [TestMethod]
         public void CreateArticle()
         {
             IArticleRepository<Article> articleRepo = this.GetContainer().GetInstance<IArticleRepository<Article>>();

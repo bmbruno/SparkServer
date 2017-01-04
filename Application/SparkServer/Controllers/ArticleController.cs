@@ -16,5 +16,25 @@ namespace SparkServer.Controllers
         {
             _articleRepo = articleRepo;
         }
+
+        public ActionResult Index(string uniqueURL)
+        {
+            if (String.IsNullOrEmpty(uniqueURL))
+                return Redirect("/");
+
+            var articles = _articleRepo.Get(x => x.UniqueURL == uniqueURL.Trim());
+
+            if (articles == null || articles.Count() > 1)
+            {
+                // TODO: Critical error: log this and notify someone
+                return Redirect("/");
+            }
+
+            var article = articles.FirstOrDefault();
+
+            return Content("OK");
+        }
     }
 }
+
+
