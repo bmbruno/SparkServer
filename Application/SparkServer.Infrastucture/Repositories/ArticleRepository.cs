@@ -17,6 +17,8 @@ namespace SparkServer.Infrastructure.Repositories
             using (var db = new SparkServerEntities())
             {
                 item = db.Article.FirstOrDefault(u => u.ID == ID);
+
+
             }
 
             return item;
@@ -97,6 +99,8 @@ namespace SparkServer.Infrastructure.Repositories
             using (var db = new SparkServerEntities())
             {
                 item = db.Article.FirstOrDefault(u => u.UniqueURL == uniqueURL);
+
+                //db.Entry(item).Reference(la => la.Author).Load();
             }
 
             return item;

@@ -22,9 +22,9 @@ namespace SparkServer.Controllers
             if (String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/");
 
-            var articles = _articleRepo.Get(uniqueURL: uniqueURL);
+            var article = _articleRepo.Get(uniqueURL: uniqueURL);
 
-            if (articles == null)
+            if (article == null)
             {
                 // TODO: Critical error: log this and notify someone
                 return Redirect("/");
