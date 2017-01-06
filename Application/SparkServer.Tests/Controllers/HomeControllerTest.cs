@@ -8,7 +8,7 @@ using SparkServer;
 using SparkServer.Controllers;
 using SparkServer.Core.Repositories;
 using SparkServer.Data;
-using SparkServer.ViewModels;
+using SparkServer.EditModels;
 using SparkServer.Application.Enum;
 
 namespace SparkServer.Tests.Controllers
@@ -69,7 +69,7 @@ namespace SparkServer.Tests.Controllers
             HomeController controller = this.SetupController();
 
             ViewResult result = controller.Create(_validKey) as ViewResult;
-            AddEditViewModel model = result.Model as AddEditViewModel;
+            AddEditArticleViewModel model = result.Model as AddEditArticleViewModel;
 
             Assert.AreEqual(EditMode.Add, model.Mode);
         }
@@ -80,7 +80,7 @@ namespace SparkServer.Tests.Controllers
             HomeController controller = this.SetupController();
 
             ViewResult result = controller.Edit(_validKey, 1) as ViewResult;
-            AddEditViewModel model = result.Model as AddEditViewModel;
+            AddEditArticleViewModel model = result.Model as AddEditArticleViewModel;
 
             Assert.AreEqual(EditMode.Edit, model.Mode);
         }

@@ -7,7 +7,7 @@ using SparkServer.Core;
 using SparkServer.Infrastructure;
 using SimpleInjector;
 using SparkServer.Core.Repositories;
-using SparkServer.ViewModels;
+using SparkServer.EditModels;
 using SparkServer.Data;
 
 namespace SparkServer.Controllers
@@ -40,10 +40,10 @@ namespace SparkServer.Controllers
             if (key.ToLower() != _key.ToLower())
                 return Redirect("/");
 
-            AddEditViewModel model = new AddEditViewModel();
-            model.Mode = Application.Enum.EditMode.Add;
+            //AddEditViewModel model = new AddEditViewModel();
+            //model.Mode = Application.Enum.EditMode.Add;
 
-            return View(viewName: "AddEdit", model: model);
+            return View(viewName: "AddEdit", model: null);
         }
 
         public ActionResult Edit(string key, int id)
@@ -59,11 +59,11 @@ namespace SparkServer.Controllers
             if (article == null)
                 Redirect("/");
 
-            AddEditViewModel model = new AddEditViewModel();
-            model.Article = article;
-            model.Mode = Application.Enum.EditMode.Edit;
-
-            return View(viewName: "AddEdit", model: model);
+            //AddEditViewModel model = new AddEditViewModel();
+            //model.Article = article;
+            //model.Mode = Application.Enum.EditMode.Edit;
+            
+            return View(viewName: "AddEdit", model: null);
         }
     }
 }

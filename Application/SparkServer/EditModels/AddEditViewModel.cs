@@ -5,12 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SparkServer.ViewModels
+namespace SparkServer.EditModels
 {
-    public class AddEditViewModel
+    public class AddEditArticleViewModel
     {
         public EditMode Mode { get; set; }
 
-        public Article Article { get; set; }
+        // TODO: use ArticleViewModel for this?
+        //public Article Article { get; set; }
     }
 }
