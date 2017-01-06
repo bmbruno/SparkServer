@@ -15,12 +15,12 @@ namespace SparkServer.Mapping
             vm.ArticleUniqueURL = model.UniqueURL;
             vm.ArticleTitle = model.Title;
             vm.Body = model.Body;
-            vm.SitecoreVersionShort = model.SitecoreVersion.Version;
-            vm.SitecoreVersionLong = $"{model.SitecoreVersion.Version} rev. {model.SitecoreVersion.Revision}";
-            vm.SitecoreVersionDescription = model.SitecoreVersion.Description;
-            vm.AuthurFullName = $"{model.Author.FirstName} {model.Author.LastName}";
+            vm.SitecoreVersionShort = (model.SitecoreVersion != null) ? model.SitecoreVersion.Version : string.Empty;
+            vm.SitecoreVersionLong = (model.SitecoreVersion != null) ? $"{model.SitecoreVersion.Version} rev. {model.SitecoreVersion.Revision}" : string.Empty;
+            vm.SitecoreVersionDescription = (model.SitecoreVersion != null) ? model.SitecoreVersion.Description : string.Empty;
+            vm.AuthurFullName = (model.Author != null) ? $"{model.Author.FirstName} {model.Author.LastName}" : string.Empty;
             vm.CategoryID = model.CategoryID;
-            vm.CategoryName = model.Category.Name;
+            vm.CategoryName = (model.Category != null) ? model.Category.Name : string.Empty;
         }
     }
 }

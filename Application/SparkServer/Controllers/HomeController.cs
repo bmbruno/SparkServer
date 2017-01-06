@@ -40,10 +40,10 @@ namespace SparkServer.Controllers
             if (key.ToLower() != _key.ToLower())
                 return Redirect("/");
 
-            //AddEditViewModel model = new AddEditViewModel();
-            //model.Mode = Application.Enum.EditMode.Add;
+            ArticleAddEditViewModel model = new ArticleAddEditViewModel();
+            model.Mode = Application.Enum.EditMode.Add;
 
-            return View(viewName: "AddEdit", model: null);
+            return View(viewName: "AddEdit", model: model);
         }
 
         public ActionResult Edit(string key, int id)
@@ -59,11 +59,10 @@ namespace SparkServer.Controllers
             if (article == null)
                 Redirect("/");
 
-            //AddEditViewModel model = new AddEditViewModel();
-            //model.Article = article;
-            //model.Mode = Application.Enum.EditMode.Edit;
+            ArticleAddEditViewModel model = new ArticleAddEditViewModel();
+            model.Mode = Application.Enum.EditMode.Edit;
             
-            return View(viewName: "AddEdit", model: null);
+            return View(viewName: "AddEdit", model: model);
         }
     }
 }
