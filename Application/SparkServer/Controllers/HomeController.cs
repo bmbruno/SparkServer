@@ -7,7 +7,7 @@ using SparkServer.Core;
 using SparkServer.Infrastructure;
 using SimpleInjector;
 using SparkServer.Core.Repositories;
-using SparkServer.EditModels;
+using SparkServer.ViewModels;
 using SparkServer.Data;
 
 namespace SparkServer.Controllers

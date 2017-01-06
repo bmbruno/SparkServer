@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace SparkServer.EditModels
+namespace SparkServer.ViewModels
 {
     public class AddEditArticleViewModel
     {

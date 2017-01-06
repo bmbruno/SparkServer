@@ -8,7 +8,7 @@ using SparkServer;
 using SparkServer.Controllers;
 using SparkServer.Core.Repositories;
 using SparkServer.Data;
-using SparkServer.EditModels;
+using SparkServer.ViewModels;
 using SparkServer.Application.Enum;
 
 namespace SparkServer.Tests.Controllers
