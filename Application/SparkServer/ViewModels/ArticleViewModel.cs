@@ -11,7 +11,7 @@ namespace SparkServer.ViewModels
         //
         // Article Information
         //
-        public string ArticleID { get; set; }
+        public int ArticleID { get; set; }
 
         public string ArticleUniqueURL { get; set; }
 
@@ -25,9 +25,9 @@ namespace SparkServer.ViewModels
 
         public string SitecoreVersionDescription { get; set; }
 
-        public string AutherFullName { get; set; }
+        public string AuthurFullName { get; set; }
 
-        public string CategoryID { get; set; }
+        public int CategoryID { get; set; }
 
         public string CategoryName { get; set; }
 

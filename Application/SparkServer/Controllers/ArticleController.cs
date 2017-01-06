@@ -1,5 +1,7 @@
 ﻿using SparkServer.Core.Repositories;
 using SparkServer.Data;
+using SparkServer.ViewModels;
+using SparkServer.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +32,11 @@ namespace SparkServer.Controllers
                 return Redirect("/");
             }
 
-            return Content("OK");
+            // Map to viewmodel
+            ArticleViewModel viewModel = new ArticleViewModel();
+            viewModel.MapToViewModel(article);
+
+            return View(viewName: "Index", model: viewModel);
         }
     }
 }

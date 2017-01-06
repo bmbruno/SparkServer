@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SparkServer.ViewModels
 {
-    public class AddEditArticleViewModel
+    public class ArticleAddEditViewModel
     {
         public EditMode Mode { get; set; }
 

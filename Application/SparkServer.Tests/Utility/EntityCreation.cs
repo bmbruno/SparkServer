@@ -13,7 +13,7 @@ using SparkServer.Core.Repositories;
 
 namespace SparkServer.Tests.Controllers
 {
-    [TestClass]
+    // [TestClass]
     public class EntityCreation : TestBase
     {
         public EntityCreation()

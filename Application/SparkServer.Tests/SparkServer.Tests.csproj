@@ -95,6 +95,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\ArticleControllerTest.cs" />
     <Compile Include="Mocks\MockAuthorRepository.cs" />
     <Compile Include="Mocks\MockArticleRepository.cs" />
     <Compile Include="Mocks\MockBlogRepository.cs" />

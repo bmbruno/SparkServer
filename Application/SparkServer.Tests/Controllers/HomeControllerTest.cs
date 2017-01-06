@@ -69,7 +69,7 @@ namespace SparkServer.Tests.Controllers
             HomeController controller = this.SetupController();
 
             ViewResult result = controller.Create(_validKey) as ViewResult;
-            AddEditArticleViewModel model = result.Model as AddEditArticleViewModel;
+            ArticleAddEditViewModel model = result.Model as ArticleAddEditViewModel;
 
             Assert.AreEqual(EditMode.Add, model.Mode);
         }
@@ -80,7 +80,7 @@ namespace SparkServer.Tests.Controllers
             HomeController controller = this.SetupController();
 
             ViewResult result = controller.Edit(_validKey, 1) as ViewResult;
-            AddEditArticleViewModel model = result.Model as AddEditArticleViewModel;
+            ArticleAddEditViewModel model = result.Model as ArticleAddEditViewModel;
 
             Assert.AreEqual(EditMode.Edit, model.Mode);
         }
