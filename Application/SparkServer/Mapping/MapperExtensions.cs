@@ -1,4 +1,5 @@
 ﻿using SparkServer.Data;
+using SparkServer.Models;
 using SparkServer.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,28 @@ namespace SparkServer.Mapping
             vm.AuthurFullName = (model.Author != null) ? $"{model.Author.FirstName} {model.Author.LastName}" : string.Empty;
             vm.CategoryID = model.CategoryID;
             vm.CategoryName = (model.Category != null) ? model.Category.Name : string.Empty;
+        }
+
+        public static void MapToViewModel(this CategoryListViewModel vm, IEnumerable<Category> categories, IEnumerable<Article> articles)
+        {
+            foreach (Category category in categories)
+            {
+                CategoryWithArticles cwa = new CategoryWithArticles();
+
+                // TODO: add OrderBy sort for article list
+                var articlesForCategory = articles.Where(u => u.CategoryID == category.ID);
+
+                cwa.CategoryName = category.Name;
+
+                foreach (Article article in articlesForCategory)
+                {
+                    cwa.ArticleLinks.Add(new ArticleLink() {
+                        ArticleID = article.ID,
+                        ArticleTitle = article.Title,
+                        URL = $"/Article/{article.UniqueURL}"
+                    });
+                }
+            }
         }
     }
 }
