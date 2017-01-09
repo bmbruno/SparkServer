@@ -10,6 +10,11 @@ namespace SparkServer.Mapping
 {
     public static class MapperExtensions
     {
+        /// <summary>
+        /// Database objects -> ArticleViewModel.
+        /// </summary>
+        /// <param name="vm">ArticleViewModel.</param>
+        /// <param name="model">Article object.</param>
         public static void MapToViewModel(this ArticleViewModel vm, Article model)
         {
             vm.ArticleID = model.ID;
@@ -24,6 +29,12 @@ namespace SparkServer.Mapping
             vm.CategoryName = (model.Category != null) ? model.Category.Name : string.Empty;
         }
 
+        /// <summary>
+        /// Database objects -> CategoryListViewModel.
+        /// </summary>
+        /// <param name="vm">CategoryListViewModel</param>
+        /// <param name="categories">Enumerable of Category objects.</param>
+        /// <param name="articles">Enumerable of Article objects.</param>
         public static void MapToViewModel(this CategoryListViewModel vm, IEnumerable<Category> categories, IEnumerable<Article> articles)
         {
             foreach (Category category in categories)
@@ -43,6 +54,8 @@ namespace SparkServer.Mapping
                         URL = $"/Article/{article.UniqueURL}"
                     });
                 }
+
+                vm.CategoriesList.Add(cwa);
             }
         }
     }

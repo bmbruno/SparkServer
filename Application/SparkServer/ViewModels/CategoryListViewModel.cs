@@ -9,5 +9,10 @@ namespace SparkServer.ViewModels
     public class CategoryListViewModel
     {
         public List<CategoryWithArticles> CategoriesList { get; set; }
+
+        public CategoryListViewModel()
+        {
+            CategoriesList = new List<CategoryWithArticles>();
+        }
     }
 }

@@ -9,6 +9,11 @@ namespace SparkServer.Models
     {
         public string CategoryName { get; set; }
 
-        public List<ArticleLink> ArticleLinks { get; set; } 
+        public List<ArticleLink> ArticleLinks { get; set; }
+
+        public CategoryWithArticles()
+        {
+            ArticleLinks = new List<ArticleLink>();
+        }
     }
 }
