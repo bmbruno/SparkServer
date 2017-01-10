@@ -143,14 +143,22 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\logo.png" />
+    <Content Include="Content\Images\logo_title_alt.png" />
+    <Content Include="Content\Styles\default.css" />
+    <Content Include="Content\Styles\fonts\fonts.css" />
+    <Content Include="Content\Styles\fonts\OpenSans-Bold-webfont.svg" />
+    <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.svg" />
+    <Content Include="Content\Styles\ie.css" />
+    <Content Include="Content\Styles\reset.css" />
+    <Content Include="favicon-16x16.png" />
+    <Content Include="favicon-32x32.png" />
+    <Content Include="favicon-96x96.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\default.js" />
+    <Content Include="Scripts\html5shiv.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -163,15 +171,21 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\AddEdit.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="Content\Styles\fonts\OpenSans-Bold-webfont.eot" />
+    <Content Include="Content\Styles\fonts\OpenSans-Bold-webfont.ttf" />
+    <Content Include="Content\Styles\fonts\OpenSans-Bold-webfont.woff" />
+    <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.eot" />
+    <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.ttf" />
+    <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.woff" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>

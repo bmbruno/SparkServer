@@ -23,7 +23,7 @@ namespace SparkServer.Controllers
 
         public ActionResult Index()
         {
-            // Get alla active categories
+            // Get all active categories
             List<Category> categories = _categoryRepo.Get(x => x.Active).ToList();
             List<Article> articles = _articleRepo.GetAll().ToList();
 

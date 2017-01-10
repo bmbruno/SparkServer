@@ -1,0 +1,56 @@
+body { min-width: 1024px; }
+
+header { margin: 0; }
+header ul.quicklinks { float: right; width: 25%; }
+header ul.quicklinks li { float: left; width: 50%; }
+header ul.quicklinks li img { max-width: 48px; }
+
+nav { float: left; width: 75%; font-size: 1.7em; }
+nav a { padding: 12px; }
+
+section { margin-bottom: 96px; }
+section p { font-size: 1em; }
+h1 { padding: 48px 0; font-size: 2.5em; }
+h2 { font-size: 4.5em; }
+
+.logo { display: block; }
+
+.about .me { float: left; max-width: 200px; margin: 0 24px 12px 0; }
+
+.list h3 { text-align: left; font-size: 2em; font-weight: bold; letter-spacing: -2px; border: none; }
+.list ul li { margin-bottom: 36px; }
+
+.grids ul.grid.three-up li { width: 46%; margin: 0 2%; min-height: 130px; }
+.grids h3 { font-size: 1.75em; letter-spacing: -2px; }
+
+.contact h3 { font-size: 2em; letter-spacing: -2px; }
+.contact .label { font-size: 0.8em; }
+
+.bullets li { font-size: 1em;  }
+
+header { padding: 24px; }
+header ul.quicklinks { width: 25%; }
+header ul.quicklinks li { width: 25%; }
+header ul.quicklinks li img { max-width: 40px; }
+
+nav { width: 70%;  margin: 0; }
+nav ul li { width: auto; }
+
+section p { font-size: 1.1em; }
+section ul.large li { font-size: 1.1em; }
+h1 { font-size: 3.5em; }
+
+pre { font-size: 1.2em; }
+
+.about .me { max-width: 220px; }
+
+nav { font-size: 2em; }
+
+header ul.quicklinks li img { max-width: 48px; }
+
+nav { font-size: 2.5em; }
+nav ul li { margin-right: 16px; }
+
+.about .me { max-width: 250px; }
+
+.grids ul.grid.three-up li { width: 29.33%; margin: 0 2%; min-height: 250px; }
