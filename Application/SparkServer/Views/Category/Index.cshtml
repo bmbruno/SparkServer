@@ -4,8 +4,23 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Categories &amp Topics";
 }
+
 <h1>@Html.Raw(ViewBag.Title)</h1>
 
-<div>
-    
-</div>
+<ul class="grid three-up cf">
+
+    @foreach (var categoryWithArticles in Model.CategoriesList)
+    {
+        <li class="article-list">
+            <h2>@categoryWithArticles.CategoryName</h2>
+
+            <ul>
+                @foreach (var articleLink in categoryWithArticles.ArticleLinks)
+                {
+                    <li><a href="@articleLink.URL">@articleLink.ArticleTitle</a></li>
+                }
+            </ul>
+        </li>
+    }
+
+</ul>
