@@ -3,8 +3,44 @@
 @{
     ViewBag.Title = Model.ArticleTitle;
 }
-<h1>@ViewBag.Title</h1>
 
-<div>
+<article>
+
+    <ul class="about cf">
+        <!-- TODO: URL for Category sort -->
+        <li><a href="">@Model.CategoryName</a></li>
+        <li>June 2016</li>
+        <li>@Model.SitecoreVersionShort</li>
+    </ul>
+
+    <h1>@ViewBag.Title</h1>
+
     @Html.Raw(Model.Body)
-</div>
+
+    <footer class="cf">
+        <h1>Notes</h1>
+
+        <div class="articles">
+            <h2>Related Articles</h2>
+
+            <ul>
+                <li><a href="#">Related Article Alpha</a></li>
+                <li><a href="#">Related Article Beta</a></li>
+                <li><a href="#">Related Article Alpha</a></li>
+                <li><a href="#">Related Article Beta</a></li>
+                <li><a href="#">Related Article Alpha</a></li>
+                <li><a href="#">Related Article Beta</a></li>
+            </ul>
+        </div>
+
+        <div class="notes">
+            <h2>Links</h2>
+
+            <ul>
+                <li><a href="#">asdfasfsdf</a></li>
+                <li><a href="#">asdfasfsdf</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</article>
