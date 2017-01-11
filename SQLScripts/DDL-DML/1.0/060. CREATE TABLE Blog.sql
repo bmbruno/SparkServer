@@ -11,6 +11,8 @@ CREATE TABLE [Blog] (
 
 	[Body] VARCHAR(MAX) NULL,
 
+	[UniqueURL] VARCHAR(250) NOT NULL,
+
 	[PublishDate] DATETIME NULL,
 
 	[AuthorID] INT NOT NULL,
