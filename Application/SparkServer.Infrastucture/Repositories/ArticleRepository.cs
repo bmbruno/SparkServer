@@ -100,7 +100,9 @@ namespace SparkServer.Infrastructure.Repositories
             {
                 item = db.Article.FirstOrDefault(u => u.UniqueURL == uniqueURL);
 
-                //db.Entry(item).Reference(la => la.Author).Load();
+                db.Entry(item).Reference(la => la.Author).Load();
+                db.Entry(item).Reference(la => la.SitecoreVersion).Load();
+                db.Entry(item).Reference(la => la.Category).Load();
             }
 
             return item;
