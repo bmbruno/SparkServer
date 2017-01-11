@@ -39,6 +39,7 @@
           <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Subtitle" Type="varchar" MaxLength="500" />
           <Property Name="Body" Type="varchar(max)" />
+          <Property Name="UniqueURL" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="PublishDate" Type="datetime" />
           <Property Name="AuthorID" Type="int" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
@@ -285,6 +286,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Author" Relationship="Self.FK_Blog_Author" FromRole="Blog" ToRole="Author" />
           <NavigationProperty Name="BlogsTags" Relationship="Self.FK_BlogTag_Blog" FromRole="Blog" ToRole="BlogsTags" />
+          <Property Name="UniqueURL" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="BlogsTags">
           <Key>
@@ -534,6 +536,7 @@
           <EntitySetMapping Name="Blog">
             <EntityTypeMapping TypeName="SparkServerModel.Blog">
               <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
