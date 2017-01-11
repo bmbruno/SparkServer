@@ -17,21 +17,24 @@ namespace SparkServer.Controllers
             _blogRepo = blogRepo;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int year, int month, int day, string uniqueURL)
         {
-            Blog newBlog = new Blog()
-            {
-                Title = "Test Title",
-                Subtitle = "Subtitle",
-                AuthorID = 1,
-                Body = "<h1>Hello, World!</h1>",
-                PublishDate = DateTime.Now,
+            if (String.IsNullOrEmpty(uniqueURL))
+                return Redirect("/");
 
-                Active = true,
-                CreateDate = DateTime.Now
-            };
+            //var article = _blogRepo.Get(uniqueURL: uniqueURL);
 
-            this._blogRepo.Create(newBlog);
+            //if (article == null)
+            //{
+            //    // TODO: Critical error: log this and notify someone
+            //    return Redirect("/");
+            //}
+
+            //// Map to viewmodel
+            //ArticleViewModel viewModel = new ArticleViewModel();
+            //viewModel.MapToViewModel(article);
+
+            //return View(viewName: "Index", model: viewModel);
 
             return View();
         }
