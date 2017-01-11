@@ -48,7 +48,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             return results;
         }
-
+        
         public int Create(Blog newItem)
         {
             using (var db = new SparkServerEntities())
@@ -88,6 +88,13 @@ namespace SparkServer.Infrastructure.Repositories
 
                 db.SaveChanges();
             }
+        }
+
+        public Blog Get(int year, int month, int day, string uniqueURL)
+        {
+
+
+            return new Blog();
         }
     }
 }

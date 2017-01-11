@@ -64,5 +64,23 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return;
         }
+
+        public Blog Get(int year, int month, int day, string uniqueURL)
+        {
+            Blog item;
+
+            item = new Blog();
+            item.ID = 1;
+            item.PublishDate = new DateTime(year: year, month: month, day: day);
+            item.Title = "Test Blog Title";
+            item.Subtitle = "Test Subtitle";
+            item.Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
+            item.AuthorID = 1;
+
+            item.Active = true;
+            item.CreateDate = new DateTime(year: year, month: month, day: day);
+
+            return item;
+        }
     }
 }
