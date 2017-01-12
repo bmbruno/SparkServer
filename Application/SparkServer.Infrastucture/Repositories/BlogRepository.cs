@@ -92,9 +92,17 @@ namespace SparkServer.Infrastructure.Repositories
 
         public Blog Get(string uniqueURL)
         {
-            // TODO: implement
+            Blog item = null;
 
-            return new Blog();
+            using (var db = new SparkServerEntities())
+            {
+                item = db.Blog.FirstOrDefault(u => u.UniqueURL == uniqueURL);
+
+                db.Entry(item).Reference(la => la.Author).Load();
+                db.Entry(item).Reference(la => la.BlogsTags).Load();
+            }
+
+            return item;
         }
 
         public IEnumerable<Blog> GetByDate(int year, int? month, int? day)
