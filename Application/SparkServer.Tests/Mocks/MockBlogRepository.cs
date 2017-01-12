@@ -83,7 +83,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Blog> GetByDate(int year, int? month, int day)
+        public IEnumerable<Blog> GetByDate(int year, int? month, int? day)
         {
             return this.GetAll();
         }
