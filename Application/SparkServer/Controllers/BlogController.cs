@@ -29,7 +29,7 @@ namespace SparkServer.Controllers
             if (String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/blog");
 
-            var blog = _blogRepo.Get(year, month, day, uniqueURL);
+            var blog = _blogRepo.Get(uniqueURL);
 
             if (blog == null)
             {

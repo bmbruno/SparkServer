@@ -90,11 +90,18 @@ namespace SparkServer.Infrastructure.Repositories
             }
         }
 
-        public Blog Get(int year, int month, int day, string uniqueURL)
+        public Blog Get(string uniqueURL)
         {
-
+            // TODO: implement
 
             return new Blog();
+        }
+
+        public IEnumerable<Blog> GetByDate(int year, int? month, int? day)
+        {
+            // TODO: implement
+
+            return new List<Blog>();
         }
     }
 }

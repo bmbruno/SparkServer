@@ -65,22 +65,27 @@ namespace SparkServer.Infrastructure.Repositories
             return;
         }
 
-        public Blog Get(int year, int month, int day, string uniqueURL)
+        public Blog Get(string uniqueURL)
         {
             Blog item;
 
             item = new Blog();
             item.ID = 1;
-            item.PublishDate = new DateTime(year: year, month: month, day: day);
+            item.PublishDate = new DateTime(year: 2017, month: 2, day: 14);
             item.Title = "Test Blog Title";
             item.Subtitle = "Test Subtitle";
             item.Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
             item.AuthorID = 1;
 
             item.Active = true;
-            item.CreateDate = new DateTime(year: year, month: month, day: day);
+            item.CreateDate = new DateTime(year: 2017, month: 2, day: 13);
 
             return item;
+        }
+
+        public IEnumerable<Blog> GetByDate(int year, int? month, int day)
+        {
+            return this.GetAll();
         }
     }
 }
