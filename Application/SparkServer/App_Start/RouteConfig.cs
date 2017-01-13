@@ -21,8 +21,8 @@ namespace SparkServer
 
             routes.MapRoute(
                 name: "Blog",
-                url: "blog/{year}/{month}/{day}/{uniqueURL}",
-                defaults: new { controller = "Blog", action = "BlogArticle", year = UrlParameter.Optional, month = UrlParameter.Optional, day = UrlParameter.Optional, uniqueURL = UrlParameter.Optional }
+                url: "blog/{year}/{month}/{uniqueURL}",
+                defaults: new { controller = "Blog", action = "BlogArticle", year = UrlParameter.Optional, month = UrlParameter.Optional, uniqueURL = UrlParameter.Optional }
             );
 
             routes.MapRoute(

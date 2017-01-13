@@ -71,19 +71,19 @@ namespace SparkServer.Infrastructure.Repositories
 
             item = new Blog();
             item.ID = 1;
-            item.PublishDate = new DateTime(year: 2017, month: 2, day: 14);
+            item.PublishDate = new DateTime(year: 2017, month: 2, day: 2);
             item.Title = "Test Blog Title";
             item.Subtitle = "Test Subtitle";
             item.Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
             item.AuthorID = 1;
 
             item.Active = true;
-            item.CreateDate = new DateTime(year: 2017, month: 2, day: 13);
+            item.CreateDate = new DateTime(year: 2017, month: 2, day: 1);
 
             return item;
         }
 
-        public IEnumerable<Blog> GetByDate(int year, int? month, int? day)
+        public IEnumerable<Blog> GetByDate(int year, int? month)
         {
             return this.GetAll();
         }

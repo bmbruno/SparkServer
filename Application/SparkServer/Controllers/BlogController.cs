@@ -24,7 +24,7 @@ namespace SparkServer.Controllers
             return View();
         }
 
-        public ActionResult BlogArticle(int year, int month, int day, string uniqueURL)
+        public ActionResult BlogArticle(int year, int month, string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/blog");

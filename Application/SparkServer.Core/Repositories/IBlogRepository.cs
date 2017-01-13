@@ -19,12 +19,11 @@ namespace SparkServer.Core.Repositories
         T Get(string uniqueURL);
 
         /// <summary>
-        /// Should retrieve blog-type objects from a datastore for any combination of year + month + day. Year is a minimum requirement.
+        /// Should retrieve blog-type objects from a datastore for any combination of year + month. Year is a minimum requirement.
         /// </summary>
         /// <param name="year">Year.</param>
         /// <param name="month">Month.</param>
-        /// <param name="day">Day.</param>
         /// <returns>Object of type T.</returns>
-        IEnumerable<T> GetByDate(int year, int? month, int? day);
+        IEnumerable<T> GetByDate(int year, int? month);
     }
 }

@@ -105,20 +105,13 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Blog> GetByDate(int year, int? month, int? day)
+        public IEnumerable<Blog> GetByDate(int year, int? month)
         {
             List<Blog> blogList = new List<Blog>();
 
             using (var db = new SparkServerEntities())
             {
-                if (month.HasValue && day.HasValue)
-                {
-                    blogList = db.Blog.Where(
-                        u => u.PublishDate.Value.Year == year && 
-                        u.PublishDate.Value.Month == month &&
-                        u.PublishDate.Value.Day == day).ToList();
-                }
-                else if (month.HasValue)
+                if (month.HasValue)
                 {
                     blogList = db.Blog.Where(
                         u => u.PublishDate.Value.Year == year &&
