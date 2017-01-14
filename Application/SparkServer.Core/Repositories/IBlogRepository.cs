@@ -13,10 +13,9 @@ namespace SparkServer.Core.Repositories
         /// </summary>
         /// <param name="year">Year.</param>
         /// <param name="month">Month.</param>
-        /// <param name="day">Day.</param>
         /// <param name="uniqueURL">UniqueURL.</param>
         /// <returns>Object of type T.</returns>
-        T Get(string uniqueURL);
+        T Get(int year, int month, string uniqueURL);
 
         /// <summary>
         /// Should retrieve blog-type objects from a datastore for any combination of year + month. Year is a minimum requirement.

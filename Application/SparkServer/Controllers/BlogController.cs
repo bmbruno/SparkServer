@@ -24,12 +24,19 @@ namespace SparkServer.Controllers
             return View();
         }
 
-        public ActionResult BlogArticle(int year, int month, string uniqueURL)
+        public ActionResult BlogArticle(int? year, int? month, string uniqueURL = "")
         {
-            if (String.IsNullOrEmpty(uniqueURL))
+            if (!year.HasValue || !month.HasValue || String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/blog");
 
-            var blog = _blogRepo.Get(uniqueURL);
+            var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
+
+            return View();
+        }
+
+        public ActionResult BlogArticlesByDate(int year, int? month)
+        {
+            var blog = _blogRepo.GetByDate(year, month.Value);
 
             if (blog == null)
             {

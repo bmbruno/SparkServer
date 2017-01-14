@@ -65,7 +65,7 @@ namespace SparkServer.Infrastructure.Repositories
             return;
         }
 
-        public Blog Get(string uniqueURL)
+        public Blog Get(int year, int month, string uniqueURL)
         {
             Blog item;
 
