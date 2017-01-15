@@ -132,6 +132,7 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="ViewModels\BlogArticleViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -187,6 +188,7 @@
     <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.ttf" />
     <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.woff" />
     <None Include="Project_Readme.html" />
+    <Content Include="Views\Blog\BlogArticle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
