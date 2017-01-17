@@ -17,10 +17,19 @@ namespace SparkServer.Controllers
             _blogRepo = blogRepo;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int? year, int? month)
         {
-            // TODO: list of all blog articles
+            List<Blog> blogList = new List<Blog>();
 
+            if (year.HasValue && month.HasValue)
+                blogList = _blogRepo.GetByDate(year.Value, month.Value).ToList();
+
+            if (year.HasValue)
+                blogList = _blogRepo.GetByDate(year.Value, null).ToList();
+
+            if (blogList.Count == 0)
+                blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
+                
             return View();
         }
 

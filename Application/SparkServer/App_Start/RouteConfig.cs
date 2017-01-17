@@ -20,15 +20,15 @@ namespace SparkServer
             );
 
             routes.MapRoute(
-                name: "BlogArticle",
-                url: "blog/{year}/{month}/{uniqueURL}",
-                defaults: new { controller = "Blog", action = "BlogArticlesByDate", year = UrlParameter.Optional, month = UrlParameter.Optional, uniqueURL = UrlParameter.Optional }
+                name: "BlogIndex",
+                url: "blog/{year}/{month}",
+                defaults: new { controller = "Blog", action = "Index", year = UrlParameter.Optional, month = UrlParameter.Optional }
             );
 
             routes.MapRoute(
-                name: "BlogArticlesByDate",
-                url: "blog/{year}/{month}",
-                defaults: new { controller = "Blog", action = "BlogArticlesByDate", year = UrlParameter.Optional, month = UrlParameter.Optional }
+                name: "BlogArticle",
+                url: "blog/{year}/{month}/{uniqueURL}",
+                defaults: new { controller = "Blog", action = "BlogArticlesByDate" }
             );
 
             routes.MapRoute(
