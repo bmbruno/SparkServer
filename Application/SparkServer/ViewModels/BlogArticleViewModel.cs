@@ -19,17 +19,9 @@ namespace SparkServer.ViewModels
 
         public string Body { get; set; }
 
-        public string SitecoreVersionShort { get; set; }
+        public string AuthorFullName { get; set; }
 
-        public string SitecoreVersionLong { get; set; }
-
-        public string SitecoreVersionDescription { get; set; }
-
-        public string AuthurFullName { get; set; }
-
-        public int CategoryID { get; set; }
-
-        public string CategoryName { get; set; }
+        // TODO: add blog tags
         
     }
 }

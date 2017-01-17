@@ -58,5 +58,26 @@ namespace SparkServer.Mapping
                 vm.CategoriesList.Add(cwa);
             }
         }
+
+        /// <summary>
+        /// Database objects -> BlogListViewModel
+        /// </summary>
+        /// <param name="vm">BlogListViewModel</param>
+        /// <param name="blogs">IEnumerable of Blog objects.</param>
+        public static void MapToViewModel(this BlogListViewModel vm, IEnumerable<Blog> blogs)
+        {
+            foreach (var blog in blogs)
+            {
+                vm.BlogList.Add(new BlogArticleViewModel() {
+
+                    ArticleTitle = blog.Title,
+                    ArticleUniqueURL = blog.UniqueURL,
+                    AuthorFullName = $"{blog.Author.FirstName} {blog.Author.LastName}",
+                    BlogID = blog.ID,
+                    Body = blog.Body
+
+                });
+            }
+        }
     }
 }

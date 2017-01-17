@@ -1,5 +1,6 @@
 ﻿using SparkServer.Core.Repositories;
 using SparkServer.Data;
+using SparkServer.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace SparkServer.Controllers
 
         public ActionResult Index(int? year, int? month)
         {
+            BlogListViewModel viewModel = new BlogListViewModel();
             List<Blog> blogList = new List<Blog>();
 
             if (year.HasValue && month.HasValue)
@@ -29,7 +31,7 @@ namespace SparkServer.Controllers
 
             if (blogList.Count == 0)
                 blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
-                
+
             return View();
         }
 
