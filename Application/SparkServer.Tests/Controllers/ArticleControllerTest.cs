@@ -35,7 +35,7 @@ namespace SparkServer.Tests.Controllers
             ArticleController controller = this.SetupController();
 
             // Act
-            ViewResult result = controller.Index(_uniqueURL) as ViewResult;
+            ViewResult result = controller.Article(_uniqueURL) as ViewResult;
             ArticleViewModel viewModel = result.Model as ArticleViewModel;
 
             // Assert

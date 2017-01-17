@@ -19,7 +19,7 @@ namespace SparkServer.Controllers
             _articleRepo = articleRepo;
         }
 
-        public ActionResult Index(string uniqueURL)
+        public ActionResult Article(string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/");
