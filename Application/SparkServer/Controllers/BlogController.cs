@@ -67,24 +67,5 @@ namespace SparkServer.Controllers
 
             return View();
         }
-
-        public ActionResult BlogArticlesByDate(int year, int? month)
-        {
-            var blog = _blogRepo.GetByDate(year, month.Value);
-
-            if (blog == null)
-            {
-                // TODO: Critical error: log this and notify someone
-                return Redirect("/blog");
-            }
-
-            //// Map to viewmodel
-            //ArticleViewModel viewModel = new ArticleViewModel();
-            //viewModel.MapToViewModel(article);
-
-            //return View(viewName: "Index", model: viewModel);
-
-            return View();
-        }
     }
 }
