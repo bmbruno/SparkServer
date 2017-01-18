@@ -17,14 +17,14 @@ namespace SparkServer.Infrastructure.Repositories
 
             item = new Blog();
             item.ID = 1;
-            item.PublishDate = new DateTime(year: 2016, month: 12, day: 31);
+            item.PublishDate = new DateTime(year: 2017, month: 1, day: 5);
             item.Title = "Test Blog Title";
             item.Subtitle = "Test Subtitle";
             item.Body = "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>";
             item.AuthorID = 1;
 
             item.Active = true;
-            item.CreateDate = new DateTime(year: 2016, month: 12, day: 30);
+            item.CreateDate = new DateTime(year: 2017, month: 1, day: 2);
 
             return item;
         }

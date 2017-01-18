@@ -72,7 +72,7 @@ namespace SparkServer.Mapping
 
                     ArticleTitle = blog.Title,
                     ArticleUniqueURL = blog.UniqueURL,
-                    AuthorFullName = $"{blog.Author.FirstName} {blog.Author.LastName}",
+                    AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty,
                     BlogID = blog.ID,
                     Body = blog.Body
 
