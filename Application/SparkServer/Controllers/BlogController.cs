@@ -29,7 +29,7 @@ namespace SparkServer.Controllers
             {
                 // Blogs list by year + month
                 blogList = _blogRepo.GetByDate(year.Value, month.Value).OrderByDescending(u => u.PublishDate).ToList();
-                string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMM");
+                string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMMM");
                 viewModel.Header = $"Blog Articles for {monthName} {year.ToString()}";
                 viewModel.ViewMode = ViewMode.List;
             }
