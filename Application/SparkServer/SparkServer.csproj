@@ -191,6 +191,7 @@
     <Content Include="Content\Styles\fonts\OpenSans-Regular-webfont.woff" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Blog\BlogArticle.cshtml" />
+    <Content Include="Views\Blog\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
