@@ -1,11 +1,13 @@
 ﻿using SparkServer.Core.Repositories;
 using SparkServer.Data;
 using SparkServer.ViewModels;
+using SparkServer.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SparkServer.Application.Enum;
 
 namespace SparkServer.Controllers
 {
@@ -24,15 +26,29 @@ namespace SparkServer.Controllers
             List<Blog> blogList = new List<Blog>();
 
             if (year.HasValue && month.HasValue)
+            {
                 blogList = _blogRepo.GetByDate(year.Value, month.Value).ToList();
+                string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMM");
+                viewModel.Header = $"Blog Articles for {monthName} {year.ToString()}";
+                viewModel.ViewMode = ViewMode.List;
+            }
 
             if (year.HasValue)
+            {
                 blogList = _blogRepo.GetByDate(year.Value, null).ToList();
+                viewModel.Header = $"{year.ToString()}";
+                viewModel.ViewMode = ViewMode.List;
+            }
 
             if (blogList.Count == 0)
+            {
                 blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
+                viewModel.Header = "The Spark Blog";
+            }
 
-            return View();
+            viewModel.MapToViewModel(blogList);
+
+            return View(viewModel);
         }
 
         public ActionResult BlogArticle(int? year, int? month, string uniqueURL = "")
