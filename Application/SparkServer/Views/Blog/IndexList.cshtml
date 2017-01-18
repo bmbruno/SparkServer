@@ -1,0 +1,35 @@
+﻿@model SparkServer.ViewModels.BlogListViewModel
+
+@{
+    ViewBag.Title = Model.Header;
+}
+
+<h1>@ViewBag.Title</h1>
+
+<h1>Explore Tags</h1>
+
+<!-- TODO: output tags-->
+<p class="explore-tags">
+    <a href="#">Alpha</a> &middot;
+    <a href="#">Beta</a> &middot;
+    <a href="#">Carrot</a> &middot;
+    <a href="#">Missy Must Go</a> &middot;
+    <a href="#">Not At All</a> &middot;
+    <a href="#">Licensing</a>
+</p>
+
+<hr />
+
+<ul class="blog-list">
+
+    @for (var i = 2; i <= Model.BlogList.Count; i++)
+    {
+        <li class="cf">
+            <a href="#"><img src="image/dummy_thumb.png" /></a>
+            <h3><a href="#">Blog Title, Then Comes the Cow</a></h3>
+            <p>Subtitle text probably goes here and belongs here.</p>
+            <div class="date">May 14, 2017 - Brandon Bruno</div>
+        </li>
+    }
+
+</ul>

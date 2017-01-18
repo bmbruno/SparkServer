@@ -8,8 +8,7 @@
 
 <h1>@ViewBag.Title</h1>
 
-@if (Model.ViewMode == SparkServer.Application.Enum.ViewMode.Overview)
-{
+
     <ul class="grid two-up cf blog-list">
 
         @for (var i = 0; i <= 1; i++)
@@ -24,8 +23,7 @@
 
     </ul>
 
-    <hr />
-}
+<hr />
 
 <h1>Explore Tags</h1>
 
@@ -41,18 +39,15 @@
 
 <hr />
 
-@if (Model.BlogList.Count > 2)
-{
-    <ul class="blog-list">
+<ul class="blog-list">
 
-        @for (var i = 2; i <= Model.BlogList.Count; i++)
-        {
-            <li class="cf">
-                <a href="#"><img src="image/dummy_thumb.png" /></a>
-                <h3><a href="#">Blog Title, Then Comes the Cow</a></h3>
-                <p>Subtitle text probably goes here and belongs here.</p>
-                <div class="date">May 14, 2017 - Brandon Bruno</div>
-            </li>
-        }
-    </ul>
-}
+    @for (var i = 2; i <= Model.BlogList.Count; i++)
+    {
+        <li class="cf">
+            <a href="#"><img src="image/dummy_thumb.png" /></a>
+            <h3><a href="#">Blog Title, Then Comes the Cow</a></h3>
+            <p>Subtitle text probably goes here and belongs here.</p>
+            <div class="date">May 14, 2017 - Brandon Bruno</div>
+        </li>
+    }
+</ul>
