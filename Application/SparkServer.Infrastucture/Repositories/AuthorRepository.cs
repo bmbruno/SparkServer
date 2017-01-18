@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -22,7 +23,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Author> Get(Func<Author, bool> whereClause)
+        public IEnumerable<Author> Get(Expression<Func<Author, bool>> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);

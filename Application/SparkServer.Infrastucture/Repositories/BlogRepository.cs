@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Linq.Expressions;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -23,7 +24,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Blog> Get(Func<Blog, bool> whereClause)
+        public IEnumerable<Blog> Get(Expression<Func<Blog, bool>> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");
             // USING: db.Articles.Where(whereClause);
@@ -32,7 +33,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).AsQueryable().Include(u => u.Author).ToList();
+                results = db.Blog.Where(whereClause).Include(u => u.Author).ToList();
             }
 
             return results;

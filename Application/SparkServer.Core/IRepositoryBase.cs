@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace SparkServer.Core
         /// </summary>
         /// <param name="whereClause">LINQ Where clause predicate.</param>
         /// <returns>IQueryable of type T.</returns>
-        IEnumerable<T> Get(Func<T, bool> whereClause);
+        IEnumerable<T> Get(Expression<Func<T, bool>> whereClause);
 
         /// <summary>
         /// Returns all items from database.

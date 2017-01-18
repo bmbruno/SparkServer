@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq.Expressions;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -32,7 +33,7 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Article> Get(Func<Article, bool> whereClause)
+        public IEnumerable<Article> Get(Expression<Func<Article, bool>> whereClause)
         {
             List<Article> testList = new List<Article>();
 
