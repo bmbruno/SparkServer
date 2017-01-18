@@ -4,24 +4,21 @@
     ViewBag.Title = Model.Header;
 }
 
-
-
 <h1>@ViewBag.Title</h1>
 
+<ul class="grid two-up cf blog-list">
 
-    <ul class="grid two-up cf blog-list">
+    @for (var i = 0; i <= 1; i++)
+    {
+        <li class="cf">
+            <a href="#"><img src="image/dummy_thumb.png" /></a>
+            <h3><a href="#">Blog Title, Then Comes the Cow</a></h3>
+            <p>Subtitle text probably goes here and belongs here.</p>
+            <div class="date">May 14, 2017 - Brandon Bruno</div>
+        </li>
+    }
 
-        @for (var i = 0; i <= 1; i++)
-        {
-            <li class="cf">
-                <a href="#"><img src="image/dummy_thumb.png" /></a>
-                <h3><a href="#">Blog Title, Then Comes the Cow</a></h3>
-                <p>Subtitle text probably goes here and belongs here.</p>
-                <div class="date">May 14, 2017 - Brandon Bruno</div>
-            </li>
-        }
-
-    </ul>
+</ul>
 
 <hr />
 
