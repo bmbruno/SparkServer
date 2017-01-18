@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -31,7 +32,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).ToList();
+                results = db.Blog.Where(whereClause).AsQueryable().Include(u => u.Author).ToList();
             }
 
             return results;
@@ -115,12 +116,12 @@ namespace SparkServer.Infrastructure.Repositories
                 {
                     blogList = db.Blog.Where(
                         u => u.PublishDate.Value.Year == year &&
-                        u.PublishDate.Value.Month == month).ToList();
+                        u.PublishDate.Value.Month == month).Include(u => u.Author).ToList();
                 }
                 else
                 {
                     blogList = db.Blog.Where(
-                        u => u.PublishDate.Value.Year == year).ToList();
+                        u => u.PublishDate.Value.Year == year).Include(u => u.Author).ToList();
                 }
             }
 

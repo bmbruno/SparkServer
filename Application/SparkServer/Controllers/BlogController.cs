@@ -24,31 +24,34 @@ namespace SparkServer.Controllers
         {
             BlogListViewModel viewModel = new BlogListViewModel();
             List<Blog> blogList = new List<Blog>();
-
+            
             if (year.HasValue && month.HasValue)
             {
-                blogList = _blogRepo.GetByDate(year.Value, month.Value).ToList();
+                // Blogs list by year + month
+                blogList = _blogRepo.GetByDate(year.Value, month.Value).OrderByDescending(u => u.PublishDate).ToList();
                 string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMM");
                 viewModel.Header = $"Blog Articles for {monthName} {year.ToString()}";
                 viewModel.ViewMode = ViewMode.List;
             }
-
-            if (year.HasValue)
+            else if (year.HasValue)
             {
-                blogList = _blogRepo.GetByDate(year.Value, null).ToList();
+                // Blog list by year only
+                blogList = _blogRepo.GetByDate(year.Value, null).OrderByDescending(u => u.PublishDate).ToList();
                 viewModel.Header = $"{year.ToString()}";
                 viewModel.ViewMode = ViewMode.List;
             }
-
-            if (blogList.Count == 0)
+            else
             {
+                // Default: blog overview (top posts)
                 blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
                 viewModel.Header = "The Spark Blog";
+                viewModel.ViewMode = ViewMode.Overview;
             }
 
             viewModel.MapToViewModel(blogList);
 
-            return View(viewModel);
+            // Two possible views are used: IndexList and IndexOverview - use ViewMode value to build view name
+            return View(viewName: $"Index{viewModel.ViewMode.ToString()}", model: viewModel);
         }
 
         public ActionResult BlogArticle(int? year, int? month, string uniqueURL = "")
