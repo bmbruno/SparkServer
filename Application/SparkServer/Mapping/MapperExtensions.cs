@@ -70,14 +70,25 @@ namespace SparkServer.Mapping
             {
                 vm.BlogList.Add(new BlogArticleViewModel() {
 
-                    ArticleTitle = blog.Title,
-                    ArticleUniqueURL = blog.UniqueURL,
-                    AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty,
                     BlogID = blog.ID,
+                    UniqueURL = blog.UniqueURL,
+                    Title = blog.Title,
+                    AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty,
                     Body = blog.Body
 
                 });
             }
+        }
+
+        public static void MapToViewModel(this BlogArticleViewModel vm, Blog blog)
+        {
+            vm.BlogID = blog.ID;
+            vm.Title = blog.Title;
+            vm.Body = blog.Body;
+            vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
+            vm.UniqueURL = blog.UniqueURL;
+            vm.PublishDate = blog.PublishDate.Value;
+            
         }
     }
 }

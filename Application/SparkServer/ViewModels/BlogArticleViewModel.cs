@@ -13,13 +13,15 @@ namespace SparkServer.ViewModels
 
         public int BlogID { get; set; }
 
-        public string ArticleUniqueURL { get; set; }
+        public string UniqueURL { get; set; }
 
-        public string ArticleTitle { get; set; }
+        public string Title { get; set; }
 
         public string Body { get; set; }
 
         public string AuthorFullName { get; set; }
+
+        public DateTime PublishDate { get; set; }
 
         // TODO: add blog tags
         
