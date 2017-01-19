@@ -193,6 +193,8 @@
     <Content Include="Views\Blog\BlogArticle.cshtml" />
     <Content Include="Views\Blog\IndexList.cshtml" />
     <Content Include="Views\Blog\IndexOverview.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Mentoring.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

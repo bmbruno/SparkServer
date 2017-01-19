@@ -32,6 +32,18 @@ namespace SparkServer
             );
 
             routes.MapRoute(
+                name: "About",
+                url: "about",
+                defaults: new { controller = "Home", action = "About" }
+            );
+
+            routes.MapRoute(
+                name: "Mentoring",
+                url: "mentoring",
+                defaults: new { controller = "Home", action = "Mentoring" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

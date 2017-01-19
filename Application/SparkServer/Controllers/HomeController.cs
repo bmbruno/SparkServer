@@ -32,6 +32,16 @@ namespace SparkServer.Controllers
             return View();
         }
 
+        public ActionResult About()
+        {
+            return View();
+        }
+
+        public ActionResult Mentoring()
+        {
+            return View();
+        }
+
         public ActionResult Create(string key)
         {
             if (String.IsNullOrEmpty(key))
