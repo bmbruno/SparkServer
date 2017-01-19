@@ -44,7 +44,7 @@ namespace SparkServer.Controllers
             {
                 // Default: blog overview (top posts)
                 blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
-                viewModel.Header = "The Spark Blog";
+                viewModel.Header = "Latest Blog Articles";
 
                 if (blogList.Count > 2)
                     viewModel.ViewMode = ViewMode.Overview;

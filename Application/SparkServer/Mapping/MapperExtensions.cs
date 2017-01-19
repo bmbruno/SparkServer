@@ -68,15 +68,9 @@ namespace SparkServer.Mapping
         {
             foreach (var blog in blogs)
             {
-                vm.BlogList.Add(new BlogArticleViewModel() {
-
-                    BlogID = blog.ID,
-                    UniqueURL = blog.UniqueURL,
-                    Title = blog.Title,
-                    AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty,
-                    Body = blog.Body
-
-                });
+                BlogArticleViewModel blogVM = new BlogArticleViewModel();
+                blogVM.MapToViewModel(blog);
+                vm.BlogList.Add(blogVM);
             }
         }
 

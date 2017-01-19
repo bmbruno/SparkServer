@@ -17,11 +17,21 @@ namespace SparkServer.ViewModels
 
         public string Title { get; set; }
 
+        public string Subtitle { get; set; }
+
         public string Body { get; set; }
 
         public string AuthorFullName { get; set; }
 
         public DateTime PublishDate { get; set; }
+
+        public string URL
+        {
+            get
+            {
+                return $"blog/{this.PublishDate.Year}/{this.PublishDate.Month}/{this.UniqueURL}";
+            }
+        }
 
         // TODO: add blog tags
         
