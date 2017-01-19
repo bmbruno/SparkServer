@@ -11,7 +11,7 @@ namespace SparkServer.Mapping
     public static class MapperExtensions
     {
         /// <summary>
-        /// Database objects -> ArticleViewModel.
+        /// Database object -> ArticleViewModel.
         /// </summary>
         /// <param name="vm">ArticleViewModel.</param>
         /// <param name="model">Article object.</param>
@@ -80,6 +80,11 @@ namespace SparkServer.Mapping
             }
         }
 
+        /// <summary>
+        /// Database object -> BlogArticleViewModel.
+        /// </summary>
+        /// <param name="vm">BlogArticleViewModel</param>
+        /// <param name="blog">Blog object</param>
         public static void MapToViewModel(this BlogArticleViewModel vm, Blog blog)
         {
             vm.BlogID = blog.ID;
@@ -88,7 +93,6 @@ namespace SparkServer.Mapping
             vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
-            
         }
     }
 }
