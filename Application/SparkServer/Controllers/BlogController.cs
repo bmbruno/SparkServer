@@ -60,12 +60,16 @@ namespace SparkServer.Controllers
 
         public ActionResult BlogArticle(int? year, int? month, string uniqueURL = "")
         {
+            BlogArticleViewModel viewModel = new BlogArticleViewModel();
+
             if (!year.HasValue || !month.HasValue || String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/blog");
 
             var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
 
-            return View();
+            viewModel.MapToViewModel(blog);
+
+            return View(viewModel);
         }
     }
 }

@@ -1,17 +1,11 @@
-﻿@model SparkServer.ViewModels.ArticleViewModel
+﻿@model SparkServer.ViewModels.BlogArticleViewModel
 
 @{
-    ViewBag.Title = Model.ArticleTitle;
+    ViewBag.Title = Model.Title;
 }
 
 <article>
 
-    <ul class="about cf">
-        <!-- TODO: URL for Category sort -->
-        <li><a href="">@Model.CategoryName</a></li>
-        <li>June 2016</li>
-        <li>@Model.SitecoreVersionShort</li>
-    </ul>
 
     <h1>@ViewBag.Title</h1>
 

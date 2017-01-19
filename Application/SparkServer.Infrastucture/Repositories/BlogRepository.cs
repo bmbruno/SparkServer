@@ -101,7 +101,7 @@ namespace SparkServer.Infrastructure.Repositories
                 item = db.Blog.FirstOrDefault(u => u.UniqueURL == uniqueURL);
 
                 db.Entry(item).Reference(la => la.Author).Load();
-                db.Entry(item).Reference(la => la.BlogsTags).Load();
+                db.Entry(item).Collection(la => la.BlogsTags).Load();
             }
 
             return item;
