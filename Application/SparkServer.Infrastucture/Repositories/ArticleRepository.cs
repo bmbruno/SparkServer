@@ -101,6 +101,9 @@ namespace SparkServer.Infrastructure.Repositories
             {
                 item = db.Article.FirstOrDefault(u => u.UniqueURL == uniqueURL);
 
+                if (item == null)
+                    throw new Exception($"No article found for UniqueURL: {uniqueURL}");
+
                 db.Entry(item).Reference(la => la.Author).Load();
                 db.Entry(item).Reference(la => la.SitecoreVersion).Load();
                 db.Entry(item).Reference(la => la.Category).Load();

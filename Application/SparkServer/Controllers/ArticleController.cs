@@ -24,19 +24,27 @@ namespace SparkServer.Controllers
             if (String.IsNullOrEmpty(uniqueURL))
                 return Redirect("/");
 
-            var article = _articleRepo.Get(uniqueURL: uniqueURL);
-
-            if (article == null)
+            try
             {
-                // TODO: Critical error: log this and notify someone
-                return Redirect("/");
+                var article = _articleRepo.Get(uniqueURL: uniqueURL);
+
+                if (article == null)
+                {
+                    // TODO: Critical error: log this and notify someone
+                    return Redirect("/");
+                }
+
+                // Map to viewmodel
+                ArticleViewModel viewModel = new ArticleViewModel();
+                viewModel.MapToViewModel(article);
+
+                return View(viewName: "Article", model: viewModel);
             }
-
-            // Map to viewmodel
-            ArticleViewModel viewModel = new ArticleViewModel();
-            viewModel.MapToViewModel(article);
-
-            return View(viewName: "Article", model: viewModel);
+            catch (Exception exc)
+            {
+                // TODO: log this exception and display an error message
+                return View("/");
+            }
         }
     }
 }
