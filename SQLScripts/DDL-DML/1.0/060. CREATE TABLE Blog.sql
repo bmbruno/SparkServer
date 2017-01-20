@@ -11,6 +11,10 @@ CREATE TABLE [Blog] (
 
 	[Body] VARCHAR(MAX) NULL,
 
+	[ImagePath] VARCHAR(1000) NULL,
+	
+	[ImageThumbnailPath] VARCHAR(1000) NULL,
+	
 	[UniqueURL] VARCHAR(250) NOT NULL,
 
 	[PublishDate] DATETIME NULL,

@@ -39,6 +39,8 @@
           <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="Subtitle" Type="varchar" MaxLength="500" />
           <Property Name="Body" Type="varchar(max)" />
+          <Property Name="ImagePath" Type="varchar" MaxLength="1000" />
+          <Property Name="ImageThumbnailPath" Type="varchar" MaxLength="1000" />
           <Property Name="UniqueURL" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="PublishDate" Type="datetime" />
           <Property Name="AuthorID" Type="int" Nullable="false" />
@@ -287,6 +289,8 @@
           <NavigationProperty Name="Author" Relationship="Self.FK_Blog_Author" FromRole="Blog" ToRole="Author" />
           <NavigationProperty Name="BlogsTags" Relationship="Self.FK_BlogTag_Blog" FromRole="Blog" ToRole="BlogsTags" />
           <Property Name="UniqueURL" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="ImageThumbnailPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="BlogsTags">
           <Key>
@@ -536,6 +540,8 @@
           <EntitySetMapping Name="Blog">
             <EntityTypeMapping TypeName="SparkServerModel.Blog">
               <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="ImageThumbnailPath" ColumnName="ImageThumbnailPath" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
                 <ScalarProperty Name="UniqueURL" ColumnName="UniqueURL" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />

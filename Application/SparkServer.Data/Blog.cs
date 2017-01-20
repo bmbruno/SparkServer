@@ -29,6 +29,8 @@ namespace SparkServer.Data
         public bool Active { get; set; }
         public System.DateTime CreateDate { get; set; }
         public string UniqueURL { get; set; }
+        public string ImagePath { get; set; }
+        public string ImageThumbnailPath { get; set; }
     
         public virtual Author Author { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
