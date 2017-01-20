@@ -24,6 +24,11 @@
         </ul>
     </div>
 
+    @if (!String.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath" alt="@Model.Title" />
+    }
+
     @Html.Raw(Model.Body)
 
 </article>

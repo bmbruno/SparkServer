@@ -84,6 +84,8 @@ namespace SparkServer.Mapping
             vm.BlogID = blog.ID;
             vm.Title = blog.Title;
             vm.Body = blog.Body;
+            vm.ImagePath = blog.ImagePath;
+            vm.ImageThumbnailPath = blog.ImageThumbnailPath;
             vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;

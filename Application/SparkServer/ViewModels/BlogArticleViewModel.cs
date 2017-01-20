@@ -21,6 +21,10 @@ namespace SparkServer.ViewModels
 
         public string Body { get; set; }
 
+        public string ImagePath { get; set; }
+
+        public string ImageThumbnailPath { get; set; }
+
         public string AuthorFullName { get; set; }
 
         public DateTime PublishDate { get; set; }
