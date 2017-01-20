@@ -175,7 +175,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\AddEdit.cshtml" />
-    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

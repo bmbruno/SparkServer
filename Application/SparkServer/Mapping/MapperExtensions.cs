@@ -15,18 +15,19 @@ namespace SparkServer.Mapping
         /// </summary>
         /// <param name="vm">ArticleViewModel.</param>
         /// <param name="model">Article object.</param>
-        public static void MapToViewModel(this ArticleViewModel vm, Article model)
+        public static void MapToViewModel(this ArticleViewModel vm, Article article)
         {
-            vm.ArticleID = model.ID;
-            vm.ArticleUniqueURL = model.UniqueURL;
-            vm.ArticleTitle = model.Title;
-            vm.Body = model.Body;
-            vm.SitecoreVersionShort = (model.SitecoreVersion != null) ? model.SitecoreVersion.Version : string.Empty;
-            vm.SitecoreVersionLong = (model.SitecoreVersion != null) ? $"{model.SitecoreVersion.Version} rev. {model.SitecoreVersion.Revision}" : string.Empty;
-            vm.SitecoreVersionDescription = (model.SitecoreVersion != null) ? model.SitecoreVersion.Description : string.Empty;
-            vm.AuthurFullName = (model.Author != null) ? $"{model.Author.FirstName} {model.Author.LastName}" : string.Empty;
-            vm.CategoryID = model.CategoryID;
-            vm.CategoryName = (model.Category != null) ? model.Category.Name : string.Empty;
+            vm.ArticleID = article.ID;
+            vm.ArticleUniqueURL = article.UniqueURL;
+            vm.ArticleTitle = article.Title;
+            vm.Body = article.Body;
+            vm.SitecoreVersionShort = (article.SitecoreVersion != null) ? article.SitecoreVersion.Version : string.Empty;
+            vm.SitecoreVersionLong = (article.SitecoreVersion != null) ? $"{article.SitecoreVersion.Version} rev. {article.SitecoreVersion.Revision}" : string.Empty;
+            vm.SitecoreVersionDescription = (article.SitecoreVersion != null) ? article.SitecoreVersion.Description : string.Empty;
+            vm.AuthurFullName = (article.Author != null) ? $"{article.Author.FirstName} {article.Author.LastName}" : string.Empty;
+            vm.CategoryID = article.CategoryID;
+            vm.CategoryName = (article.Category != null) ? article.Category.Name : string.Empty;
+            vm.PublishDateLong = $"{article.PublishDate.Value.ToString("MMMM")} {article.PublishDate.Value.Year.ToString()}";
         }
 
         /// <summary>

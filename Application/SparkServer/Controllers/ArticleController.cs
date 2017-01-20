@@ -36,7 +36,7 @@ namespace SparkServer.Controllers
             ArticleViewModel viewModel = new ArticleViewModel();
             viewModel.MapToViewModel(article);
 
-            return View(viewName: "Index", model: viewModel);
+            return View(viewName: "Article", model: viewModel);
         }
     }
 }

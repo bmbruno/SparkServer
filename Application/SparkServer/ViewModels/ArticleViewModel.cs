@@ -31,6 +31,16 @@ namespace SparkServer.ViewModels
 
         public string CategoryName { get; set; }
 
+        public string PublishDateLong { get; set; }
+
+        public string URL
+        {
+            get
+            {
+                return $"/article/{this.ArticleUniqueURL}";
+            }
+        }
+
         // TODO: related articles - List<RelatedArticleViewModel>()
 
         // TODO: related links - List<RelatedLinkViewModel>()

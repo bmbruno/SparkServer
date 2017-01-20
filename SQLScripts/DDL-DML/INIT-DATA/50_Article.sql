@@ -14,7 +14,7 @@ INSERT INTO [dbo].[Article]
      VALUES
            ('Article Test #1'
            ,1
-           ,'<h1>Article Test #1 body goes here</h1>'
+           ,'<p>Article Test #1 body goes here.</p>'
            ,1
            ,'2017-01-17'
            ,'article-number-one'
