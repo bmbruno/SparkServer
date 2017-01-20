@@ -4,37 +4,26 @@
     ViewBag.Title = Model.Title;
 }
 
-<article>
-
+<article class="blog">
 
     <h1>@ViewBag.Title</h1>
 
+    <div class="blog-about">
+        <div class="label">Author</div>
+        <p>@Model.AuthorFullName</p>
+
+        <div class="label">Published</div>
+        <p>@Model.PublishDate.ToShortDateString()</p>
+
+        <!-- TODO: blog tags -->
+        <div class="label">Tags</div>
+        <ul class="tags cf">
+            <li><a href="http://www.google.com">Tag Alpha</a></li>
+            <li><a href="http://www.google.com">Tag Alpha</a></li>
+            <li><a href="http://www.google.com">Tag Alpha</a></li>
+        </ul>
+    </div>
+
     @Html.Raw(Model.Body)
-
-    <footer class="cf">
-        <h1>Notes</h1>
-
-        <div class="articles">
-            <h2>Related Articles</h2>
-
-            <ul>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-            </ul>
-        </div>
-
-        <div class="notes">
-            <h2>Links</h2>
-
-            <ul>
-                <li><a href="#">asdfasfsdf</a></li>
-                <li><a href="#">asdfasfsdf</a></li>
-            </ul>
-        </div>
-    </footer>
 
 </article>

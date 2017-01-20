@@ -29,7 +29,7 @@ namespace SparkServer.ViewModels
         {
             get
             {
-                return $"blog/{this.PublishDate.Year}/{this.PublishDate.Month}/{this.UniqueURL}";
+                return $"/blog/{this.PublishDate.Year}/{this.PublishDate.Month}/{this.UniqueURL}";
             }
         }
 
