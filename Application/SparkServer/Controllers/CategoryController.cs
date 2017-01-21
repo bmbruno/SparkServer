@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using SparkServer.Application.Enum;
 
 namespace SparkServer.Controllers
 {
@@ -29,6 +30,7 @@ namespace SparkServer.Controllers
 
             // Map to viewmodel
             CategoryListViewModel viewModel = new CategoryListViewModel();
+            viewModel.MenuSelection = MainMenu.Category;
             viewModel.MapToViewModel(categories, articles);
 
             return View(viewName: "Index", model: viewModel);

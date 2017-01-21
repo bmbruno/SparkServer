@@ -6,7 +6,7 @@ using System.Web;
 
 namespace SparkServer.ViewModels
 {
-    public class BlogListViewModel
+    public class BlogListViewModel : BaseViewModel
     {
         public List<BlogArticleViewModel> BlogList{ get; set; }
 

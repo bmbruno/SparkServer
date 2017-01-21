@@ -52,6 +52,7 @@ namespace SparkServer.Controllers
                     viewModel.ViewMode = ViewMode.List;
             }
 
+            viewModel.MenuSelection = MainMenu.Blog;
             viewModel.MapToViewModel(blogList);
 
             // Two possible views are used: IndexList and IndexOverview - use ViewMode value to build view name
@@ -67,6 +68,7 @@ namespace SparkServer.Controllers
 
             var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
 
+            viewModel.MenuSelection = MainMenu.Blog;
             viewModel.MapToViewModel(blog);
 
             return View(viewModel);

@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SparkServer.ViewModels
 {
-    public class CategoryViewModel
+    public class CategoryViewModel : BaseViewModel
     {
         public int CategoryID { get; set; }
 

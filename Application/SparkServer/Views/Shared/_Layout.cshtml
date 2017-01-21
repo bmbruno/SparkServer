@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model SparkServer.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -34,11 +36,11 @@
 
         <nav>
             <ul class="cf">
-                <li><a href="#">Home</a></li>
-                <li><a href="#" class="active">Categories</a></li>
-                <li><a href="#">Mentoring</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } >Home</a></li>
+                <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category) { @Html.Raw("class='active'") }>Categories</a></li>
+                <li><a href="/mentoring" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Mentoring) { @Html.Raw("class='active'") }>Mentoring</a></li>
+                <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }>About</a></li>
+                <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }>Blog</a></li>
             </ul>
         </nav>
 

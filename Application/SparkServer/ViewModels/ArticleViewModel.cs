@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SparkServer.ViewModels
 {
-    public class ArticleViewModel
+    public class ArticleViewModel : BaseViewModel
     {
 
         //

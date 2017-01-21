@@ -9,6 +9,7 @@ using SimpleInjector;
 using SparkServer.Core.Repositories;
 using SparkServer.ViewModels;
 using SparkServer.Data;
+using SparkServer.Application.Enum;
 
 namespace SparkServer.Controllers
 {
@@ -25,21 +26,26 @@ namespace SparkServer.Controllers
 
         public ActionResult Index()
         {
-            int ID = 1;
+            HomeViewModel viewModel = new HomeViewModel();
+            viewModel.MenuSelection = MainMenu.Home;
 
-            Article test = _articleRepo.Get(ID);
-
-            return View();
+            return View(viewModel);
         }
 
         public ActionResult About()
         {
-            return View();
+            HomeViewModel viewModel = new HomeViewModel();
+            viewModel.MenuSelection = MainMenu.About;
+
+            return View(viewModel);
         }
 
         public ActionResult Mentoring()
         {
-            return View();
+            HomeViewModel viewModel = new HomeViewModel();
+            viewModel.MenuSelection = MainMenu.Mentoring;
+
+            return View(viewModel);
         }
 
         public ActionResult Create(string key)
@@ -51,7 +57,7 @@ namespace SparkServer.Controllers
                 return Redirect("/");
 
             ArticleAddEditViewModel model = new ArticleAddEditViewModel();
-            model.Mode = Application.Enum.EditMode.Add;
+            model.Mode = EditMode.Add;
 
             return View(viewName: "AddEdit", model: model);
         }
@@ -70,7 +76,7 @@ namespace SparkServer.Controllers
                 Redirect("/");
 
             ArticleAddEditViewModel model = new ArticleAddEditViewModel();
-            model.Mode = Application.Enum.EditMode.Edit;
+            model.Mode = EditMode.Edit;
             
             return View(viewName: "AddEdit", model: model);
         }

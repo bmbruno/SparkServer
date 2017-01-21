@@ -121,6 +121,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Enum\MainMenu.cs" />
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -133,6 +134,8 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BlogArticleViewModel.cs" />
     <Compile Include="ViewModels\BlogListViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />
