@@ -111,5 +111,10 @@ namespace SparkServer.Infrastructure.Repositories
 
             return item;
         }
+
+        public IEnumerable<Article> GetRecent(int numberToLoad)
+        {
+            return new List<Article>();
+        }
     }
 }

@@ -128,5 +128,10 @@ namespace SparkServer.Infrastructure.Repositories
 
             return blogList;
         }
+
+        public IEnumerable<Blog> GetRecent(int numberToLoad)
+        {
+            return new List<Blog>();
+        }
     }
 }

@@ -69,5 +69,10 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return;
         }
+
+        public IEnumerable<Article> GetRecent(int numberToLoad)
+        {
+            return new List<Article>();
+        }
     }
 }

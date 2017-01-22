@@ -25,5 +25,12 @@ namespace SparkServer.Core.Repositories
         /// <param name="month">Month.</param>
         /// <returns>Object of type T.</returns>
         IEnumerable<T> GetByDate(int year, int? month);
+
+        /// <summary>
+        /// Should return an enumerable of blog objects ordered by publish date descending, limited by the numberToLoad.
+        /// </summary>
+        /// <param name="numberToLoad">Number of blog objects to load.</param>
+        /// <returns>Enumerable of blog-type objects.</returns>
+        IEnumerable<T> GetRecent(int numberToLoad);
     }
 }

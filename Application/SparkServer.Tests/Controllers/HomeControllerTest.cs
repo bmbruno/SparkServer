@@ -25,7 +25,10 @@ namespace SparkServer.Tests.Controllers
         private HomeController SetupController()
         {
             this.InitIOC();
-            return new HomeController(this.GetContainer().GetInstance<IArticleRepository<Article>>());
+            return new HomeController(
+                this.GetContainer().GetInstance<IArticleRepository<Article>>(),
+                this.GetContainer().GetInstance<IBlogRepository<Blog>>()
+            );
         }
 
         [TestMethod]

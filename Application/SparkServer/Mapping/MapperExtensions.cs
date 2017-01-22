@@ -93,12 +93,12 @@ namespace SparkServer.Mapping
         }
 
         /// <summary>
-        /// Database objects -> HomeIndexViewModel.
+        /// Database objects -> HomeViewModel.
         /// </summary>
-        /// <param name="vm">HomeIndexViewModel</param>
+        /// <param name="vm">HomeViewModel</param>
         /// <param name="articles"></param>
         /// <param name="blogs"></param>
-        public static void MapToViewModel(this HomeIndexViewModel vm, IEnumerable<Article> articles, IEnumerable<Blog> blogs)
+        public static void MapToViewModel(this HomeViewModel vm, IEnumerable<Article> articles, IEnumerable<Blog> blogs)
         {
             foreach (var article in articles)
             {
