@@ -23,6 +23,8 @@ namespace SparkServer
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/default.js"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

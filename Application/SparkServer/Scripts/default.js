@@ -8,6 +8,13 @@ $(function () {
 		} else {
 			menu.slideDown(250);
 		}
+		
+		var search = $(".master-search");
+		if (search.is(":visible")) {
+			search.slideUp(250);
+		} else {
+			search.slideDown(250);
+		}
 	});
 
 	// Smooth scrolling
