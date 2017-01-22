@@ -1,5 +1,51 @@
-﻿@{
+﻿@model SparkServer.ViewModels.HomeIndexViewModel
+
+@{
+    Layout = ""
     ViewBag.Title = "Welcome to Sitecore Spark!";
 }
 
-<h1>@ViewBag.Title</h1>
+<div class="welcome-banner">
+    <h1>Welcome to<br />Sitecore Spark!</h1>
+    <h2>Succinct articles. Core concepts. A visual tour.</h2>
+    <h2>Sitecore 101 for .NET developers.</h2>
+</div>
+
+<hr />
+
+<h1>Latest Articles</h1>
+
+<ul class="grid two-up cf blog-list">
+
+    @foreach (var article in Model.ArticleList)
+    {
+        <li class="cf">
+            <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
+            <p>Sitecore @article.SitecoreVersionShort</p>
+        </li>
+    }
+
+</ul>
+
+<hr />
+
+<h1>Latest Blog Posts</h1>
+
+<ul class="grid two-up cf blog-list">
+
+    @foreach (var blog in Model.BlogList)
+    {
+        <li class="cf">
+
+            @if (!String.IsNullOrEmpty(blog.ImageThumbnailPath))
+            {
+                <a href="@blog.URL"><img src="@blog.ImageThumbnailPath" /></a>
+            }
+
+            <h3><a href="@blog.URL">@blog.Title</a></h3>
+            <p>@blog.Subtitle</p>
+            <div class="date">@blog.PublishDate.ToShortDateString() - @blog.AuthorFullName</div>
+        </li>
+    }
+
+</ul>
