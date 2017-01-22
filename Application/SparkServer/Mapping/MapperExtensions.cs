@@ -91,5 +91,28 @@ namespace SparkServer.Mapping
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
         }
+
+        /// <summary>
+        /// Database objects -> HomeIndexViewModel.
+        /// </summary>
+        /// <param name="vm">HomeIndexViewModel</param>
+        /// <param name="articles"></param>
+        /// <param name="blogs"></param>
+        public static void MapToViewModel(this HomeIndexViewModel vm, IEnumerable<Article> articles, IEnumerable<Blog> blogs)
+        {
+            foreach (var article in articles)
+            {
+                ArticleViewModel articleVM = new ArticleViewModel();
+                articleVM.MapToViewModel(article);
+                vm.ArticleList.Add(articleVM);
+            }
+
+            foreach (var blog in blogs)
+            {
+                BlogArticleViewModel blogVM = new BlogArticleViewModel();
+                blogVM.MapToViewModel(blog);
+                vm.BlogList.Add(blogVM);
+            }
+        }
     }
 }
