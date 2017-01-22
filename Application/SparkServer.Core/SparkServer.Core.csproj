@@ -47,6 +47,7 @@
     <Compile Include="Repositories\ISitecoreVersionRepository.cs" />
     <Compile Include="Repositories\IBlogRepository.cs" />
     <Compile Include="Repositories\IArticleRepository.cs" />
+    <Compile Include="Services\ISearchService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
