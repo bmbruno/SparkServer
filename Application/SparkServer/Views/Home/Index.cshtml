@@ -1,7 +1,7 @@
 ﻿@model SparkServer.ViewModels.HomeViewModel
 
 @{
-    Layout = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Welcome to Sitecore Spark!";
 }
 
@@ -21,7 +21,7 @@
     {
         <li class="cf">
             <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
-            <p>Sitecore @article.SitecoreVersionShort</p>
+            <div class="date">Sitecore @article.SitecoreVersionShort</div>
         </li>
     }
 
