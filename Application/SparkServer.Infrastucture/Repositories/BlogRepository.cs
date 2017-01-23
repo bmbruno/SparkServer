@@ -45,7 +45,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.ToList();
+                results = db.Blog.Where(u => u.Active).ToList();
             }
 
             return results;
@@ -116,13 +116,14 @@ namespace SparkServer.Infrastructure.Repositories
                 if (month.HasValue)
                 {
                     blogList = db.Blog.Where(
-                        u => u.PublishDate.Value.Year == year &&
+                        u => u.Active &&
+                        u.PublishDate.Value.Year == year &&
                         u.PublishDate.Value.Month == month).Include(u => u.Author).ToList();
                 }
                 else
                 {
                     blogList = db.Blog.Where(
-                        u => u.PublishDate.Value.Year == year).Include(u => u.Author).ToList();
+                        u => u.Active && u.PublishDate.Value.Year == year).Include(u => u.Author).ToList();
                 }
             }
 
@@ -131,7 +132,18 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<Blog> GetRecent(int numberToLoad)
         {
-            return new List<Blog>();
+            List<Blog> blogList = new List<Blog>();
+
+            using (var db = new SparkServerEntities())
+            {
+                blogList = db.Blog.Where(u => u.Active)
+                                  .Include(a => a.Author)
+                                  .OrderByDescending(u => u.PublishDate)
+                                  .Take(numberToLoad)
+                                  .ToList();
+            }
+
+            return blogList;
         }
     }
 }

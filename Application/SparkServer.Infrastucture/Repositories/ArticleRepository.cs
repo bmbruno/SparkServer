@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
+using System.Data.Entity;
 
 namespace SparkServer.Infrastructure.Repositories
 {
@@ -114,7 +115,19 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<Article> GetRecent(int numberToLoad)
         {
-            return new List<Article>();
+            List<Article> blogList = new List<Article>();
+
+            using (var db = new SparkServerEntities())
+            {
+                blogList = db.Article.Where(u => u.Active)
+                                     .Include(a => a.Author)
+                                     .Include(b => b.SitecoreVersion)
+                                     .Include(c => c.Category)
+                                     .OrderByDescending(u => u.PublishDate)
+                                     .Take(numberToLoad).ToList();
+            }
+
+            return blogList;
         }
     }
 }
