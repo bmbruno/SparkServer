@@ -76,7 +76,7 @@ namespace SparkServer.Mapping
         /// </summary>
         /// <param name="vm">BlogListViewModel</param>
         /// <param name="blogs">IEnumerable of Blog objects.</param>
-        public static void MapToViewModel(this BlogListViewModel vm, IEnumerable<Blog> blogs, IEnumerable<Category> categories)
+        public static void MapToViewModel(this BlogListViewModel vm, IEnumerable<Blog> blogs, IEnumerable<BlogTag> tags)
         {
             foreach (var blog in blogs)
             {
@@ -85,11 +85,11 @@ namespace SparkServer.Mapping
                 vm.BlogList.Add(blogVM);
             }
 
-            foreach (var category in categories)
+            foreach (var tag in tags)
             {
-                CategoryViewModel catVM = new CategoryViewModel();
-                catVM.MapToViewModel(category);
-                vm.CategoryList.Add(catVM);
+                BlogTagViewModel tagVM = new BlogTagViewModel();
+                tagVM.MapToViewModel(tag);
+                vm.BlogTagList.Add(tagVM);
             }
         }
 
@@ -108,6 +108,17 @@ namespace SparkServer.Mapping
             vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
+        }
+
+        /// <summary>
+        /// Database object -> BlogTagViewModel.
+        /// </summary>
+        /// <param name="vm">BlogTagViewModel</param>
+        /// <param name="blogTag">Blog tag-type object.</param>
+        public static void MapToViewModel(this BlogTagViewModel vm, BlogTag blogTag)
+        {
+            vm.BlogTagID = blogTag.ID;
+            vm.BlogTagName = blogTag.Name;
         }
 
         /// <summary>

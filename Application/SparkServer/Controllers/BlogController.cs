@@ -14,19 +14,19 @@ namespace SparkServer.Controllers
     public class BlogController : Controller
     {
         private readonly IBlogRepository<Blog> _blogRepo;
-        private readonly ICategoryRepository<Category> _categoryRepo;
+        private readonly IBlogTagRepository<BlogTag> _blogTagRepo;
 
-        public BlogController(IBlogRepository<Blog> blogRepo, ICategoryRepository<Category> catRepo)
+        public BlogController(IBlogRepository<Blog> blogRepo, IBlogTagRepository<BlogTag> blogTagRepo)
         {
             _blogRepo = blogRepo;
-            _categoryRepo = catRepo;
+            _blogTagRepo = blogTagRepo;
         }
 
         public ActionResult Index(int? year, int? month)
         {
             BlogListViewModel viewModel = new BlogListViewModel();
             List<Blog> blogList = new List<Blog>();
-            List<Category> categoryList = new List<Category>();
+            List<BlogTag> tagList = new List<BlogTag>();
             
             if (year.HasValue && month.HasValue)
             {
@@ -55,10 +55,10 @@ namespace SparkServer.Controllers
                     viewModel.ViewMode = ViewMode.List;
             }
 
-            categoryList = _categoryRepo.GetAll().OrderBy(u => u.Name).ToList();
+            tagList = _blogTagRepo.GetAll().OrderBy(u => u.Name).ToList();
 
             viewModel.MenuSelection = MainMenu.Blog;
-            viewModel.MapToViewModel(blogList, categoryList);
+            viewModel.MapToViewModel(blogList, tagList);
 
             // Two possible views are used: IndexList and IndexOverview - use ViewMode value to build view name
             return View(viewName: $"Index{viewModel.ViewMode.ToString()}", model: viewModel);

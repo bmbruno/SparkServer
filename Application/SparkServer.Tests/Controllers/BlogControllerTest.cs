@@ -25,7 +25,7 @@ namespace SparkServer.Tests.Controllers
         private BlogController SetupController()
         {
             this.InitIOC();
-            return new BlogController(this.GetContainer().GetInstance<IBlogRepository<Blog>>(), this.GetContainer().GetInstance<ICategoryRepository<Category>>());
+            return new BlogController(this.GetContainer().GetInstance<IBlogRepository<Blog>>(), this.GetContainer().GetInstance<IBlogTagRepository<BlogTag>>());
         }
 
         [TestMethod]

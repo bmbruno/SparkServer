@@ -99,6 +99,7 @@
     <Compile Include="Controllers\ArticleControllerTest.cs" />
     <Compile Include="Mocks\MockAuthorRepository.cs" />
     <Compile Include="Mocks\MockArticleRepository.cs" />
+    <Compile Include="Mocks\MockBlogTagRepository.cs" />
     <Compile Include="Mocks\MockBlogRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
