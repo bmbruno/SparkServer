@@ -19,6 +19,7 @@ namespace SparkServer.ViewModels
         public BlogListViewModel()
         {
             BlogList = new List<BlogArticleViewModel>();
+            BlogTagList = new List<BlogTagViewModel>();
         }
     }
 }

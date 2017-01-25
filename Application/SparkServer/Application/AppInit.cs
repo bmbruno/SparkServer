@@ -9,7 +9,7 @@ using SparkServer.Data;
 
 namespace SparkServer.Application
 {
-    public static class App
+    public static class AppInit
     {
         public static IDependencyResolver RegisterIOC()
         {
@@ -18,6 +18,7 @@ namespace SparkServer.Application
             // Repository registration
             container.Register<Core.Repositories.IArticleRepository<Article>, Infrastructure.Repositories.ArticleRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.IBlogRepository<Blog>, Infrastructure.Repositories.BlogRepository>(Lifestyle.Transient);
+            container.Register<Core.Repositories.IBlogTagRepository<BlogTag>, Infrastructure.Repositories.BlogTagRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.ICategoryRepository<Category>, Infrastructure.Repositories.CategoryRepository>(Lifestyle.Transient);
 
             container.Verify();

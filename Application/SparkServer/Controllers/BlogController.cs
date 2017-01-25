@@ -78,5 +78,12 @@ namespace SparkServer.Controllers
 
             return View(viewModel);
         }
+
+        public ActionResult ListByTag(string tagName)
+        {
+            // TODO: implement list of blogs by tag
+
+            return View();
+        } 
     }
 }

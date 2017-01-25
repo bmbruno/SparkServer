@@ -79,7 +79,8 @@ ul.grid > li:last-of-type { margin: 0; }
 .blog-about > .tags li:last-child::after { content: ""; }
 .blog-about > p { margin-bottom: 1em; }
 
-.explore-tags a, .explore-tags a:visited { font-size: 1.25em; text-decoration: none !important; }
+.explore-tags li { display: inline-block;  margin: 0 1em 0 0; list-style-type: none; }
+.explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
 
 ul.blog-list { margin-top: 2em; }
 ul.blog-list li { margin: 0 0 2em 0; list-style-type: none; }

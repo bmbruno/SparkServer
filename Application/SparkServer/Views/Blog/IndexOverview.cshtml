@@ -27,17 +27,19 @@
 
 <h1>Explore Tags</h1>
 
-<!-- TODO: output tags-->
-<p class="explore-tags">
-    <a href="#">Alpha</a> &middot;
-    <a href="#">Beta</a> &middot;
-    <a href="#">Carrot</a> &middot;
-    <a href="#">Missy Must Go</a> &middot;
-    <a href="#">Not At All</a> &middot;
-    <a href="#">Licensing</a>
-</p>
+@if (Model.BlogTagList.Count > 0)
+{
+    <ul class="explore-tags">
 
-<hr />
+        @foreach(var tag in Model.BlogTagList)
+        {
+            <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+        }
+
+    </ul>
+
+    <hr />
+}
 
 <h1>Other Articles</h1>
 

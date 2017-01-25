@@ -18,7 +18,7 @@ namespace SparkServer
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            IDependencyResolver resolver = App.RegisterIOC();
+            IDependencyResolver resolver = AppInit.RegisterIOC();
             DependencyResolver.SetResolver(resolver);
         }
     }
