@@ -31,6 +31,17 @@ namespace SparkServer.Mapping
         }
 
         /// <summary>
+        /// Database object -> CategoryViewModel.
+        /// </summary>
+        /// <param name="vm">CategoryViewModel</param>
+        /// <param name="category">Category object.</param>
+        public static void MapToViewModel(this CategoryViewModel vm, Category category)
+        {
+            vm.CategoryID = category.ID;
+            vm.CategoryName = category.Name;
+        }
+
+        /// <summary>
         /// Database objects -> CategoryListViewModel.
         /// </summary>
         /// <param name="vm">CategoryListViewModel</param>
@@ -65,13 +76,20 @@ namespace SparkServer.Mapping
         /// </summary>
         /// <param name="vm">BlogListViewModel</param>
         /// <param name="blogs">IEnumerable of Blog objects.</param>
-        public static void MapToViewModel(this BlogListViewModel vm, IEnumerable<Blog> blogs)
+        public static void MapToViewModel(this BlogListViewModel vm, IEnumerable<Blog> blogs, IEnumerable<Category> categories)
         {
             foreach (var blog in blogs)
             {
                 BlogArticleViewModel blogVM = new BlogArticleViewModel();
                 blogVM.MapToViewModel(blog);
                 vm.BlogList.Add(blogVM);
+            }
+
+            foreach (var category in categories)
+            {
+                CategoryViewModel catVM = new CategoryViewModel();
+                catVM.MapToViewModel(category);
+                vm.CategoryList.Add(catVM);
             }
         }
 

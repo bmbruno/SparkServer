@@ -10,6 +10,8 @@ namespace SparkServer.ViewModels
     {
         public List<BlogArticleViewModel> BlogList{ get; set; }
 
+        public List<CategoryViewModel> CategoryList { get; set; }
+
         public string Header { get; set; }
 
         public ViewMode ViewMode { get; set; }
