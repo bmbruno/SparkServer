@@ -17,7 +17,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Category.FirstOrDefault(u => u.ID == ID);
+                item = db.Category.FirstOrDefault(u => u.ID == ID && u.Active);
             }
 
             return item;
@@ -32,7 +32,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Category.Where(whereClause).ToList();
+                results = db.Category.Where(u => u.Active).Where(whereClause).ToList();
             }
 
             return results;
@@ -44,7 +44,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Category.ToList();
+                results = db.Category.Where(u => u.Active).ToList();
             }
 
             return results;
