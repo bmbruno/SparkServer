@@ -32,5 +32,12 @@ namespace SparkServer.Core.Repositories
         /// <param name="numberToLoad">Number of blog objects to load.</param>
         /// <returns>Enumerable of blog-type objects.</returns>
         IEnumerable<T> GetRecent(int numberToLoad);
+
+        /// <summary>
+        /// Should retrieve blog-type objects from a datastore based on tag ID.
+        /// </summary>
+        /// <param name="tagID">ID of tag object.</param>
+        /// <returns>IEnumerable of blog-type objecs.</returns>
+        IEnumerable<T> GetByTagID(int tagID);
     }
 }

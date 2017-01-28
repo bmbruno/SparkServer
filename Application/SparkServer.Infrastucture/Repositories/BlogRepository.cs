@@ -145,5 +145,17 @@ namespace SparkServer.Infrastructure.Repositories
 
             return blogList;
         }
+
+        public IEnumerable<Blog> GetByTagID(int tagID)
+        {
+            List<Blog> blogList = new List<Blog>();
+
+            using (var db = new SparkServerEntities())
+            {
+                blogList = db.BlogsTags.Where(u => u.TagID == tagID).Select(p => p.Blog).Include(a => a.Author).ToList();
+            }
+
+            return blogList;
+        }
     }
 }

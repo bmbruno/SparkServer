@@ -13,10 +13,24 @@ namespace SparkServer
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //
+            // Articles
+            //
+
             routes.MapRoute(
                 name: "Article",
                 url: "article/{uniqueURL}",
                 defaults: new { controller = "Article", action = "Article", uniqueURL = UrlParameter.Optional }
+            );
+
+            //
+            // Blogs
+            //
+
+            routes.MapRoute(
+                name: "BlogTags",
+                url: "blog/tag/{tagName}",
+                defaults: new { controller = "Blog", action = "ListByTag" }
             );
 
             routes.MapRoute(
@@ -30,6 +44,10 @@ namespace SparkServer
                 url: "blog/{year}/{month}/{uniqueURL}",
                 defaults: new { controller = "Blog", action = "BlogArticle" }
             );
+
+            //
+            // Misc
+            //
 
             routes.MapRoute(
                 name: "About",

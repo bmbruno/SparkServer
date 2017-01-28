@@ -81,9 +81,18 @@ namespace SparkServer.Controllers
 
         public ActionResult ListByTag(string tagName)
         {
-            // TODO: implement list of blogs by tag
+            BlogListViewModel viewModel = new BlogListViewModel();
+            List<Blog> blogList = new List<Blog>();
+            List<BlogTag> tagList = new List<BlogTag>();
 
-            return View();
+            var tag = _blogTagRepo.Get(u => u.Name == tagName).FirstOrDefault();
+            blogList = _blogRepo.GetByTagID(tag.ID).ToList();
+            tagList = _blogTagRepo.GetAll().OrderBy(u => u.Name).ToList();
+
+            viewModel.MapToViewModel(blogList, tagList);
+            viewModel.Header = $"Blogs tagged '{tag.Name}'";
+
+            return View(viewName: "IndexList", model: viewModel);
         } 
     }
 }

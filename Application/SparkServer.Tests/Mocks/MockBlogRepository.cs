@@ -93,5 +93,10 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return new List<Blog>();
         }
+
+        public IEnumerable<Blog> GetByTagID(int tagID)
+        {
+            return new List<Blog>();
+        }
     }
 }
