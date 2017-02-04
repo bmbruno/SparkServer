@@ -17,6 +17,10 @@ nav ul li:last-of-type { border-bottom: 1px solid #AAA; }
 nav ul li a.active { background-color: #DDD; }
 nav ul li a, nav ul li a:visited { display: block; padding: 1em; color: #454545; }
 nav ul li a:hover { background-color: #000; color: #EEE; }
+
+nav ul li a.disabled { color: #AAA; }
+nav ul li a.disabled:hover { background-color: #FFF; color: #AAA; }
+
 .mobile-menu-toggle { display: block; text-align: left; padding: 1em 0; float: left; width: 20%; cursor: pointer; }
 
 header { position: relative; }
@@ -89,6 +93,7 @@ ul.blog-list li p { margin: 0; }
 ul.blog-list li > .date { font-size: 0.75em; }
 
 footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 0.8em; }
+footer.page p { margin-bottom: 0; }
 
 @media (min-width: 600px)
 {		

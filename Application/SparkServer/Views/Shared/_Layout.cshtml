@@ -3,66 +3,63 @@
 <!DOCTYPE html>
 
 <html>
-<head>
-    <title>@ViewBag.Title - Sitecore Spark</title>
+    <head>
+        <title>@ViewBag.Title - Sitecore Spark</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <!--[if lt IE 9]>
-        @Scripts.Render("~/bundles/html5shiv")
-    <![endif]-->
+        <!--[if lt IE 9]>
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
 
-    @Styles.Render("~/Content/css")
+        @Styles.Render("~/Content/css")
 
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 
-    <!--[if lt IE 9]>
-        @Styles.Render("~/Content/ie")
-    <![endif]-->
-</head>
+        <!--[if lt IE 9]>
+            @Styles.Render("~/Content/ie")
+        <![endif]-->
+    </head>
 
-<body>
+    <body>
 
-    <div class="content">
+        <div class="content">
 
-        <header>
-            <a class="mobile-menu-toggle">Menu</a>
-            <img src="~/Content/Images/logo_title_alt.png" alt="Sitecore Spark Logo" class="logo" />
+            <header>
+                <a class="mobile-menu-toggle">Menu</a>
+                <img src="~/Content/Images/logo_title_alt.png" alt="Sitecore Spark Logo" class="logo" />
+            </header>
 
-            <form action="" class="master-search">
-                <input type="text" id="MasterSearch" name="MasterSearch" placeholder="Search..." />
-            </form>
-        </header>
+            <nav>
+                <ul class="cf">
+                    <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } >Home</a></li>
+                    <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category) { @Html.Raw("class='active'") }>Categories</a></li>
+                    <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Mentoring) { @Html.Raw("class='active'") }>Mentoring</a></li>
+                    <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }>About</a></li>
+                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }>Blog</a></li>
+                </ul>
+            </nav>
 
-        <nav>
-            <ul class="cf">
-                <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } >Home</a></li>
-                <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category) { @Html.Raw("class='active'") }>Categories</a></li>
-                <li><a href="/mentoring" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Mentoring) { @Html.Raw("class='active'") }>Mentoring</a></li>
-                <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }>About</a></li>
-                <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }>Blog</a></li>
-            </ul>
-        </nav>
+            <div class="container cf">
 
-        <div class="container cf">
+                @RenderBody()
 
-            @RenderBody()
+            </div>
 
+            <footer class="page">
+                <p>&copy; @DateTime.Today.Year.ToString() Sitecore Spark. All rights reserved.</p>
+                <p>Questions? Comments? <a href="mailto:bmbruno@gmail.com">bmbruno@gmail.com</a></p>
+            </footer>
         </div>
 
-        <footer class="page">
-            <p>Copyright @DateTime.Today.Year.ToString() Sitecore Spark</p>
-        </footer>
-    </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/scripts")
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/scripts")
+        @RenderSection("PageScripts", required: false)
 
-    @RenderSection("PageScripts", required: false)
-
-</body>
+    </body>
 </html>
