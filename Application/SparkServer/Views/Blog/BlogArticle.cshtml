@@ -15,13 +15,16 @@
         <div class="label">Published</div>
         <p>@Model.PublishDate.ToShortDateString()</p>
 
-        <!-- TODO: blog tags -->
-        <div class="label">Tags</div>
-        <ul class="tags cf">
-            <li><a href="http://www.google.com">Tag Alpha</a></li>
-            <li><a href="http://www.google.com">Tag Alpha</a></li>
-            <li><a href="http://www.google.com">Tag Alpha</a></li>
-        </ul>
+        @if (Model.BlogTags.Count > 0)
+        {
+            <div class="label">Tags</div>
+            <ul class="tags cf">
+                @foreach (var tag in Model.BlogTags)
+                {
+                    <li><a href="http://www.google.com">@tag.BlogTagName</a></li>
+                }
+            </ul>
+        }
     </div>
 
     @if (!String.IsNullOrEmpty(Model.ImagePath))

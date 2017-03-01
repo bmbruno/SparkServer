@@ -108,6 +108,14 @@ namespace SparkServer.Mapping
             vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
+
+            foreach (var tag in blog.BlogsTags)
+            {
+                vm.BlogTags.Add(new BlogTagViewModel() {
+                    BlogTagID = tag.BlogTag.ID,
+                    BlogTagName = tag.BlogTag.Name
+                });
+            }
         }
 
         /// <summary>

@@ -33,7 +33,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(whereClause).Include(u => u.Author).ToList();
+                results = db.Blog.Where(whereClause).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
             }
 
             return results;
@@ -45,7 +45,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Blog.Where(u => u.Active).ToList();
+                results = db.Blog.Where(u => u.Active).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
             }
 
             return results;
@@ -118,12 +118,12 @@ namespace SparkServer.Infrastructure.Repositories
                     blogList = db.Blog.Where(
                         u => u.Active &&
                         u.PublishDate.Value.Year == year &&
-                        u.PublishDate.Value.Month == month).Include(u => u.Author).ToList();
+                        u.PublishDate.Value.Month == month).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
                 }
                 else
                 {
                     blogList = db.Blog.Where(
-                        u => u.Active && u.PublishDate.Value.Year == year).Include(u => u.Author).ToList();
+                        u => u.Active && u.PublishDate.Value.Year == year).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
                 }
             }
 
@@ -138,6 +138,7 @@ namespace SparkServer.Infrastructure.Repositories
             {
                 blogList = db.Blog.Where(u => u.Active)
                                   .Include(a => a.Author)
+                                  .Include(a => a.BlogsTags)
                                   .OrderByDescending(u => u.PublishDate)
                                   .Take(numberToLoad)
                                   .ToList();
@@ -152,7 +153,11 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                blogList = db.BlogsTags.Where(u => u.TagID == tagID).Select(p => p.Blog).Include(a => a.Author).ToList();
+                blogList = db.BlogsTags.Where(u => u.TagID == tagID)
+                                       .Select(p => p.Blog)
+                                       .Include(a => a.Author)
+                                       .Include(a => a.BlogsTags)
+                                       .ToList();
             }
 
             return blogList;

@@ -7,10 +7,6 @@ namespace SparkServer.ViewModels
 {
     public class BlogArticleViewModel : BaseViewModel
     {
-        //
-        // Article Information
-        //
-
         public int BlogID { get; set; }
 
         public string UniqueURL { get; set; }
@@ -29,6 +25,8 @@ namespace SparkServer.ViewModels
 
         public DateTime PublishDate { get; set; }
 
+        public List<BlogTagViewModel> BlogTags { get; set; }
+
         public string URL
         {
             get
@@ -37,7 +35,10 @@ namespace SparkServer.ViewModels
             }
         }
 
-        // TODO: add blog tags
+        public BlogArticleViewModel()
+        {
+            BlogTags = new List<BlogTagViewModel>();
+        }
         
     }
 }
