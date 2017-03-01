@@ -61,5 +61,10 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return;
         }
+
+        public IEnumerable<BlogTag> GetFromList(IEnumerable<int> list)
+        {
+            return new List<BlogTag>();
+        }
     }
 }

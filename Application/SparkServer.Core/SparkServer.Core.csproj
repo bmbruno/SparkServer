@@ -53,6 +53,12 @@
   <ItemGroup>
     <Folder Include="Entities\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SparkServer.Data\SparkServer.Data.csproj">
+      <Project>{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}</Project>
+      <Name>SparkServer.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

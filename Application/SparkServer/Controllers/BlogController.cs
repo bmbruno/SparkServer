@@ -72,9 +72,10 @@ namespace SparkServer.Controllers
                 return Redirect("/blog");
 
             var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
+            var blogTags = _blogTagRepo.GetFromList(blog.BlogsTags.Select(u => u.TagID));
 
             viewModel.MenuSelection = MainMenu.Blog;
-            viewModel.MapToViewModel(blog);
+            viewModel.MapToViewModel(blog, blogTags);
 
             return View(viewModel);
         }

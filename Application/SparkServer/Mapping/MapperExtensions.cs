@@ -81,7 +81,7 @@ namespace SparkServer.Mapping
             foreach (var blog in blogs)
             {
                 BlogArticleViewModel blogVM = new BlogArticleViewModel();
-                blogVM.MapToViewModel(blog);
+                blogVM.MapToViewModel(blog, tags);
                 vm.BlogList.Add(blogVM);
             }
 
@@ -98,7 +98,7 @@ namespace SparkServer.Mapping
         /// </summary>
         /// <param name="vm">BlogArticleViewModel</param>
         /// <param name="blog">Blog object</param>
-        public static void MapToViewModel(this BlogArticleViewModel vm, Blog blog)
+        public static void MapToViewModel(this BlogArticleViewModel vm, Blog blog, IEnumerable<BlogTag> blogTags)
         {
             vm.BlogID = blog.ID;
             vm.Title = blog.Title;
@@ -109,12 +109,16 @@ namespace SparkServer.Mapping
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
 
-            foreach (var tag in blog.BlogsTags)
+            if (blogTags != null)
             {
-                vm.BlogTags.Add(new BlogTagViewModel() {
-                    BlogTagID = tag.BlogTag.ID,
-                    BlogTagName = tag.BlogTag.Name
-                });
+                foreach (var tag in blogTags)
+                {
+                    vm.BlogTags.Add(new BlogTagViewModel()
+                    {
+                        BlogTagID = tag.ID,
+                        BlogTagName = tag.Name
+                    });
+                }
             }
         }
 
@@ -147,7 +151,7 @@ namespace SparkServer.Mapping
             foreach (var blog in blogs)
             {
                 BlogArticleViewModel blogVM = new BlogArticleViewModel();
-                blogVM.MapToViewModel(blog);
+                blogVM.MapToViewModel(blog, null);
                 vm.BlogList.Add(blogVM);
             }
         }

@@ -21,7 +21,7 @@
             <ul class="tags cf">
                 @foreach (var tag in Model.BlogTags)
                 {
-                    <li><a href="http://www.google.com">@tag.BlogTagName</a></li>
+                    <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
                 }
             </ul>
         }

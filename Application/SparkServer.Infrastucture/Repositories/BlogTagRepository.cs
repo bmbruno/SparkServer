@@ -91,5 +91,23 @@ namespace SparkServer.Infrastructure.Repositories
                 db.SaveChanges();
             }
         }
+
+        public IEnumerable<BlogTag> GetFromList(IEnumerable<int> list)
+        {
+            List<BlogTag> results = new List<BlogTag>();
+
+            using (var db = new SparkServerEntities())
+            {
+                foreach (var ID in list)
+                {
+                    var item = db.BlogTag.FirstOrDefault(u => u.ID == ID);
+
+                    if (item != null)
+                        results.Add(item);
+                }
+            }
+            
+            return results;
+        }
     }
 }
