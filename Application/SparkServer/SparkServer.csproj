@@ -199,6 +199,7 @@
     <Content Include="Views\Blog\IndexOverview.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Mentoring.cshtml" />
+    <None Include="Properties\PublishProfiles\File System.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
