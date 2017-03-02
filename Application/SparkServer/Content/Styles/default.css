@@ -35,7 +35,10 @@ li { list-style-type: disc; margin-left: 3em; }
 
 article, .container { text-align: left; }
 article h1, .container h1 { font-family: 'OSBold', arial, sans-serif; margin-bottom: 0.5em; font-size: 2em; }
-article h2, .container h2 { margin-bottom: 0.5em; font-size: 1.5em }
+article h2, .container h2 { margin-bottom: 0.5em; font-size: 1.5em; }
+article h3, .container h3 { margin-bottom: 0.5em; font-size: 1.25em; }
+article h4, .container h4 { margin-bottom: 0.5em; font-size: 1.1em; }
+article h5, .container h5 { margin-bottom: 0.5em; font-size: 1em; }
 article p a, .container p a { text-decoration: underline; }
 article ul li, .container ul li { margin-bottom: 0.5em; }
 
