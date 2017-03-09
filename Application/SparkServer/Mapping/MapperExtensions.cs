@@ -51,23 +51,27 @@ namespace SparkServer.Mapping
         {
             foreach (Category category in categories)
             {
-                CategoryWithArticles cwa = new CategoryWithArticles();
-
-                // TODO: add OrderBy sort for article list
-                var articlesForCategory = articles.Where(u => u.CategoryID == category.ID);
-
-                cwa.CategoryName = category.Name;
-
-                foreach (Article article in articlesForCategory)
+                if (category.Article.Count > 0)
                 {
-                    cwa.ArticleLinks.Add(new ArticleLink() {
-                        ArticleID = article.ID,
-                        ArticleTitle = article.Title,
-                        URL = $"/Article/{article.UniqueURL}"
-                    });
-                }
+                    CategoryWithArticles cwa = new CategoryWithArticles();
 
-                vm.CategoriesList.Add(cwa);
+                    // TODO: add OrderBy sort for article list
+                    var articlesForCategory = articles.Where(u => u.CategoryID == category.ID);
+
+                    cwa.CategoryName = category.Name;
+
+                    foreach (Article article in articlesForCategory)
+                    {
+                        cwa.ArticleLinks.Add(new ArticleLink()
+                        {
+                            ArticleID = article.ID,
+                            ArticleTitle = article.Title,
+                            URL = $"/Article/{article.UniqueURL}"
+                        });
+                    }
+
+                    vm.CategoriesList.Add(cwa);
+                }
             }
         }
 
