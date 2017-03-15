@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace SparkServer
 {
@@ -12,6 +11,8 @@ namespace SparkServer
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/Styles/reset.css",
+                        "~/Content/Styles/fonts/fonts.css",
+                        "~/Content/Styles/fonts/font-awesome.min.css",
                         "~/Content/Styles/default.css"));
 
             bundles.Add(new StyleBundle("~/Content/ie").Include(
@@ -24,7 +25,7 @@ namespace SparkServer
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/default.js"));
 
-            BundleTable.EnableOptimizations = true;
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
