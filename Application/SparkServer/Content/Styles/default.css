@@ -31,7 +31,7 @@ header img.logo { width: 80%; }
 p, ul { line-height: 1.5em; margin-bottom: 2em; font-size: 1em; text-align: justify;  color: #444;}
 p.subtitle { font-weight: bold; font-size: 1.25em; }
 
-li { list-style-type: disc; margin-left: 3em; }
+li { list-style-type: disc; margin-left: 3em; text-align: left; }
 
 article, .container { text-align: left; }
 article h1, .container h1 { font-family: 'OSBold', arial, sans-serif; margin-bottom: 0.5em; font-size: 2em; }
@@ -62,10 +62,12 @@ p + pre { margin-top: 0; }
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 
 .figure.full { padding: 2em 0; text-align: center; }
+.figure.full > p.caption { text-align: center; }
 p + .figure.full { padding-top: 0; }
 .figure img { box-shadow: 1px 1px 4px #666; padding: 4px; }
 
 .caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
+.config-path { font-family: monospace; font-size: 1.25em; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
