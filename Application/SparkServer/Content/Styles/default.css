@@ -65,7 +65,7 @@ hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 p + .figure.full { padding-top: 0; }
 .figure img { box-shadow: 1px 1px 4px #666; padding: 4px; }
 
-.caption { padding-top: 4px; margin: 0; font-size: 0.75em; color: #777; }
+.caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
