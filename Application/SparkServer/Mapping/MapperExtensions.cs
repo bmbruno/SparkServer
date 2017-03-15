@@ -51,7 +51,7 @@ namespace SparkServer.Mapping
         {
             foreach (Category category in categories)
             {
-                if (category.Article.Count > 0)
+                if (articles.Count(u => u.CategoryID == category.ID) > 0)
                 {
                     CategoryWithArticles cwa = new CategoryWithArticles();
 
