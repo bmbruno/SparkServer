@@ -106,7 +106,7 @@ footer.page p { margin-bottom: 0; }
 	header img.logo { max-width: 450px; }
 	
 	article h1, .container h1 { font-size: 3em; font-weight: bold; text-shadow: 2px 2px 0 #AAA; }
-	article h2, .container h2 { font-size: 1.5em; font-weight: bold; }
+	article h2, .container h2 { font-size: 2em; font-weight: bold; }
     article h3, .container h3 { font-weight: bold; }
 
 	article > .about { text-align: right; }
@@ -116,7 +116,7 @@ footer.page p { margin-bottom: 0; }
 	article > footer > .notes { width: 49%; float: right; margin-left: 1%; }
 
 	aside.left { float: left; width: 40%; margin: 1em 2em 1em 0; }
-	aside.right { float: right; width: 40%; margin: 1em 1em 0 2em; }
+	aside.right { float: right; width: 40%; margin: 1em 0 1em 2em; }
 	aside.narrow { width: 25%; }
 
 	pre { font-size: 1.25em; }
