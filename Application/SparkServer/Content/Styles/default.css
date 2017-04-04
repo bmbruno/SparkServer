@@ -67,7 +67,7 @@ p + .figure.full { padding-top: 0; }
 .figure img { box-shadow: 1px 1px 4px #666; padding: 4px; }
 
 .caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
-.config-path { font-family: monospace; font-size: 1.25em; }
+.config-path, .mono { font-family: monospace; font-size: 1.25em; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
