@@ -39,7 +39,7 @@
             <nav>
                 <ul class="cf">
                     <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } >Home</a></li>
-                    <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category) { @Html.Raw("class='active'") }>Categories</a></li>
+                    <li><a href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category) { @Html.Raw("class='active'") }>Categories</a></li>
                     <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Mentoring) { @Html.Raw("class='active'") }>Mentoring</a></li>
                     <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }>About</a></li>
                     <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }>Blog</a></li>

@@ -13,12 +13,28 @@
 
 <hr />
 
-<h1>Coming Soon</h1>
+<h1>Latest Articles</h1>
+
+<ul class="grid two-up cf blog-list">
+
+    @foreach (var article in Model.ArticleList)
+    {
+        <li class="cf">
+            <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
+            <div class="date">Sitecore @article.SitecoreVersionShort</div>
+        </li>
+    }
+
+</ul>
+
+<hr />
+
+<h1>More Coming Soon</h1>
 
 <p><a href="/blog">Check out the blog</a> for updates on the launch of Sitecore Spark. The following features are coming soon:</p>
 
 <h2>Articles</h2>
-<p>Sitecore Spark aims to be a comphrensive introduction to developing for the Sitecore 8 platform.</p>
+<p>Sitecore Spark aims to be a comprehensive introduction to developing for the Sitecore 8 platform.</p>
 <p>Sitecore concepts will be broken down into short, simple articles that are designed to be consumable in minutes and useful for developers of all levels. Sitecore Spark can be used as training material for new developers or quick reference for seasoned veterans.</p>
 
 <h2>Mentoring</h2>
@@ -26,8 +42,6 @@
 
 <h2>Video Walkthroughs</h2>
 <p>Articles and pictures are great, but key articles will also have 2 to 5 minute video walkthroughs of important Sitecore concepts.</p>
-
-<hr />
 
 <h1>Latest Blog Posts</h1>
 
