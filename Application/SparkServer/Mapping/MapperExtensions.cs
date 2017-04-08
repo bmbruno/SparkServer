@@ -66,7 +66,7 @@ namespace SparkServer.Mapping
                         {
                             ArticleID = article.ID,
                             ArticleTitle = article.Title,
-                            URL = $"/Article/{article.UniqueURL}"
+                            URL = $"/article/{article.UniqueURL}"
                         });
                     }
 
