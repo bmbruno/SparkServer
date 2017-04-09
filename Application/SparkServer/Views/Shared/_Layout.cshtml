@@ -16,8 +16,7 @@
 
         @Styles.Render("~/Content/css")
 
-        <link rel="shortcut icon" href="favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -53,9 +52,17 @@
             </div>
 
             <footer class="page">
-                <p><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://www.twitter.com/sitecorespark" target="_blank">@@SitecoreSpark</a></p>
-                <p>&copy; @DateTime.Today.Year.ToString() Sitecore Spark. All rights reserved. Not affiliated with <a href="http://www.sitecore.net">Sitecore Corporation A/S</a>. Sitecore&reg; and Own the Experience&reg; are registered U.S. trademarks.</p>
-                <p>Questions? Comments? Corrections? <a href="mailto:bmbruno+sitecorespark@gmail.com">bmbruno+sitecorespark@gmail.com</a></p>
+                <ul class="grid two-up cf" style="margin-bottom: 0;">
+                    <li>
+                        <p><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://www.twitter.com/sitecorespark" target="_blank">@@SitecoreSpark</a></p>
+                        <p>Questions? Comments? Corrections? <a href="mailto:bmbruno+sitecorespark@gmail.com">bmbruno+sitecorespark@gmail.com</a></p>
+                    </li>
+                    <li>
+                        <p>&copy; @DateTime.Today.Year.ToString() Sitecore Spark. All rights reserved.</p>
+                        <p>Not affiliated with <a href="http://www.sitecore.net">Sitecore Corporation A/S</a>. Sitecore&reg; and Own the Experience&reg; are registered U.S. trademarks.</p>
+                    </li>
+                </ul>
+
             </footer>
         </div>
 
