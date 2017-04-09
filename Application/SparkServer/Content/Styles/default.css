@@ -78,7 +78,7 @@ ul.grid > li:last-of-type { margin: 0; }
 .master-search { text-align: center; margin: 1em; display: none; }
 .master-search input { padding: 0.75em; border: 1px solid #666; border-radius: 6px; background-color: #EEE; font-weight: bold; width: 100%; }
 
-.article-list h2 { border-bottom: 1px solid #666; padding-bottom: 0.5em; text-align: left; }
+.article-list h2 { border-bottom: 1px solid #666; padding-bottom: 0.5em; text-align: left; font-size: 1.5em !important; }
 .article-list ul li { width: 100%; margin: 0 0 0.5em 0; list-style-type: none; text-align: left; }
 
 .blog-about { margin-bottom: 1em; }
@@ -97,6 +97,7 @@ ul.blog-list { margin-top: 2em; }
 ul.blog-list li { margin: 0 0 2em 0; list-style-type: none; }
 ul.blog-list li h3 { font-size: 1.25em; font-weight: bold; }
 ul.blog-list li p { margin: 0; }
+ul.blog-list li > .subtitle { }
 ul.blog-list li > .date { font-size: 0.75em; }
 
 footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 0.8em; }
