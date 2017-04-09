@@ -20,6 +20,7 @@ namespace SparkServer.Mapping
             vm.ArticleID = article.ID;
             vm.ArticleUniqueURL = article.UniqueURL;
             vm.ArticleTitle = article.Title;
+            vm.ArticleSubtitle = article.Subtitle;
             vm.Body = article.Body;
             vm.SitecoreVersionShort = (article.SitecoreVersion != null) ? article.SitecoreVersion.Version : string.Empty;
             vm.SitecoreVersionLong = (article.SitecoreVersion != null) ? $"{article.SitecoreVersion.Version} rev. {article.SitecoreVersion.Revision}" : string.Empty;

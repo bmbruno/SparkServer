@@ -21,6 +21,7 @@
     {
         <li class="cf">
             <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
+            @if (!String.IsNullOrEmpty(article.ArticleSubtitle)) { <div class="subtitle">@article.ArticleSubtitle</div> }
             <div class="date">Sitecore @article.SitecoreVersionShort</div>
         </li>
     }

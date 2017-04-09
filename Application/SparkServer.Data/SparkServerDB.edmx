@@ -19,6 +19,7 @@
           <Property Name="AuthorID" Type="int" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="Subtitle" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -260,6 +261,7 @@
           <NavigationProperty Name="RelatedArticle" Relationship="Self.FK_RelatedArticle_ArticleRelated" FromRole="Article" ToRole="RelatedArticle" />
           <NavigationProperty Name="RelatedArticle1" Relationship="Self.FK_RelatedArticle_ArticleSource" FromRole="Article" ToRole="RelatedArticle" />
           <NavigationProperty Name="Category" Relationship="SparkServerModel.FK_Article_Category1" FromRole="Article" ToRole="Category" />
+          <Property Name="Subtitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -512,6 +514,7 @@
           <EntitySetMapping Name="Article">
             <EntityTypeMapping TypeName="SparkServerModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />

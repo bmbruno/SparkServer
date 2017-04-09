@@ -32,6 +32,7 @@ namespace SparkServer.Data
         public int AuthorID { get; set; }
         public bool Active { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public string Subtitle { get; set; }
     
         public virtual Author Author { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

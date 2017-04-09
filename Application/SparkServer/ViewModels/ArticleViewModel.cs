@@ -17,6 +17,8 @@ namespace SparkServer.ViewModels
 
         public string ArticleTitle { get; set; }
 
+        public string ArticleSubtitle { get; set; }
+
         public string Body { get; set; }
 
         public string SitecoreVersionShort { get; set; }
