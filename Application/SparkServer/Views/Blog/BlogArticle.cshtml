@@ -6,7 +6,19 @@
 
 <article class="blog">
 
-    <h1>@ViewBag.Title</h1>
+    @if (!String.IsNullOrEmpty(Model.ImagePath))
+    {
+        <!-- TODO: Image as background with text over it -->
+        <div class="blog-header" style="background-image: url('@Model.ImagePath');">
+            <h1>@ViewBag.Title</h1>
+        </div>
+    }
+    else
+    {
+        <h1>@ViewBag.Title</h1>
+    }
+
+    <h1 class="blog-title-only">@ViewBag.Title</h1>
 
     <div class="blog-about">
         <div class="label">Author</div>
@@ -26,11 +38,6 @@
             </ul>
         }
     </div>
-
-    @if (!String.IsNullOrEmpty(Model.ImagePath))
-    {
-        <img src="@Model.ImagePath" alt="@Model.Title" />
-    }
 
     @Html.Raw(Model.Body)
 
