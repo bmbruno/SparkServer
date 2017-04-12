@@ -12,20 +12,21 @@ body { min-width: 240px; text-align: center; padding: 1em; font-family: 'OSRegul
 strong { font-weight: bold; } 
 
 nav { }
-nav ul { display: none; margin: 1em 0; }
-nav ul li { border-top: 1px solid #AAA; margin: 0; list-style-type: none; }
-nav ul li:last-of-type { border-bottom: 1px solid #AAA; }
-nav ul li a.active { background-color: #DDD; }
+nav ul { display: none; margin: 0; }
+nav ul li { border-top: 1px solid #DC291E; margin: 0; list-style-type: none; }
+nav ul li:first-of-type { border-top: none; }
+nav ul li:last-of-type { border-bottom: 1px solid #DC291E; }
 nav ul li a, nav ul li a:visited { display: block; padding: 1em; color: #454545; }
+nav ul li a.active { background-color: #DC291E; color: #FFF; font-weight: bold; }
 nav ul li a:hover { background-color: #000; color: #EEE; }
 
 nav ul li a.disabled { color: #AAA; }
 nav ul li a.disabled:hover { background-color: #FFF; color: #AAA; }
 
-.mobile-menu-toggle { display: block; text-align: left; padding: 1em 0; float: left; width: 20%; cursor: pointer; }
+.mobile-menu-toggle { display: block; text-align: center; padding: 1em 0; margin-top: 1em; width: 100%; cursor: pointer; border-top: 1px solid #DC291E; border-bottom: 1px solid #DC291E; }
 
-header { position: relative; }
-header img.logo { width: 80%; }
+header { position: relative; text-align: center; }
+header img.logo { width: 50%; }
 
 .content { width: 90%; text-align: left; margin: 0 auto; }
 
@@ -53,6 +54,7 @@ article > footer ul li a { display: block; padding: 0.75em 0; text-decoration: n
 article.blog, .container { margin-top: 2em; }
 article.blog > .blog-header { display: none; }
 article.blog > h1.blog-title-only { display: block; }
+article.blog > h1.blog-header-title-only { display: none; }
 
 aside { margin: 2em 0; padding: 2em; background-color: #d2e8f2; border-radius: 4px; box-shadow: 1px 1px 4px #666; }
 aside h3 { font-family: 'OSRegular', arial, sans-serif; font-size: 1.5em; color: #333; margin-bottom: 0.5em; }
@@ -124,6 +126,7 @@ footer.page p { margin-bottom: 0; text-align: left; }
     article.blog > .blog-header { display: block; background-size: cover; background-position: center top; position: relative; height: 420px; margin-bottom: 2em; }
     article.blog > .blog-header h1 { position: absolute; bottom: 0; padding: 0.5em; background-color: rgba(0, 0, 0, 0.85); text-shadow: 2px 2px 0 #000; color: #DEDEDE; }
     article.blog > h1.blog-title-only { display: none; }
+    article.blog > h1.blog-header-title-only { display: block; }
 
     aside { 
         background: #ddffff; /* Old browsers */
@@ -168,7 +171,7 @@ footer.page p { margin-bottom: 0; text-align: left; }
 @media (min-width: 820px)
 {
 	nav { margin: 1em 0; font-family: 'OSBold', arial, sans-serif; }
-	nav ul { display: block; border-top: 1px solid #AAA; border-bottom: 1px solid #AAA; }
+	nav ul { display: block; border-top: 1px solid #DC291E; border-bottom: 1px solid #DC291E; }
 	nav ul li { float: left; width: 20%; border: none; }
 	nav ul li:last-of-type { border: none; }
 	nav ul li a { text-align: center; }
