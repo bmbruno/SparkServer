@@ -8,14 +8,15 @@
 
     @if (!String.IsNullOrEmpty(Model.ImagePath))
     {
-        <!-- TODO: Image as background with text over it -->
         <div class="blog-header" style="background-image: url('@Model.ImagePath');">
             <h1>@ViewBag.Title</h1>
         </div>
     }
     else
     {
-        <h1 class="blog-header-title-only">@ViewBag.Title</h1>
+        <div class="blog-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');">
+            <h1>@ViewBag.Title</h1>
+        </div>
     }
 
     <h1 class="blog-title-only">@ViewBag.Title</h1>
