@@ -107,7 +107,8 @@ ul.blog-list li > .subtitle { }
 ul.blog-list li > .date { font-size: 0.75em; }
 
 footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 0.8em; }
-footer.page p { margin-bottom: 0; text-align: left; }
+footer.page p { margin-bottom: 1em; text-align: left; }
+footer.page p:last-of-type { margin-bottom: 0; }
 
 @media (min-width: 600px)
 {		
