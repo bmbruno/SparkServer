@@ -17,7 +17,7 @@ nav ul li { border-top: 1px solid #DC291E; margin: 0; list-style-type: none; }
 nav ul li:first-of-type { border-top: none; }
 nav ul li:last-of-type { border-bottom: 1px solid #DC291E; }
 nav ul li a, nav ul li a:visited { display: block; padding: 1em; color: #454545; }
-nav ul li a.active { background-color: #DC291E; color: #FFF; font-weight: bold; }
+nav ul li a.active { background-color: #DC291E; color: #FFF; font-weight: bold; text-shadow: 2px 2px 0 #000; }
 nav ul li a:hover { background-color: #000; color: #EEE; }
 
 nav ul li a.disabled { color: #AAA; }
@@ -98,7 +98,7 @@ ul.grid > li:last-of-type { margin: 0; }
 .explore-tags li { display: inline-block;  margin: 0 1em 0 0; list-style-type: none; }
 .explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
 
-ul.blog-list { margin-top: 2em; }
+ul.blog-list { }
 ul.blog-list li { margin: 0 0 2em 0; list-style-type: none; }
 ul.blog-list li img { float: left; max-height: 100px; margin-right: 1em; max-width: 25%; }
 ul.blog-list li h3 { font-size: 1.25em; font-weight: bold; overflow: hidden; }
