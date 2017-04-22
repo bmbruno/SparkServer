@@ -107,6 +107,7 @@ namespace SparkServer.Mapping
         {
             vm.BlogID = blog.ID;
             vm.Title = blog.Title;
+            vm.Subtitle = blog.Subtitle;
             vm.Body = blog.Body;
             vm.ImagePath = blog.ImagePath;
             vm.ImageThumbnailPath = blog.ImageThumbnailPath;
