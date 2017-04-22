@@ -30,14 +30,14 @@ header img.logo { width: 50%; }
 
 .content { width: 90%; text-align: left; margin: 0 auto; }
 
-p, ul { line-height: 1.5em; margin-bottom: 2em; font-size: 1em; text-align: justify;  color: #444;}
+p, ul { line-height: 1.5em; margin-bottom: 1.5em; font-size: 1em; text-align: justify;  color: #444;}
 p.subtitle { font-weight: bold; font-size: 1.25em; }
 
 li { list-style-type: disc; margin-left: 3em; text-align: left; }
 
 article, .container { text-align: left; }
 article h1, .container h1 { font-family: 'OSBold', arial, sans-serif; padding-bottom: 0.5em; font-size: 2em; overflow: hidden; line-height: 1.25em; }
-article h2, .container h2 { padding-bottom: 0.5em; font-size: 1.5em; overflow: hidden; }
+article h2, .container h2 { padding-bottom: 1em; font-size: 1.5em; overflow: hidden; }
 article h3, .container h3 { padding-bottom: 4px; font-size: 1.25em; border-bottom: 1px solid #BBB; margin-bottom: 0.5em; overflow: hidden; }
 article h4, .container h4 { padding-bottom: 0.5em; font-size: 1.1em; overflow: hidden; }
 article h5, .container h5 { padding-bottom: 0.5em; font-size: 1em; overflow: hidden; }
