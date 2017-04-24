@@ -13,7 +13,8 @@ namespace SparkServer
                         "~/Content/Styles/reset.css",
                         "~/Content/Styles/fonts/fonts.css",
                         "~/Content/Styles/fonts/font-awesome.min.css",
-                        "~/Content/Styles/default.css"));
+                        "~/Content/Styles/default.css",
+                        "~/Content/Styles/highlightjs/github.css"));
 
             bundles.Add(new StyleBundle("~/Content/ie").Include(
                         "~/Content/Styles/ie.css"));

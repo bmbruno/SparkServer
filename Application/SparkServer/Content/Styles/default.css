@@ -61,8 +61,7 @@ aside h3 { font-family: 'OSRegular', arial, sans-serif; font-size: 1.5em; color:
 aside p { margin-bottom: 1em; text-align: left; }
 aside p:last-of-type { margin-bottom: 0; }
 
-pre { width: 100%; margin-bottom: 2em; font-size: 1em; text-align: left; overflow: auto; padding: 2em; background-color: #EEE; color: #333; box-shadow: inset 2px 2px 2px #999; border-radius: 4px; font-family: monospace; }
-p + pre { margin-top: 0; }
+pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 2px 2px 2px #AAA; }
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 
@@ -94,6 +93,7 @@ ul.grid > li:last-of-type { margin: 0; }
 .blog-about > .tags li::after { content: ",\00a0"; } 
 .blog-about > .tags li:last-child::after { content: ""; }
 .blog-about > p { margin-bottom: 1em; }
+.blog-about > p:last-of-type { margin-bottom: 0; }
 
 .explore-tags li { display: inline-block;  margin: 0 1em 0 0; list-style-type: none; }
 .explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
@@ -139,8 +139,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	aside.right { float: right; width: 40%; margin: 1em 0 1em 2em; }
 	aside.narrow { width: 25%; }
 
-	pre { font-size: 1.25em; }
-	
+    pre { font-size: 1.1em; }
+
     .figure { margin-bottom: auto; }
 	.figure.left { float: left; padding: 0 2em 1em 0; width: 50%; text-align: right; }
 	.figure.right { float: right; padding: 0 0 1em 2em; width: 50%; text-align: left; }
