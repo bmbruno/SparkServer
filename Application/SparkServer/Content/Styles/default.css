@@ -61,6 +61,7 @@ aside h3 { font-family: 'OSRegular', arial, sans-serif; font-size: 1.5em; color:
 aside p { margin-bottom: 1em; text-align: left; }
 aside p:last-of-type { margin-bottom: 0; }
 
+pre { margin-bottom: 1em; }
 pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 2px 2px 2px #AAA; }
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
