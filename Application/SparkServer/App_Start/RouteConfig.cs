@@ -18,6 +18,12 @@ namespace SparkServer
             //
 
             routes.MapRoute(
+                name: "ArticleSample",
+                url: "article/sample",
+                defaults: new { controller = "Article", action = "Sample" }
+            );
+
+            routes.MapRoute(
                 name: "Article",
                 url: "article/{uniqueURL}",
                 defaults: new { controller = "Article", action = "Article", uniqueURL = UrlParameter.Optional }

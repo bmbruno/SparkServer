@@ -301,7 +301,7 @@
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Content Include="Views\Shared\HighlightJSInit.cshtml" />
     <Content Include="Views\Blog\Sample.cshtml" />
-    <Content Include="Views\Blog\_Sample.cshtml" />
+    <Content Include="Views\Article\Sample.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

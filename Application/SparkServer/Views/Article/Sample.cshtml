@@ -1,0 +1,35 @@
+﻿@model SparkServer.ViewModels.ArticleViewModel
+
+@{
+    ViewBag.Title = Model.ArticleTitle;
+}
+
+<article>
+
+    <ul class="about cf">
+        <!-- TODO: URL for Category sort -->
+        <li><a href="#">@Model.CategoryName</a></li>
+        <li>@Model.PublishDateLong</li>
+        <li>Sitecore @Model.SitecoreVersionShort</li>
+    </ul>
+
+    <div class="cf">
+
+        <h1>@ViewBag.Title</h1>
+
+        <!-- ARTICLE Start -->
+
+        <p>Hi</p>
+
+        <!-- ARTICLE End -->
+
+    </div>
+
+</article>
+
+@section PageScripts {
+
+    <script src="~/Scripts/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+}

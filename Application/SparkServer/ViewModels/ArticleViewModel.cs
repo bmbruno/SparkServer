@@ -47,5 +47,10 @@ namespace SparkServer.ViewModels
 
         // TODO: related links - List<RelatedLinkViewModel>()
         
+        public ArticleViewModel()
+        {
+            MenuSelection = Application.Enum.MainMenu.Article;
+        }
+
     }
 }
