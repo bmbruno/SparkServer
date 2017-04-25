@@ -57,7 +57,6 @@ namespace SparkServer.Controllers
 
             tagList = _blogTagRepo.GetAll().OrderBy(u => u.Name).ToList();
 
-            viewModel.MenuSelection = MainMenu.Blog;
             viewModel.MapToViewModel(blogList, tagList);
 
             // Two possible views are used: IndexList and IndexOverview - use ViewMode value to build view name
@@ -74,7 +73,6 @@ namespace SparkServer.Controllers
             var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
             var blogTags = _blogTagRepo.GetFromList(blog.BlogsTags.Select(u => u.TagID));
 
-            viewModel.MenuSelection = MainMenu.Blog;
             viewModel.MapToViewModel(blog, blogTags);
 
             return View(viewModel);
@@ -95,5 +93,17 @@ namespace SparkServer.Controllers
 
             return View(viewName: "IndexList", model: viewModel);
         } 
+
+        public ActionResult Sample()
+        {
+            BlogArticleViewModel viewModel = new BlogArticleViewModel();
+            viewModel.AuthorFullName = "Brandon Bruno";
+            viewModel.BlogTags = new List<BlogTagViewModel>() { new BlogTagViewModel() { BlogTagID = 0, BlogTagName = "Community" } };
+            viewModel.PublishDate = new DateTime(year: 2017, month: 4, day: 25);
+            viewModel.Title = "Fun with Sitecore Powershell Extensions: Learn Something Now";
+            viewModel.Subtitle = "This is Great Subtitle For a Blog Post";
+
+            return View(viewModel);
+        }
     }
 }

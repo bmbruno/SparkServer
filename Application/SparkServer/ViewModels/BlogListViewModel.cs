@@ -20,6 +20,7 @@ namespace SparkServer.ViewModels
         {
             BlogList = new List<BlogArticleViewModel>();
             BlogTagList = new List<BlogTagViewModel>();
+            MenuSelection = MainMenu.Blog;
         }
     }
 }

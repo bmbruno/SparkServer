@@ -38,6 +38,7 @@ namespace SparkServer.ViewModels
         public BlogArticleViewModel()
         {
             BlogTags = new List<BlogTagViewModel>();
+            MenuSelection = Application.Enum.MainMenu.Blog;
         }
         
     }

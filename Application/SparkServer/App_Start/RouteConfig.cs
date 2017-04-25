@@ -28,6 +28,12 @@ namespace SparkServer
             //
 
             routes.MapRoute(
+                name: "BlogSample",
+                url: "blog/sample",
+                defaults: new { controller = "Blog", action = "Sample" }
+            );
+
+            routes.MapRoute(
                 name: "BlogTags",
                 url: "blog/tag/{tagName}",
                 defaults: new { controller = "Blog", action = "ListByTag" }
