@@ -42,25 +42,6 @@
 
     <!-- Start Body -->
 
-    <h2>PowerShell to the Rescue</h2>
-
-    <p>Template inheritance is one of Sitecore's most powerful concepts. Addressing items based on their template is a great way to query for similar content.</p>
-
-    <p>In a recent task, I had to retrieve a series of items that were based on a particular template - but it was the parent template I was looking for. My tool of choice was <a href="https://sitecorepowershell.gitbooks.io/sitecore-powershell-extensions/" target="_blank">Sitecore PowerShell Extensions (SPE)</a>.</p>
-
-    <p>SPE has access to the full Sitecore API, so retreiving items by base template was a breeze:</p>
-
-<pre>
-    <code class="powershell">
-$item = Get-Item -Path master:// -ID “{b94d8408-4833-4e4e-83da-b109f06967af}”
-
-$baseTemplates = [Sitecore.Data.Managers.TemplateManager]::GetTemplate($item).GetBaseTemplates();
-
-foreach ($template in $baseTemplates) {
-	echo $template.Name
-}
-	</code>
-</pre>
 
     <!-- End Body -->
 
