@@ -74,6 +74,7 @@ p + .figure.full { padding-top: 0; }
 
 .caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
 .config-path, .mono { font-family: monospace; font-size: 1.25em; }
+.inline-code { background-color: #f5f9d2; padding: 0 2px; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
