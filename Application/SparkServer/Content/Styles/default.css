@@ -66,11 +66,12 @@ pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !impor
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 
-.figure { margin-bottom: 2em; }
+.figure {  }
 .figure.full { padding: 2em 0; text-align: center; }
 .figure.full > p.caption { text-align: center; }
 p + .figure.full { padding-top: 0; }
 .figure img { box-shadow: 1px 1px 4px #666; padding: 4px; }
+h2 + .figure { padding-top: 0 !important; }
 
 .caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
 .config-path, .mono { font-family: monospace; font-size: 1.25em; }
@@ -88,13 +89,13 @@ ul.grid > li:last-of-type { margin: 0; }
 .article-list ul li { width: 100%; margin: 0 0 0.5em 0; list-style-type: none; text-align: left; }
 
 table { width: 100%; margin: 2em 0; }
-th { font-weight: bold; padding: 1em; }
+th { font-weight: bold; padding: 1em; text-align: center; }
 td { border: 1px solid #CCC; padding: 1em; }
 td p { margin-bottom: 0; }
 td ul:last-of-type { margin-bottom: 0; }
 td ul li { margin-left: 1em; }
 td ul li:last-of-type { margin-bottom: 0; }
-tr:nth-child(even) { background-color: #DDD; }
+tr:nth-child(even) { background-color: #EEE; }
 
 .blog-about { margin-bottom: 1em; background-color: #DEDEDE; padding: 1em; border-radius: 6px; }
 .blog-about > .label { font-weight: bold; font-size: 0.85em; }
