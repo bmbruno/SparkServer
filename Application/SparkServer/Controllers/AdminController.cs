@@ -47,19 +47,39 @@ namespace SparkServer.Controllers
         {
             BlogEditViewModel viewModel = new BlogEditViewModel();
 
-            viewModel.AuthorList = FilterData.Authors(_authorRepo, null);
-
             if (ID.HasValue)
             {
                 // EDIT
 
                 viewModel.Mode = EditMode.Edit;
+
+                var blog = _blogRepo.Get(ID: ID.Value);
+
+                if (blog == null)
+                {
+                    TempData["Error"] = $"No blog found with ID {ID.Value}.";
+                    return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                }
+
+                viewModel.ID = blog.ID;
+                viewModel.Title = blog.Title;
+                viewModel.Subtitle = blog.Subtitle;
+                viewModel.Body = blog.Body;
+                viewModel.PublishDate = blog.PublishDate;
+                viewModel.AuthorID = blog.AuthorID;
+                viewModel.UniqueURL = blog.UniqueURL;
+                viewModel.ImagePath = blog.ImagePath;
+                viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
+
+                viewModel.AuthorList = FilterData.Authors(_authorRepo, viewModel.AuthorID);
             }
             else
             {
                 // ADD
 
                 viewModel.Mode = EditMode.Add;
+
+                viewModel.AuthorList = FilterData.Authors(_authorRepo, null);
             }
 
             return View(model: viewModel);
