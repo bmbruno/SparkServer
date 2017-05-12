@@ -85,6 +85,49 @@ namespace SparkServer.Controllers
             return View(model: viewModel);
         }
 
+        [HttpPost, ValidateInput(false)]
+        public ActionResult BlogUpdate(BlogEditViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Mode == EditMode.Add)
+                {
+                    // TODO - write ADD code
+                }
+                else
+                {
+                    var blog = _blogRepo.Get(viewModel.ID);
+
+                    if (blog == null)
+                    {
+                        TempData["Error"] = $"No blog found with ID {viewModel.ID}.";
+                        return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                    }
+
+                    blog.Title = viewModel.Title;
+                    blog.Subtitle = viewModel.Subtitle;
+                    blog.Body = viewModel.Body;
+                    blog.PublishDate = viewModel.PublishDate;
+                    blog.AuthorID = viewModel.AuthorID;
+                    blog.UniqueURL = viewModel.UniqueURL;
+                    blog.ImagePath = viewModel.ImagePath;
+                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+
+                    _blogRepo.Update(blog);
+
+                    TempData["Success"] = "Blog updated.";
+                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                }
+
+            }
+            else
+            {
+                TempData["Error"] = "Please correct the errors below.";
+            }
+
+            return RedirectToAction("BlogEdit", viewModel);
+        }
+
         public ActionResult Article(string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))
