@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model SparkServer.ViewModels.BlogEditViewModel
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -6,3 +6,15 @@
 }
 
 <h1>@ViewBag.Title</h1>
+
+@if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+{
+    <h2>ID: @Model.ID</h2>
+}
+
+@Html.BeginForm(actionName: "BlogUpdate", controllerName: "Admin", method: FormMethod.Post)
+{
+    @Html.LabelFor(x => x.Title)
+    @Html.TextBoxFor(x => x.Title)
+    @Html.ValidationMessageFor(x => x.Title)
+}

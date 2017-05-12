@@ -143,6 +143,7 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="ViewModels\BlogEditViewModel.cs" />
     <Compile Include="ViewModels\BlogTagViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

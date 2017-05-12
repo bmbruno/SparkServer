@@ -41,16 +41,22 @@ namespace SparkServer.Controllers
 
         public ActionResult BlogEdit(int? ID)
         {
+            BlogEditViewModel viewModel = new BlogEditViewModel();
+
             if (ID.HasValue)
             {
                 // EDIT
+
+                viewModel.Mode = EditMode.Edit;
             }
             else
             {
                 // ADD
+
+                viewModel.Mode = EditMode.Add;
             }
 
-            return View();
+            return View(model: viewModel);
         }
 
         public ActionResult Article(string uniqueURL)
