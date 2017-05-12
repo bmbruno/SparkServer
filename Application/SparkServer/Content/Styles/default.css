@@ -117,6 +117,20 @@ ul.blog-list li p { margin: 0; }
 ul.blog-list li > .subtitle { }
 ul.blog-list li > .date { font-size: 0.75em; }
 
+.btn { display: inline-block; padding: 0.5em 1em; border: 1px solid #777; border-radius: 4px; background-color: #e2e2e2; color: #000; box-shadow: 1px 1px 1px #AAA; }
+.btn:hover { background-color: #666; color: #DDD; }
+.btn.primary, input[type="submit"].primary { background-color: #0081fe; color: #FFF; border: 1px solid #0a1452; text-shadow: 1px 1px 0 #000; cursor: pointer; padding: 1em 2em; font-size: 1.1em; }
+
+form { margin: 1em 0; }
+.row { margin-bottom: 1em; }
+.row label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 0.25em; }
+.row input[type="text"],
+.row textarea,
+.row select { width: 100%; padding: 0.5em; border-radius: 4px; border: 1px solid #333; font-size: 1em; font-family: monospace; }
+.row input[type="text"].half,
+.row textarea.half,
+.row select.half { width: 50%; }
+
 footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 0.8em; }
 footer.page p { margin-bottom: 1em; text-align: left; }
 footer.page p:last-of-type { margin-bottom: 0; }
