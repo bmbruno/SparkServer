@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace SparkServer.ViewModels
 {
@@ -34,6 +35,8 @@ namespace SparkServer.ViewModels
 
         public string ImagePath { get; set; }
 
-        public string ImageThumnbnailPath { get; set; }
+        public string ImageThumbnailPath { get; set; }
+
+        public List<SelectListItem> AuthorList { get; set; }
     }
 }

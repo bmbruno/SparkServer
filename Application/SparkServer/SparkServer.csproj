@@ -132,6 +132,7 @@
     <Compile Include="Application\Enum\MainMenu.cs" />
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
+    <Compile Include="Application\FilterData.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />

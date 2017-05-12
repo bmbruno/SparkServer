@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SparkServer.Application.Enum;
+using SparkServer.Application;
 
 namespace SparkServer.Controllers
 {
@@ -17,16 +18,19 @@ namespace SparkServer.Controllers
         private IBlogRepository<Blog> _blogRepo;
         private IBlogTagRepository<BlogTag> _blogTagRepo;
         private ICategoryRepository<Category> _categoryRepo;
+        private IAuthorRepository<Author> _authorRepo;
 
         public AdminController(IArticleRepository<Article> articleRepo,
                                IBlogRepository<Blog> blogRepo,
                                IBlogTagRepository<BlogTag> blogTagRepo,
-                               ICategoryRepository<Category> categoryRepo)
+                               ICategoryRepository<Category> categoryRepo,
+                               IAuthorRepository<Author> authorRepo)
         {
             _articleRepo = articleRepo;
             _blogRepo = blogRepo;
             _blogTagRepo = blogTagRepo;
             _categoryRepo = categoryRepo;
+            _authorRepo = authorRepo;
         }
 
         public ActionResult Index()
@@ -42,6 +46,8 @@ namespace SparkServer.Controllers
         public ActionResult BlogEdit(int? ID)
         {
             BlogEditViewModel viewModel = new BlogEditViewModel();
+
+            viewModel.AuthorList = FilterData.Authors(_authorRepo, null);
 
             if (ID.HasValue)
             {
