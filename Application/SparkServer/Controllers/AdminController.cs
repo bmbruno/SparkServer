@@ -160,6 +160,22 @@ namespace SparkServer.Controllers
             return RedirectToAction("BlogEdit", viewModel);
         }
 
+        public ActionResult BlogDelete(int? ID)
+        {
+            if (ID.HasValue)
+            {
+                _blogRepo.Delete(ID.Value);
+
+                TempData["Success"] = "Blog deleted.";
+            }
+            else
+            {
+                TempData["Error"] = "ID required to delete blog.";
+            }
+
+            return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+        }
+
         public ActionResult Article(string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))

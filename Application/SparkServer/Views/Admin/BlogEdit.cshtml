@@ -10,6 +10,8 @@
 @if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
 {
     <h2>ID: @Model.ID</h2>
+
+    <a href="/Admin/BlogDelete?ID=@Model.ID" class="btn delete">Delete</a>
 }
 
 @using (Html.BeginForm(actionName: "BlogUpdate", controllerName: "Admin", method: FormMethod.Post))
@@ -70,7 +72,7 @@
     </div>
 
     <div>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" class="btn primary" />
     </div>
 
 }

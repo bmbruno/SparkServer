@@ -30,20 +30,6 @@
 
         <div class="content">
 
-            @if (TempData["Success"] != null)
-            {
-                <div class="status-message success">
-                    @TempData["Success"]
-                </div>
-            }
-
-            @if (TempData["Error"] != null)
-            {
-                <div class="status-message error">
-                    @TempData["Error"]
-                </div>
-            }
-
             <nav>
                 <ul class="cf">
                     <li><a href="/Admin" >Admin Home</a></li>
@@ -55,6 +41,20 @@
             </nav>
 
             <div class="container cf">
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="status-message success">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="status-message error">
+                        @TempData["Error"]
+                    </div>
+                }
 
                 @RenderBody()
 
