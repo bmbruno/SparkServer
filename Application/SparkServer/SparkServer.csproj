@@ -145,11 +145,13 @@
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
     <Compile Include="ViewModels\BlogEditViewModel.cs" />
+    <Compile Include="ViewModels\BlogListItemViewModel.cs" />
+    <Compile Include="ViewModels\BlogListViewModel.cs" />
     <Compile Include="ViewModels\BlogTagViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BlogArticleViewModel.cs" />
-    <Compile Include="ViewModels\BlogListViewModel.cs" />
+    <Compile Include="ViewModels\BlogEditListViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Global.asax.cs">

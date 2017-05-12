@@ -1,4 +1,4 @@
-﻿@model string
+﻿@model SparkServer.ViewModels.BlogEditListViewModel
 
 @{
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -18,11 +18,15 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><a href="/Admin/BlogEdit?ID=1"></a></td>
-            <td><a href="/Admin/BlogEdit?ID=1"></a></td>
-            <td><a href="/Admin/BlogEdit?ID=1"></a></td>
-            <td><a href="/Admin/BlogEdit?ID=1"></a></td>
-        </tr>
+        @foreach (var item in Model.BlogList)
+        {
+            <tr>
+                <td><a href="/Admin/BlogEdit?ID=@item.ID">@item.Title</a></td>
+                <td><a href="/Admin/BlogEdit?ID=@item.ID">@item.Subtitle</a></td>
+                <td><a href="/Admin/BlogEdit?ID=@item.ID">@item.PublishedDate</a></td>
+                <td><a href="/Admin/BlogEdit?ID=@item.ID">@item.AuthorName</a></td>
+            </tr>
+        }
+
     </tbody>
 </table>

@@ -40,9 +40,22 @@ namespace SparkServer.Controllers
 
         public ActionResult BlogList()
         {
+            BlogEditListViewModel viewModel = new BlogEditListViewModel();
 
+            var blogs = _blogRepo.GetAll().OrderByDescending(u => u.CreateDate);
 
-            return View();
+            foreach (var blog in blogs)
+            {
+                viewModel.BlogList.Add(new BlogListItemViewModel() {
+                    ID = blog.ID,
+                    Title = blog.Title,
+                    Subtitle = blog.Subtitle,
+                    PublishedDate = (blog.PublishDate.HasValue) ? blog.PublishDate.Value.ToShortDateString() : "None",
+                    AuthorName = $"{blog.Author.FirstName} {blog.Author.LastName}"
+                });
+            }
+
+            return View(viewModel);
         }
 
         public ActionResult BlogEdit(int? ID)
