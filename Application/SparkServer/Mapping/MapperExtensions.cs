@@ -110,7 +110,7 @@ namespace SparkServer.Mapping
             vm.Subtitle = blog.Subtitle;
             vm.Body = blog.Body;
             vm.ImagePath = blog.ImagePath;
-            vm.ImageThumbnailPath = blog.ImageThumbnailPath;
+            vm.ImageThumbnailPath = blog.ImageThumbnailPath ?? "/Content/Images/default_blog_icon.png";
             vm.AuthorFullName = (blog.Author != null) ? $"{blog.Author.FirstName} {blog.Author.LastName}" : string.Empty;
             vm.UniqueURL = blog.UniqueURL;
             vm.PublishDate = blog.PublishDate.Value;
