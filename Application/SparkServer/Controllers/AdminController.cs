@@ -103,6 +103,15 @@ namespace SparkServer.Controllers
         [HttpPost, ValidateInput(false)]
         public ActionResult BlogUpdate(BlogEditViewModel viewModel)
         {
+            // Check for unique URL
+            if (viewModel.Mode == EditMode.Add)
+            {
+                var existingBlog = _blogRepo.Get(u => u.UniqueURL == viewModel.UniqueURL).FirstOrDefault();
+
+                if (existingBlog != null)
+                    ModelState.AddModelError("UniqueURL", "URL is not unique!");
+            }
+
             if (ModelState.IsValid)
             {
                 if (viewModel.Mode == EditMode.Add)
@@ -157,7 +166,8 @@ namespace SparkServer.Controllers
                 TempData["Error"] = "Please correct the errors below.";
             }
 
-            return RedirectToAction("BlogEdit", viewModel);
+            viewModel.AuthorList = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+            return View("BlogEdit", viewModel);
         }
 
         public ActionResult BlogDelete(int? ID)
