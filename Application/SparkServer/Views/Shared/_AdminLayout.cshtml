@@ -1,0 +1,57 @@
+﻿@model SparkServer.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <title>@ViewBag.Title - Sitecore Spark</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Sitecore 101 for .NET Developers">
+        <meta name="author" content="Brandon Bruno">
+
+        <!--[if lt IE 9]>
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
+
+        @Styles.Render("~/Content/css")
+
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+        <!--[if lt IE 9]>
+            @Styles.Render("~/Content/ie")
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="content">
+
+            <nav>
+                <ul class="cf">
+                    <li><a href="/Admin" >Admin Home</a></li>
+                    <li><a href="/Admin/BlogList">Blog</a></li>
+                    <li><a href="/Admin/BlogTagList" class="disabled">Blog Tags</a></li>
+                    <li><a href="/Admin/ArticleList" class="disabled">Article</a></li>
+                    <li><a href="/Admin/CategoryList" class="disabled">Categories</a></li>
+                </ul>
+            </nav>
+
+            <div class="container cf">
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/scripts")
+
+        @RenderSection("PageScripts", required: false)
+
+    </body>
+</html>
