@@ -39,6 +39,20 @@ namespace SparkServer.Controllers
             return View();
         }
 
+        public ActionResult BlogEdit(int? ID)
+        {
+            if (ID.HasValue)
+            {
+                // EDIT
+            }
+            else
+            {
+                // ADD
+            }
+
+            return View();
+        }
+
         public ActionResult Article(string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))
