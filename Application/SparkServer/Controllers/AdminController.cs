@@ -40,6 +40,8 @@ namespace SparkServer.Controllers
 
         public ActionResult BlogList()
         {
+
+
             return View();
         }
 
