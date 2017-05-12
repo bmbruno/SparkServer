@@ -66,7 +66,7 @@ pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !impor
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 
-.figure {  }
+.figure { margin-bottom: 2em; }
 .figure.full { padding: 2em 0; text-align: center; }
 .figure.full > p.caption { text-align: center; }
 p + .figure.full { padding-top: 0; }
