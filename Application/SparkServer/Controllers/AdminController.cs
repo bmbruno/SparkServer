@@ -92,7 +92,24 @@ namespace SparkServer.Controllers
             {
                 if (viewModel.Mode == EditMode.Add)
                 {
-                    // TODO - write ADD code
+                    Blog blog = new Blog();
+
+                    blog.Title = viewModel.Title;
+                    blog.Subtitle = viewModel.Subtitle;
+                    blog.Body = viewModel.Body;
+                    blog.PublishDate = viewModel.PublishDate;
+                    blog.AuthorID = viewModel.AuthorID;
+                    blog.UniqueURL = viewModel.UniqueURL;
+                    blog.ImagePath = viewModel.ImagePath;
+                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+
+                    blog.Active = true;
+                    blog.CreateDate = DateTime.Now;
+
+                    _blogRepo.Create(blog);
+
+                    TempData["Success"] = "Blog created.";
+                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
                 }
                 else
                 {
