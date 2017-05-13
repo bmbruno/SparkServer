@@ -9,9 +9,11 @@ using System.Web;
 using System.Web.Mvc;
 using SparkServer.Application.Enum;
 using SparkServer.Application;
+using System.Web.Security;
 
 namespace SparkServer.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IArticleRepository<Article> _articleRepo;
@@ -33,8 +35,20 @@ namespace SparkServer.Controllers
             _authorRepo = authorRepo;
         }
 
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Login(string token)
         {
+            if (token == Config.AdminToken)
+            {
+                FormsAuthentication.SetAuthCookie("1", true);
+                return RedirectToAction(actionName: "Index", controllerName: "Admin");
+            }
+
+            return RedirectToAction(actionName: "Index", controllerName: "Home");
+        }
+
+        public ActionResult Index()
+        { 
             return View();
         }
 

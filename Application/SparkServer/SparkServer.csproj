@@ -129,6 +129,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Attributes\ValidAdminAttribute.cs" />
+    <Compile Include="Application\Config.cs" />
     <Compile Include="Application\Enum\MainMenu.cs" />
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
