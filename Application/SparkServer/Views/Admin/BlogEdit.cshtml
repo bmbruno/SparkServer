@@ -44,6 +44,7 @@
     <div class="row">
         @Html.LabelFor(x => x.PublishDate)
         @Html.TextBoxFor(x => x.PublishDate, htmlAttributes: new { @class = "half" })
+        <input type="button" value="Today" id="DateTimeToday" class="btn" />
         @Html.ValidationMessageFor(x => x.PublishDate)
     </div>
 
