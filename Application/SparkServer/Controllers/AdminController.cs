@@ -101,6 +101,7 @@ namespace SparkServer.Controllers
                 viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
 
                 viewModel.AuthorList = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+                viewModel.BlogTagList = new List<SelectListItem>() { new SelectListItem() { Value = "1", Text = "Tag A" } };
             }
             else
             {
@@ -109,6 +110,7 @@ namespace SparkServer.Controllers
                 viewModel.Mode = EditMode.Add;
 
                 viewModel.AuthorList = FilterData.Authors(_authorRepo, null);
+                viewModel.BlogTagList = new List<SelectListItem>() { new SelectListItem() { Value = "1", Text = "Tag A" } };
             }
 
             return View(model: viewModel);

@@ -73,6 +73,11 @@
     </div>
 
     <div class="row">
+        @Html.LabelFor(x => x.BlogTagList)
+        @Html.ListBoxFor(x => x.BlogTagList, Model.BlogTagList)
+    </div>
+
+    <div class="row">
         <input type="submit" value="Submit" class="btn primary" />
     </div>
 
