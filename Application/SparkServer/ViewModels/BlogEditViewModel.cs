@@ -47,18 +47,18 @@ namespace SparkServer.ViewModels
 
         public string ImageThumbnailPath { get; set; }
 
-        public List<SelectListItem> AuthorList { get; set; }
+        public List<SelectListItem> AuthorSource { get; set; }
 
         [Display(Name = "Blog Tags")]
         public List<int> BlogTags { get; set; }
 
-        public List<SelectListItem> BlogTagList { get; set; }
+        public List<SelectListItem> BlogTagSource { get; set; }
 
         public BlogEditViewModel()
         {
-            AuthorList = new List<SelectListItem>();
+            AuthorSource = new List<SelectListItem>();
             BlogTags = new List<int>();
-            BlogTagList = new List<SelectListItem>();
+            BlogTagSource = new List<SelectListItem>();
         }
     }
 }

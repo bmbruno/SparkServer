@@ -18,7 +18,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Blog.FirstOrDefault(u => u.ID == ID);
+                item = db.Blog.Include(u => u.Author).Include(u => u.BlogsTags).FirstOrDefault(u => u.ID == ID);
             }
 
             return item;

@@ -41,8 +41,6 @@ namespace SparkServer.Application
             List<SelectListItem> list = new List<SelectListItem>();
             IEnumerable<BlogTag> sourceList = repo.GetAll().OrderBy(u => u.Name);
 
-            list.Add(new SelectListItem() { Value = string.Empty, Text = string.Empty });
-
             foreach (var item in sourceList)
             {
                 SelectListItem listItem = new SelectListItem()

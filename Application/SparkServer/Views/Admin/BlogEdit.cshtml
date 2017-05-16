@@ -50,7 +50,7 @@
 
     <div class="row">
         @Html.LabelFor(x => x.AuthorID)
-        @Html.DropDownListFor(x => x.AuthorID, Model.AuthorList, htmlAttributes: new { @class = "half" })
+        @Html.DropDownListFor(x => x.AuthorID, Model.AuthorSource, htmlAttributes: new { @class = "half" })
         @Html.ValidationMessageFor(x => x.AuthorID)
     </div>
 
@@ -73,8 +73,8 @@
     </div>
 
     <div class="row">
-        @Html.LabelFor(x => x.BlogTagList)
-        @Html.ListBoxFor(x => x.BlogTagList, Model.BlogTagList)
+        @Html.LabelFor(x => x.BlogTags)
+        @Html.ListBoxFor(x => x.BlogTags, Model.BlogTagSource)
     </div>
 
     <div class="row">

@@ -66,5 +66,10 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return new List<BlogTag>();
         }
+
+        public void UpdateTagsForBlog(int blogID, IEnumerable<int> updatedList)
+        {
+            return;
+        }
     }
 }

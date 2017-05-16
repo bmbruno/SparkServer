@@ -100,8 +100,11 @@ namespace SparkServer.Controllers
                 viewModel.ImagePath = blog.ImagePath;
                 viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
 
-                viewModel.AuthorList = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-                viewModel.BlogTagList = new List<SelectListItem>() { new SelectListItem() { Value = "1", Text = "Tag A" } };
+                // TODO populate viewModel.BlogTags list from blog.BlogsTags
+                viewModel.BlogTags = blog.BlogsTags.Select(u => u.TagID).ToList();
+
+                viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
             }
             else
             {
@@ -109,8 +112,8 @@ namespace SparkServer.Controllers
 
                 viewModel.Mode = EditMode.Add;
 
-                viewModel.AuthorList = FilterData.Authors(_authorRepo, null);
-                viewModel.BlogTagList = new List<SelectListItem>() { new SelectListItem() { Value = "1", Text = "Tag A" } };
+                viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
+                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
             }
 
             return View(model: viewModel);
@@ -147,7 +150,8 @@ namespace SparkServer.Controllers
                     blog.CreateDate = DateTime.Now;
 
                     _blogRepo.Create(blog);
-
+                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
+                    
                     TempData["Success"] = "Blog created.";
                     return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
                 }
@@ -171,6 +175,7 @@ namespace SparkServer.Controllers
                     blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
 
                     _blogRepo.Update(blog);
+                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
 
                     TempData["Success"] = "Blog updated.";
                     return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
@@ -182,7 +187,9 @@ namespace SparkServer.Controllers
                 TempData["Error"] = "Please correct the errors below.";
             }
 
-            viewModel.AuthorList = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+            viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+            viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+
             return View("BlogEdit", viewModel);
         }
 

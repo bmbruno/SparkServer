@@ -109,5 +109,32 @@ namespace SparkServer.Infrastructure.Repositories
             
             return results;
         }
+
+        public void UpdateTagsForBlog(int blogID, IEnumerable<int> updatedList)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var oldTags = db.BlogsTags.Where(u => u.BlogID == blogID);
+
+                if (oldTags != null)
+                    db.BlogsTags.RemoveRange(oldTags);
+
+                DateTime createDate = DateTime.Now;
+
+                foreach (var newID in updatedList)
+                {
+                    BlogsTags newTag = new BlogsTags() {
+                        BlogID = blogID,
+                        TagID = newID,
+                        Active = true,
+                        CreateDate = createDate
+                    };
+
+                    db.BlogsTags.Add(newTag);
+                }
+
+                db.SaveChanges();
+            }
+        }
     }
 }
