@@ -67,14 +67,22 @@
     </div>
 
     <div class="row">
+        <p class="mono inline-code">/media/blog/icons/XXXXXX.png</p>
+    </div>
+
+    <div class="row">
         @Html.LabelFor(x => x.ImagePath)
         @Html.TextBoxFor(x => x.ImagePath)
         @Html.ValidationMessageFor(x => x.ImagePath)
     </div>
 
     <div class="row">
+        <p class="mono inline-code">/media/blog/201706/22_XXXXX.png</p>
+    </div>
+
+    <div class="row">
         @Html.LabelFor(x => x.BlogTags)
-        @Html.ListBoxFor(x => x.BlogTags, Model.BlogTagSource)
+        @Html.ListBoxFor(x => x.BlogTags, Model.BlogTagSource, htmlAttributes: new { @class = "half", style = "height: 150px;" })
     </div>
 
     <div class="row">
