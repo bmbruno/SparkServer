@@ -52,6 +52,8 @@ namespace SparkServer.Controllers
             return View();
         }
 
+        #region Blog
+
         public ActionResult BlogList()
         {
             BlogEditListViewModel viewModel = new BlogEditListViewModel();
@@ -208,6 +210,132 @@ namespace SparkServer.Controllers
 
             return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
         }
+
+        #endregion
+
+        #region BlogTags
+
+        public ActionResult BlogTagList()
+        {
+            BlogTagEditListViewModel viewModel = new BlogTagEditListViewModel();
+
+            var allTags = _blogTagRepo.GetAll().OrderBy(u => u.Name);
+
+            foreach (var tag in allTags)
+            {
+                viewModel.BlogTagList.Add(new BlogTagListItemViewModel()
+                {
+                    ID = tag.ID,
+                    Name = tag.Name
+                });
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult BlogTagEdit(int? ID)
+        {
+            BlogTagEditViewModel viewModel = new BlogTagEditViewModel();
+
+            if (ID.HasValue)
+            {
+                // EDIT
+
+                viewModel.Mode = EditMode.Edit;
+
+                var blog = _blogTagRepo.Get(ID: ID.Value);
+
+                if (blog == null)
+                {
+                    TempData["Error"] = $"No Blog Tag found with ID {ID.Value}.";
+                    return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                }
+
+                viewModel.ID = blog.ID;
+                viewModel.Name = blog.Name;
+            }
+            else
+            {
+                // ADD
+
+                viewModel.Mode = EditMode.Add;
+            }
+
+            return View(model: viewModel);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult BlogTagUpdate(BlogTagEditViewModel viewModel)
+        {
+            // Check for existing Name
+            if (viewModel.Mode == EditMode.Add)
+            {
+                var existingBlog = _blogTagRepo.Get(u => u.Name == viewModel.Name).FirstOrDefault();
+
+                if (existingBlog != null)
+                    ModelState.AddModelError("Name", "Name is not unique!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Mode == EditMode.Add)
+                {
+                    BlogTag blogTag = new BlogTag();
+
+                    blogTag.Name = viewModel.Name;
+
+                    blogTag.Active = true;
+                    blogTag.CreateDate = DateTime.Now;
+
+                    _blogTagRepo.Create(blogTag);
+
+                    TempData["Success"] = "Blog Tag created.";
+                    return RedirectToAction(actionName: "BlogTagList", controllerName: "Admin");
+                }
+                else
+                {
+                    var blogTag = _blogTagRepo.Get(viewModel.ID);
+
+                    if (blogTag == null)
+                    {
+                        TempData["Error"] = $"No Blog Tag found with ID {viewModel.ID}.";
+                        return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                    }
+
+                    blogTag.Name = viewModel.Name;
+
+                    _blogTagRepo.Update(blogTag);
+
+                    TempData["Success"] = "Blog Tag updated.";
+                    return RedirectToAction(actionName: "BlogTagList", controllerName: "Admin");
+                }
+
+            }
+            else
+            {
+                TempData["Error"] = "Please correct the errors below.";
+            }
+
+            return View("BlogTagEdit", viewModel);
+        }
+
+        public ActionResult BlogTagDelete(int? ID)
+        {
+            if (ID.HasValue)
+            {
+                _blogTagRepo.Delete(ID.Value);
+
+                TempData["Success"] = "Blog tag deleted.";
+            }
+            else
+            {
+                TempData["Error"] = "ID required to delete blog tag.";
+            }
+
+            return RedirectToAction(actionName: "BlogTagList", controllerName: "Admin");
+        }
+
+        #endregion
 
         public ActionResult Article(string uniqueURL)
         {
