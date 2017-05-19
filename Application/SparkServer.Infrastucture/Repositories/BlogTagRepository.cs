@@ -66,13 +66,11 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                BlogTag toUpdate = db.BlogTag.FirstOrDefault(u => u.ID == updateItem.ID);
+                db.BlogTag.Attach(updateItem);
 
-                if (toUpdate == null)
-                    throw new Exception($"Could not find BlogTag with ID of {updateItem.ID}");
+                var entry = db.Entry(updateItem);
+                entry.Property(e => e.Name).IsModified = true;
 
-                toUpdate = updateItem;
-                db.Entry(toUpdate).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }

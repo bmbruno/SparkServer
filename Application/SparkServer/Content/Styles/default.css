@@ -137,6 +137,11 @@ footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 
 footer.page p { margin-bottom: 1em; text-align: left; }
 footer.page p:last-of-type { margin-bottom: 0; }
 
+.status-message { padding: 1em; margin: 2em 0; font-weight: bold; color: #FFF; text-shadow: 2px 2px 0 #000; border-radius: 3px; }
+.status-message.success { background-color: #328028; }
+.status-message.warning { background-color: #b45e02; }
+.status-message.error { background-color: #871313; }
+
 .field-validation-error { margin: 1em 0; display: block; background-color: #980000; padding: 0.5em; border-radius: 4px; text-shadow: 1px 1px 0 #000; color: #fff2ac; }
 
 @media (min-width: 600px)
