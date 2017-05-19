@@ -102,6 +102,8 @@ namespace SparkServer.Controllers
                 viewModel.ID = article.ID;
                 viewModel.Title = article.Title;
                 viewModel.Subtitle = article.Subtitle;
+                viewModel.CategoryID = article.CategoryID;
+                viewModel.SitecoreVersionID = article.SitecoreVersionID;
                 viewModel.Body = article.Body;
                 viewModel.PublishDate = article.PublishDate;
                 viewModel.AuthorID = article.AuthorID;
@@ -126,14 +128,14 @@ namespace SparkServer.Controllers
         }
 
         [HttpPost, ValidateInput(false)]
-        public ActionResult ArticleUpdate(BlogEditViewModel viewModel)
+        public ActionResult ArticleUpdate(ArticleEditViewModel viewModel)
         {
             // Check for unique URL
             if (viewModel.Mode == EditMode.Add)
             {
-                var existingBlog = _blogRepo.Get(u => u.UniqueURL == viewModel.UniqueURL).FirstOrDefault();
+                var existingArticle = _articleRepo.Get(u => u.UniqueURL == viewModel.UniqueURL).FirstOrDefault();
 
-                if (existingBlog != null)
+                if (existingArticle != null)
                     ModelState.AddModelError("UniqueURL", "URL is not unique!");
             }
 
@@ -141,50 +143,48 @@ namespace SparkServer.Controllers
             {
                 if (viewModel.Mode == EditMode.Add)
                 {
-                    Blog blog = new Blog();
+                    Article article = new Article();
 
-                    blog.Title = viewModel.Title;
-                    blog.Subtitle = viewModel.Subtitle;
-                    blog.Body = viewModel.Body;
-                    blog.PublishDate = viewModel.PublishDate;
-                    blog.AuthorID = viewModel.AuthorID;
-                    blog.UniqueURL = viewModel.UniqueURL;
-                    blog.ImagePath = viewModel.ImagePath;
-                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+                    article.Title = viewModel.Title;
+                    article.Subtitle = viewModel.Subtitle;
+                    article.CategoryID = viewModel.CategoryID;
+                    article.SitecoreVersionID = viewModel.SitecoreVersionID;
+                    article.Body = viewModel.Body;
+                    article.PublishDate = viewModel.PublishDate;
+                    article.AuthorID = viewModel.AuthorID;
+                    article.UniqueURL = viewModel.UniqueURL;
 
-                    blog.Active = true;
-                    blog.CreateDate = DateTime.Now;
+                    article.Active = true;
+                    article.CreateDate = DateTime.Now;
 
-                    _blogRepo.Create(blog);
-                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
+                    _articleRepo.Create(article);
 
-                    TempData["Success"] = "Blog created.";
-                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                    TempData["Success"] = "Article created.";
+                    return RedirectToAction(actionName: "ArticleList", controllerName: "Admin");
                 }
                 else
                 {
-                    var blog = _blogRepo.Get(viewModel.ID);
+                    var article = _articleRepo.Get(viewModel.ID);
 
-                    if (blog == null)
+                    if (article == null)
                     {
-                        TempData["Error"] = $"No blog found with ID {viewModel.ID}.";
+                        TempData["Error"] = $"No Article found with ID {viewModel.ID}.";
                         return RedirectToAction(actionName: "Index", controllerName: "Admin");
                     }
 
-                    blog.Title = viewModel.Title;
-                    blog.Subtitle = viewModel.Subtitle;
-                    blog.Body = viewModel.Body;
-                    blog.PublishDate = viewModel.PublishDate;
-                    blog.AuthorID = viewModel.AuthorID;
-                    blog.UniqueURL = viewModel.UniqueURL;
-                    blog.ImagePath = viewModel.ImagePath;
-                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+                    article.Title = viewModel.Title;
+                    article.Subtitle = viewModel.Subtitle;
+                    article.CategoryID = viewModel.CategoryID;
+                    article.SitecoreVersionID = viewModel.SitecoreVersionID;
+                    article.Body = viewModel.Body;
+                    article.PublishDate = viewModel.PublishDate;
+                    article.AuthorID = viewModel.AuthorID;
+                    article.UniqueURL = viewModel.UniqueURL;
 
-                    _blogRepo.Update(blog);
-                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
+                    _articleRepo.Update(article);
 
-                    TempData["Success"] = "Blog updated.";
-                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                    TempData["Success"] = "Article updated.";
+                    return RedirectToAction(actionName: "ArticleList", controllerName: "Admin");
                 }
 
             }
@@ -194,9 +194,10 @@ namespace SparkServer.Controllers
             }
 
             viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-            viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+            viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
+            viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, viewModel.SitecoreVersionID);
 
-            return View("BlogEdit", viewModel);
+            return View("ArticleEdit", viewModel);
         }
 
         public ActionResult ArticleDelete(int? ID)

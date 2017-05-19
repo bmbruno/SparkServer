@@ -323,6 +323,7 @@
     <Content Include="Views\Admin\BlogTagEdit.cshtml" />
     <Content Include="Views\Admin\BlogTagList.cshtml" />
     <Content Include="Views\Admin\ArticleList.cshtml" />
+    <Content Include="Views\Admin\ArticleEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

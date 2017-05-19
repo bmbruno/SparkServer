@@ -128,10 +128,12 @@ form { margin: 1em 0; }
 .row label { display: block; font-size: 0.85em; font-weight: bold; margin-bottom: 0.25em; }
 .row input[type="text"],
 .row textarea,
-.row select { width: 100%; padding: 0.5em; border-radius: 4px; border: 1px solid #333; font-size: 1em; font-family: monospace; }
+.row select { width: 100%; padding: 0.75em; border-radius: 4px; border: 1px solid #333; font-size: 1em; font-family: monospace; }
 .row input[type="text"].half,
 .row textarea.half,
 .row select.half { width: 50%; }
+
+input:focus, select:focus, textarea:focus { box-shadow: inset 2px 2px 2px #444; background-color: #DDD; }
 
 footer.page { margin-top: 2em; padding: 2em; background-color: #EEE; font-size: 0.8em; }
 footer.page p { margin-bottom: 1em; text-align: left; }
