@@ -80,7 +80,7 @@ namespace SparkServer.Controllers
 
         public ActionResult ArticleEdit(int? ID)
         {
-            BlogEditViewModel viewModel = new BlogEditViewModel();
+            ArticleEditViewModel viewModel = new ArticleEditViewModel();
 
             if (ID.HasValue)
             {
@@ -88,29 +88,25 @@ namespace SparkServer.Controllers
 
                 viewModel.Mode = EditMode.Edit;
 
-                var blog = _blogRepo.Get(ID: ID.Value);
+                var article = _articleRepo.Get(ID: ID.Value);
 
-                if (blog == null)
+                if (article == null)
                 {
-                    TempData["Error"] = $"No blog found with ID {ID.Value}.";
+                    TempData["Error"] = $"No Article found with ID {ID.Value}.";
                     return RedirectToAction(actionName: "Index", controllerName: "Admin");
                 }
 
-                viewModel.ID = blog.ID;
-                viewModel.Title = blog.Title;
-                viewModel.Subtitle = blog.Subtitle;
-                viewModel.Body = blog.Body;
-                viewModel.PublishDate = blog.PublishDate;
-                viewModel.AuthorID = blog.AuthorID;
-                viewModel.UniqueURL = blog.UniqueURL;
-                viewModel.ImagePath = blog.ImagePath;
-                viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
-
-                // TODO populate viewModel.BlogTags list from blog.BlogsTags
-                viewModel.BlogTags = blog.BlogsTags.Select(u => u.TagID).ToList();
+                viewModel.ID = article.ID;
+                viewModel.Title = article.Title;
+                viewModel.Subtitle = article.Subtitle;
+                viewModel.Body = article.Body;
+                viewModel.PublishDate = article.PublishDate;
+                viewModel.AuthorID = article.AuthorID;
+                viewModel.UniqueURL = article.UniqueURL;
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+                viewModel.CategorySource = null;
+                viewModel.SitecoreVersionSource = null;
             }
             else
             {
@@ -119,7 +115,8 @@ namespace SparkServer.Controllers
                 viewModel.Mode = EditMode.Add;
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
-                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+                viewModel.CategorySource = null;
+                viewModel.SitecoreVersionSource = null;
             }
 
             return View(model: viewModel);
