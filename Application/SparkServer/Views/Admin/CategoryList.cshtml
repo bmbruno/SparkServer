@@ -1,0 +1,29 @@
+﻿@model SparkServer.ViewModels.CategoryEditListViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Category List";
+}
+
+<h1>Blog List</h1>
+
+<a href="/Admin/CategoryEdit" class="btn">Add New Category</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sort Order</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CategoryList)
+        {
+            <tr>
+                <td><a href="/Admin/CategoryEdit?ID=@item.ID">@item.Name</a></td>
+                <td><a href="/Admin/CategoryEdit?ID=@item.ID">@item.SortOrder</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>

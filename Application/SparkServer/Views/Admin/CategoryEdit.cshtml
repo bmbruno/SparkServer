@@ -1,0 +1,42 @@
+﻿@model SparkServer.ViewModels.CategoryEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Category Edit";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+{
+    <h2>ID: @Model.ID</h2>
+
+    <a href="/Admin/CategoryDelete?ID=@Model.ID" class="btn delete">Delete</a>
+}
+
+@using (Html.BeginForm(actionName: "CategoryUpdate", controllerName: "Admin", method: FormMethod.Post))
+{
+    if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+    {
+        @Html.HiddenFor(x => x.ID)
+    }
+
+    @Html.HiddenFor(x => x.Mode)
+
+    <div class="row">
+        @Html.LabelFor(x => x.Name)
+        @Html.TextBoxFor(x => x.Name)
+        @Html.ValidationMessageFor(x => x.Name)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.SortOrder)
+        @Html.TextBoxFor(x => x.SortOrder, htmlAttributes: new { @class = "quarter" })
+        @Html.ValidationMessageFor(x => x.SortOrder)
+    </div>
+
+    <div class="row">
+        <input type="submit" value="Submit" class="btn primary" />
+    </div>
+
+}

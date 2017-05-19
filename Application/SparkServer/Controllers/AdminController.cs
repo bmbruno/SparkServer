@@ -503,6 +503,133 @@ namespace SparkServer.Controllers
 
         #endregion
 
+        #region Categories
+
+        public ActionResult CategoryList()
+        {
+            CategoryEditListViewModel viewModel = new CategoryEditListViewModel();
+
+            var allTags = _categoryRepo.GetAll().OrderBy(u => u.SortOrder);
+
+            foreach (var cat in allTags)
+            {
+                viewModel.CategoryList.Add(new CategoryListItemViewModel()
+                {
+                    ID = cat.ID,
+                    Name = cat.Name,
+                    SortOrder = cat.SortOrder.Value
+                });
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult CategoryEdit(int? ID)
+        {
+            CategoryEditViewModel viewModel = new CategoryEditViewModel();
+
+            if (ID.HasValue)
+            {
+                // EDIT
+
+                viewModel.Mode = EditMode.Edit;
+                
+                var category = _categoryRepo.Get(ID: ID.Value);
+
+                if (category == null)
+                {
+                    TempData["Error"] = $"No Category found with ID {ID.Value}.";
+                    return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                }
+
+                viewModel.ID = category.ID;
+                viewModel.Name = category.Name;
+                viewModel.SortOrder = category.SortOrder.Value;
+            }
+            else
+            {
+                // ADD
+
+                viewModel.Mode = EditMode.Add;
+            }
+
+            return View(model: viewModel);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult CategoryUpdate(CategoryEditViewModel viewModel)
+        {
+            // Check for existing Name
+            if (viewModel.Mode == EditMode.Add)
+            {
+                var existingCategory = _categoryRepo.Get(u => u.Name == viewModel.Name).FirstOrDefault();
+
+                if (existingCategory != null)
+                    ModelState.AddModelError("Name", "Name is not unique!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Mode == EditMode.Add)
+                {
+                    Category category = new Category();
+
+                    category.Name = viewModel.Name;
+                    category.SortOrder = viewModel.SortOrder;
+
+                    category.Active = true;
+                    category.CreateDate = DateTime.Now;
+                    _categoryRepo.Create(category);
+
+                    TempData["Success"] = "Category created.";
+                    return RedirectToAction(actionName: "CategoryList", controllerName: "Admin");
+                }
+                else
+                {
+                    var category = _categoryRepo.Get(viewModel.ID);
+
+                    if (category == null)
+                    {
+                        TempData["Error"] = $"No Category found with ID {viewModel.ID}.";
+                        return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                    }
+
+                    category.Name = viewModel.Name;
+                    category.SortOrder = viewModel.SortOrder;
+
+                    _categoryRepo.Update(category);
+
+                    TempData["Success"] = "Category updated.";
+                    return RedirectToAction(actionName: "CategoryList", controllerName: "Admin");
+                }
+
+            }
+            else
+            {
+                TempData["Error"] = "Please correct the errors below.";
+            }
+
+            return View("CategoryEdit", viewModel);
+        }
+
+        public ActionResult CategoryDelete(int? ID)
+        {
+            if (ID.HasValue)
+            {
+                _categoryRepo.Delete(ID.Value);
+
+                TempData["Success"] = "Blog tag deleted.";
+            }
+            else
+            {
+                TempData["Error"] = "ID required to delete blog tag.";
+            }
+
+            return RedirectToAction(actionName: "CategoryList", controllerName: "Admin");
+        }
+
+        #endregion
+
         public ActionResult Article(string uniqueURL)
         {
             if (String.IsNullOrEmpty(uniqueURL))

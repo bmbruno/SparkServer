@@ -132,6 +132,9 @@ form { margin: 1em 0; }
 .row input[type="text"].half,
 .row textarea.half,
 .row select.half { width: 50%; }
+.row input[type="text"].quarter,
+.row textarea.quarter,
+.row select.quarter { width: 25%; }
 
 input:focus, select:focus, textarea:focus { box-shadow: inset 2px 2px 2px #444; background-color: #DDD; }
 

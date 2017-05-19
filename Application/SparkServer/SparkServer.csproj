@@ -148,8 +148,11 @@
     <Compile Include="Models\CategoryWithArticles.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CategoryEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
+    <Compile Include="ViewModels\CategoryListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogEditViewModel.cs" />
@@ -324,6 +327,8 @@
     <Content Include="Views\Admin\BlogTagList.cshtml" />
     <Content Include="Views\Admin\ArticleList.cshtml" />
     <Content Include="Views\Admin\ArticleEdit.cshtml" />
+    <Content Include="Views\Admin\CategoryEdit.cshtml" />
+    <Content Include="Views\Admin\CategoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
