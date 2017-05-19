@@ -21,18 +21,21 @@ namespace SparkServer.Controllers
         private IBlogTagRepository<BlogTag> _blogTagRepo;
         private ICategoryRepository<Category> _categoryRepo;
         private IAuthorRepository<Author> _authorRepo;
+        private ISitecoreVersionRepository<SitecoreVersion> _sitecoreVersionRepo;
 
         public AdminController(IArticleRepository<Article> articleRepo,
                                IBlogRepository<Blog> blogRepo,
                                IBlogTagRepository<BlogTag> blogTagRepo,
                                ICategoryRepository<Category> categoryRepo,
-                               IAuthorRepository<Author> authorRepo)
+                               IAuthorRepository<Author> authorRepo,
+                               ISitecoreVersionRepository<SitecoreVersion> sitecoreVersionRepo)
         {
             _articleRepo = articleRepo;
             _blogRepo = blogRepo;
             _blogTagRepo = blogTagRepo;
             _categoryRepo = categoryRepo;
             _authorRepo = authorRepo;
+            _sitecoreVersionRepo = sitecoreVersionRepo;
         }
 
         [AllowAnonymous]
@@ -105,8 +108,8 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = article.UniqueURL;
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-                viewModel.CategorySource = null;
-                viewModel.SitecoreVersionSource = null;
+                viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
+                viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, viewModel.SitecoreVersionID);
             }
             else
             {
@@ -115,8 +118,8 @@ namespace SparkServer.Controllers
                 viewModel.Mode = EditMode.Add;
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
-                viewModel.CategorySource = null;
-                viewModel.SitecoreVersionSource = null;
+                viewModel.CategorySource = FilterData.Categories(_categoryRepo, null);
+                viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, null);
             }
 
             return View(model: viewModel);
