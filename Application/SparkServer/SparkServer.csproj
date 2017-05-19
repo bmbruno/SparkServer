@@ -146,11 +146,13 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogEditViewModel.cs" />
-    <Compile Include="ViewModels\BlogListItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogListViewModel.cs" />
     <Compile Include="ViewModels\BlogTagViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
@@ -319,6 +321,7 @@
     <Content Include="Views\Admin\BlogEdit.cshtml" />
     <Content Include="Views\Admin\BlogTagEdit.cshtml" />
     <Content Include="Views\Admin\BlogTagList.cshtml" />
+    <Content Include="Views\Admin\ArticleList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

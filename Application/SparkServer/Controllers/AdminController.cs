@@ -52,6 +52,171 @@ namespace SparkServer.Controllers
             return View();
         }
 
+        #region Article
+
+        public ActionResult ArticleList()
+        {
+            ArticleEditListViewModel viewModel = new ArticleEditListViewModel();
+
+            var articles = _articleRepo.GetAll().OrderByDescending(u => u.Category.SortOrder).ThenBy(u => u.CreateDate);
+
+            foreach (var article in articles)
+            {
+                viewModel.ArticleList.Add(new ArticleListItemViewModel()
+                {
+                    ID = article.ID,
+                    Title = article.Title,
+                    Subtitle = article.Subtitle,
+                    CategoryName = $"{article.Category.SortOrder} - {article.Category.Name}",
+                    CategorySortOrder = (article.Category.SortOrder.HasValue) ? article.Category.SortOrder.Value : 0,
+                    SitecoreVersion = article.SitecoreVersion.Version,
+                    PublishedDate = (article.PublishDate.HasValue) ? article.PublishDate.Value.ToShortDateString() : "None",
+                    AuthorName = $"{article.Author.FirstName} {article.Author.LastName}"
+                });
+            }
+
+            return View(viewModel);
+        }
+
+        public ActionResult ArticleEdit(int? ID)
+        {
+            BlogEditViewModel viewModel = new BlogEditViewModel();
+
+            if (ID.HasValue)
+            {
+                // EDIT
+
+                viewModel.Mode = EditMode.Edit;
+
+                var blog = _blogRepo.Get(ID: ID.Value);
+
+                if (blog == null)
+                {
+                    TempData["Error"] = $"No blog found with ID {ID.Value}.";
+                    return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                }
+
+                viewModel.ID = blog.ID;
+                viewModel.Title = blog.Title;
+                viewModel.Subtitle = blog.Subtitle;
+                viewModel.Body = blog.Body;
+                viewModel.PublishDate = blog.PublishDate;
+                viewModel.AuthorID = blog.AuthorID;
+                viewModel.UniqueURL = blog.UniqueURL;
+                viewModel.ImagePath = blog.ImagePath;
+                viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
+
+                // TODO populate viewModel.BlogTags list from blog.BlogsTags
+                viewModel.BlogTags = blog.BlogsTags.Select(u => u.TagID).ToList();
+
+                viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+            }
+            else
+            {
+                // ADD
+
+                viewModel.Mode = EditMode.Add;
+
+                viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
+                viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+            }
+
+            return View(model: viewModel);
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public ActionResult ArticleUpdate(BlogEditViewModel viewModel)
+        {
+            // Check for unique URL
+            if (viewModel.Mode == EditMode.Add)
+            {
+                var existingBlog = _blogRepo.Get(u => u.UniqueURL == viewModel.UniqueURL).FirstOrDefault();
+
+                if (existingBlog != null)
+                    ModelState.AddModelError("UniqueURL", "URL is not unique!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                if (viewModel.Mode == EditMode.Add)
+                {
+                    Blog blog = new Blog();
+
+                    blog.Title = viewModel.Title;
+                    blog.Subtitle = viewModel.Subtitle;
+                    blog.Body = viewModel.Body;
+                    blog.PublishDate = viewModel.PublishDate;
+                    blog.AuthorID = viewModel.AuthorID;
+                    blog.UniqueURL = viewModel.UniqueURL;
+                    blog.ImagePath = viewModel.ImagePath;
+                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+
+                    blog.Active = true;
+                    blog.CreateDate = DateTime.Now;
+
+                    _blogRepo.Create(blog);
+                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
+
+                    TempData["Success"] = "Blog created.";
+                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                }
+                else
+                {
+                    var blog = _blogRepo.Get(viewModel.ID);
+
+                    if (blog == null)
+                    {
+                        TempData["Error"] = $"No blog found with ID {viewModel.ID}.";
+                        return RedirectToAction(actionName: "Index", controllerName: "Admin");
+                    }
+
+                    blog.Title = viewModel.Title;
+                    blog.Subtitle = viewModel.Subtitle;
+                    blog.Body = viewModel.Body;
+                    blog.PublishDate = viewModel.PublishDate;
+                    blog.AuthorID = viewModel.AuthorID;
+                    blog.UniqueURL = viewModel.UniqueURL;
+                    blog.ImagePath = viewModel.ImagePath;
+                    blog.ImageThumbnailPath = viewModel.ImageThumbnailPath;
+
+                    _blogRepo.Update(blog);
+                    _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
+
+                    TempData["Success"] = "Blog updated.";
+                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                }
+
+            }
+            else
+            {
+                TempData["Error"] = "Please correct the errors below.";
+            }
+
+            viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
+            viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
+
+            return View("BlogEdit", viewModel);
+        }
+
+        public ActionResult ArticleDelete(int? ID)
+        {
+            if (ID.HasValue)
+            {
+                _blogRepo.Delete(ID.Value);
+
+                TempData["Success"] = "Blog deleted.";
+            }
+            else
+            {
+                TempData["Error"] = "ID required to delete blog.";
+            }
+
+            return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+        }
+
+        #endregion
+
         #region Blog
 
         public ActionResult BlogList()

@@ -35,7 +35,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.Where(whereClause).ToList();
+                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).Where(whereClause).ToList();
             }
 
             return results;
@@ -47,7 +47,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.ToList();
+                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).ToList();
             }
 
             return results;
@@ -68,13 +68,18 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                Article toUpdate = db.Article.FirstOrDefault(u => u.ID == updateItem.ID);
+                db.Article.Attach(updateItem);
 
-                if (toUpdate == null)
-                    throw new Exception($"Could not find Article with ID of {updateItem.ID}");
+                var entry = db.Entry(updateItem);
+                entry.Property(e => e.Title).IsModified = true;
+                entry.Property(e => e.Subtitle).IsModified = true;
+                entry.Property(e => e.CategoryID).IsModified = true;
+                entry.Property(e => e.Body).IsModified = true;
+                entry.Property(e => e.SitecoreVersionID).IsModified = true;
+                entry.Property(e => e.PublishDate).IsModified = true;
+                entry.Property(e => e.AuthorID).IsModified = true;
+                entry.Property(e => e.UniqueURL).IsModified = true;
 
-                toUpdate = updateItem;
-                db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }

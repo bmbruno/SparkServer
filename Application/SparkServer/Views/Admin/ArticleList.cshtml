@@ -1,0 +1,39 @@
+﻿@model SparkServer.ViewModels.ArticleEditListViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Article List";
+}
+
+<h1>Article List</h1>
+
+<a href="/Admin/BlogEdit" class="btn">Add New Article</a>
+
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Category</th>
+            <th>Sitecore Version</th>
+            <th>Published</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.ArticleList)
+        {
+            <tr>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.Title</a></td>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.Subtitle</a></td>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.CategoryName</a></td>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.SitecoreVersion</a></td>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.PublishedDate</a></td>
+                <td><a href="/Admin/ArticleEdit?ID=@item.ID">@item.AuthorName</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
