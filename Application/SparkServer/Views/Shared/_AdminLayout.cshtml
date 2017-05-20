@@ -1,0 +1,72 @@
+﻿@model SparkServer.ViewModels.BaseViewModel
+
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <title>@ViewBag.Title - Sitecore Spark</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="description" content="Sitecore 101 for .NET Developers">
+        <meta name="author" content="Brandon Bruno">
+
+        <!--[if lt IE 9]>
+            @Scripts.Render("~/bundles/html5shiv")
+        <![endif]-->
+
+        @Styles.Render("~/Content/css")
+
+        <link rel="shortcut icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+        <!--[if lt IE 9]>
+            @Styles.Render("~/Content/ie")
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="content admin">
+
+            <nav>
+                <ul class="cf">
+                    <li><a href="/Admin" >Admin Home</a></li>
+                    <li><a href="/Admin/BlogList">Blog</a></li>
+                    <li><a href="/Admin/BlogTagList">Blog Tags</a></li>
+                    <li><a href="/Admin/ArticleList">Article</a></li>
+                    <li><a href="/Admin/CategoryList">Categories</a></li>
+                </ul>
+            </nav>
+
+            <div class="container cf">
+
+                @if (TempData["Success"] != null)
+                {
+                    <div class="status-message success">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="status-message error">
+                        @TempData["Error"]
+                    </div>
+                }
+
+                @RenderBody()
+
+            </div>
+
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/scripts")
+        @Scripts.Render("~/bundles/admin")
+
+        @RenderSection("PageScripts", required: false)
+
+    </body>
+</html>

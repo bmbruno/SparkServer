@@ -1,0 +1,79 @@
+﻿@model SparkServer.ViewModels.ArticleEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Article Edit";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+{
+    <h2>ID: @Model.ID</h2>
+
+    <a href="/Admin/ArticleDelete?ID=@Model.ID" class="btn delete">Delete</a>
+}
+
+@using (Html.BeginForm(actionName: "ArticleUpdate", controllerName: "Admin", method: FormMethod.Post))
+{
+    if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+    {
+        @Html.HiddenFor(x => x.ID)
+    }
+
+    @Html.HiddenFor(x => x.Mode)
+
+    <div class="row">
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title)
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.Subtitle)
+        @Html.TextBoxFor(x => x.Subtitle)
+        @Html.ValidationMessageFor(x => x.Subtitle)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.CategoryID)
+        @Html.DropDownListFor(x => x.CategoryID, Model.CategorySource, htmlAttributes: new { @class = "half" })
+        @Html.ValidationMessageFor(x => x.CategoryID)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.SitecoreVersionID)
+        @Html.DropDownListFor(x => x.SitecoreVersionID, Model.SitecoreVersionSource, htmlAttributes: new { @class = "half" })
+        @Html.ValidationMessageFor(x => x.SitecoreVersionID)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.Body)
+        @Html.TextAreaFor(x => x.Body, htmlAttributes: new { style = "height: 400px" })
+        @Html.ValidationMessageFor(x => x.Body)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.PublishDate)
+        @Html.TextBoxFor(x => x.PublishDate, htmlAttributes: new { @class = "half" })
+        <input type="button" value="Today" id="DateTimeToday" class="btn" />
+        @Html.ValidationMessageFor(x => x.PublishDate)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.AuthorID)
+        @Html.DropDownListFor(x => x.AuthorID, Model.AuthorSource, htmlAttributes: new { @class = "half" })
+        @Html.ValidationMessageFor(x => x.AuthorID)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.UniqueURL)
+        @Html.TextBoxFor(x => x.UniqueURL, htmlAttributes: new { @class = "half" })
+        @Html.ValidationMessageFor(x => x.UniqueURL)
+    </div>
+
+    <div class="row">
+        <input type="submit" value="Submit" class="btn primary" />
+    </div>
+
+}

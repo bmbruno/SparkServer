@@ -65,13 +65,12 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                Category toUpdate = db.Category.FirstOrDefault(u => u.ID == updateItem.ID);
+                db.Category.Attach(updateItem);
 
-                if (toUpdate == null)
-                    throw new Exception($"Could not find Category with ID of {updateItem.ID}");
+                var entry = db.Entry(updateItem);
+                entry.Property(e => e.Name).IsModified = true;
+                entry.Property(e => e.SortOrder).IsModified = true;
 
-                toUpdate = updateItem;
-                db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }

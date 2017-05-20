@@ -18,7 +18,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Blog.FirstOrDefault(u => u.ID == ID);
+                item = db.Blog.Include(u => u.Author).Include(u => u.BlogsTags).FirstOrDefault(u => u.ID == ID);
             }
 
             return item;
@@ -66,13 +66,17 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                Blog toUpdate = db.Blog.FirstOrDefault(u => u.ID == updateItem.ID);
+                db.Blog.Attach(updateItem);
 
-                if (toUpdate == null)
-                    throw new Exception($"Could not find Blog with ID of {updateItem.ID}");
+                var entry = db.Entry(updateItem);
+                entry.Property(e => e.Title).IsModified = true;
+                entry.Property(e => e.Body).IsModified = true;
+                entry.Property(e => e.PublishDate).IsModified = true;
+                entry.Property(e => e.AuthorID).IsModified = true;
+                entry.Property(e => e.UniqueURL).IsModified = true;
+                entry.Property(e => e.ImagePath).IsModified = true;
+                entry.Property(e => e.ImageThumbnailPath).IsModified = true;
 
-                toUpdate = updateItem;
-                db.Entry(toUpdate).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
             }
         }

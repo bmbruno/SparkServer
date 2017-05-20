@@ -58,6 +58,16 @@ namespace SparkServer
             );
 
             //
+            // Admin
+            //
+
+            routes.MapRoute(
+                name: "Admin",
+                url: "admin/{action}",
+                defaults: new { controller = "Admin", action = "Index" }
+            );
+
+            //
             // Misc
             //
 

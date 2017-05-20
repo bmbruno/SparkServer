@@ -66,13 +66,11 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                BlogTag toUpdate = db.BlogTag.FirstOrDefault(u => u.ID == updateItem.ID);
+                db.BlogTag.Attach(updateItem);
 
-                if (toUpdate == null)
-                    throw new Exception($"Could not find BlogTag with ID of {updateItem.ID}");
+                var entry = db.Entry(updateItem);
+                entry.Property(e => e.Name).IsModified = true;
 
-                toUpdate = updateItem;
-                db.Entry(toUpdate).State = EntityState.Modified;
                 db.SaveChanges();
             }
         }
@@ -108,6 +106,33 @@ namespace SparkServer.Infrastructure.Repositories
             }
             
             return results;
+        }
+
+        public void UpdateTagsForBlog(int blogID, IEnumerable<int> updatedList)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var oldTags = db.BlogsTags.Where(u => u.BlogID == blogID);
+
+                if (oldTags != null)
+                    db.BlogsTags.RemoveRange(oldTags);
+
+                DateTime createDate = DateTime.Now;
+
+                foreach (var newID in updatedList)
+                {
+                    BlogsTags newTag = new BlogsTags() {
+                        BlogID = blogID,
+                        TagID = newID,
+                        Active = true,
+                        CreateDate = createDate
+                    };
+
+                    db.BlogsTags.Add(newTag);
+                }
+
+                db.SaveChanges();
+            }
         }
     }
 }

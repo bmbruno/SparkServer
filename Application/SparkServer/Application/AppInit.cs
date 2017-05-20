@@ -20,6 +20,8 @@ namespace SparkServer.Application
             container.Register<Core.Repositories.IBlogRepository<Blog>, Infrastructure.Repositories.BlogRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.IBlogTagRepository<BlogTag>, Infrastructure.Repositories.BlogTagRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.ICategoryRepository<Category>, Infrastructure.Repositories.CategoryRepository>(Lifestyle.Transient);
+            container.Register<Core.Repositories.IAuthorRepository<Author>, Infrastructure.Repositories.AuthorRepository>(Lifestyle.Transient);
+            container.Register<Core.Repositories.ISitecoreVersionRepository<SitecoreVersion>, Infrastructure.Repositories.SitecoreVersionRepository>(Lifestyle.Transient);
 
             container.Verify();
 

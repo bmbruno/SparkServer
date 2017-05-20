@@ -16,5 +16,12 @@ namespace SparkServer.Core.Repositories
         /// <param name="list">List of ID values.</param>
         /// <returns>IEnumerable of type T.</returns>
         IEnumerable<T> GetFromList(IEnumerable<int> list);
+
+        /// <summary>
+        /// SHould clear and set all blog tags for a given blog ID.
+        /// </summary>
+        /// <param name="blogID">ID of the blog to update related tags.</param>
+        /// <param name="newTagIDList">List of actively-selected blog tag IDs.</param>
+        void UpdateTagsForBlog(int blogID, IEnumerable<int> newTagIDList);
     }
 }

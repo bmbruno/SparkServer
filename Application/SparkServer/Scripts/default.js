@@ -31,6 +31,14 @@ $(function () {
         if ($(window).scrollTop() > "200") {
             $("#toTop").show();
         }
-    });
+	});
+
+    // Delete buttons should show confirmation
+	$(".delete").on("click", function deleteConfirm(e) {
+	    if (!confirm("Are you sure you want to delete this?")) {
+	        e.preventDefault();
+	        return false;
+	    }
+	});
 
 });

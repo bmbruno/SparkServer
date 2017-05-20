@@ -91,6 +91,8 @@ namespace SparkServer.Controllers
             viewModel.MapToViewModel(blogList, tagList);
             viewModel.Header = $"Blogs tagged '{tag.Name}'";
 
+            viewModel.BlogList = viewModel.BlogList.OrderByDescending(u => u.PublishDate).ToList();
+
             return View(viewName: "IndexList", model: viewModel);
         } 
 

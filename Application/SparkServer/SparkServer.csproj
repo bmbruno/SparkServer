@@ -129,12 +129,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Application\Attributes\ValidAdminAttribute.cs" />
+    <Compile Include="Application\Config.cs" />
     <Compile Include="Application\Enum\MainMenu.cs" />
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
+    <Compile Include="Application\FilterData.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -142,11 +146,23 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CategoryEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
+    <Compile Include="ViewModels\CategoryListItemViewModel.cs" />
+    <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogTagEditListViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogListItemViewModel.cs" />
+    <Compile Include="ViewModels\BlogListViewModel.cs" />
     <Compile Include="ViewModels\BlogTagViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BlogArticleViewModel.cs" />
-    <Compile Include="ViewModels\BlogListViewModel.cs" />
+    <Compile Include="ViewModels\Admin\BlogEditListViewModel.cs" />
     <Compile Include="ViewModels\CategoryListViewModel.cs" />
     <Compile Include="ViewModels\ArticleViewModel.cs" />
     <Compile Include="Global.asax.cs">
@@ -256,6 +272,7 @@
     <Content Include="favicon-96x96.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\default.js" />
     <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Scripts\html5shiv.js" />
@@ -303,6 +320,16 @@
     <Content Include="Views\Shared\HighlightJSInit.cshtml" />
     <Content Include="Views\Blog\Sample.cshtml" />
     <Content Include="Views\Article\Sample.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\BlogList.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\BlogEdit.cshtml" />
+    <Content Include="Views\Admin\BlogTagEdit.cshtml" />
+    <Content Include="Views\Admin\BlogTagList.cshtml" />
+    <Content Include="Views\Admin\ArticleList.cshtml" />
+    <Content Include="Views\Admin\ArticleEdit.cshtml" />
+    <Content Include="Views\Admin\CategoryEdit.cshtml" />
+    <Content Include="Views\Admin\CategoryList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

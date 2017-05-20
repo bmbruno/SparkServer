@@ -8,7 +8,7 @@ namespace SparkServer.ViewModels
 {
     public class BlogListViewModel : BaseViewModel
     {
-        public List<BlogArticleViewModel> BlogList{ get; set; }
+        public List<BlogArticleViewModel> BlogList { get; set; }
 
         public List<BlogTagViewModel> BlogTagList { get; set; }
 
