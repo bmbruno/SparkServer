@@ -23,5 +23,7 @@ namespace SparkServer.ViewModels
         public string PublishedDate { get; set; }
 
         public string AuthorName { get; set; }
+
+        public int? SortOrder { get; set; }
     }
 }

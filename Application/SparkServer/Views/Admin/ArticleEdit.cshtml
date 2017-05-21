@@ -73,6 +73,12 @@
     </div>
 
     <div class="row">
+        @Html.LabelFor(x => x.SortOrder)
+        @Html.TextBoxFor(x => x.SortOrder, htmlAttributes: new { @class = "quarter" })
+        @Html.ValidationMessageFor(x => x.SortOrder)
+    </div>
+
+    <div class="row">
         <input type="submit" value="Submit" class="btn primary" />
     </div>
 

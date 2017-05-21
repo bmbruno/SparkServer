@@ -56,8 +56,7 @@ namespace SparkServer.Mapping
                 {
                     CategoryWithArticles cwa = new CategoryWithArticles();
 
-                    // TODO: add OrderBy sort for article list
-                    var articlesForCategory = articles.Where(u => u.CategoryID == category.ID);
+                    var articlesForCategory = articles.Where(u => u.CategoryID == category.ID).OrderBy(u => u.SortOrder);
 
                     cwa.CategoryName = category.Name;
 

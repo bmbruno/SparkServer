@@ -57,6 +57,9 @@ namespace SparkServer.ViewModels
 
         public List<SelectListItem> SitecoreVersionSource { get; set; }
 
+        [Display(Name = "Sort Order")]
+        public int? SortOrder { get; set; }
+
         public ArticleEditViewModel()
         {
             AuthorSource = new List<SelectListItem>();

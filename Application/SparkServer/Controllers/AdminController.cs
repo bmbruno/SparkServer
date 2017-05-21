@@ -61,7 +61,7 @@ namespace SparkServer.Controllers
         {
             ArticleEditListViewModel viewModel = new ArticleEditListViewModel();
 
-            var articles = _articleRepo.GetAll().OrderByDescending(u => u.Category.SortOrder).ThenBy(u => u.CreateDate);
+            var articles = _articleRepo.GetAll().OrderByDescending(u => u.Category.SortOrder).ThenBy(u => u.SortOrder);
 
             foreach (var article in articles)
             {
@@ -74,7 +74,8 @@ namespace SparkServer.Controllers
                     CategorySortOrder = (article.Category.SortOrder.HasValue) ? article.Category.SortOrder.Value : 0,
                     SitecoreVersion = article.SitecoreVersion.Version,
                     PublishedDate = (article.PublishDate.HasValue) ? article.PublishDate.Value.ToShortDateString() : "None",
-                    AuthorName = $"{article.Author.FirstName} {article.Author.LastName}"
+                    AuthorName = $"{article.Author.FirstName} {article.Author.LastName}",
+                    SortOrder = article.SortOrder
                 });
             }
 
@@ -108,6 +109,7 @@ namespace SparkServer.Controllers
                 viewModel.PublishDate = article.PublishDate;
                 viewModel.AuthorID = article.AuthorID;
                 viewModel.UniqueURL = article.UniqueURL;
+                viewModel.SortOrder = article.SortOrder;
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
                 viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
@@ -153,6 +155,7 @@ namespace SparkServer.Controllers
                     article.PublishDate = viewModel.PublishDate;
                     article.AuthorID = viewModel.AuthorID;
                     article.UniqueURL = viewModel.UniqueURL;
+                    article.SortOrder = viewModel.SortOrder;
 
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
@@ -180,6 +183,7 @@ namespace SparkServer.Controllers
                     article.PublishDate = viewModel.PublishDate;
                     article.AuthorID = viewModel.AuthorID;
                     article.UniqueURL = viewModel.UniqueURL;
+                    article.SortOrder = viewModel.SortOrder;
 
                     _articleRepo.Update(article);
 

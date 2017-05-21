@@ -79,6 +79,7 @@ namespace SparkServer.Infrastructure.Repositories
                 entry.Property(e => e.PublishDate).IsModified = true;
                 entry.Property(e => e.AuthorID).IsModified = true;
                 entry.Property(e => e.UniqueURL).IsModified = true;
+                entry.Property(e => e.SortOrder).IsModified = true;
 
                 db.SaveChanges();
             }
