@@ -13,6 +13,29 @@
 
 <hr />
 
+<h1>Latest Blog Posts</h1>
+
+<ul class="grid two-up cf blog-list">
+
+    @foreach (var blog in Model.BlogList)
+    {
+        <li class="cf">
+
+            @if (!String.IsNullOrEmpty(blog.ImageThumbnailPath))
+            {
+                <a href="@blog.URL"><img src="@blog.ImageThumbnailPath" /></a>
+            }
+
+            <h3><a href="@blog.URL">@blog.Title</a></h3>
+            <p>@blog.Subtitle</p>
+            <div class="date">@blog.PublishDate.ToShortDateString() - @blog.AuthorFullName</div>
+        </li>
+    }
+
+</ul>
+
+<hr />
+
 <h1>Latest Articles</h1>
 
 <ul class="grid two-up cf blog-list articles">
@@ -43,26 +66,3 @@
 
 <h2>Video Walkthroughs</h2>
 <p>Articles and pictures are great, but key articles will also have 2 to 5 minute video walkthroughs of important Sitecore concepts.</p>
-
-<hr />
-
-<h1>Latest Blog Posts</h1>
-
-<ul class="grid two-up cf blog-list">
-
-    @foreach (var blog in Model.BlogList)
-    {
-        <li class="cf">
-
-            @if (!String.IsNullOrEmpty(blog.ImageThumbnailPath))
-            {
-                <a href="@blog.URL"><img src="@blog.ImageThumbnailPath" /></a>
-            }
-
-            <h3><a href="@blog.URL">@blog.Title</a></h3>
-            <p>@blog.Subtitle</p>
-            <div class="date">@blog.PublishDate.ToShortDateString() - @blog.AuthorFullName</div>
-        </li>
-    }
-
-</ul>
