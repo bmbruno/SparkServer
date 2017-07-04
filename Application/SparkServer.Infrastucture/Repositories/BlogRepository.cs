@@ -70,6 +70,7 @@ namespace SparkServer.Infrastructure.Repositories
 
                 var entry = db.Entry(updateItem);
                 entry.Property(e => e.Title).IsModified = true;
+                entry.Property(e => e.Subtitle).IsModified = true;
                 entry.Property(e => e.Body).IsModified = true;
                 entry.Property(e => e.PublishDate).IsModified = true;
                 entry.Property(e => e.AuthorID).IsModified = true;
