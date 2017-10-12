@@ -135,6 +135,7 @@
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
     <Compile Include="Application\FilterData.cs" />
+    <Compile Include="Application\Helpers\FormatHelper.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -314,7 +315,7 @@
     <Content Include="Views\Blog\IndexList.cshtml" />
     <Content Include="Views\Blog\IndexOverview.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Mentoring.cshtml" />
+    <Content Include="Views\Home\Videos.cshtml" />
     <None Include="Properties\PublishProfiles\File System.pubxml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Content Include="Views\Shared\HighlightJSInit.cshtml" />
