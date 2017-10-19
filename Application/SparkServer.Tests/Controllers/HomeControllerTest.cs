@@ -27,7 +27,8 @@ namespace SparkServer.Tests.Controllers
             this.InitIOC();
             return new HomeController(
                 this.GetContainer().GetInstance<IArticleRepository<Article>>(),
-                this.GetContainer().GetInstance<IBlogRepository<Blog>>()
+                this.GetContainer().GetInstance<IBlogRepository<Blog>>(),
+                this.GetContainer().GetInstance<IVideoRepository<Video>>()
             );
         }
 

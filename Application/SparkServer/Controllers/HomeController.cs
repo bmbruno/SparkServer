@@ -18,13 +18,15 @@ namespace SparkServer.Controllers
     {
         private IArticleRepository<Article> _articleRepo;
         private IBlogRepository<Blog> _blogRepo;
+        private IVideoRepository<Video> _videoRepo;
 
         private string _key = "F9701A3C-080D-49A1-98E6-027FA1D03DDA";
 
-        public HomeController(IArticleRepository<Article> articleRepo, IBlogRepository<Blog> blogRepo)
+        public HomeController(IArticleRepository<Article> articleRepo, IBlogRepository<Blog> blogRepo, IVideoRepository<Video> videoRepo)
         {
             _articleRepo = articleRepo;
             _blogRepo = blogRepo;
+            _videoRepo = videoRepo;
         }
 
         public ActionResult Index()
@@ -52,9 +54,8 @@ namespace SparkServer.Controllers
         {
             HomeVideoViewModel viewModel = new HomeVideoViewModel();
 
-            // TODO: get videos
-
-            // TODO: map to viewmodel
+            var videos = _videoRepo.GetRecent(25);
+            viewModel.MapToViewModel(videos);
 
             return View(viewModel);
         }
