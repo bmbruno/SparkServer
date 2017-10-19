@@ -33,5 +33,6 @@ namespace SparkServer.Data
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<RelatedArticle> RelatedArticle { get; set; }
         public virtual DbSet<SitecoreVersion> SitecoreVersion { get; set; }
+        public virtual DbSet<Video> Video { get; set; }
     }
 }

@@ -48,10 +48,13 @@ namespace SparkServer.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Mentoring()
+        public ActionResult Videos()
         {
-            HomeViewModel viewModel = new HomeViewModel();
-            viewModel.MenuSelection = MainMenu.Mentoring;
+            HomeVideoViewModel viewModel = new HomeVideoViewModel();
+
+            // TODO: get videos
+
+            // TODO: map to viewmodel
 
             return View(viewModel);
         }

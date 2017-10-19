@@ -22,6 +22,8 @@
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Blog" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Tag" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_Article_Category1" />
+        <EntityTypeShape EntityType="SparkServerModel.Video" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="SparkServerModel.FK_Video_Author" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

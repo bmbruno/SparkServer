@@ -91,6 +91,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SparkServerDB.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Video.cs">
+      <DependentUpon>SparkServerDB.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="SparkServerDB.edmx">

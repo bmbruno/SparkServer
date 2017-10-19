@@ -19,6 +19,7 @@ namespace SparkServer.Data
         {
             this.Article = new HashSet<Article>();
             this.Blog = new HashSet<Blog>();
+            this.Video = new HashSet<Video>();
         }
     
         public int ID { get; set; }
@@ -32,5 +33,7 @@ namespace SparkServer.Data
         public virtual ICollection<Article> Article { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Blog> Blog { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Video> Video { get; set; }
     }
 }

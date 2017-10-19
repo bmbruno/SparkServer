@@ -99,6 +99,20 @@
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Subtitle" Type="varchar" MaxLength="500" />
+          <Property Name="VideoURL" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ImageThumbnailPath" Type="varchar" MaxLength="1000" />
+          <Property Name="PublishDate" Type="datetime" />
+          <Property Name="AuthorID" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Article_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Article" Type="Self.Article" Multiplicity="*" />
@@ -195,6 +209,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Video_Author">
+          <End Role="Author" Type="Self.Author" Multiplicity="1" />
+          <End Role="Video" Type="Self.Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SparkServerModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
@@ -204,6 +230,7 @@
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RelatedArticle" EntityType="Self.RelatedArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SitecoreVersion" EntityType="Self.SitecoreVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Article_Author" Association="Self.FK_Article_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="Article" EntitySet="Article" />
@@ -235,6 +262,10 @@
           <AssociationSet Name="FK_RelatedArticle_ArticleSource" Association="Self.FK_RelatedArticle_ArticleSource">
             <End Role="Article" EntitySet="Article" />
             <End Role="RelatedArticle" EntitySet="RelatedArticle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Video_Author" Association="Self.FK_Video_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Video" EntitySet="Video" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -277,6 +308,7 @@
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Article" Relationship="Self.FK_Article_Author" FromRole="Author" ToRole="Article" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_Blog_Author" FromRole="Author" ToRole="Blog" />
+          <NavigationProperty Name="Video" Relationship="SparkServerModel.FK_Video_Author" FromRole="Author" ToRole="Video" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -494,6 +526,11 @@
             <End Role="Category" EntitySet="Category" />
             <End Role="Article" EntitySet="Article" />
           </AssociationSet>
+          <EntitySet Name="Video" EntityType="SparkServerModel.Video" />
+          <AssociationSet Name="FK_Video_Author" Association="SparkServerModel.FK_Video_Author">
+            <End Role="Author" EntitySet="Author" />
+            <End Role="Video" EntitySet="Video" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Article_Category1">
           <End Type="SparkServerModel.Category" Role="Category" Multiplicity="1" />
@@ -504,6 +541,33 @@
             </Principal>
             <Dependent Role="Article">
               <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Video">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Subtitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="VideoURL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ImageThumbnailPath" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="PublishDate" Type="DateTime" Precision="3" />
+          <Property Name="AuthorID" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Author" Relationship="SparkServerModel.FK_Video_Author" FromRole="Video" ToRole="Author" />
+        </EntityType>
+        <Association Name="FK_Video_Author">
+          <End Type="SparkServerModel.Author" Role="Author" Multiplicity="1" />
+          <End Type="SparkServerModel.Video" Role="Video" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Author">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Video">
+              <PropertyRef Name="AuthorID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -612,6 +676,21 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Video">
+            <EntityTypeMapping TypeName="SparkServerModel.Video">
+              <MappingFragment StoreEntitySet="Video">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="PublishDate" ColumnName="PublishDate" />
+                <ScalarProperty Name="ImageThumbnailPath" ColumnName="ImageThumbnailPath" />
+                <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
+                <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

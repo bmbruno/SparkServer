@@ -10,7 +10,7 @@ namespace SparkServer.Application.Enum
         Home = 0,
         Article = 1,
         Category = 2,
-        Mentoring = 3,
+        Videos = 3,
         About = 4,
         Blog = 5
     }
