@@ -139,21 +139,18 @@ namespace SparkServer.Infrastructure.Repositories
 
         public IEnumerable<Video> GetRecent(int numberToLoad)
         {
-            throw new NotImplementedException();
-            
-            //List<Video> VideoList = new List<Video>();
+            List<Video> videoList = new List<Video>();
 
-            //using (var db = new SparkServerEntities())
-            //{
-            //    VideoList = db.Video.Where(u => u.Active)
-            //                      .Include(a => a.Author)
-            //                      .Include(a => a.VideosTags)
-            //                      .OrderByDescending(u => u.PublishDate)
-            //                      .Take(numberToLoad)
-            //                      .ToList();
-            //}
+            using (var db = new SparkServerEntities())
+            {
+                videoList = db.Video.Where(u => u.Active)
+                                  .Include(a => a.Author)
+                                  .OrderByDescending(u => u.PublishDate)
+                                  .Take(numberToLoad)
+                                  .ToList();
+            }
 
-            //return VideoList;
+            return videoList;
         }
 
         public IEnumerable<Video> GetByTagID(int tagID)
