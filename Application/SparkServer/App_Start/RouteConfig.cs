@@ -58,6 +58,16 @@ namespace SparkServer
             );
 
             //
+            // Videos
+            //
+
+            routes.MapRoute(
+                name: "Videos",
+                url: "videos",
+                defaults: new { controller = "Home", action = "Videos" }
+            );
+
+            //
             // Admin
             //
 
@@ -75,12 +85,6 @@ namespace SparkServer
                 name: "About",
                 url: "about",
                 defaults: new { controller = "Home", action = "About" }
-            );
-
-            routes.MapRoute(
-                name: "Mentoring",
-                url: "mentoring",
-                defaults: new { controller = "Home", action = "Mentoring" }
             );
 
             routes.MapRoute(

@@ -118,6 +118,8 @@ ul.blog-list li p { margin: 0; }
 ul.blog-list li > .subtitle { }
 ul.blog-list li > .date { font-size: 0.75em; }
 
+ul.video-list li img { max-height: none; }
+
 .btn { display: inline-block; padding: 0.5em 1em; border: 1px solid #777; border-radius: 4px; background-color: #e2e2e2; color: #000; box-shadow: 1px 1px 1px #AAA; }
 a.btn { color: #000; }
 .btn:hover { background-color: #666; color: #DDD; }
@@ -204,6 +206,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
     ul.blog-list.articles li { margin: 1%; width: 48%; background-color: #eaeaea; padding: 1em; box-shadow: 1px 1px 2px #8e8e8e; min-height: 125px; }
     ul.blog-list.articles li:last-of-type { margin: 1%; }
+
+    ul.video-list li img { max-width: 320px; }
 }
 
 @media (min-width: 820px)
