@@ -1,0 +1,71 @@
+﻿@model SparkServer.ViewModels.VideoEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Video Edit";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+{
+    <h2>ID: @Model.ID</h2>
+
+    <a href="/Admin/VideoDelete?ID=@Model.ID" class="btn delete">Delete</a>
+}
+
+@using (Html.BeginForm(actionName: "VideoUpdate", controllerName: "Admin", method: FormMethod.Post))
+{
+    if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+    {
+        @Html.HiddenFor(x => x.ID)
+    }
+
+    @Html.HiddenFor(x => x.Mode)
+
+    <div class="row">
+        @Html.LabelFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title)
+        @Html.ValidationMessageFor(x => x.Title)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.Subtitle)
+        @Html.TextBoxFor(x => x.Subtitle)
+        @Html.ValidationMessageFor(x => x.Subtitle)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.VideoURL)
+        @Html.TextBoxFor(x => x.VideoURL)
+        @Html.ValidationMessageFor(x => x.VideoURL)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.PublishDate)
+        @Html.TextBoxFor(x => x.PublishDate, htmlAttributes: new { @class = "half" })
+        <input type="button" value="Today" id="DateTimeToday" class="btn" />
+        @Html.ValidationMessageFor(x => x.PublishDate)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.AuthorID)
+        @Html.DropDownListFor(x => x.AuthorID, Model.AuthorSource, htmlAttributes: new { @class = "half" })
+        @Html.ValidationMessageFor(x => x.AuthorID)
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(x => x.ImageThumbnailPath)
+        @Html.TextBoxFor(x => x.ImageThumbnailPath)
+        @Html.ValidationMessageFor(x => x.ImageThumbnailPath)
+    </div>
+
+    <div class="row">
+        <p class="mono inline-code">/media/video/00_XXXXX.png</p>
+    </div>
+
+    <div class="row">
+        <input type="submit" value="Submit" class="btn primary" />
+    </div>
+
+}

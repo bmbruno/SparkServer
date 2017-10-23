@@ -1,0 +1,33 @@
+﻿@model SparkServer.ViewModels.VideoEditListViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Video List";
+}
+
+<h1>Blog List</h1>
+
+<a href="/Admin/VideoEdit" class="btn">Add New Video</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Subtitle</th>
+            <th>Published</th>
+            <th>Author</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.VideoList)
+        {
+            <tr>
+                <td><a href="/Admin/VideoEdit?ID=@item.ID">@item.Title</a></td>
+                <td><a href="/Admin/VideoEdit?ID=@item.ID">@item.Subtitle</a></td>
+                <td><a href="/Admin/VideoEdit?ID=@item.ID">@item.PublishedDate</a></td>
+                <td><a href="/Admin/VideoEdit?ID=@item.ID">@item.AuthorName</a></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
