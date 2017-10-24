@@ -218,6 +218,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	nav ul li:last-of-type { border: none; }
 	nav ul li a { text-align: center; }
 	.mobile-menu-toggle { display: none; }
+    .admin nav ul li { width: 16.6666%; }
 	
 	.master-search { float: right; text-align: right; position: absolute; bottom: 0; right: 0; margin: 0; display: block; }
 	.master-search input { padding: 0.75em; border: 1px solid #666; border-radius: 6px; background-color: #EEE; font-weight: bold; width: auto; }
