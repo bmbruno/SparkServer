@@ -45,6 +45,7 @@ article h5, .container h5 { padding-bottom: 0.5em; font-size: 1em; overflow: hid
 article p a, .container p a { text-decoration: underline; }
 article ul li, .container ul li { margin-bottom: 0.5em; }
 
+
 article > .about { line-height: 1.25em; text-align: right; }
 article > .about li { margin: 0; list-style-type: none; }
 
@@ -184,6 +185,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	
 	ul.grid { text-align: center; }
 	ul.grid > li { text-align: left; float: left; margin: 0; list-style-type: none; padding-bottom: 2em; }
+
+    ul.grid li h3 { margin-bottom: 0.5em; }
 
 	ul.grid.two-up > li { width: 50%; padding-right: 20px; }
 	ul.grid.two-up > li:nth-child(2n + 1) { clear: both; }
