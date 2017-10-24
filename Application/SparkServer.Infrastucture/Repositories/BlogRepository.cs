@@ -142,6 +142,7 @@ namespace SparkServer.Infrastructure.Repositories
             using (var db = new SparkServerEntities())
             {
                 blogList = db.Blog.Where(u => u.Active)
+                                  .Where(u => u.PublishDate <= DateTime.Now)
                                   .Include(a => a.Author)
                                   .Include(a => a.BlogsTags)
                                   .OrderByDescending(u => u.PublishDate)
