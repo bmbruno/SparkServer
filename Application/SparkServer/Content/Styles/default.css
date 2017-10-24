@@ -39,7 +39,7 @@ article, .container { text-align: left; }
 article h1, .container h1 { font-family: 'OSBold', arial, sans-serif; padding-bottom: 0.5em; font-size: 2em; overflow: hidden; line-height: 1.25em; }
 article h2, .container h2 { padding-bottom: 1em; font-size: 1.5em; overflow: hidden; margin-top: 1.5em; }
 article h2:first-of-type, .container h2:first-of-type { margin-top: 0; }
-article h3, .container h3 { padding-bottom: 4px; font-size: 1.25em; border-bottom: 1px solid #BBB; margin-bottom: 0.5em; overflow: hidden; }
+article h3, .container h3 { padding-bottom: 4px; font-size: 1.25em; border-bottom: 1px solid #BBB; margin-bottom: 1em; overflow: hidden; }
 article h4, .container h4 { padding-bottom: 0.5em; font-size: 1.1em; overflow: hidden; }
 article h5, .container h5 { padding-bottom: 0.5em; font-size: 1em; overflow: hidden; }
 article p a, .container p a { text-decoration: underline; }
