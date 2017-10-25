@@ -99,6 +99,8 @@ namespace SparkServer.Infrastructure.Repositories
 
         public Blog Get(int year, int month, string uniqueURL)
         {
+            // TODO: This probably needs to be finished (year, month are not being used!)
+
             Blog item = null;
 
             using (var db = new SparkServerEntities())
@@ -121,14 +123,15 @@ namespace SparkServer.Infrastructure.Repositories
                 if (month.HasValue)
                 {
                     blogList = db.Blog.Where(
-                        u => u.Active &&
+                        u => u.PublishDate <= DateTime.Now &&
+                        u.Active &&
                         u.PublishDate.Value.Year == year &&
                         u.PublishDate.Value.Month == month).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
                 }
                 else
                 {
                     blogList = db.Blog.Where(
-                        u => u.Active && u.PublishDate.Value.Year == year).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
+                        u => u.PublishDate <= DateTime.Now && u.Active && u.PublishDate.Value.Year == year).Include(u => u.Author).Include(u => u.BlogsTags).ToList();
                 }
             }
 
@@ -161,6 +164,7 @@ namespace SparkServer.Infrastructure.Repositories
             {
                 blogList = db.BlogsTags.Where(u => u.TagID == tagID)
                                        .Select(p => p.Blog)
+                                       .Where(p => p.PublishDate <= DateTime.Now)
                                        .Include(a => a.Author)
                                        .Include(a => a.BlogsTags)
                                        .ToList();
