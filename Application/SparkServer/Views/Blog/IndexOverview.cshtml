@@ -4,57 +4,68 @@
     ViewBag.Title = Model.Header;
 }
 
-<h1>@ViewBag.Title</h1>
+<div class="gutter">&nbsp;</div>
 
-<ul class="grid two-up cf blog-list">
+<div class="section">
 
-    @for (var i = 0; i <= 1; i++)
-    {
-        <li class="cf">
-            @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
-            {
-                <a href="@Model.BlogList[i].URL"><img src="@Model.BlogList[i].ImageThumbnailPath" alt="@Model.BlogList[i].Title" /></a>
-            }
-            <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
-            <p>@Model.BlogList[i].Subtitle</p>
-            <div class="date">@Model.BlogList[i].PublishDate.ToShortDateString() - @Model.BlogList[i].AuthorFullName</div>
-        </li>
-    }
+    <h1>@ViewBag.Title</h1>
 
-</ul>
+    <ul class="grid two-up cf blog-list">
 
-<hr />
-
-<h1>Explore Tags</h1>
-
-@if (Model.BlogTagList.Count > 0)
-{
-    <ul class="explore-tags">
-
-        @foreach(var tag in Model.BlogTagList)
+        @for (var i = 0; i <= 1; i++)
         {
-            <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+            <li class="cf">
+                @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
+                {
+                    <a href="@Model.BlogList[i].URL"><img src="@Model.BlogList[i].ImageThumbnailPath" alt="@Model.BlogList[i].Title" /></a>
+                }
+                <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
+                <p>@Model.BlogList[i].Subtitle</p>
+                <div class="date">@Model.BlogList[i].PublishDate.ToShortDateString() - @Model.BlogList[i].AuthorFullName</div>
+            </li>
         }
 
     </ul>
 
-    <hr />
-}
+</div>
 
-<h1>Previous Posts</h1>
+<div class="section">
 
-<ul class="blog-list">
+    <h1>Explore Tags</h1>
 
-    @for (var i = 2; i < Model.BlogList.Count; i++)
+    @if (Model.BlogTagList.Count > 0)
     {
-        <li class="cf">
-            @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
+        <ul class="explore-tags">
+
+            @foreach(var tag in Model.BlogTagList)
             {
-                <a href="@Model.BlogList[i].URL"><img src="@Model.BlogList[i].ImageThumbnailPath" alt="@Model.BlogList[i].Title" /></a>
+                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
             }
-            <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
-            <p>@Model.BlogList[i].Subtitle</p>
-            <div class="date">@Model.BlogList[i].PublishDate.ToShortDateString() - @Model.BlogList[i].AuthorFullName</div>
-        </li>
+
+        </ul>
+
     }
-</ul>
+
+</div>
+
+<div class="section">
+
+    <h1>Previous Posts</h1>
+
+    <ul class="blog-list">
+
+        @for (var i = 2; i < Model.BlogList.Count; i++)
+        {
+            <li class="cf">
+                @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
+                {
+                    <a href="@Model.BlogList[i].URL"><img src="@Model.BlogList[i].ImageThumbnailPath" alt="@Model.BlogList[i].Title" /></a>
+                }
+                <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
+                <p>@Model.BlogList[i].Subtitle</p>
+                <div class="date">@Model.BlogList[i].PublishDate.ToShortDateString() - @Model.BlogList[i].AuthorFullName</div>
+            </li>
+        }
+    </ul>
+
+</div>

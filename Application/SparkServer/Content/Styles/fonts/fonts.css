@@ -21,3 +21,11 @@
     font-style: normal;
 
 }
+
+@font-face {
+    font-family: 'MatizRegular';
+    src: url('Matiz-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
