@@ -119,7 +119,7 @@ tr:nth-child(even) { background-color: #EEE; }
 ul.blog-list { }
 ul.blog-list li { margin: 0 0 2em 0; list-style-type: none; }
 ul.blog-list li img { float: left; max-height: 100px; margin-right: 1em; max-width: 25%; }
-ul.blog-list li h3 { font-size: 1.25em; font-weight: bold; overflow: hidden; }
+ul.blog-list li h3 { font-size: 1.25em; font-weight: bold; overflow: hidden; margin-bottom: 0.5em !important; }
 ul.blog-list li p { margin: 0; }
 ul.blog-list li > .subtitle { }
 ul.blog-list li > .date { font-size: 0.75em; }
