@@ -5,24 +5,30 @@
     ViewBag.Title = "Spark Articles";
 }
 
-<h1>@Html.Raw(ViewBag.Title)</h1>
+<div class="gutter">&nbsp;</div>
 
-<p>New articles are published regularly, so check back often. If you have a topic that you would like to see covered, please <a href="/about">contact us</a>.</p>
+<div class="section">
 
-<ul class="grid three-up cf">
+    <h1>@Html.Raw(ViewBag.Title)</h1>
 
-    @foreach (var categoryWithArticles in Model.CategoriesList)
-    {
-        <li class="article-list">
-            <h2>@categoryWithArticles.CategoryName</h2>
+    <p>New articles are published regularly, so check back often. If you have a topic that you would like to see covered, please <a href="/about">contact me</a>.</p>
 
-            <ul>
-                @foreach (var articleLink in categoryWithArticles.ArticleLinks)
+    <ul class="grid three-up cf">
+
+        @foreach (var categoryWithArticles in Model.CategoriesList)
+        {
+            <li class="article-list">
+                <h2>@categoryWithArticles.CategoryName</h2>
+
+                <ul>
+                    @foreach (var articleLink in categoryWithArticles.ArticleLinks)
                 {
-                    <li><a href="@articleLink.URL">@articleLink.ArticleTitle</a></li>
-                }
-            </ul>
-        </li>
-    }
+                        <li><a href="@articleLink.URL">@articleLink.ArticleTitle</a></li>
+                    }
+                </ul>
+            </li>
+        }
 
-</ul>
+    </ul>
+
+</div>
