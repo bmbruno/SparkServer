@@ -183,6 +183,7 @@
     <Content Include="Content\Images\default_blog_icon.png" />
     <Content Include="Content\Images\default_blog_bg.jpg" />
     <Content Include="Content\Images\icon_exclamation.png" />
+    <Content Include="Content\Images\logo_title.png" />
     <Content Include="Content\Images\logo_title_alt.png" />
     <Content Include="Content\Styles\default.css" />
     <Content Include="Content\Styles\fonts\font-awesome.min.css" />

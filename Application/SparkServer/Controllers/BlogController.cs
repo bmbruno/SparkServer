@@ -46,7 +46,7 @@ namespace SparkServer.Controllers
             else
             {
                 // Default: blog overview (top posts)
-                blogList = _blogRepo.Get(u => u.Active).OrderByDescending(u => u.PublishDate).ToList();
+                blogList = _blogRepo.Get(u => u.Active && u.PublishDate <= DateTime.Now).OrderByDescending(u => u.PublishDate).ToList();
                 viewModel.Header = "Latest Blog Articles";
 
                 if (blogList.Count > 2)
