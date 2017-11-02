@@ -68,7 +68,7 @@ aside p { margin-bottom: 1em; text-align: left; }
 aside p:last-of-type { margin-bottom: 0; }
 
 pre { margin-bottom: 1em; }
-pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 2px 2px 2px #AAA; background-color: #DEDEDE !important; }
+pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 4px 4px 16px #AAA; background-color: #D2D2D2 !important; }
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 
