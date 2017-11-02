@@ -77,11 +77,11 @@ hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 .figure.full > p.caption { text-align: center; }
 p + .figure.full { padding-top: 0; }
 .figure img { box-shadow: 1px 1px 4px #666; padding: 4px; }
-h2 + .figure { padding-top: 0 !important; }
+h2 + .figure, h3 + .figure { padding-top: 0 !important; }
 
 .caption { padding-top: 4px; margin: 0; font-size: 0.85em; color: #555; }
 .config-path, .mono { font-family: monospace; font-size: 1.25em; }
-.inline-code { background-color: #f5f9d2; padding: 0 2px; }
+.inline-code { background-color: #FFF; padding: 0 4px; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
