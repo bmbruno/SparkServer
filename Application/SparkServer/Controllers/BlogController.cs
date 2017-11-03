@@ -33,7 +33,7 @@ namespace SparkServer.Controllers
                 // Blogs list by year + month
                 blogList = _blogRepo.GetByDate(year.Value, month.Value).OrderByDescending(u => u.PublishDate).ToList();
                 string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMMM");
-                viewModel.Header = $"Blog Articles for {monthName} {year.ToString()}";
+                viewModel.Header = $"Blog Posts for {monthName} {year.ToString()}";
                 viewModel.ViewMode = ViewMode.List;
             }
             else if (year.HasValue)
@@ -47,7 +47,7 @@ namespace SparkServer.Controllers
             {
                 // Default: blog overview (top posts)
                 blogList = _blogRepo.Get(u => u.Active && u.PublishDate <= DateTime.Now).OrderByDescending(u => u.PublishDate).ToList();
-                viewModel.Header = "Latest Blog Articles";
+                viewModel.Header = "Latest Blog Posts";
 
                 if (blogList.Count > 2)
                     viewModel.ViewMode = ViewMode.Overview;
