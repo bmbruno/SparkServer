@@ -143,10 +143,10 @@ textarea,
 select { width: 100%; padding: 0.75em; border-radius: 4px; border: none; font-size: 1em; font-family: monospace; background-color: #c5c5c5; }
 input[type="text"].half,
 textarea.half,
-select.half { width: 50%; }
+select.half { width: 100%; }
 input[type="text"].quarter,
 textarea.quarter,
-select.quarter { width: 25%; }
+select.quarter { width: 100%; }
 
 input:focus, select:focus, textarea:focus { background-color: #FEFEFE; box-shadow: inset 0 0 8px #666;}
 
@@ -226,6 +226,14 @@ footer.page p:last-of-type { margin-bottom: 0; }
     ul.blog-list.articles li:last-of-type { margin: 1%; }
 
     ul.video-list li img { max-width: 320px; }
+
+    input[type="text"].half,
+    textarea.half,
+    select.half { width: 50%; }
+    input[type="text"].quarter,
+    textarea.quarter,
+    select.quarter { width: 25%; }
+
 }
 
 @media (min-width: 820px)
