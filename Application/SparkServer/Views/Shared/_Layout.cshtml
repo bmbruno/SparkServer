@@ -37,11 +37,11 @@
 
             <nav>
                 <ul class="cf">
-                    <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } >Home</a></li>
-                    <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category || Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Article) { @Html.Raw("class='active'") }>Articles</a></li>
-                    <li><a class="disabled" href="#" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Videos) { @Html.Raw("class='active'") }>Videos</a></li>
-                    <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }>About</a></li>
-                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }>Blog</a></li>
+                    <li><a href="/" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Home) { @Html.Raw("class='active'") } ><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+                    <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category || Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Article) { @Html.Raw("class='active'") }><i class="fa fa-book" aria-hidden="true"></i> Articles</a></li>
+                    <li><a href="/videos" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Videos) { @Html.Raw("class='active'") }><i class="fa fa-film" aria-hidden="true"></i> Videos</a></li>
+                    <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Blog</a></li>
                 </ul>
             </nav>
 

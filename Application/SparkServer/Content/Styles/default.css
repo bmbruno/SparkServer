@@ -126,7 +126,7 @@ ul.blog-list li > .date { font-size: 0.75em; }
 
 ul.blog-list.articles li { margin-bottom: 1em; background-color: rgba(250, 250, 250, 1); padding: 1em; box-shadow: 0 0 12px #c1c1c1; min-height: 125px; }
 
-ul.video-list li img { max-height: none; }
+ul.video-list li img { max-height: none; box-shadow: 0 0 16px #C1C1C1; }
 
 .btn { display: inline-block; padding: 0.5em 1em; border: none; border-radius: 4px; background-color: #FFF; color: #000; font-weight: bold; text-shadow: 1px 1px 1px #ABABAB; box-shadow: 2px 2px 6px #888; }
 a.btn { color: #000; }
