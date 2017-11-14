@@ -10,6 +10,8 @@ em { font-style: italic; }
 /* BASE */
 body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
 strong { font-weight: bold; } 
+blockquote { font-style: italic; color: #555; background-color: #FEFEFE; padding: 1em; border-radius: 8px}
+blockquote p:last-of-type { font-style: normal; font-weight: normal; margin-bottom: 0; text-align: right; margin-right: 2em}
 
 nav { }
 nav ul { display: none; margin: 0 0 1em 0; }
@@ -164,8 +166,12 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 #FastFormsMessageBox { display: none; }
 
+.simple-quote { display: none; }
+
 @media (min-width: 600px)
 {		
+    blockquote { margin: 0 2em; box-shadow: 0 0 16px #C1C1C1; }
+
 	header img.logo { width: auto; max-width: 450px; }
 	
     .gutter { height: 2em; }
