@@ -53,6 +53,7 @@ namespace SparkServer.Controllers
         public ActionResult Videos()
         {
             HomeVideoViewModel viewModel = new HomeVideoViewModel();
+            viewModel.MenuSelection = MainMenu.Videos;
 
             var videos = _videoRepo.GetRecent(25);
             viewModel.MapToViewModel(videos);
