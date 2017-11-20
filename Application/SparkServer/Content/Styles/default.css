@@ -6,6 +6,7 @@ a, a:visited { text-decoration: none; color: #F00; -webkit-transition: all 0.3s 
 a:hover { color: #FA0; }
 .cf:after { content: ""; display: table; clear: both; }
 em { font-style: italic; }
+.center { text-align: center; }
 
 /* BASE */
 body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
@@ -44,7 +45,7 @@ li { list-style-type: disc; margin-left: 3em; text-align: left; }
 
 article, .container { text-align: left; }
 article h1, .container h1 { font-family: 'MatizRegular', arial, sans-serif; padding-bottom: 0.5em; font-size: 2em; overflow: hidden; line-height: 1.25em; }
-article h2, .container h2 { font-family: 'OSBold', arial, sans-serif; padding-bottom: 0.5em; font-size: 1.5em; overflow: hidden; margin-top: 1.5em; }
+article h2, .container h2 { font-family: 'MatizRegular', arial, sans-serif; padding-bottom: 0.5em; font-size: 1.5em; overflow: hidden; margin-top: 1.5em; }
 article h2:first-of-type, .container h2:first-of-type { margin-top: 0; }
 article h3, .container h3 { padding-bottom: 4px; font-size: 1.25em; border-bottom: 1px solid #BBB; margin-bottom: 1em; overflow: hidden; }
 article h4, .container h4 { padding-bottom: 0.5em; font-size: 1.1em; overflow: hidden; }
@@ -105,6 +106,8 @@ td ul:last-of-type { margin-bottom: 0; }
 td ul li { margin-left: 1em; }
 td ul li:last-of-type { margin-bottom: 0; }
 tr:nth-child(even) { background-color: #DDD; }
+table.center-all td, table.center-all th { text-align: center; }
+table.fluid { margin-left: auto; margin-right: auto; }
 
 .blog-about { margin-bottom: 1em; background-color: #DEDEDE; padding: 1em; border-radius: 6px; }
 .blog-about > .label { font-weight: bold; font-size: 0.85em; }
@@ -190,6 +193,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
     article.blog > .blog-header h1 { position: absolute; bottom: 0; padding: 0.5em; background-color: rgba(0, 0, 0, 0.85); text-shadow: 2px 2px 0 #000; color: #DEDEDE; }
     article.blog > h1.blog-title-only { display: none; }
     article.blog > h1.blog-header-title-only { display: block; }
+
+    table.fluid { width: auto; min-width: 50%; }
 
 	aside.left { float: left; width: 40%; margin: 1em 2em 1em 0; }
 	aside.right { float: right; width: 40%; margin: 1em 0 1em 2em; }
