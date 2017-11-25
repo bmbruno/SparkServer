@@ -287,6 +287,7 @@ namespace SparkServer.Controllers
 
                 viewModel.Mode = EditMode.Add;
 
+                viewModel.ID = 0;
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
                 viewModel.BlogTagSource = FilterData.BlogTags(_blogTagRepo, viewModel.BlogTags);
             }
@@ -382,6 +383,29 @@ namespace SparkServer.Controllers
             }
 
             return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+        }
+
+        public ActionResult BlogPreview(int? ID)
+        {
+            BlogArticleViewModel viewModel = new BlogArticleViewModel();
+
+            if (!ID.HasValue)
+            {
+                TempData["Error"] = "BlogID is required.";
+                return RedirectToAction(actionName: "Index", controllerName: "Blog");
+            }
+
+            var blog = _blogRepo.Get(ID.Value);
+
+            if (blog == null)
+            {
+                TempData["Error"] = $"Blog not found for ID {ID.Value}.";
+                return RedirectToAction(actionName: "Index", controllerName: "Blog");
+            }
+
+            viewModel.MapToViewModel(blog, null);
+
+            return View("~/Views/Blog/BlogArticle.cshtml", viewModel);
         }
 
         #endregion

@@ -87,6 +87,11 @@
 
     <div class="row">
         <input type="submit" value="Submit" class="btn primary" />
+
+        @if (Model.ID > 0)
+        {
+            <text>&nbsp;&nbsp;</text><a href="/Admin/BlogPreview?ID=@Model.ID" target="_blank" class="btn">Preview</a>
+        }
     </div>
 
 }
