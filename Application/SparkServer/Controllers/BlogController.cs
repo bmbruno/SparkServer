@@ -68,7 +68,7 @@ namespace SparkServer.Controllers
             BlogArticleViewModel viewModel = new BlogArticleViewModel();
 
             if (!year.HasValue || !month.HasValue || String.IsNullOrEmpty(uniqueURL))
-                return Redirect("/blog");
+                return RedirectToAction(actionName: "Index", controllerName: "Blog");
 
             var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
             var blogTags = _blogTagRepo.GetFromList(blog.BlogsTags.Select(u => u.TagID));
