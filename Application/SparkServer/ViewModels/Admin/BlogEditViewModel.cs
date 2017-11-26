@@ -54,6 +54,8 @@ namespace SparkServer.ViewModels
 
         public List<SelectListItem> BlogTagSource { get; set; }
 
+        public string BlogURL { get; set; }
+
         public BlogEditViewModel()
         {
             AuthorSource = new List<SelectListItem>();

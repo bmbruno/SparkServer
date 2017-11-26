@@ -274,8 +274,8 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = blog.UniqueURL;
                 viewModel.ImagePath = blog.ImagePath;
                 viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
+                viewModel.BlogURL = $"/blog/{blog.PublishDate.Value.Year}/{blog.PublishDate.Value.Month}/{blog.UniqueURL}";
 
-                // TODO populate viewModel.BlogTags list from blog.BlogsTags
                 viewModel.BlogTags = blog.BlogsTags.Select(u => u.TagID).ToList();
 
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
@@ -329,7 +329,7 @@ namespace SparkServer.Controllers
                     _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
                     
                     TempData["Success"] = "Blog created.";
-                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                    return RedirectToAction(actionName: "BlogEdit", controllerName: "Admin", routeValues: new { ID = blog.ID });
                 }
                 else
                 {
@@ -354,7 +354,7 @@ namespace SparkServer.Controllers
                     _blogTagRepo.UpdateTagsForBlog(blog.ID, viewModel.BlogTags);
 
                     TempData["Success"] = "Blog updated.";
-                    return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
+                    return RedirectToAction(actionName: "BlogEdit", controllerName: "Admin", routeValues: new { ID = blog.ID });
                 }
 
             }
@@ -383,29 +383,6 @@ namespace SparkServer.Controllers
             }
 
             return RedirectToAction(actionName: "BlogList", controllerName: "Admin");
-        }
-
-        public ActionResult BlogPreview(int? ID)
-        {
-            BlogArticleViewModel viewModel = new BlogArticleViewModel();
-
-            if (!ID.HasValue)
-            {
-                TempData["Error"] = "BlogID is required.";
-                return RedirectToAction(actionName: "Index", controllerName: "Blog");
-            }
-
-            var blog = _blogRepo.Get(ID.Value);
-
-            if (blog == null)
-            {
-                TempData["Error"] = $"Blog not found for ID {ID.Value}.";
-                return RedirectToAction(actionName: "Index", controllerName: "Blog");
-            }
-
-            viewModel.MapToViewModel(blog, null);
-
-            return View("~/Views/Blog/BlogArticle.cshtml", viewModel);
         }
 
         #endregion
@@ -854,5 +831,3 @@ namespace SparkServer.Controllers
         }
     }
 }
-
-

@@ -63,17 +63,22 @@ namespace SparkServer.Controllers
             return View(viewName: $"Index{viewModel.ViewMode.ToString()}", model: viewModel);
         }
 
-        public ActionResult BlogArticle(int? year, int? month, string uniqueURL = "")
+        public ActionResult BlogArticle(int year, int month, string uniqueURL = "", bool preview = false)
         {
             BlogArticleViewModel viewModel = new BlogArticleViewModel();
 
-            if (!year.HasValue || !month.HasValue || String.IsNullOrEmpty(uniqueURL))
+            if (String.IsNullOrEmpty(uniqueURL))
                 return RedirectToAction(actionName: "Index", controllerName: "Blog");
 
-            var blog = _blogRepo.Get(year.Value, month.Value, uniqueURL);
+            var blog = _blogRepo.Get(year, month, uniqueURL);
             var blogTags = _blogTagRepo.GetFromList(blog.BlogsTags.Select(u => u.TagID));
 
             viewModel.MapToViewModel(blog, blogTags);
+
+            if (preview)
+            {
+                viewModel.Title = $"[PREVIEW] - {viewModel.Title}";
+            }
 
             return View(viewModel);
         }

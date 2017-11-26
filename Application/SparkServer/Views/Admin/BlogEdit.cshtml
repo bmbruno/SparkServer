@@ -90,7 +90,7 @@
 
         @if (Model.ID > 0)
         {
-            <text>&nbsp;&nbsp;</text><a href="/Admin/BlogPreview?ID=@Model.ID" target="_blank" class="btn">Preview</a>
+            <text>&nbsp;&nbsp;</text><a href="@Model.BlogURL?preview=true" target="_blank" class="btn">Preview</a>
         }
     </div>
 
