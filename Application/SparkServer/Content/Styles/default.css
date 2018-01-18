@@ -69,6 +69,7 @@ aside { margin: 2em 0; padding: 2em; background-color: rgba(250, 250, 250, 1); b
 aside h3 { font-family: 'OSBold', arial, sans-serif; font-size: 1.5em; color: #333; margin-bottom: 0.5em; border: none !important; }
 aside p { margin-bottom: 1em; text-align: left; }
 aside p:last-of-type { margin-bottom: 0; }
+aside ul:last-of-type { margin-bottom: 0; }
 
 pre { margin-bottom: 1em; }
 pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 4px 4px 16px #AAA; background-color: #D2D2D2 !important; }
