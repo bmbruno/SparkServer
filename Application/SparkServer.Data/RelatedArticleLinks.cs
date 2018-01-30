@@ -16,10 +16,10 @@ namespace SparkServer.Data
     {
         public int ID { get; set; }
         public int ArticleID { get; set; }
-        public string Name { get; set; }
         public string HREF { get; set; }
         public bool Active { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public string Title { get; set; }
     
         public virtual Article Article { get; set; }
     }

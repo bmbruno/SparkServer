@@ -9,7 +9,7 @@ namespace SparkServer.ViewModels
     {
         public int RelatedArticleID { get; set; }
 
-        public string Name { get; set; }
+        public string Title { get; set; }
 
         public string URL { get; set; }
 

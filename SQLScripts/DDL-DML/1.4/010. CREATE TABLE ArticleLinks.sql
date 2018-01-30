@@ -8,7 +8,7 @@ CREATE TABLE [RelatedArticleLinks] (
 	[ArticleID] INT NOT NULL,
 	CONSTRAINT [FK_RelatedArticleLinks_ArticleSource] FOREIGN KEY ([ArticleID]) REFERENCES [Article]([ID]),
 	
-	[Name] VARCHAR(250) NOT NULL,
+	[Title] VARCHAR(500) NOT NULL,
 	
 	[HREF] VARCHAR(2400) NOT NULL,
 

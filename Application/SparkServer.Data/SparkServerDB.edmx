@@ -94,7 +94,7 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ArticleID" Type="int" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="HREF" Type="varchar" MaxLength="2400" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
@@ -611,11 +611,11 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ArticleID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="HREF" Type="String" Nullable="false" MaxLength="2400" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Article" Relationship="SparkServerModel.FK_RelatedArticleLinks_ArticleSource" FromRole="RelatedArticleLinks" ToRole="Article" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_RelatedArticleLinks_ArticleSource">
           <End Type="SparkServerModel.Article" Role="Article" Multiplicity="1" />
@@ -755,10 +755,10 @@
           <EntitySetMapping Name="RelatedArticleLinks">
             <EntityTypeMapping TypeName="SparkServerModel.RelatedArticleLinks">
               <MappingFragment StoreEntitySet="RelatedArticleLinks">
+                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="HREF" ColumnName="HREF" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>

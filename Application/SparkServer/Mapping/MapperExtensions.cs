@@ -32,12 +32,26 @@ namespace SparkServer.Mapping
 
             if (article.RelatedArticle.Count > 0)
             {
-
+                foreach (var related in article.RelatedArticle)
+                {
+                    vm.RelatedArticles.Add(new RelatedArticleViewModel()
+                    {
+                        Title = related.Article.Title,
+                        URL = $"/article/{related.Article.UniqueURL}"
+                    });
+                }
             }
 
             if (article.RelatedArticleLinks.Count > 0)
             {
-
+                foreach (var related in article.RelatedArticleLinks)
+                {
+                    vm.RelatedLinks.Add(new RelatedLinkViewModel()
+                    {
+                        Title = related.Title,
+                        URL = related.HREF
+                    });
+                }
             }
 
         }
