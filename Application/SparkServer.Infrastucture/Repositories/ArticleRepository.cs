@@ -35,7 +35,14 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).Where(whereClause).ToList();
+                results = db.Article
+                            .Include(u => u.Category)
+                            .Include(u => u.SitecoreVersion)
+                            .Include(u => u.Author)
+                            .Include(u => u.RelatedArticle)
+                            .Include(u => u.RelatedArticleLinks)
+                            .Where(whereClause)
+                            .ToList();
             }
 
             return results;

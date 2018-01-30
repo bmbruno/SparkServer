@@ -29,6 +29,17 @@ namespace SparkServer.Mapping
             vm.CategoryID = article.CategoryID;
             vm.CategoryName = (article.Category != null) ? article.Category.Name : string.Empty;
             vm.PublishDateLong = $"{article.PublishDate.Value.ToString("MMMM")} {article.PublishDate.Value.Year.ToString()}";
+
+            if (article.RelatedArticle.Count > 0)
+            {
+
+            }
+
+            if (article.RelatedArticleLinks.Count > 0)
+            {
+
+            }
+
         }
 
         /// <summary>

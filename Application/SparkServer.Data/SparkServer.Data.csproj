@@ -73,6 +73,9 @@
     <Compile Include="RelatedArticle.cs">
       <DependentUpon>SparkServerDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="RelatedArticleLinks.cs">
+      <DependentUpon>SparkServerDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="SitecoreVersion.cs">
       <DependentUpon>SparkServerDB.tt</DependentUpon>
     </Compile>

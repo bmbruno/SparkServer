@@ -20,6 +20,7 @@ namespace SparkServer.Data
             this.Article1 = new HashSet<Article>();
             this.RelatedArticle = new HashSet<RelatedArticle>();
             this.RelatedArticle1 = new HashSet<RelatedArticle>();
+            this.RelatedArticleLinks = new HashSet<RelatedArticleLinks>();
         }
     
         public int ID { get; set; }
@@ -45,5 +46,7 @@ namespace SparkServer.Data
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RelatedArticle> RelatedArticle1 { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RelatedArticleLinks> RelatedArticleLinks { get; set; }
     }
 }

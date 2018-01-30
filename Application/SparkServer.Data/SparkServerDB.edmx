@@ -88,6 +88,17 @@
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="RelatedArticleLinks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="HREF" Type="varchar" MaxLength="2400" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="SitecoreVersion">
           <Key>
             <PropertyRef Name="ID" />
@@ -209,6 +220,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RelatedArticleLinks_ArticleSource">
+          <End Role="Article" Type="Self.Article" Multiplicity="1" />
+          <End Role="RelatedArticleLinks" Type="Self.RelatedArticleLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelatedArticleLinks">
+              <PropertyRef Name="ArticleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Video_Author">
           <End Role="Author" Type="Self.Author" Multiplicity="1" />
           <End Role="Video" Type="Self.Video" Multiplicity="*" />
@@ -229,6 +252,7 @@
           <EntitySet Name="BlogTag" EntityType="Self.BlogTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RelatedArticle" EntityType="Self.RelatedArticle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RelatedArticleLinks" EntityType="Self.RelatedArticleLinks" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SitecoreVersion" EntityType="Self.SitecoreVersion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Video" EntityType="Self.Video" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Article_Author" Association="Self.FK_Article_Author">
@@ -263,6 +287,10 @@
             <End Role="Article" EntitySet="Article" />
             <End Role="RelatedArticle" EntitySet="RelatedArticle" />
           </AssociationSet>
+          <AssociationSet Name="FK_RelatedArticleLinks_ArticleSource" Association="Self.FK_RelatedArticleLinks_ArticleSource">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="RelatedArticleLinks" EntitySet="RelatedArticleLinks" />
+          </AssociationSet>
           <AssociationSet Name="FK_Video_Author" Association="Self.FK_Video_Author">
             <End Role="Author" EntitySet="Author" />
             <End Role="Video" EntitySet="Video" />
@@ -295,6 +323,7 @@
           <NavigationProperty Name="Category" Relationship="SparkServerModel.FK_Article_Category1" FromRole="Article" ToRole="Category" />
           <Property Name="Subtitle" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="SortOrder" Type="Int32" Nullable="true" />
+          <NavigationProperty Name="RelatedArticleLinks" Relationship="SparkServerModel.FK_RelatedArticleLinks_ArticleSource" FromRole="Article" ToRole="RelatedArticleLinks" />
         </EntityType>
         <EntityType Name="Author">
           <Key>
@@ -531,6 +560,11 @@
             <End Role="Author" EntitySet="Author" />
             <End Role="Video" EntitySet="Video" />
           </AssociationSet>
+          <EntitySet Name="RelatedArticleLinks" EntityType="SparkServerModel.RelatedArticleLinks" />
+          <AssociationSet Name="FK_RelatedArticleLinks_ArticleSource" Association="SparkServerModel.FK_RelatedArticleLinks_ArticleSource">
+            <End Role="Article" EntitySet="Article" />
+            <End Role="RelatedArticleLinks" EntitySet="RelatedArticleLinks" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Article_Category1">
           <End Type="SparkServerModel.Category" Role="Category" Multiplicity="1" />
@@ -568,6 +602,30 @@
             </Principal>
             <Dependent Role="Video">
               <PropertyRef Name="AuthorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RelatedArticleLinks">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="HREF" Type="String" Nullable="false" MaxLength="2400" FixedLength="false" Unicode="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Article" Relationship="SparkServerModel.FK_RelatedArticleLinks_ArticleSource" FromRole="RelatedArticleLinks" ToRole="Article" />
+        </EntityType>
+        <Association Name="FK_RelatedArticleLinks_ArticleSource">
+          <End Type="SparkServerModel.Article" Role="Article" Multiplicity="1" />
+          <End Type="SparkServerModel.RelatedArticleLinks" Role="RelatedArticleLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Article">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="RelatedArticleLinks">
+              <PropertyRef Name="ArticleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -690,6 +748,18 @@
                 <ScalarProperty Name="VideoURL" ColumnName="VideoURL" />
                 <ScalarProperty Name="Subtitle" ColumnName="Subtitle" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RelatedArticleLinks">
+            <EntityTypeMapping TypeName="SparkServerModel.RelatedArticleLinks">
+              <MappingFragment StoreEntitySet="RelatedArticleLinks">
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="HREF" ColumnName="HREF" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ArticleID" ColumnName="ArticleID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

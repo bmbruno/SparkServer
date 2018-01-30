@@ -21,5 +21,19 @@ namespace SparkServer.Core.Repositories
         /// <param name="numberToLoad">Number of article objects to load.</param>
         /// <returns>Enumerable of article-type objects.</returns>
         IEnumerable<T> GetRecent(int numberToLoad);
+
+        ///// <summary>
+        ///// Should return an enumerable of related article objects from the database.
+        ///// </summary>
+        ///// <param name="articleID">ID of article.</param>
+        ///// <returns>Enumerable of related article objects.</returns>
+        //IEnumerable<A> GetRelatedArticles(int articleID);
+
+        ///// <summary>
+        ///// Should return an enumerable of related article link objects from the database.
+        ///// </summary>
+        ///// <param name="articleID">ID of article.</param>
+        ///// <returns>Enumerable of related article link objects.</returns>
+        //IEnumerable<L> GetRelatedLinks(int articleID);
     }
 }

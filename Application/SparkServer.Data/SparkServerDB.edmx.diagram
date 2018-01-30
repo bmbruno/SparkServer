@@ -24,6 +24,8 @@
         <AssociationConnector Association="SparkServerModel.FK_Article_Category1" />
         <EntityTypeShape EntityType="SparkServerModel.Video" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="SparkServerModel.FK_Video_Author" />
+        <EntityTypeShape EntityType="SparkServerModel.RelatedArticleLinks" Width="1.5" PointX="5.25" PointY="13.125" />
+        <AssociationConnector Association="SparkServerModel.FK_RelatedArticleLinks_ArticleSource" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
