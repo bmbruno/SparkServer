@@ -80,6 +80,13 @@ namespace SparkServer.Controllers
                 viewModel.Title = $"[PREVIEW] - {viewModel.Title}";
             }
 
+            // Should this blog post be displayed at all?
+            // TODO: redirect to a custom 404
+            if (!User.Identity.IsAuthenticated && !preview && viewModel.PublishDate > DateTime.Now)
+            {
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
+            }
+
             return View(viewModel);
         }
 
