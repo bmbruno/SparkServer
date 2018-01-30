@@ -156,6 +156,8 @@
     <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
+    <Compile Include="ViewModels\RelatedLinkViewModel.cs" />
+    <Compile Include="ViewModels\RelatedArticleViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
     <Compile Include="ViewModels\CategoryListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />
