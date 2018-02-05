@@ -114,9 +114,25 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = article.UniqueURL;
                 viewModel.SortOrder = article.SortOrder;
 
+                // TODO: marked for possible removal if RelatedArticles concept doesn't stick
+                // viewModel.RelatedArticles = article.RelatedArticle.Select(u => u.ArticleID).ToList();
+
+                foreach (var relatedLink in article.RelatedArticleLinks.OrderBy(u => u.SortOrder))
+                {
+                    viewModel.RelatedLinks.Add(new RelatedLinkItemViewModel()
+                    {
+                        ID = relatedLink.ID,
+                        Title = relatedLink.Title,
+                        HREF = relatedLink.HREF
+                    });
+                }
+
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
                 viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
                 viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, viewModel.SitecoreVersionID);
+
+                // TODO: marked for removal
+                // viewModel.RelatedArticlesSource = FilterData.Articles(_articleRepo, viewModel.RelatedArticles);
             }
             else
             {
@@ -787,47 +803,5 @@ namespace SparkServer.Controllers
         }
 
         #endregion
-
-        public ActionResult Article(string uniqueURL)
-        {
-            if (String.IsNullOrEmpty(uniqueURL))
-                return Redirect("/");
-
-            try
-            {
-                var article = _articleRepo.Get(uniqueURL: uniqueURL);
-
-                if (article == null)
-
-                {
-                    // TODO: Critical error: log this and notify someone
-                    return Redirect("/");
-                }
-
-                // Map to viewmodel
-                ArticleViewModel viewModel = new ArticleViewModel();
-                viewModel.MapToViewModel(article);
-
-                return View(viewName: "Article", model: viewModel);
-            }
-            catch (Exception exc)
-            {
-                // TODO: log this exception and display an error message
-                return View("/");
-            }
-        }
-
-        public ActionResult Sample()
-        {
-            ArticleViewModel viewModel = new ArticleViewModel();
-            viewModel.ArticleTitle = "Introduction to Templates in Sitecore";
-            viewModel.AuthurFullName = "Brandon Bruno";
-            viewModel.CategoryID = 1;
-            viewModel.CategoryName = "Introduction to Sitecore";
-            viewModel.PublishDateLong = "April 25, 2017";
-            viewModel.SitecoreVersionDescription = "Sitecore 8.2.1";
-
-            return View(viewModel);
-        }
     }
 }

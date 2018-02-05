@@ -11,6 +11,8 @@ CREATE TABLE [RelatedArticleLinks] (
 	[Title] VARCHAR(500) NOT NULL,
 	
 	[HREF] VARCHAR(2400) NOT NULL,
+	
+	[SortOrder] INT NOT NULL DEFAULT 0,
 
 	[Active] BIT NOT NULL DEFAULT 1,
 

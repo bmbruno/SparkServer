@@ -30,26 +30,28 @@ namespace SparkServer.Mapping
             vm.CategoryName = (article.Category != null) ? article.Category.Name : string.Empty;
             vm.PublishDateLong = $"{article.PublishDate.Value.ToString("MMMM")} {article.PublishDate.Value.Year.ToString()}";
 
-            if (article.RelatedArticle.Count > 0)
-            {
-                foreach (var related in article.RelatedArticle)
-                {
-                    vm.RelatedArticles.Add(new RelatedArticleViewModel()
-                    {
-                        Title = related.Article.Title,
-                        URL = $"/article/{related.Article.UniqueURL}"
-                    });
-                }
-            }
+            // TODO: marked for removal
+            //if (article.RelatedArticle.Count > 0)
+            //{
+            //    foreach (var related in article.RelatedArticle)
+            //    {
+            //        vm.RelatedArticles.Add(new RelatedArticleViewModel()
+            //        {
+            //            Title = related.Article.Title,
+            //            URL = $"/article/{related.Article.UniqueURL}"
+            //        });
+            //    }
+            //}
 
             if (article.RelatedArticleLinks.Count > 0)
             {
                 foreach (var related in article.RelatedArticleLinks)
                 {
-                    vm.RelatedLinks.Add(new RelatedLinkViewModel()
+                    vm.RelatedLinks.Add(new RelatedLinkItemViewModel()
                     {
                         Title = related.Title,
-                        URL = related.HREF
+                        HREF = related.HREF,
+                        SortOrder = related.SortOrder
                     });
                 }
             }
