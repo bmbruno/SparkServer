@@ -79,6 +79,23 @@
     </div>
 
     <div class="row">
+        <h2>Related Articles</h2>
+        <!-- TODO: output checkbox list of existing articles -->
+    </div>
+
+    <div class="row">
+        <h2>Related Links</h2>
+
+        @for (var i = 0; i < Model.RelatedLinks.Count; i++)
+        {
+            @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br/>
+            @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)
+        }
+
+        <!-- TODO: [+] button that adds two textboxes -->
+    </div>
+
+    <div class="row">
         <input type="submit" value="Submit" class="btn primary" />
     </div>
 
