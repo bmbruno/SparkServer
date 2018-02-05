@@ -18,9 +18,12 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Article.FirstOrDefault(u => u.ID == ID);
-
-
+                item = db.Article
+                         .Include(u => u.Category)
+                         .Include(u => u.SitecoreVersion)
+                         .Include(u => u.Author)
+                         .Include(u => u.RelatedArticleLinks)
+                         .FirstOrDefault(u => u.ID == ID);
             }
 
             return item;
@@ -39,7 +42,6 @@ namespace SparkServer.Infrastructure.Repositories
                             .Include(u => u.Category)
                             .Include(u => u.SitecoreVersion)
                             .Include(u => u.Author)
-                            .Include(u => u.RelatedArticle)
                             .Include(u => u.RelatedArticleLinks)
                             .Where(whereClause)
                             .ToList();
@@ -54,7 +56,12 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).ToList();
+                results = db.Article
+                            .Include(u => u.Category)
+                            .Include(u => u.SitecoreVersion)
+                            .Include(u => u.Author)
+                            .Include(u => u.RelatedArticleLinks)
+                            .ToList();
             }
 
             return results;
@@ -121,6 +128,7 @@ namespace SparkServer.Infrastructure.Repositories
                 db.Entry(item).Reference(la => la.Author).Load();
                 db.Entry(item).Reference(la => la.SitecoreVersion).Load();
                 db.Entry(item).Reference(la => la.Category).Load();
+                db.Entry(item).Reference(la => la.RelatedArticleLinks);
             }
 
             return item;
@@ -136,6 +144,7 @@ namespace SparkServer.Infrastructure.Repositories
                                      .Include(a => a.Author)
                                      .Include(b => b.SitecoreVersion)
                                      .Include(c => c.Category)
+                                     .Include(d => d.RelatedArticleLinks)
                                      .OrderByDescending(u => u.PublishDate)
                                      .Take(numberToLoad).ToList();
             }
