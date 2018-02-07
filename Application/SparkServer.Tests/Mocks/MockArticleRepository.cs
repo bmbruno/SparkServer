@@ -74,5 +74,21 @@ namespace SparkServer.Infrastructure.Repositories
         {
             return new List<Article>();
         }
+
+        public void DeleteRelatedLink(int relatedLinkID)
+        {
+            return;
+        }
+
+        public void UpdateRelatedLink(int relatedLinkID, string title, string HREF, int sortOrder)
+        {
+            return;
+        }
+
+        public void AddRelatedLink(int articleID, string title, string HREF, int sortOrder)
+        {
+            return;
+        }
+
     }
 }

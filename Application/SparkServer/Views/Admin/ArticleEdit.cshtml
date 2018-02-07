@@ -78,25 +78,67 @@
         @Html.ValidationMessageFor(x => x.SortOrder)
     </div>
 
+    <!-- TODO: marked for removal
+    
     <div class="row">
         <h2>Related Articles</h2>
-        <!-- TODO: output checkbox list of existing articles -->
     </div>
 
-    <div class="row">
-        <h2>Related Links</h2>
+    -->
 
-        @for (var i = 0; i < Model.RelatedLinks.Count; i++)
-        {
-            @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br/>
-            @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)
-        }
+    if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+    {
+        <div class="row">
+            <h2>Related Links</h2>
 
-        <!-- TODO: [+] button that adds two textboxes -->
-    </div>
+            @for (var i = 0; i < Model.RelatedLinks.Count; i++)
+            {
+                <div>
+                    @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br />
+                    @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)<br />
+                    @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
+                    @Html.HiddenFor(x => x.RelatedLinks[i].Deleted)
+                </div>
+            }
 
-    <div class="row">
-        <input type="submit" value="Submit" class="btn primary" />
-    </div>
+            <div id="NewRelatedLink"></div>
+
+            <!-- TODO: [+] button that adds two textboxes -->
+            <a href="javascript://" id="AddRelatedLink">Add</a>
+        </div>
+
+        <div class="row">
+            <input type="submit" value="Submit" class="btn primary" />
+        </div>
+    }
+
+}
+
+@section PageScripts {
+
+    @if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+    {
+        <script type="text/javascript">
+
+            // TODO: keep wire-up logic here, but move internal logic to shared library
+
+            let template = "<input type='text' name='NewRelatedLinks[##INDEX##].Title' id='NewRelatedLinks_##INDEX##_Title' class='new-related-links' />|<input type='text' name='NewRelatedLinks[##INDEX##].HREF' id='NewRelatedLink_##INDEX##_HREF' />|<input type='text' name='NewRelatedLink[##INDEX##].SortOrder' id='NewRelatedLinks_##INDEX##__SortOrder' />";
+
+            $(function () {
+
+                $("#AddRelatedLink").on("click", function () {
+
+                    var count = $("new-related-links").length;
+
+                    var newHTML = template.replace(new RegExp("##INDEX##", "g"), count);
+
+                    $("#NewRelatedLink").append(newHTML);
+
+                });
+
+            });
+
+        </script>
+    }
 
 }

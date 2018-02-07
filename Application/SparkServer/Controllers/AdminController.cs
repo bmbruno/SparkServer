@@ -123,7 +123,8 @@ namespace SparkServer.Controllers
                     {
                         ID = relatedLink.ID,
                         Title = relatedLink.Title,
-                        HREF = relatedLink.HREF
+                        HREF = relatedLink.HREF,
+                        Deleted = false
                     });
                 }
 
@@ -178,6 +179,19 @@ namespace SparkServer.Controllers
 
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
+
+                    // TODO: map and flatten all existing RelatedLinks and NewRelatedLinks into RelatedLinks
+
+                    // Process deletions - check if any are marked deleted
+                    foreach (var related in viewModel.RelatedLinks)
+                    {
+                        if (related.Deleted)
+                            _articleRepo.DeleteRelatedLink(related.ID);
+                    }
+
+                    // TODO: Process updates to existing items
+
+                    // TODO: Process new items
 
                     _articleRepo.Create(article);
 

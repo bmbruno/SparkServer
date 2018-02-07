@@ -56,6 +56,8 @@ namespace SparkServer.ViewModels
 
         public List<RelatedLinkItemViewModel> RelatedLinks { get; set; }
 
+        public List<RelatedLinkItemViewModel> NewRelatedLinks { get; set; }
+
         public List<SelectListItem> AuthorSource { get; set; }
 
         public List<SelectListItem> CategorySource { get; set; }

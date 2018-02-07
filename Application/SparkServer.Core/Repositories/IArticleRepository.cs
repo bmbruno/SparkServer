@@ -22,6 +22,30 @@ namespace SparkServer.Core.Repositories
         /// <returns>Enumerable of article-type objects.</returns>
         IEnumerable<T> GetRecent(int numberToLoad);
 
+        /// <summary>
+        /// Should perform a soft delete of a related link object.
+        /// </summary>
+        /// <param name="relatedLinkID">ID of the related link object.</param>
+        void DeleteRelatedLink(int relatedLinkID);
+
+        /// <summary>
+        /// Should update the fields on a related link object based on the ID.
+        /// </summary>
+        /// <param name="relatedLinkID">ID of the related link object.</param>
+        /// <param name="title">Title of the link.</param>
+        /// <param name="HREF">Href of the link.</param>
+        /// <param name="sortOrder">Sort order of the link.</param>
+        void UpdateRelatedLink(int relatedLinkID, string title, string HREF, int sortOrder);
+
+        /// <summary>
+        /// Should save a new related links object in the database.
+        /// </summary>
+        /// <param name="title">Title of the link.</param>
+        /// <param name="HREF">Href of the link.</param>
+        /// <param name="sortOrder">Sort order of the link.</param>
+        void AddRelatedLink(int articleID, string title, string HREF, int sortOrder);
+
+        // TODO: marked for removal
         ///// <summary>
         ///// Should return an enumerable of related article objects from the database.
         ///// </summary>

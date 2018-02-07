@@ -15,5 +15,7 @@ namespace SparkServer.ViewModels
         public string HREF { get; set; }
 
         public int SortOrder { get; set; }
+
+        public bool Deleted { get; set; }
     }
 }

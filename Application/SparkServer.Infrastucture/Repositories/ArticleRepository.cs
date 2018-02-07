@@ -151,5 +151,55 @@ namespace SparkServer.Infrastructure.Repositories
 
             return blogList;
         }
+
+        public void DeleteRelatedLink(int relatedLinkID)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var relatedLink = db.RelatedArticleLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+
+                if (relatedLink == null)
+                    throw new Exception($"No related article link found for ID: {relatedLinkID}");
+
+                relatedLink.Active = false;
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateRelatedLink(int relatedLinkID, string title, string HREF, int sortOrder)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var relatedLink = db.RelatedArticleLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+
+                if (relatedLink == null)
+                    throw new Exception($"No related article link found for ID: {relatedLinkID}");
+
+                relatedLink.Title = title;
+                relatedLink.HREF = HREF;
+                relatedLink.SortOrder = sortOrder;
+                db.SaveChanges();
+            }
+        }
+
+        public void AddRelatedLink(int articleID, string title, string HREF, int sortOrder)
+        {
+            RelatedArticleLinks newRelatedLink = new RelatedArticleLinks()
+            {
+                ArticleID = articleID,
+                Title = title,
+                HREF = HREF,
+                SortOrder = sortOrder,
+
+                Active = true,
+                CreateDate = DateTime.Now,
+            };
+
+            using (var db = new SparkServerEntities())
+            {
+                db.RelatedArticleLinks.Add(newRelatedLink);
+                db.SaveChanges();
+            } 
+        }
     }
 }
