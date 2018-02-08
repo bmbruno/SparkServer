@@ -114,10 +114,7 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = article.UniqueURL;
                 viewModel.SortOrder = article.SortOrder;
 
-                // TODO: marked for possible removal if RelatedArticles concept doesn't stick
-                // viewModel.RelatedArticles = article.RelatedArticle.Select(u => u.ArticleID).ToList();
-
-                foreach (var relatedLink in article.RelatedArticleLinks.OrderBy(u => u.SortOrder))
+                foreach (var relatedLink in article.RelatedArticleLinks.Where(u => u.Active).OrderBy(u => u.SortOrder))
                 {
                     viewModel.RelatedLinks.Add(new RelatedLinkItemViewModel()
                     {
@@ -132,8 +129,6 @@ namespace SparkServer.Controllers
                 viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
                 viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, viewModel.SitecoreVersionID);
 
-                // TODO: marked for removal
-                // viewModel.RelatedArticlesSource = FilterData.Articles(_articleRepo, viewModel.RelatedArticles);
             }
             else
             {

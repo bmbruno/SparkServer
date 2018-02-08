@@ -51,9 +51,6 @@ namespace SparkServer.ViewModels
         [Display(Name = "Unique URL")]
         public string UniqueURL { get; set; }
 
-        // TODO: marked for removal
-        // public List<int> RelatedArticles { get; set; }
-
         public List<RelatedLinkItemViewModel> RelatedLinks { get; set; }
 
         public List<RelatedLinkItemViewModel> NewRelatedLinks { get; set; }
@@ -63,9 +60,6 @@ namespace SparkServer.ViewModels
         public List<SelectListItem> CategorySource { get; set; }
 
         public List<SelectListItem> SitecoreVersionSource { get; set; }
-
-        // TODO: marked for removal
-        // public List<SelectListItem> RelatedArticlesSource { get; set; }
 
         [Display(Name = "Sort Order")]
         public int? SortOrder { get; set; }

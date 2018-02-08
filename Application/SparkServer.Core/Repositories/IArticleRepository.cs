@@ -44,20 +44,5 @@ namespace SparkServer.Core.Repositories
         /// <param name="HREF">Href of the link.</param>
         /// <param name="sortOrder">Sort order of the link.</param>
         void AddRelatedLink(int articleID, string title, string HREF, int sortOrder);
-
-        // TODO: marked for removal
-        ///// <summary>
-        ///// Should return an enumerable of related article objects from the database.
-        ///// </summary>
-        ///// <param name="articleID">ID of article.</param>
-        ///// <returns>Enumerable of related article objects.</returns>
-        //IEnumerable<A> GetRelatedArticles(int articleID);
-
-        ///// <summary>
-        ///// Should return an enumerable of related article link objects from the database.
-        ///// </summary>
-        ///// <param name="articleID">ID of article.</param>
-        ///// <returns>Enumerable of related article link objects.</returns>
-        //IEnumerable<L> GetRelatedLinks(int articleID);
     }
 }
