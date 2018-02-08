@@ -180,18 +180,26 @@ namespace SparkServer.Controllers
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
 
-                    // TODO: map and flatten all existing RelatedLinks and NewRelatedLinks into RelatedLinks
-
                     // Process deletions - check if any are marked deleted
                     foreach (var related in viewModel.RelatedLinks)
                     {
                         if (related.Deleted)
-                            _articleRepo.DeleteRelatedLink(related.ID);
+                        {
+                            try
+                            {
+                                _articleRepo.DeleteRelatedLink(related.ID);
+                            }
+                            catch (Exception exc)
+                            {
+                                TempData["Error"] = $"Error deleting related link for ID {related.ID}. Exception: {exc.Message}";
+                            }
+                        }
                     }
 
                     // TODO: Process updates to existing items
 
                     // TODO: Process new items
+                    
 
                     _articleRepo.Create(article);
 
