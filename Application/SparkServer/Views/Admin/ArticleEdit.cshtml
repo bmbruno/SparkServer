@@ -93,11 +93,12 @@
 
             @for (var i = 0; i < Model.RelatedLinks.Count; i++)
             {
-                <div>
+                <div class="related-link-@i">
                     @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br />
                     @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)<br />
                     @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
                     @Html.HiddenFor(x => x.RelatedLinks[i].Deleted)
+                    <a href="javascript://" class="delete-related-link" data-iteration="@i.ToString()">[-]</a>
                 </div>
             }
 
@@ -111,7 +112,6 @@
             <input type="submit" value="Submit" class="btn primary" />
         </div>
     }
-
 }
 
 @section PageScripts {
@@ -133,6 +133,16 @@
                     var newHTML = template.replace(new RegExp("##INDEX##", "g"), count);
 
                     $("#NewRelatedLink").append(newHTML);
+
+                });
+
+                $(".delete-related-link").on("click", function () {
+
+                    var iteration = $(this).data("iteration");
+                    var deletedField = $("#RelatedLinks_" + iteration + "__Deleted");
+                    deletedField.val("true");
+
+                    $(".related-link-" + iteration).slideUp(250);
 
                 });
 
