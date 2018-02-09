@@ -95,7 +95,19 @@
                 </div>
             }
 
-            <div id="NewRelatedLink"></div>
+            <div id="NewRelatedLink">
+
+                @for (var i = 0; i < Model.NewRelatedLinks.Count; i++)
+                {
+                    <div class='new-related-link'>
+                        @Html.HiddenFor(x => x.NewRelatedLinks[i].ID)
+                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].Title)<br />
+                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].HREF)<br />
+                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].SortOrder)
+                    </div>
+                }
+
+            </div>
 
             <!-- TODO: [+] button that adds two textboxes -->
             <a href="javascript://" id="AddRelatedLink">Add</a>
@@ -115,13 +127,17 @@
 
             // TODO: keep wire-up logic here, but move internal logic to shared library
 
-            let template = "<input type='text' name='NewRelatedLinks[##INDEX##].Title' id='NewRelatedLinks_##INDEX##_Title' class='new-related-links' />|<input type='text' name='NewRelatedLinks[##INDEX##].HREF' id='NewRelatedLink_##INDEX##_HREF' />|<input type='text' name='NewRelatedLink[##INDEX##].SortOrder' id='NewRelatedLinks_##INDEX##__SortOrder' />";
+            let template = "<div class='new-related-link'>" +
+                           "    <input type='text' name='NewRelatedLinks[##INDEX##].Title' id='NewRelatedLinks_##INDEX##_Title' class='new-related-links' />" +
+                           "    <input type='text' name='NewRelatedLinks[##INDEX##].HREF' id='NewRelatedLink_##INDEX##_HREF' />" + 
+                           "    <input type='text' name='NewRelatedLinks[##INDEX##].SortOrder' id='NewRelatedLinks_##INDEX##__SortOrder' />" +
+                           "</div>";
 
             $(function () {
 
                 $("#AddRelatedLink").on("click", function () {
 
-                    var count = $("new-related-links").length;
+                    var count = $(".new-related-link").length;
 
                     var newHTML = template.replace(new RegExp("##INDEX##", "g"), count);
 

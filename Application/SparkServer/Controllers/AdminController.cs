@@ -121,6 +121,7 @@ namespace SparkServer.Controllers
                         ID = relatedLink.ID,
                         Title = relatedLink.Title,
                         HREF = relatedLink.HREF,
+                        SortOrder = relatedLink.SortOrder,
                         Deleted = false
                     });
                 }
@@ -216,7 +217,6 @@ namespace SparkServer.Controllers
                         }
 
                         // Process updates to existing related links
-
                         // TODO: Exception handling
                         _articleRepo.UpdateRelatedLink(related.ID, related.Title, related.HREF, related.SortOrder.Value);
                     }
