@@ -7,7 +7,9 @@ using System.Web;
 namespace SparkServer.ViewModels
 {
     public class RelatedLinkItemViewModel : BaseViewModel
-    { 
+    {
+        private int? _SortOrder;
+
         public int ID { get; set; }
 
         public string Title { get; set; }
@@ -16,9 +18,8 @@ namespace SparkServer.ViewModels
 
         public int? SortOrder
         {
-            get { if (this.SortOrder.HasValue) { return this.SortOrder; } else { return 0; } }
-
-            set { this.SortOrder = value; }
+            get { if (this._SortOrder.HasValue) { return this._SortOrder; } else { return 0; } }
+            set { this._SortOrder = value; }
         }
 
         public bool Deleted { get; set; }
