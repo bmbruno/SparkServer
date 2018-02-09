@@ -174,8 +174,6 @@ namespace SparkServer.Controllers
 
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
-
-                    // TODO: Process new related link items
                
                     _articleRepo.Create(article);
 
@@ -216,11 +214,23 @@ namespace SparkServer.Controllers
                                 TempData["Error"] = $"Error deleting related link for ID {related.ID}. Exception: {exc.Message}";
                             }
                         }
+
+                        // Process updates to existing related links
+
+                        // TODO: Exception handling
+                        _articleRepo.UpdateRelatedLink(related.ID, related.Title, related.HREF, related.SortOrder.Value);
                     }
 
-                    // TODO: Process updates to existing related links
-
-                    // TODO: Process new related link items
+                    // Process new related link items
+                    foreach (var newRelated in viewModel.NewRelatedLinks)
+                    {
+                        if (!String.IsNullOrEmpty(newRelated.Title) &&
+                            !String.IsNullOrEmpty(newRelated.HREF))
+                        {
+                            // TODO: Exception handling
+                            _articleRepo.AddRelatedLink(article.ID, newRelated.Title, newRelated.HREF, newRelated.SortOrder.Value);
+                        }
+                    }
 
                     _articleRepo.Update(article);
 
