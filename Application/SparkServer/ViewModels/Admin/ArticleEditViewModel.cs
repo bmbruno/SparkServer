@@ -70,6 +70,7 @@ namespace SparkServer.ViewModels
             AuthorSource = new List<SelectListItem>();
             CategorySource = new List<SelectListItem>();
             SitecoreVersionSource = new List<SelectListItem>();
+            NewRelatedLinks = new List<RelatedLinkItemViewModel>();
         }
     }
 }
