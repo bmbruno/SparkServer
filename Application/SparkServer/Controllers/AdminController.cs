@@ -175,27 +175,8 @@ namespace SparkServer.Controllers
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
 
-                    // Process deletions - check if any are marked deleted
-                    foreach (var related in viewModel.RelatedLinks)
-                    {
-                        if (related.Deleted)
-                        {
-                            try
-                            {
-                                _articleRepo.DeleteRelatedLink(related.ID);
-                            }
-                            catch (Exception exc)
-                            {
-                                TempData["Error"] = $"Error deleting related link for ID {related.ID}. Exception: {exc.Message}";
-                            }
-                        }
-                    }
-
-                    // TODO: Process updates to existing items
-
-                    // TODO: Process new items
-                    
-
+                    // TODO: Process new related link items
+               
                     _articleRepo.Create(article);
 
                     TempData["Success"] = "Article created.";
@@ -220,6 +201,26 @@ namespace SparkServer.Controllers
                     article.AuthorID = viewModel.AuthorID;
                     article.UniqueURL = viewModel.UniqueURL;
                     article.SortOrder = viewModel.SortOrder;
+
+                    // Process related link deletions - check if any are marked deleted
+                    foreach (var related in viewModel.RelatedLinks)
+                    {
+                        if (related.Deleted)
+                        {
+                            try
+                            {
+                                _articleRepo.DeleteRelatedLink(related.ID);
+                            }
+                            catch (Exception exc)
+                            {
+                                TempData["Error"] = $"Error deleting related link for ID {related.ID}. Exception: {exc.Message}";
+                            }
+                        }
+                    }
+
+                    // TODO: Process updates to existing related links
+
+                    // TODO: Process new related link items
 
                     _articleRepo.Update(article);
 

@@ -86,6 +86,7 @@
             @for (var i = 0; i < Model.RelatedLinks.Count; i++)
             {
                 <div class="related-link-@i">
+                    @Html.HiddenFor(x => x.RelatedLinks[i].ID)
                     @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br />
                     @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)<br />
                     @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
