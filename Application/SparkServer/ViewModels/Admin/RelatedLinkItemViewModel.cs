@@ -11,12 +11,15 @@ namespace SparkServer.ViewModels
     {        
         public int ID { get; set; }
 
-        [Display(Name = ""]
+        [Display(Name = "Title")]
         public string Title { get; set; }
 
+        [Display(Name = "Link HREF")]
         public string HREF { get; set; }
         
         private int? _SortOrder;
+
+        [Display(Name = "Sort Order")]
         public int? SortOrder
         {
             get { if (this._SortOrder.HasValue) { return this._SortOrder; } else { return 0; } }

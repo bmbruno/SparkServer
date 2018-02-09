@@ -78,45 +78,87 @@
         @Html.ValidationMessageFor(x => x.SortOrder)
     </div>
 
-    if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
-    {
+
         <div class="row">
             <h2>Related Links</h2>
 
-            @for (var i = 0; i < Model.RelatedLinks.Count; i++)
+            @if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
             {
-                <div class="related-link-@i">
-                    @Html.HiddenFor(x => x.RelatedLinks[i].ID)
-                    @Html.TextBoxFor(x => x.RelatedLinks[i].Title)<br />
-                    @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)<br />
-                    @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
-                    @Html.HiddenFor(x => x.RelatedLinks[i].Deleted)
-                    <a href="javascript://" class="delete-related-link" data-iteration="@i.ToString()">[-]</a>
-                </div>
-            }
-
-            <div id="NewRelatedLink">
-
-                @for (var i = 0; i < Model.NewRelatedLinks.Count; i++)
+                for (var i = 0; i < Model.RelatedLinks.Count; i++)
                 {
-                    <div class='new-related-link'>
-                        @Html.HiddenFor(x => x.NewRelatedLinks[i].ID)
-                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].Title)<br />
-                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].HREF)<br />
-                        @Html.TextBoxFor(x => x.NewRelatedLinks[i].SortOrder)
+                    <div class="related-link-@i related-link-row cf">
+                        @Html.HiddenFor(x => x.RelatedLinks[i].ID)
+
+                        <div class="title">
+                            @Html.LabelFor(x => x.RelatedLinks[i].Title)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].Title)
+                        </div>
+
+                        <div class="href">
+                            @Html.LabelFor(x => x.RelatedLinks[i].HREF)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)
+                        </div>
+                    
+                        <div class="sortorder">
+                            @Html.LabelFor(x => x.RelatedLinks[i].SortOrder)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
+                        </div>
+
+                        <div class="delete">
+                            <label>Actions</label>
+                            @Html.HiddenFor(x => x.RelatedLinks[i].Deleted)
+                            <a href="javascript://" class="btn delete-related-link" data-iteration="@i.ToString()">Delete</a>
+                        </div>
                     </div>
                 }
 
-            </div>
+                <div id="NewRelatedLink">
 
-            <!-- TODO: [+] button that adds two textboxes -->
-            <a href="javascript://" id="AddRelatedLink">Add</a>
+                    @for (var i = 0; i < Model.NewRelatedLinks.Count; i++)
+                    {
+                        <div class="new-related-link-@i related-link-row cf">
+                            @Html.HiddenFor(x => x.NewRelatedLinks[i].ID)
+
+                            <div class="title">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].Title)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].Title)
+                            </div>
+
+                            <div class="href">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].HREF)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].HREF)
+                            </div>
+
+                            <div class="sortorder">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].SortOrder)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].SortOrder)
+                            </div>
+
+                            <div class="delete">
+                                <label>Actions</label>
+                                @Html.HiddenFor(x => x.NewRelatedLinks[i].Deleted)
+                                <a href="javascript://" class="btn delete-related-link" data-iteration="@i.ToString()">Delete</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <!-- TODO: [+] button that adds two textboxes -->
+                <a href="javascript://" class="btn" id="AddRelatedLink">Add Related Link</a>
+            }
+            else
+            {
+                <p>To add related links, first save this new article, then edit it.</p>
+            }
         </div>
 
-        <div class="row">
+        <hr />
+
+        <div class="row cf center">
             <input type="submit" value="Submit" class="btn primary" />
         </div>
-    }
+    
 }
 
 @section PageScripts {
@@ -127,10 +169,10 @@
 
             // TODO: keep wire-up logic here, but move internal logic to shared library
 
-            let template = "<div class='new-related-link'>" +
-                           "    <input type='text' name='NewRelatedLinks[##INDEX##].Title' id='NewRelatedLinks_##INDEX##_Title' class='new-related-links' />" +
-                           "    <input type='text' name='NewRelatedLinks[##INDEX##].HREF' id='NewRelatedLink_##INDEX##_HREF' />" + 
-                           "    <input type='text' name='NewRelatedLinks[##INDEX##].SortOrder' id='NewRelatedLinks_##INDEX##__SortOrder' />" +
+            let template = "<div class='new-related-link related-link-row cf'>" +
+                           "    <div class='title'><label for='NewRelatedLinks_##INDEX##_Title'>Title</label><input type='text' name='NewRelatedLinks[##INDEX##].Title' id='NewRelatedLinks_##INDEX##_Title' class='new-related-links' /></div>" +
+                           "    <div class='href'><label for='NewRelatedLink_##INDEX##_HREF'>Link HREF</label><input type='text' name='NewRelatedLinks[##INDEX##].HREF' id='NewRelatedLink_##INDEX##_HREF' /></div>" +
+                           "    <div class='sortorder'><label for='NewRelatedLinks_##INDEX##__SortOrder'>Sort Order</label><input type='text' name='NewRelatedLinks[##INDEX##].SortOrder' id='NewRelatedLinks_##INDEX##__SortOrder' /></div>" +
                            "</div>";
 
             $(function () {

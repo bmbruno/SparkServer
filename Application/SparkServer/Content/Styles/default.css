@@ -170,6 +170,9 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 .simple-quote { display: none; }
 
+.related-link-row { background-color: #ffffff; padding: 1em; border-radius: 6px; box-shadow: 0 0 12px #666; }
+.related-link-row > div { margin-bottom: 1em; }
+
 @media (min-width: 600px)
 {		
     blockquote { margin: 0 2em; box-shadow: 0 0 16px #C1C1C1; }
@@ -243,6 +246,13 @@ footer.page p:last-of-type { margin-bottom: 0; }
     input[type="text"].quarter,
     textarea.quarter,
     select.quarter { width: 25%; }
+
+    .related-link-row { background-color: transparent; padding: 0; box-shadow: none; }
+    .related-link-row > div { float: left; padding-right: 1em; }
+    .related-link-row > div.title { width: 33%; }
+    .related-link-row > div.href { width: 33%; }
+    .related-link-row > div.sortorder { width: 10%; }
+
 
 }
 
