@@ -11,21 +11,18 @@
         <EntityTypeShape EntityType="SparkServerModel.BlogsTags" Width="1.5" PointX="5.25" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="SparkServerModel.BlogTag" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SparkServerModel.Category" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SparkServerModel.RelatedArticle" Width="1.5" PointX="5.25" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="SparkServerModel.SitecoreVersion" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="SparkServerModel.FK_Article_Author" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_Article_Category" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_Article_SitecoreVersion" ManuallyRouted="false" />
-        <AssociationConnector Association="SparkServerModel.FK_RelatedArticle_ArticleRelated" ManuallyRouted="false" />
-        <AssociationConnector Association="SparkServerModel.FK_RelatedArticle_ArticleSource" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_Blog_Author" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Blog" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_BlogTag_Tag" ManuallyRouted="false" />
         <AssociationConnector Association="SparkServerModel.FK_Article_Category1" />
         <EntityTypeShape EntityType="SparkServerModel.Video" Width="1.5" PointX="3" PointY="0.75" />
         <AssociationConnector Association="SparkServerModel.FK_Video_Author" />
-        <EntityTypeShape EntityType="SparkServerModel.RelatedArticleLinks" Width="1.5" PointX="5.25" PointY="13.125" />
-        <AssociationConnector Association="SparkServerModel.FK_RelatedArticleLinks_ArticleSource" />
+        <EntityTypeShape EntityType="SparkServerModel.ArticleRelatedLinks" Width="1.5" PointX="5.25" PointY="4.875" />
+        <AssociationConnector Association="SparkServerModel.FK_ArticleRelatedLinks_ArticleSource" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

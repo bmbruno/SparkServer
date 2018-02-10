@@ -114,7 +114,7 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = article.UniqueURL;
                 viewModel.SortOrder = article.SortOrder;
 
-                foreach (var relatedLink in article.RelatedArticleLinks.Where(u => u.Active).OrderBy(u => u.SortOrder))
+                foreach (var relatedLink in article.ArticleRelatedLinks.Where(u => u.Active).OrderBy(u => u.SortOrder))
                 {
                     viewModel.RelatedLinks.Add(new RelatedLinkItemViewModel()
                     {

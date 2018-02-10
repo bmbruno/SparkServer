@@ -31,9 +31,8 @@ namespace SparkServer.Data
         public virtual DbSet<BlogsTags> BlogsTags { get; set; }
         public virtual DbSet<BlogTag> BlogTag { get; set; }
         public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<RelatedArticle> RelatedArticle { get; set; }
         public virtual DbSet<SitecoreVersion> SitecoreVersion { get; set; }
         public virtual DbSet<Video> Video { get; set; }
-        public virtual DbSet<RelatedArticleLinks> RelatedArticleLinks { get; set; }
+        public virtual DbSet<ArticleRelatedLinks> ArticleRelatedLinks { get; set; }
     }
 }

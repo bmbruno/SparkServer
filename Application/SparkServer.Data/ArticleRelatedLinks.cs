@@ -12,15 +12,16 @@ namespace SparkServer.Data
     using System;
     using System.Collections.Generic;
     
-    public partial class RelatedArticle
+    public partial class ArticleRelatedLinks
     {
         public int ID { get; set; }
         public int ArticleID { get; set; }
-        public int RelatedArticleID { get; set; }
+        public string Title { get; set; }
+        public string HREF { get; set; }
+        public int SortOrder { get; set; }
         public bool Active { get; set; }
         public System.DateTime CreateDate { get; set; }
     
         public virtual Article Article { get; set; }
-        public virtual Article Article1 { get; set; }
     }
 }

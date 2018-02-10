@@ -22,7 +22,7 @@ namespace SparkServer.Infrastructure.Repositories
                          .Include(u => u.Category)
                          .Include(u => u.SitecoreVersion)
                          .Include(u => u.Author)
-                         .Include(u => u.RelatedArticleLinks)
+                         .Include(u => u.ArticleRelatedLinks)
                          .FirstOrDefault(u => u.ID == ID);
             }
 
@@ -42,7 +42,7 @@ namespace SparkServer.Infrastructure.Repositories
                             .Include(u => u.Category)
                             .Include(u => u.SitecoreVersion)
                             .Include(u => u.Author)
-                            .Include(u => u.RelatedArticleLinks)
+                            .Include(u => u.ArticleRelatedLinks)
                             .Where(whereClause)
                             .ToList();
             }
@@ -60,7 +60,7 @@ namespace SparkServer.Infrastructure.Repositories
                             .Include(u => u.Category)
                             .Include(u => u.SitecoreVersion)
                             .Include(u => u.Author)
-                            .Include(u => u.RelatedArticleLinks)
+                            .Include(u => u.ArticleRelatedLinks)
                             .ToList();
             }
 
@@ -128,7 +128,7 @@ namespace SparkServer.Infrastructure.Repositories
                 db.Entry(item).Reference(la => la.Author).Load();
                 db.Entry(item).Reference(la => la.SitecoreVersion).Load();
                 db.Entry(item).Reference(la => la.Category).Load();
-                db.Entry(item).Reference(la => la.RelatedArticleLinks);
+                db.Entry(item).Reference(la => la.ArticleRelatedLinks);
             }
 
             return item;
@@ -144,7 +144,7 @@ namespace SparkServer.Infrastructure.Repositories
                                      .Include(a => a.Author)
                                      .Include(b => b.SitecoreVersion)
                                      .Include(c => c.Category)
-                                     .Include(d => d.RelatedArticleLinks)
+                                     .Include(d => d.ArticleRelatedLinks)
                                      .OrderByDescending(u => u.PublishDate)
                                      .Take(numberToLoad).ToList();
             }
@@ -156,7 +156,7 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                var relatedLink = db.RelatedArticleLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+                var relatedLink = db.ArticleRelatedLinks.FirstOrDefault(u => u.ID == relatedLinkID);
 
                 if (relatedLink == null)
                     throw new Exception($"No related article link found for ID: {relatedLinkID}");
@@ -170,7 +170,7 @@ namespace SparkServer.Infrastructure.Repositories
         {
             using (var db = new SparkServerEntities())
             {
-                var relatedLink = db.RelatedArticleLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+                var relatedLink = db.ArticleRelatedLinks.FirstOrDefault(u => u.ID == relatedLinkID);
 
                 if (relatedLink == null)
                     throw new Exception($"No related article link found for ID: {relatedLinkID}");
@@ -184,7 +184,7 @@ namespace SparkServer.Infrastructure.Repositories
 
         public void AddRelatedLink(int articleID, string title, string HREF, int sortOrder)
         {
-            RelatedArticleLinks newRelatedLink = new RelatedArticleLinks()
+            ArticleRelatedLinks newRelatedLink = new ArticleRelatedLinks()
             {
                 ArticleID = articleID,
                 Title = title,
@@ -197,7 +197,7 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                db.RelatedArticleLinks.Add(newRelatedLink);
+                db.ArticleRelatedLinks.Add(newRelatedLink);
                 db.SaveChanges();
             } 
         }
