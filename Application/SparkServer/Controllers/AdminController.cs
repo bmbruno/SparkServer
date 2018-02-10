@@ -217,8 +217,14 @@ namespace SparkServer.Controllers
                         }
 
                         // Process updates to existing related links
-                        // TODO: Exception handling
-                        _articleRepo.UpdateRelatedLink(related.ID, related.Title, related.HREF, related.SortOrder.Value);
+                        try
+                        {
+                            _articleRepo.UpdateRelatedLink(related.ID, related.Title, related.HREF, related.SortOrder.Value);
+                        }
+                        catch (Exception exc)
+                        {
+                            TempData["Error"] = $"Error updating related link for ID {related.ID}. Exception: {exc.Message}";
+                        }
                     }
 
                     // Process new related link items
@@ -227,8 +233,14 @@ namespace SparkServer.Controllers
                         if (!String.IsNullOrEmpty(newRelated.Title) &&
                             !String.IsNullOrEmpty(newRelated.HREF))
                         {
-                            // TODO: Exception handling
-                            _articleRepo.AddRelatedLink(article.ID, newRelated.Title, newRelated.HREF, newRelated.SortOrder.Value);
+                            try
+                            {
+                                _articleRepo.AddRelatedLink(article.ID, newRelated.Title, newRelated.HREF, newRelated.SortOrder.Value);
+                            }
+                            catch (Exception exc)
+                            {
+                                TempData["Error"] = $"Error adding related link. Exception: {exc.Message}";
+                            }
                         }
                     }
 
