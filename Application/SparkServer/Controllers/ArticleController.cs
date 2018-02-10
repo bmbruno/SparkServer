@@ -44,7 +44,7 @@ namespace SparkServer.Controllers
             catch (Exception exc)
             {
                 // TODO: log this exception and display an error message
-                return View("/");
+                return RedirectToAction("/");
             }
         }
 
