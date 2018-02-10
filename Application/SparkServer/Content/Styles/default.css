@@ -59,6 +59,8 @@ article > .about li { margin: 0; list-style-type: none; }
 article > footer ul li { border-bottom: 1px solid #AAA; margin: 0; list-style-type: none; }
 article > footer ul li:last-of-type { border-bottom: 0; }
 article > footer ul li a { display: block; padding: 0.75em 0; text-decoration: none; }
+article > footer > .related li { margin: 0; }
+article > footer > .related a { padding: 0.5em 0; }
 
 article.blog { margin-top: 2em; }
 article.blog > .blog-header { display: none; }
@@ -188,9 +190,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	article > .about { text-align: right; }
 	article > .about li { display: inline-block; margin-left: 1em;  }
 	
-	article > footer > .articles { width: 49%; float: left; margin-right: 1%; }
-	article > footer > .notes { width: 49%; float: right; margin-left: 1%; }
-
+	article > footer > .related { max-width: 60%}
+    
     article.blog > .blog-header { display: block; background-size: cover; background-position: center top; position: relative; height: 420px; margin-bottom: 2em; }
     article.blog > .blog-header h1 { position: absolute; bottom: 0; padding: 0.5em; background-color: rgba(0, 0, 0, 0.85); text-shadow: 2px 2px 0 #000; color: #DEDEDE; }
     article.blog > h1.blog-title-only { display: none; }
