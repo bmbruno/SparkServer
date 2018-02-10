@@ -1,7 +1,7 @@
 USE [SparkServer]
 GO
 
-CREATE TABLE [RelatedArticleLinks] (
+CREATE TABLE [ArticleRelatedLinks] (
 	
 	[ID] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
 

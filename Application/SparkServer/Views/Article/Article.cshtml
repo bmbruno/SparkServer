@@ -23,34 +23,18 @@
 
     </div>
 
-    @if (Model.RelatedArticles.Count > 0 || Model.RelatedLinks.Count > 0)
+    @if (Model.RelatedLinks.Count > 0)
     {
         <footer class="cf">
-            <h1>Notes</h1>
-
-            @if (Model.RelatedArticles.Count > 0)
-            {
-                <div class="articles">
-                    <h2>Related Articles</h2>
-
-                    <ul>
-                        @foreach (var related in Model.RelatedArticles)
-                        {
-                            <li><a href="@related.URL">@related.Name</a></li>
-                        }
-                    </ul>
-                </div>
-            }
-
             @if (Model.RelatedLinks.Count > 0)
             {
                 <div class="notes">
-                    <h2>Links</h2>
+                    <h2>Related Links</h2>
 
                     <ul>
                         @foreach (var related in Model.RelatedLinks)
                         {
-                            <li><a href="@related.URL">@related.Name</a></li>
+                            <li><a href="@related.HREF">@related.Title</a></li>
                         }
                     </ul>
                 </div>
