@@ -128,7 +128,7 @@ namespace SparkServer.Infrastructure.Repositories
                 db.Entry(item).Reference(la => la.Author).Load();
                 db.Entry(item).Reference(la => la.SitecoreVersion).Load();
                 db.Entry(item).Reference(la => la.Category).Load();
-                db.Entry(item).Reference(la => la.ArticleRelatedLinks);
+                db.Entry(item).Collection(la => la.ArticleRelatedLinks).Load();
             }
 
             return item;
