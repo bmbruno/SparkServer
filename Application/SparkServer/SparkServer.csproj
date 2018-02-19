@@ -149,6 +149,7 @@
     <Compile Include="Models\CategoryWithArticles.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\RelatedLinkItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\VideoEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\VideoEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\VideoListItemViewModel.cs" />
@@ -156,6 +157,7 @@
     <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
+    <Compile Include="ViewModels\RelatedArticleViewModel.cs" />
     <Compile Include="ViewModels\VideoViewModel.cs" />
     <Compile Include="ViewModels\CategoryListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />

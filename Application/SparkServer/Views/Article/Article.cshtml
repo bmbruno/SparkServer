@@ -23,33 +23,24 @@
 
     </div>
 
-    <!-- TODO: notes footer
-    <footer class="cf">
-        <h1>Notes</h1>
+    @if (Model.RelatedLinks.Count > 0)
+    {
+        <footer class="cf">
+            @if (Model.RelatedLinks.Count > 0)
+            {
+                <div class="related">
+                    <h2>Related Links</h2>
 
-        <div class="articles">
-            <h2>Related Articles</h2>
-
-            <ul>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-                <li><a href="#">Related Article Alpha</a></li>
-                <li><a href="#">Related Article Beta</a></li>
-            </ul>
-        </div>
-
-        <div class="notes">
-            <h2>Links</h2>
-
-            <ul>
-                <li><a href="#"></a></li>
-                <li><a href="#"></a></li>
-            </ul>
-        </div>
-    </footer>
-    -->
+                    <ul>
+                        @foreach (var related in Model.RelatedLinks)
+                        {
+                            <li><a href="@related.HREF" target="_blank">@related.Title</a></li>
+                        }
+                    </ul>
+                </div>
+            }
+        </footer>
+    }
 
 </article>
 

@@ -78,8 +78,84 @@
         @Html.ValidationMessageFor(x => x.SortOrder)
     </div>
 
-    <div class="row">
-        <input type="submit" value="Submit" class="btn primary" />
-    </div>
 
+        <div class="row">
+            <h2>Related Links</h2>
+
+            @if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
+            {
+                for (var i = 0; i < Model.RelatedLinks.Count; i++)
+                {
+                    <div class="related-link-@i related-link-row cf">
+                        @Html.HiddenFor(x => x.RelatedLinks[i].ID)
+
+                        <div class="title">
+                            @Html.LabelFor(x => x.RelatedLinks[i].Title)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].Title)
+                        </div>
+
+                        <div class="href">
+                            @Html.LabelFor(x => x.RelatedLinks[i].HREF)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].HREF)
+                        </div>
+                    
+                        <div class="sortorder">
+                            @Html.LabelFor(x => x.RelatedLinks[i].SortOrder)
+                            @Html.TextBoxFor(x => x.RelatedLinks[i].SortOrder)
+                        </div>
+
+                        <div class="delete-section">
+                            <label>Actions</label>
+                            @Html.HiddenFor(x => x.RelatedLinks[i].Deleted)
+                            <a href="javascript://" class="btn delete-related-link" data-iteration="@i.ToString()">Delete</a>
+                        </div>
+                    </div>
+                }
+
+                <div id="NewRelatedLink">
+
+                    @for (var i = 0; i < Model.NewRelatedLinks.Count; i++)
+                    {
+                        <div class="new-related-link-@i related-link-row cf">
+                            @Html.HiddenFor(x => x.NewRelatedLinks[i].ID)
+
+                            <div class="title">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].Title)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].Title)
+                            </div>
+
+                            <div class="href">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].HREF)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].HREF)
+                            </div>
+
+                            <div class="sortorder">
+                                @Html.LabelFor(x => x.NewRelatedLinks[i].SortOrder)
+                                @Html.TextBoxFor(x => x.NewRelatedLinks[i].SortOrder)
+                            </div>
+
+                            <div class="delete-section">
+                                <label>Actions</label>
+                                @Html.HiddenFor(x => x.NewRelatedLinks[i].Deleted)
+                                <a href="javascript://" class="btn delete-related-link" data-iteration="@i.ToString()">Delete</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+                <a href="javascript://" class="btn" id="AddRelatedLink">Add Related Link</a>
+            }
+            else
+            {
+                <p>To add related links, first save this new article, then edit it.</p>
+            }
+        </div>
+
+        <hr />
+
+        <div class="row cf center">
+            <input type="submit" value="Submit" class="btn primary" />
+        </div>
+    
 }

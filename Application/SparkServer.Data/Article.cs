@@ -18,8 +18,7 @@ namespace SparkServer.Data
         public Article()
         {
             this.Article1 = new HashSet<Article>();
-            this.RelatedArticle = new HashSet<RelatedArticle>();
-            this.RelatedArticle1 = new HashSet<RelatedArticle>();
+            this.ArticleRelatedLinks = new HashSet<ArticleRelatedLinks>();
         }
     
         public int ID { get; set; }
@@ -40,10 +39,8 @@ namespace SparkServer.Data
         public virtual ICollection<Article> Article1 { get; set; }
         public virtual Article Article2 { get; set; }
         public virtual SitecoreVersion SitecoreVersion { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedArticle> RelatedArticle { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RelatedArticle> RelatedArticle1 { get; set; }
         public virtual Category Category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArticleRelatedLinks> ArticleRelatedLinks { get; set; }
     }
 }

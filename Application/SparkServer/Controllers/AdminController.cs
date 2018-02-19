@@ -114,9 +114,22 @@ namespace SparkServer.Controllers
                 viewModel.UniqueURL = article.UniqueURL;
                 viewModel.SortOrder = article.SortOrder;
 
+                foreach (var relatedLink in article.ArticleRelatedLinks.Where(u => u.Active).OrderBy(u => u.SortOrder))
+                {
+                    viewModel.RelatedLinks.Add(new RelatedLinkItemViewModel()
+                    {
+                        ID = relatedLink.ID,
+                        Title = relatedLink.Title,
+                        HREF = relatedLink.HREF,
+                        SortOrder = relatedLink.SortOrder,
+                        Deleted = false
+                    });
+                }
+
                 viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
                 viewModel.CategorySource = FilterData.Categories(_categoryRepo, viewModel.CategoryID);
                 viewModel.SitecoreVersionSource = FilterData.SitecoreVersions(_sitecoreVersionRepo, viewModel.SitecoreVersionID);
+
             }
             else
             {
@@ -162,7 +175,7 @@ namespace SparkServer.Controllers
 
                     article.Active = true;
                     article.CreateDate = DateTime.Now;
-
+               
                     _articleRepo.Create(article);
 
                     TempData["Success"] = "Article created.";
@@ -187,6 +200,49 @@ namespace SparkServer.Controllers
                     article.AuthorID = viewModel.AuthorID;
                     article.UniqueURL = viewModel.UniqueURL;
                     article.SortOrder = viewModel.SortOrder;
+
+                    // Process related link deletions - check if any are marked deleted
+                    foreach (var related in viewModel.RelatedLinks)
+                    {
+                        if (related.Deleted)
+                        {
+                            try
+                            {
+                                _articleRepo.DeleteRelatedLink(related.ID);
+                            }
+                            catch (Exception exc)
+                            {
+                                TempData["Error"] = $"Error deleting related link for ID {related.ID}. Exception: {exc.Message}";
+                            }
+                        }
+
+                        // Process updates to existing related links
+                        try
+                        {
+                            _articleRepo.UpdateRelatedLink(related.ID, related.Title, related.HREF, related.SortOrder.Value);
+                        }
+                        catch (Exception exc)
+                        {
+                            TempData["Error"] = $"Error updating related link for ID {related.ID}. Exception: {exc.Message}";
+                        }
+                    }
+
+                    // Process new related link items
+                    foreach (var newRelated in viewModel.NewRelatedLinks)
+                    {
+                        if (!String.IsNullOrEmpty(newRelated.Title) &&
+                            !String.IsNullOrEmpty(newRelated.HREF))
+                        {
+                            try
+                            {
+                                _articleRepo.AddRelatedLink(article.ID, newRelated.Title, newRelated.HREF, newRelated.SortOrder.Value);
+                            }
+                            catch (Exception exc)
+                            {
+                                TempData["Error"] = $"Error adding related link. Exception: {exc.Message}";
+                            }
+                        }
+                    }
 
                     _articleRepo.Update(article);
 
@@ -787,47 +843,5 @@ namespace SparkServer.Controllers
         }
 
         #endregion
-
-        public ActionResult Article(string uniqueURL)
-        {
-            if (String.IsNullOrEmpty(uniqueURL))
-                return Redirect("/");
-
-            try
-            {
-                var article = _articleRepo.Get(uniqueURL: uniqueURL);
-
-                if (article == null)
-
-                {
-                    // TODO: Critical error: log this and notify someone
-                    return Redirect("/");
-                }
-
-                // Map to viewmodel
-                ArticleViewModel viewModel = new ArticleViewModel();
-                viewModel.MapToViewModel(article);
-
-                return View(viewName: "Article", model: viewModel);
-            }
-            catch (Exception exc)
-            {
-                // TODO: log this exception and display an error message
-                return View("/");
-            }
-        }
-
-        public ActionResult Sample()
-        {
-            ArticleViewModel viewModel = new ArticleViewModel();
-            viewModel.ArticleTitle = "Introduction to Templates in Sitecore";
-            viewModel.AuthurFullName = "Brandon Bruno";
-            viewModel.CategoryID = 1;
-            viewModel.CategoryName = "Introduction to Sitecore";
-            viewModel.PublishDateLong = "April 25, 2017";
-            viewModel.SitecoreVersionDescription = "Sitecore 8.2.1";
-
-            return View(viewModel);
-        }
     }
 }

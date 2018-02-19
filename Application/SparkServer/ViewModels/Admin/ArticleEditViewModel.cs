@@ -51,6 +51,10 @@ namespace SparkServer.ViewModels
         [Display(Name = "Unique URL")]
         public string UniqueURL { get; set; }
 
+        public List<RelatedLinkItemViewModel> RelatedLinks { get; set; }
+
+        public List<RelatedLinkItemViewModel> NewRelatedLinks { get; set; }
+
         public List<SelectListItem> AuthorSource { get; set; }
 
         public List<SelectListItem> CategorySource { get; set; }
@@ -62,7 +66,11 @@ namespace SparkServer.ViewModels
 
         public ArticleEditViewModel()
         {
+            RelatedLinks = new List<RelatedLinkItemViewModel>();
             AuthorSource = new List<SelectListItem>();
+            CategorySource = new List<SelectListItem>();
+            SitecoreVersionSource = new List<SelectListItem>();
+            NewRelatedLinks = new List<RelatedLinkItemViewModel>();
         }
     }
 }

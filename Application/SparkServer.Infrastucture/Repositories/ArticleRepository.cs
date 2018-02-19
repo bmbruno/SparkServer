@@ -18,9 +18,12 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                item = db.Article.FirstOrDefault(u => u.ID == ID);
-
-
+                item = db.Article
+                         .Include(u => u.Category)
+                         .Include(u => u.SitecoreVersion)
+                         .Include(u => u.Author)
+                         .Include(u => u.ArticleRelatedLinks)
+                         .FirstOrDefault(u => u.ID == ID);
             }
 
             return item;
@@ -35,7 +38,13 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).Where(whereClause).ToList();
+                results = db.Article
+                            .Include(u => u.Category)
+                            .Include(u => u.SitecoreVersion)
+                            .Include(u => u.Author)
+                            .Include(u => u.ArticleRelatedLinks)
+                            .Where(whereClause)
+                            .ToList();
             }
 
             return results;
@@ -47,7 +56,12 @@ namespace SparkServer.Infrastructure.Repositories
 
             using (var db = new SparkServerEntities())
             {
-                results = db.Article.Include(u => u.Category).Include(u => u.SitecoreVersion).Include(u => u.Author).ToList();
+                results = db.Article
+                            .Include(u => u.Category)
+                            .Include(u => u.SitecoreVersion)
+                            .Include(u => u.Author)
+                            .Include(u => u.ArticleRelatedLinks)
+                            .ToList();
             }
 
             return results;
@@ -114,6 +128,7 @@ namespace SparkServer.Infrastructure.Repositories
                 db.Entry(item).Reference(la => la.Author).Load();
                 db.Entry(item).Reference(la => la.SitecoreVersion).Load();
                 db.Entry(item).Reference(la => la.Category).Load();
+                db.Entry(item).Collection(la => la.ArticleRelatedLinks).Load();
             }
 
             return item;
@@ -129,11 +144,62 @@ namespace SparkServer.Infrastructure.Repositories
                                      .Include(a => a.Author)
                                      .Include(b => b.SitecoreVersion)
                                      .Include(c => c.Category)
+                                     .Include(d => d.ArticleRelatedLinks)
                                      .OrderByDescending(u => u.PublishDate)
                                      .Take(numberToLoad).ToList();
             }
 
             return blogList;
+        }
+
+        public void DeleteRelatedLink(int relatedLinkID)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var relatedLink = db.ArticleRelatedLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+
+                if (relatedLink == null)
+                    throw new Exception($"No related article link found for ID: {relatedLinkID}");
+
+                relatedLink.Active = false;
+                db.SaveChanges();
+            }
+        }
+
+        public void UpdateRelatedLink(int relatedLinkID, string title, string HREF, int sortOrder)
+        {
+            using (var db = new SparkServerEntities())
+            {
+                var relatedLink = db.ArticleRelatedLinks.FirstOrDefault(u => u.ID == relatedLinkID);
+
+                if (relatedLink == null)
+                    throw new Exception($"No related article link found for ID: {relatedLinkID}");
+
+                relatedLink.Title = title;
+                relatedLink.HREF = HREF;
+                relatedLink.SortOrder = sortOrder;
+                db.SaveChanges();
+            }
+        }
+
+        public void AddRelatedLink(int articleID, string title, string HREF, int sortOrder)
+        {
+            ArticleRelatedLinks newRelatedLink = new ArticleRelatedLinks()
+            {
+                ArticleID = articleID,
+                Title = title,
+                HREF = HREF,
+                SortOrder = sortOrder,
+
+                Active = true,
+                CreateDate = DateTime.Now,
+            };
+
+            using (var db = new SparkServerEntities())
+            {
+                db.ArticleRelatedLinks.Add(newRelatedLink);
+                db.SaveChanges();
+            } 
         }
     }
 }

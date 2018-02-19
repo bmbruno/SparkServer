@@ -30,7 +30,6 @@ namespace SparkServer.Controllers
                 var article = _articleRepo.Get(uniqueURL: uniqueURL);
 
                 if (article == null)
-
                 {
                     // TODO: Critical error: log this and notify someone
                     return Redirect("/");
@@ -45,7 +44,7 @@ namespace SparkServer.Controllers
             catch (Exception exc)
             {
                 // TODO: log this exception and display an error message
-                return View("/");
+                return RedirectToAction("/");
             }
         }
 

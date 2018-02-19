@@ -29,6 +29,20 @@ namespace SparkServer.Mapping
             vm.CategoryID = article.CategoryID;
             vm.CategoryName = (article.Category != null) ? article.Category.Name : string.Empty;
             vm.PublishDateLong = $"{article.PublishDate.Value.ToString("MMMM")} {article.PublishDate.Value.Year.ToString()}";
+
+            if (article.ArticleRelatedLinks.Count > 0)
+            {
+                foreach (var related in article.ArticleRelatedLinks.Where(u => u.Active).OrderBy(u => u.SortOrder))
+                {
+                    vm.RelatedLinks.Add(new RelatedLinkItemViewModel()
+                    {
+                        Title = related.Title,
+                        HREF = related.HREF,
+                        SortOrder = related.SortOrder
+                    });
+                }
+            }
+
         }
 
         /// <summary>

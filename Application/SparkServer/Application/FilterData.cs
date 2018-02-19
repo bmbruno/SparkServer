@@ -114,5 +114,32 @@ namespace SparkServer.Application
 
             return list;
         }
+
+        public static List<SelectListItem> Articles(IArticleRepository<Article> repo, List<int> selected)
+        {
+            List<SelectListItem> list = new List<SelectListItem>();
+            IEnumerable<Article> sourceList = repo.GetAll().OrderBy(u => u.Title);
+
+            foreach (var item in sourceList)
+            {
+                SelectListItem listItem = new SelectListItem()
+                {
+                    Value = item.ID.ToString(),
+                    Text = item.Title
+                };
+
+                foreach (int selectedID in selected)
+                {
+                    if (item.ID == selectedID)
+                    {
+                        listItem.Selected = true;
+                    }
+                }
+
+                list.Add(listItem);
+            }
+
+            return list;
+        }
     }
 }
