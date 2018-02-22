@@ -7,7 +7,7 @@ a:hover { color: #FA0; }
 .cf:after { content: ""; display: table; clear: both; }
 em { font-style: italic; }
 .center { text-align: center; }
-h1, h2, h3, h4, h5, h6 { clear: both; }
+
 
 /* BASE */
 body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
