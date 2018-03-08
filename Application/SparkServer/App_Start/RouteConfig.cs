@@ -58,13 +58,13 @@ namespace SparkServer
             );
 
             //
-            // Videos
+            // Resources
             //
 
             routes.MapRoute(
-                name: "Videos",
-                url: "videos",
-                defaults: new { controller = "Home", action = "Videos" }
+                name: "Resources",
+                url: "resources",
+                defaults: new { controller = "Home", action = "Resources" }
             );
 
             //

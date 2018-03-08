@@ -20,13 +20,10 @@ namespace SparkServer.Controllers
         private IBlogRepository<Blog> _blogRepo;
         private IVideoRepository<Video> _videoRepo;
 
-        private string _key = "F9701A3C-080D-49A1-98E6-027FA1D03DDA";
-
-        public HomeController(IArticleRepository<Article> articleRepo, IBlogRepository<Blog> blogRepo, IVideoRepository<Video> videoRepo)
+        public HomeController(IArticleRepository<Article> articleRepo, IBlogRepository<Blog> blogRepo)
         {
             _articleRepo = articleRepo;
             _blogRepo = blogRepo;
-            _videoRepo = videoRepo;
         }
 
         public ActionResult Index()
@@ -50,48 +47,12 @@ namespace SparkServer.Controllers
             return View(viewModel);
         }
 
-        public ActionResult Videos()
+        public ActionResult Resources()
         {
-            HomeVideoViewModel viewModel = new HomeVideoViewModel();
-            viewModel.MenuSelection = MainMenu.Videos;
-
-            var videos = _videoRepo.GetRecent(25);
-            viewModel.MapToViewModel(videos);
+            ResourcesViewModel viewModel = new ResourcesViewModel();
+            viewModel.MenuSelection = MainMenu.Resources;
 
             return View(viewModel);
-        }
-
-        public ActionResult Create(string key)
-        {
-            if (String.IsNullOrEmpty(key))
-                return Redirect("/");
-
-            if (key.ToLower() != _key.ToLower())
-                return Redirect("/");
-
-            ArticleAddEditViewModel model = new ArticleAddEditViewModel();
-            model.Mode = EditMode.Add;
-
-            return View(viewName: "AddEdit", model: model);
-        }
-
-        public ActionResult Edit(string key, int id)
-        {
-            if (String.IsNullOrEmpty(key))
-                return Redirect("/");
-
-            if (key.ToLower() != _key.ToLower())
-                return Redirect("/");
-
-            Article article = _articleRepo.Get(id);
-
-            if (article == null)
-                Redirect("/");
-
-            ArticleAddEditViewModel model = new ArticleAddEditViewModel();
-            model.Mode = EditMode.Edit;
-            
-            return View(viewName: "AddEdit", model: model);
         }
     }
 }

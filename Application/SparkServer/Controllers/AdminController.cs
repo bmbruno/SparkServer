@@ -22,15 +22,13 @@ namespace SparkServer.Controllers
         private ICategoryRepository<Category> _categoryRepo;
         private IAuthorRepository<Author> _authorRepo;
         private ISitecoreVersionRepository<SitecoreVersion> _sitecoreVersionRepo;
-        private IVideoRepository<Video> _videoRepo;
 
         public AdminController(IArticleRepository<Article> articleRepo,
                                IBlogRepository<Blog> blogRepo,
                                IBlogTagRepository<BlogTag> blogTagRepo,
                                ICategoryRepository<Category> categoryRepo,
                                IAuthorRepository<Author> authorRepo,
-                               ISitecoreVersionRepository<SitecoreVersion> sitecoreVersionRepo,
-                               IVideoRepository<Video> videoRepo)
+                               ISitecoreVersionRepository<SitecoreVersion> sitecoreVersionRepo)
         {
             _articleRepo = articleRepo;
             _blogRepo = blogRepo;
@@ -38,7 +36,6 @@ namespace SparkServer.Controllers
             _categoryRepo = categoryRepo;
             _authorRepo = authorRepo;
             _sitecoreVersionRepo = sitecoreVersionRepo;
-            _videoRepo = videoRepo;
         }
 
         [AllowAnonymous]
@@ -690,156 +687,6 @@ namespace SparkServer.Controllers
             }
 
             return RedirectToAction(actionName: "CategoryList", controllerName: "Admin");
-        }
-
-        #endregion
-
-        #region Video
-
-        public ActionResult VideoList()
-        {
-            VideoEditListViewModel viewModel = new VideoEditListViewModel();
-
-            var Videos = _videoRepo.GetAll().OrderByDescending(u => u.CreateDate);
-
-            foreach (var video in Videos)
-            {
-                viewModel.VideoList.Add(new VideoListItemViewModel()
-                {
-                    ID = video.ID,
-                    Title = video.Title,
-                    Subtitle = video.Subtitle,
-                    VideoURL = video.VideoURL,
-                    ImageThumbnailPath = video.ImageThumbnailPath,
-                    PublishedDate = (video.PublishDate.HasValue) ? video.PublishDate.Value.ToShortDateString() : "None",
-                    AuthorName = $"{video.Author.FirstName} {video.Author.LastName}"
-                });
-            }
-
-            return View(viewModel);
-        }
-
-        public ActionResult VideoEdit(int? ID)
-        {
-            VideoEditViewModel viewModel = new VideoEditViewModel();
-
-            if (ID.HasValue)
-            {
-                // EDIT
-
-                viewModel.Mode = EditMode.Edit;
-
-                var video = _videoRepo.Get(ID: ID.Value);
-
-                if (video == null)
-                {
-                    TempData["Error"] = $"No Video found with ID {ID.Value}.";
-                    return RedirectToAction(actionName: "Index", controllerName: "Admin");
-                }
-
-                viewModel.ID = video.ID;
-                viewModel.Title = video.Title;
-                viewModel.Subtitle = video.Subtitle;
-                viewModel.VideoURL = video.VideoURL;
-                viewModel.PublishDate = video.PublishDate;
-                viewModel.AuthorID = video.AuthorID;
-                viewModel.ImageThumbnailPath = video.ImageThumbnailPath;
-
-                viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-            }
-            else
-            {
-                // ADD
-
-                viewModel.Mode = EditMode.Add;
-
-                viewModel.AuthorSource = FilterData.Authors(_authorRepo, null);
-            }
-
-            return View(model: viewModel);
-        }
-
-        [HttpPost, ValidateInput(false)]
-        public ActionResult VideoUpdate(VideoEditViewModel viewModel)
-        {
-            // Check for unique URL
-            if (viewModel.Mode == EditMode.Add)
-            {
-                var existingVideo = _videoRepo.Get(u => u.ID == viewModel.ID).FirstOrDefault();
-
-                if (existingVideo != null)
-                    ModelState.AddModelError("UniqueURL", "URL is not unique!");
-            }
-
-            if (ModelState.IsValid)
-            {
-                if (viewModel.Mode == EditMode.Add)
-                {
-                    Video Video = new Video();
-
-                    Video.Title = viewModel.Title;
-                    Video.Subtitle = viewModel.Subtitle;
-                    Video.VideoURL = viewModel.VideoURL;
-                    Video.PublishDate = viewModel.PublishDate;
-                    Video.AuthorID = viewModel.AuthorID;
-                    Video.ImageThumbnailPath = viewModel.ImageThumbnailPath;
-
-                    Video.Active = true;
-                    Video.CreateDate = DateTime.Now;
-
-                    _videoRepo.Create(Video);
-
-                    TempData["Success"] = "Video created.";
-                    return RedirectToAction(actionName: "VideoList", controllerName: "Admin");
-                }
-                else
-                {
-                    var Video = _videoRepo.Get(viewModel.ID);
-
-                    if (Video == null)
-                    {
-                        TempData["Error"] = $"No Video found with ID {viewModel.ID}.";
-                        return RedirectToAction(actionName: "Index", controllerName: "Admin");
-                    }
-
-                    Video.Title = viewModel.Title;
-                    Video.Subtitle = viewModel.Subtitle;
-                    Video.VideoURL = viewModel.VideoURL;
-                    Video.PublishDate = viewModel.PublishDate;
-                    Video.AuthorID = viewModel.AuthorID;
-                    Video.ImageThumbnailPath = viewModel.ImageThumbnailPath;
-
-                    _videoRepo.Update(Video);
-
-                    TempData["Success"] = "Video updated.";
-                    return RedirectToAction(actionName: "VideoList", controllerName: "Admin");
-                }
-
-            }
-            else
-            {
-                TempData["Error"] = "Please correct the errors below.";
-            }
-
-            viewModel.AuthorSource = FilterData.Authors(_authorRepo, viewModel.AuthorID);
-
-            return View("VideoEdit", viewModel);
-        }
-
-        public ActionResult VideoDelete(int? ID)
-        {
-            if (ID.HasValue)
-            {
-                _videoRepo.Delete(ID.Value);
-
-                TempData["Success"] = "Video deleted.";
-            }
-            else
-            {
-                TempData["Error"] = "ID required to delete Video.";
-            }
-
-            return RedirectToAction(actionName: "VideoList", controllerName: "Admin");
         }
 
         #endregion

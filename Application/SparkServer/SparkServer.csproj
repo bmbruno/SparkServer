@@ -150,15 +150,11 @@
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\RelatedLinkItemViewModel.cs" />
-    <Compile Include="ViewModels\Admin\VideoEditViewModel.cs" />
-    <Compile Include="ViewModels\Admin\VideoEditListViewModel.cs" />
-    <Compile Include="ViewModels\Admin\VideoListItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleListItemViewModel.cs" />
     <Compile Include="ViewModels\RelatedArticleViewModel.cs" />
-    <Compile Include="ViewModels\VideoViewModel.cs" />
     <Compile Include="ViewModels\CategoryListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogTagListItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\BlogTagEditListViewModel.cs" />
@@ -166,7 +162,7 @@
     <Compile Include="ViewModels\Admin\BlogListItemViewModel.cs" />
     <Compile Include="ViewModels\BlogListViewModel.cs" />
     <Compile Include="ViewModels\BlogTagViewModel.cs" />
-    <Compile Include="ViewModels\HomeVideoViewModel.cs" />
+    <Compile Include="ViewModels\ResourcesViewModel.cs" />
     <Compile Include="ViewModels\HomeIndexViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\BlogArticleViewModel.cs" />
@@ -185,6 +181,11 @@
     <Content Include="Content\Images\default_blog_icon.png" />
     <Content Include="Content\Images\default_blog_bg.jpg" />
     <Content Include="Content\Images\icon_exclamation.png" />
+    <Content Include="Content\Images\icon_sitecore.png" />
+    <Content Include="Content\Images\icon_slack.png" />
+    <Content Include="Content\Images\icon_stackexchange.png" />
+    <Content Include="Content\Images\icon_sug_rockymountain.png" />
+    <Content Include="Content\Images\icon_youtube.png" />
     <Content Include="Content\Images\logo_title.png" />
     <Content Include="Content\Images\logo_title_alt.png" />
     <Content Include="Content\Styles\default.css" />
@@ -323,7 +324,7 @@
     <Content Include="Views\Blog\IndexList.cshtml" />
     <Content Include="Views\Blog\IndexOverview.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Videos.cshtml" />
+    <Content Include="Views\Home\Resources.cshtml" />
     <None Include="Properties\PublishProfiles\File System.pubxml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Content Include="Views\Shared\HighlightJSInit.cshtml" />

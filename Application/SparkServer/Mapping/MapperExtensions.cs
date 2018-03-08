@@ -171,31 +171,5 @@ namespace SparkServer.Mapping
                 vm.BlogList.Add(blogVM);
             }
         }
-
-        /// <summary>
-        /// Database object -> HomeVideoViewModel
-        /// </summary>
-        public static void MapToViewModel(this HomeVideoViewModel vm, IEnumerable<Video> videos)
-        {
-            foreach (var video in videos)
-            {
-                VideoViewModel videoVM = new VideoViewModel();
-                videoVM.MapToViewModel(video);
-                vm.VideoList.Add(videoVM);
-            }
-        }
-
-        /// <summary>
-        /// Database object -> VideoViewModel
-        /// </summary>
-        public static void MapToViewModel(this VideoViewModel vm, Video video)
-        {
-            vm.VideoID = video.ID;
-            vm.Title = video.Title;
-            vm.Subtitle = video.Subtitle;
-            vm.VideoURL = video.VideoURL;
-            vm.ThumbnailURL = video.ImageThumbnailPath;
-            vm.PublishDateLong = $"{video.PublishDate.Value.ToString("MMMM")} {video.PublishDate.Value.Year.ToString()}";
-        }
     }
 }
