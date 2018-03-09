@@ -184,7 +184,7 @@
     <Content Include="Content\Images\icon_sitecore.png" />
     <Content Include="Content\Images\icon_slack.png" />
     <Content Include="Content\Images\icon_stackexchange.png" />
-    <Content Include="Content\Images\icon_sug_rockymountain.png" />
+    <Content Include="Content\Images\icon_usergroups.png" />
     <Content Include="Content\Images\icon_youtube.png" />
     <Content Include="Content\Images\logo_title.png" />
     <Content Include="Content\Images\logo_title_alt.png" />
