@@ -11,7 +11,7 @@ using SparkServer.Application.Enum;
 
 namespace SparkServer.Controllers
 {
-    public class BlogController : Controller
+    public class BlogController : BaseController
     {
         private readonly IBlogRepository<Blog> _blogRepo;
         private readonly IBlogTagRepository<BlogTag> _blogTagRepo;
@@ -20,10 +20,13 @@ namespace SparkServer.Controllers
         {
             _blogRepo = blogRepo;
             _blogTagRepo = blogTagRepo;
+            this.ItemsPerPage = 2;
         }
 
-        public ActionResult Index(int? year, int? month)
+        public ActionResult Index(int? year, int? month, int? page)
         {
+            this.SetupPaging(page);
+
             BlogListViewModel viewModel = new BlogListViewModel();
             List<Blog> blogList = new List<Blog>();
             List<BlogTag> tagList = new List<BlogTag>();
@@ -34,33 +37,31 @@ namespace SparkServer.Controllers
                 blogList = _blogRepo.GetByDate(year.Value, month.Value).OrderByDescending(u => u.PublishDate).ToList();
                 string monthName = new DateTime(year.Value, month.Value, 1).ToString("MMMM");
                 viewModel.Header = $"Blog Posts for {monthName} {year.ToString()}";
-                viewModel.ViewMode = ViewMode.List;
             }
             else if (year.HasValue)
             {
                 // Blog list by year only
                 blogList = _blogRepo.GetByDate(year.Value, null).OrderByDescending(u => u.PublishDate).ToList();
-                viewModel.Header = $"{year.ToString()}";
-                viewModel.ViewMode = ViewMode.List;
+                viewModel.Header = $"Blog Posts for {year.ToString()}";
             }
             else
             {
                 // Default: blog overview (top posts)
                 blogList = _blogRepo.Get(u => u.Active && u.PublishDate <= DateTime.Now).OrderByDescending(u => u.PublishDate).ToList();
                 viewModel.Header = "Latest Blog Posts";
-
-                if (blogList.Count > 2)
-                    viewModel.ViewMode = ViewMode.Overview;
-                else
-                    viewModel.ViewMode = ViewMode.List;
             }
 
             tagList = _blogTagRepo.GetAll().OrderBy(u => u.Name).ToList();
 
+            int totalItems = blogList.Count;
+            blogList = blogList.Skip(this.SkipCount).Take(this.ItemsPerPage).ToList();
+
             viewModel.MapToViewModel(blogList, tagList);
 
-            // Two possible views are used: IndexList and IndexOverview - use ViewMode value to build view name
-            return View(viewName: $"Index{viewModel.ViewMode.ToString()}", model: viewModel);
+            viewModel.Paging.PageCount = (totalItems / this.ItemsPerPage);
+            viewModel.Paging.CurrentPage = this.Page;
+
+            return View(viewName: $"IndexOverview", model: viewModel);
         }
 
         public ActionResult BlogArticle(int year, int month, string uniqueURL = "", bool preview = false)

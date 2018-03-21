@@ -5,30 +5,7 @@
 }
 
 <div class="gutter">&nbsp;</div>
-
-<div class="section">
-
-    <h1>@ViewBag.Title</h1>
-
-    <ul class="grid two-up cf blog-list">
-
-        @for (var i = 0; i <= 1; i++)
-        {
-            <li class="cf">
-                @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
-                {
-                    <a href="@Model.BlogList[i].URL"><img src="@Model.BlogList[i].ImageThumbnailPath" alt="@Model.BlogList[i].Title" /></a>
-                }
-                <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
-                <p>@Model.BlogList[i].Subtitle</p>
-                <div class="date">@Model.BlogList[i].PublishDate.ToShortDateString() - @Model.BlogList[i].AuthorFullName</div>
-            </li>
-        }
-
-    </ul>
-
-</div>
-
+    
 <div class="section">
 
     <h1>Explore Tags</h1>
@@ -50,11 +27,11 @@
 
 <div class="section">
 
-    <h1>Previous Posts</h1>
+    <h1>@ViewBag.Title</h1>
 
     <ul class="blog-list">
 
-        @for (var i = 2; i < Model.BlogList.Count; i++)
+        @for (var i = 0; i < Model.BlogList.Count; i++)
         {
             <li class="cf">
                 @if (!String.IsNullOrEmpty(Model.BlogList[i].ImageThumbnailPath))
@@ -67,5 +44,7 @@
             </li>
         }
     </ul>
+
+    @Html.Partial("_Paging", Model.Paging)
 
 </div>

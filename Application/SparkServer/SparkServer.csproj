@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\BlogController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="Models\Paging.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\RelatedLinkItemViewModel.cs" />
@@ -304,6 +306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -342,6 +345,7 @@
     <Content Include="Views\Admin\CategoryList.cshtml" />
     <Content Include="Views\Admin\VideoList.cshtml" />
     <Content Include="Views\Admin\VideoEdit.cshtml" />
+    <Content Include="Views\Shared\_Paging.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
