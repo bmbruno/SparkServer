@@ -8,7 +8,6 @@ a:hover { color: #FA0; }
 em { font-style: italic; }
 .center { text-align: center; }
 
-
 /* BASE */
 body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
 strong { font-weight: bold; } 
@@ -143,6 +142,7 @@ a.btn { color: #FFF; transition: none; }
 .btn:active { position: relative; bottom: -3px; box-shadow: none; }
 .btn.primary, input[type="submit"].primary { padding: 1em 2em; font-size: 1.1em; text-transform: uppercase; }
 .btn.primary:hover { background: none; background-color: #a51911; }
+.btn.disabled { background-color: #ff9e98; box-shadow: 0 2px 0 #db5757; color: #ffdbd8; text-shadow: none; }
 
 form { margin: 1em 0; }
 .row { margin-bottom: 1em; }
@@ -191,6 +191,9 @@ footer.page p:last-of-type { margin-bottom: 0; }
 .resource-links li:nth-child(odd) { background-color: #DDD; }
 .resource-links li:nth-child(even) { background-color: #EEE; }
 .resource-links a { font-weight: bold; font-size: 1em; }
+
+.paging { width: 100%; text-align: center; padding-top: 1em;}
+.paging > .info { padding-bottom: 1em; font-weight: bold; }
 
 @media (min-width: 600px)
 {		
@@ -293,6 +296,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	nav ul li a { text-align: center; }
 	.mobile-menu-toggle { display: none; }
     .admin nav ul li { width: 16.6666%; }
+    .admin nav ul li a { font-size: 1em; }
 	
 	.master-search { float: right; text-align: right; position: absolute; bottom: 0; right: 0; margin: 0; display: block; }
 	.master-search input { padding: 0.75em; border: 1px solid #666; border-radius: 6px; background-color: #EEE; font-weight: bold; width: auto; }
