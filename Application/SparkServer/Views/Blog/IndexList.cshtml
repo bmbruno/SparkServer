@@ -8,6 +8,24 @@
 
 <div class="section">
 
+    <h1>Explore Tags</h1>
+
+    @if (Model.BlogTagList.Count > 0)
+    {
+        <ul class="explore-tags">
+
+            @foreach (var tag in Model.BlogTagList)
+            {
+                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+            }
+
+        </ul>
+    }
+
+</div>
+
+<div class="section">
+
     <h1>@ViewBag.Title</h1>
 
     <ul class="blog-list">
@@ -32,22 +50,6 @@
 
     </ul>
 
-</div>
-
-<div class="section">
-
-    <h1>Explore Tags</h1>
-
-    @if (Model.BlogTagList.Count > 0)
-    {
-        <ul class="explore-tags">
-
-            @foreach (var tag in Model.BlogTagList)
-            {
-                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
-            }
-
-        </ul>
-    }
+    @Html.Partial("_Paging", Model.Paging)
 
 </div>

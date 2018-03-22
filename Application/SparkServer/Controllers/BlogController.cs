@@ -91,8 +91,10 @@ namespace SparkServer.Controllers
             return View(viewModel);
         }
 
-        public ActionResult ListByTag(string tagName)
+        public ActionResult ListByTag(string tagName, int? page)
         {
+            this.SetupPaging(page);
+
             BlogListViewModel viewModel = new BlogListViewModel();
             List<Blog> blogList = new List<Blog>();
             List<BlogTag> tagList = new List<BlogTag>();
@@ -104,7 +106,11 @@ namespace SparkServer.Controllers
             viewModel.MapToViewModel(blogList, tagList);
             viewModel.Header = $"Blogs tagged '{tag.Name}'";
 
-            viewModel.BlogList = viewModel.BlogList.OrderByDescending(u => u.PublishDate).ToList();
+            int totalCount = blogList.Count;
+            viewModel.BlogList = viewModel.BlogList.OrderByDescending(u => u.PublishDate).Skip(this.SkipCount).Take(this.ItemsPerPage).ToList();
+
+            viewModel.Paging.PageCount = (totalCount / this.ItemsPerPage);
+            viewModel.Paging.CurrentPage = this.Page;
 
             return View(viewName: "IndexList", model: viewModel);
         } 

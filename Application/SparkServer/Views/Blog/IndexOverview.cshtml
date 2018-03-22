@@ -14,13 +14,12 @@
     {
         <ul class="explore-tags">
 
-            @foreach(var tag in Model.BlogTagList)
+            @foreach (var tag in Model.BlogTagList)
             {
                 <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
             }
 
         </ul>
-
     }
 
 </div>
