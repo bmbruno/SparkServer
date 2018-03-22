@@ -20,7 +20,7 @@ namespace SparkServer.Controllers
         {
             _blogRepo = blogRepo;
             _blogTagRepo = blogTagRepo;
-            this.ItemsPerPage = 2;
+            this.ItemsPerPage = 10;
         }
 
         public ActionResult Index(int? year, int? month, int? page)
@@ -58,7 +58,7 @@ namespace SparkServer.Controllers
 
             viewModel.MapToViewModel(blogList, tagList);
 
-            viewModel.Paging.PageCount = (totalItems / this.ItemsPerPage);
+            viewModel.Paging.PageCount = (totalItems + this.ItemsPerPage - 1) / this.ItemsPerPage;
             viewModel.Paging.CurrentPage = this.Page;
 
             return View(viewName: $"IndexOverview", model: viewModel);
@@ -106,10 +106,10 @@ namespace SparkServer.Controllers
             viewModel.MapToViewModel(blogList, tagList);
             viewModel.Header = $"Blogs tagged '{tag.Name}'";
 
-            int totalCount = blogList.Count;
+            int totalItems = blogList.Count;
             viewModel.BlogList = viewModel.BlogList.OrderByDescending(u => u.PublishDate).Skip(this.SkipCount).Take(this.ItemsPerPage).ToList();
 
-            viewModel.Paging.PageCount = (totalCount / this.ItemsPerPage);
+            viewModel.Paging.PageCount = (totalItems + this.ItemsPerPage - 1) / this.ItemsPerPage;
             viewModel.Paging.CurrentPage = this.Page;
 
             return View(viewName: "IndexList", model: viewModel);

@@ -35,7 +35,7 @@ namespace SparkServer.Tests.Controllers
             BlogController controller = this.SetupController();
 
             // Act
-            ViewResult result = controller.Index(null, null) as ViewResult;
+            ViewResult result = controller.Index(null, null, null) as ViewResult;
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
@@ -50,7 +50,7 @@ namespace SparkServer.Tests.Controllers
             BlogController controller = this.SetupController();
 
             // Act
-            ViewResult result = controller.Index(2017, null) as ViewResult;
+            ViewResult result = controller.Index(2017, null, null) as ViewResult;
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
@@ -65,7 +65,7 @@ namespace SparkServer.Tests.Controllers
             BlogController controller = this.SetupController();
 
             // Act
-            ViewResult result = controller.Index(2017, 1) as ViewResult;
+            ViewResult result = controller.Index(2017, 1, null) as ViewResult;
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
