@@ -190,6 +190,7 @@
     <Content Include="Content\Images\icon_youtube.png" />
     <Content Include="Content\Images\logo_title.png" />
     <Content Include="Content\Images\logo_title_alt.png" />
+    <Content Include="Content\Images\sitecore_404.png" />
     <Content Include="Content\Styles\default.css" />
     <Content Include="Content\Styles\fonts\font-awesome.min.css" />
     <Content Include="Content\Styles\fonts\fontawesome-webfont.svg" />
