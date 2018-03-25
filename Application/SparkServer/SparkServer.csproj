@@ -180,6 +180,10 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.aspx" />
+    <Content Include="404.html" />
+    <Content Include="500.aspx" />
+    <Content Include="500.html" />
     <Content Include="Content\Images\default_blog_icon.png" />
     <Content Include="Content\Images\default_blog_bg.jpg" />
     <Content Include="Content\Images\icon_exclamation.png" />
