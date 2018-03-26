@@ -14,8 +14,6 @@
     <p>Sitecore Spark aims to be a concise introduction to understanding the fundamentals of the Sitecore platform. Simplicity is key to Spark - "Keep It Simple, Stupid" is the core tenant of all content on Sitecore Spark.</p>
     <p>Sitecore concepts are be broken down into short, simple articles that are designed to be consumable in minutes and useful for developers of all levels. Sitecore Spark can be used as training material for new developers or quick reference for seasoned veterans.</p>
 
-    <div class="simple-quote"></div>
-
     <h2>Contact Information</h2>
 
     <p>If you have comments, questions, or corrections, you can reach out to Brandon Bruno directly via Twitter, email, or the contact form below.</p>
@@ -64,29 +62,5 @@
 @section PageScripts {
     
     <script src="https://forms.brandonbruno.com/scripts/fastforms-min.js"></script>
-    
-    <script type="text/javascript">
-        
-        $(function () {
-
-            var getRandom = function (min, max) {
-                min = Math.ceil(min);
-                max = Math.floor(max);
-                return Math.floor(Math.random() * (max - min)) + min;
-            };
-
-            var quotes = [
-                "<blockquote><p>'The ability to simplify means to eliminate the unnecessary so that the necessary may speak.'</p><p>Hans Hofmann</p></blockquote>",
-                "<blockquote><p>Simplicity is the ultimate sophistication.</p><p>Unknown</p></blockquote>",
-                "<blockquote><p>Everything should be made as simple as possible, but not simpler.</p><p>Albert Einstein</p></blockquote>",
-                "<blockquote><p>Simplicity is the essence of happiness.</p><p>Cedric Bledsoe</p></blockquote>"];
-
-            var quoteContainer = $(".simple-quote");
-            quoteContainer.html(quotes[getRandom(0, quotes.length - 1)]);
-            quoteContainer.fadeIn(250);
-
-        });
-
-    </script>
 
 }
