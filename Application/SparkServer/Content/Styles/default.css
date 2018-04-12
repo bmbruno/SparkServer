@@ -11,7 +11,7 @@ em { font-style: italic; }
 /* BASE */
 body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
 strong { font-weight: bold; } 
-blockquote { font-style: italic; color: #555; margin-bottom: 1.5em; }
+blockquote { font-style: italic; color: #555; margin: 0 1em 1.5em 1em; line-height: 1.5em; }
 blockquote p:last-of-type { margin-bottom: 0; }
 
 nav { }
