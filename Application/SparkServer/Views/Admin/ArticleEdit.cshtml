@@ -69,6 +69,7 @@
     <div class="row">
         @Html.LabelFor(x => x.UniqueURL)
         @Html.TextBoxFor(x => x.UniqueURL, htmlAttributes: new { @class = "half" })
+        <input type="button" value="Create From Title" id="CreateUniqueURL" class="btn" />
         @Html.ValidationMessageFor(x => x.UniqueURL)
     </div>
 

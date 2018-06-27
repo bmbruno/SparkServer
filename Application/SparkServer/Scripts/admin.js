@@ -40,4 +40,32 @@ $(function () {
 
     });
 
+    $("#CreateUniqueURL").on("click", function () {
+
+        var title = $("#Title").val();
+
+        title = title.split("-").join("");
+        title = title.split("$").join("");
+        title = title.split("%").join("");
+        title = title.split(":").join("");
+        title = title.split("(").join("");
+        title = title.split(")").join("");
+        title = title.split("'").join("");
+        title = title.split("\"").join("");
+        title = title.split(".").join("");
+        title = title.split(",").join("");
+        title = title.split("<").join("");
+        title = title.split(">").join("");
+        title = title.split("\\").join("");
+        title = title.split("/").join("");
+        title = title.split("?").join("");
+        title = title.split("!").join("");
+
+        title = title.split(" ").join("-");
+        title = title.toLowerCase();
+
+        $("#UniqueURL").val(title);
+
+    });
+
 });
