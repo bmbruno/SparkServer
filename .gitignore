@@ -5,6 +5,7 @@ gnore Visual Studio temporary files, build results, and
 *.suo
 *.user
 *.sln.docstates
+.vs
 
 # Build results
 [Dd]ebug/

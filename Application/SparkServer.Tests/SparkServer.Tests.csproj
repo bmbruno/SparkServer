@@ -113,19 +113,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="D:\Projects\sparkserver\Application\SparkServer.Core\SparkServer.Core.csproj">
+    <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">
       <Project>{1cb33146-ed8e-43ee-8f14-1325dc3ec148}</Project>
       <Name>SparkServer.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Projects\sparkserver\Application\SparkServer.Data\SparkServer.Data.csproj">
+    <ProjectReference Include="..\SparkServer.Data\SparkServer.Data.csproj">
       <Project>{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}</Project>
       <Name>SparkServer.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Projects\sparkserver\Application\SparkServer.Infrastucture\SparkServer.Infrastructure.csproj">
+    <ProjectReference Include="..\SparkServer.Infrastucture\SparkServer.Infrastructure.csproj">
       <Project>{db952e0b-dafc-45eb-ace0-c82149da8a05}</Project>
       <Name>SparkServer.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="D:\Projects\sparkserver\Application\SparkServer\SparkServer.csproj">
+    <ProjectReference Include="..\SparkServer\SparkServer.csproj">
       <Project>{8CE9F4CF-1D40-4F2B-B1F3-AB75DC5AF2C8}</Project>
       <Name>SparkServer</Name>
     </ProjectReference>
