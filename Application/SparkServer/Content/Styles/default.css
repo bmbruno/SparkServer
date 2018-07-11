@@ -122,6 +122,7 @@ table.fluid { margin-left: auto; margin-right: auto; }
 .blog-about > .tags li::after { content: ",\00a0"; } 
 .blog-about > .tags li:last-child::after { content: ""; }
 .blog-about > p { margin-bottom: 1em; }
+.blog-about > p:last-of-type { margin-bottom: 0; }
 
 .explore-tags li { display: inline-block;  margin: 0 1em 0 0; list-style-type: none; }
 .explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
