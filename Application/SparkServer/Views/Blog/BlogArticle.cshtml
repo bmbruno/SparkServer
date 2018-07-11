@@ -28,16 +28,22 @@ else
         <div class="label">Published</div>
         <p>@Model.PublishDate.ToShortDateString()</p>
 
-        @if (Model.BlogTags.Count > 0)
-        {
             <div class="label">Tags</div>
             <ul class="tags cf">
-                @foreach (var tag in Model.BlogTags)
+
+                @if (Model.BlogTags.Count > 0)
                 {
-                    <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+                    foreach (var tag in Model.BlogTags)
+                    {
+                        <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+                    }
+                }
+                else
+                {
+                    <li>No tags defined</li>
                 }
             </ul>
-        }
+
     </div>
 
     @Html.Raw(Model.Body)
