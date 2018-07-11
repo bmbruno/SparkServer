@@ -300,7 +300,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
 {
 	nav { margin: 1em 0; font-family: 'OSBold', arial, sans-serif; }
 	nav ul { display: block; border-top: 1px solid #DC291E; border-bottom: 1px solid #DC291E; }
-	nav ul li { float: left; width: 20%; border: none; }
+	nav ul li { float: left; width: 25%; border: none; }
 	nav ul li:last-of-type { border: none; }
 	nav ul li a { text-align: center; }
 	.mobile-menu-toggle { display: none; }
