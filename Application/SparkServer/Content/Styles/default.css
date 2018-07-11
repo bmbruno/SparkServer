@@ -127,7 +127,7 @@ table.fluid { margin-left: auto; margin-right: auto; }
 .explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
 
 ul.blog-list { }
-ul.blog-list li { list-style-type: none; }
+ul.blog-list li { list-style-type: none; margin-left: 0; }
 ul.blog-list li > .blog-card { margin: 0 0 1em 0; box-shadow: 0 0 24px #CCC; }
 ul.blog-list li > .blog-card h3 { font-size: 1.25em; font-weight: bold; overflow: hidden; margin-bottom: 0.5em !important; }
 ul.blog-list li > .blog-card p { margin: 0; }
