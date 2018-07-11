@@ -265,6 +265,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     ul.blog-list li > .blog-card > .blog-list-header { height: 300px; }
     ul.blog-list li > .blog-card > .blog-list-intro { padding: 1.5em 2em 2em 2em; }
     ul.blog-list li > .blog-card > .blog-list-intro h3 { font-size: 1.75em; }
+    ul.blog-list li > .blog-card.homepage > .blog-list-intro h3 { font-size: 1.5em; }
     ul.blog-list li > .blog-card > .blog-list-intro .subtitle { margin-bottom: 0.5em; }
 
     ul.blog-list.articles li { margin: 1%; width: 48%; padding: 1em; box-shadow: 0 0 25px #c1c1c1; min-height: 125px; border-radius: 4px; }

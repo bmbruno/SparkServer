@@ -23,7 +23,7 @@
         @foreach (var blog in Model.BlogList)
         {
             <li class="cf">
-                <div class="blog-card">
+                <div class="blog-card homepage">
                     @if (!String.IsNullOrEmpty(blog.ImagePath))
                     {
                         <div class="blog-list-header" style="background-image: url('@blog.ImagePath'); height: 200px;"></div>
