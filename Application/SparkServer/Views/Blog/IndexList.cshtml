@@ -34,19 +34,23 @@
         {
             <li class="cf">
 
-                @if (!String.IsNullOrEmpty(Model.BlogList[i].ImagePath))
-                {
-                    <div class="blog-list-header" style="background-image: url('@Model.BlogList[i].ImagePath');"></div>
-                }
-                else
-                {
-                    <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"></div>
-                }
+                <div class="blog-card">
 
-                <div class="blog-list-intro">
-                    <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
-                    <div class="subtitle">@Model.BlogList[i].Subtitle</div>
-                    <div class="date">@Model.BlogList[i].PublishDate.ToString("dd MMM yyyy") - <span style="font-style: italic;">@Model.BlogList[i].AuthorFullName</span></div>
+                    @if (!String.IsNullOrEmpty(Model.BlogList[i].ImagePath))
+                    {
+                        <div class="blog-list-header" style="background-image: url('@Model.BlogList[i].ImagePath');"></div>
+                    }
+                    else
+                    {
+                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"></div>
+                    }
+
+                    <div class="blog-list-intro">
+                        <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
+                        <div class="subtitle">@Model.BlogList[i].Subtitle</div>
+                        <div class="date">@Model.BlogList[i].PublishDate.ToString("dd MMM yyyy") - <span style="font-style: italic;">@Model.BlogList[i].AuthorFullName</span></div>
+                    </div>
+
                 </div>
 
             </li>
