@@ -156,6 +156,7 @@
     <Compile Include="Models\Paging.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />
+    <Compile Include="ViewModels\Admin\MediaEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\RelatedLinkItemViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryEditViewModel.cs" />
     <Compile Include="ViewModels\Admin\CategoryEditListViewModel.cs" />

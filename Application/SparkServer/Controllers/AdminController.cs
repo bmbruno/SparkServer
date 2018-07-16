@@ -699,8 +699,15 @@ namespace SparkServer.Controllers
             return View();
         }
 
-        public ActionResult UploadBanner(int test)
+        public ActionResult UploadBanner(HttpPostedFileBase fileBase)
         {
+            // TODO: Validation: file content length > 0, valid extension, MIME type?
+
+            // TODO: Upload file to library folder
+
+            // TODO: Create thumbnail
+
+            // TODO: Redirect to /Admin/Banners 
             return View();
         }
         
@@ -708,7 +715,10 @@ namespace SparkServer.Controllers
         public JsonResult AjaxBannerImageList()
         {
             JsonPayload json = new JsonPayload();
-            json.Status = JsonStatus.OK;
+            
+            // TODO: Load list of images from disk
+
+            // TODO: Map list of images to model; assume thumbnail paths and do File.Exists() to check; return "no thumbnail" image if necessary
 
             return Json(json, JsonRequestBehavior.AllowGet);
         }
