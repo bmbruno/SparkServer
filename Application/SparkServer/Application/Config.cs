@@ -33,6 +33,19 @@ namespace SparkServer.Application
                     return string.Empty;
             }
         }
+
+        public static string MediaBannerPath
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["mediaBannerPath"];
+
+                if (value != null)
+                    return value.ToString();
+                else
+                    return string.Empty;
+            }
+        }
     }
 
 }

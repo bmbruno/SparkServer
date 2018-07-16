@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using SparkServer.Application.Enum;
 using SparkServer.Application;
 using System.Web.Security;
+using SparkServer.Models;
 
 namespace SparkServer.Controllers
 {
@@ -687,6 +688,29 @@ namespace SparkServer.Controllers
             }
 
             return RedirectToAction(actionName: "CategoryList", controllerName: "Admin");
+        }
+
+        #endregion
+
+        #region Banner Images
+
+        public ActionResult Banners()
+        {
+            return View();
+        }
+
+        public ActionResult UploadBanner(int test)
+        {
+            return View();
+        }
+        
+        [HttpGet]
+        public JsonResult AjaxBannerImageList()
+        {
+            JsonPayload json = new JsonPayload();
+            json.Status = JsonStatus.OK;
+
+            return Json(json, JsonRequestBehavior.AllowGet);
         }
 
         #endregion

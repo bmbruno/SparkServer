@@ -22,6 +22,7 @@
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -132,6 +133,7 @@
     <Compile Include="Application\Attributes\ValidAdminAttribute.cs" />
     <Compile Include="Application\Config.cs" />
     <Compile Include="Application\Enum\MainMenu.cs" />
+    <Compile Include="Application\Enum\JsonStatus.cs" />
     <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
     <Compile Include="Application\FilterData.cs" />
@@ -149,6 +151,8 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
+    <Compile Include="Models\ImageList.cs" />
+    <Compile Include="Models\JsonPayload.cs" />
     <Compile Include="Models\Paging.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditViewModel.cs" />

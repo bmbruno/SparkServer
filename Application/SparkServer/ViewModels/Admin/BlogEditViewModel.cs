@@ -47,6 +47,9 @@ namespace SparkServer.ViewModels
 
         public string ImageThumbnailPath { get; set; }
 
+        [Display(Name = "Banner Image")]
+        public HttpPostedFileBase BannerImageFile { get; set; }
+
         public List<SelectListItem> AuthorSource { get; set; }
 
         [Display(Name = "Blog Tags")]
