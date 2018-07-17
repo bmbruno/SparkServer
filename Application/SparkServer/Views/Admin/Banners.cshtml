@@ -26,7 +26,13 @@
 
 <div class="row">
 
-    <table id="BannerTable" class="image-list">
+    <a href="#" id="ShowLibrary" class="btn">Show Library</a>
+
+    <div id="Loading" style="display: none;">
+        <h2>Loading...</h2>
+    </div>
+
+    <table id="BannerTable" class="image-list" style="display: none;">
         <thead>
             <th>Image</th>
             <th>Path &amp; Actions</th>
@@ -53,27 +59,43 @@
     <script>
 
         $(function () {
-    
-            $.ajax({
 
-                url: "/Admin/AjaxBannerList",
-                type: "GET",
-                data: {}
+            $("#ShowLibrary").on("click", function () {
 
-            }).done(function (response) {
+                $(this).hide();
+                $("#Loading").show();
 
-                if (response.Status == "OK") {
+                loadLibrary();
 
-                    var newHTML = buildRows(response.Data);
-
-                    $("#BannerTable > tbody").html(newHTML);
-
-                } else {
-
-                    alert("Error:\n\n" + response.Message);
-
-                }
             });
+
+            var loadLibrary = function () {
+
+                $.ajax({
+
+                    url: "/Admin/AjaxBannerList",
+                    type: "GET",
+                    data: {}
+
+                }).done(function (response) {
+
+                    if (response.Status == "OK") {
+
+                        var newHTML = buildRows(response.Data);
+
+                        $("#BannerTable > tbody").html(newHTML);
+
+                        $("#Loading").hide();
+                        $("#BannerTable").show();
+
+                    } else {
+
+                        alert("Error:\n\n" + response.Message);
+
+                    }
+                });
+
+            }
 
             var buildRows = function (responseData) {
 
