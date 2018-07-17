@@ -7,14 +7,22 @@
 
 <h1>@ViewBag.Title</h1>
 
-@using (Html.BeginForm(actionName: "BlogUpdate", controllerName: "Admin", method: FormMethod.Post))
+@using (Html.BeginForm(actionName: "UploadBanner", controllerName: "Admin", method: FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
 {
-    <div class="row">
-        <h2>Upload New Banner</h2>
+<div class="row">
+    <h2>Upload New Banner</h2>
 
-        <input type="file" id="NewFile" name="NewFile" />
-    </div>
+    @Html.TextBoxFor(x => x.NewFile, new { type = "file" })
+    <input type="submit" value="Submit" class="btn" />
+
+    @Html.ValidationMessageFor(x => x.NewFile)
+
+</div>
 }
+
+<br /><br /><br />
+
+<h2>Image Library</h2>
 
 <div class="row">
 
@@ -23,9 +31,7 @@
             <th>Image</th>
             <th>Path &amp; Actions</th>
         </thead>
-        <tbody>
-            
-        </tbody>
+        <tbody></tbody>
     </table>
 
 </div>
@@ -78,8 +84,7 @@
 
                     var output = $("#BannerTableRow").html();
                     output = output.replace("##IMAGE_THUMBNAIL_SRC##", rowData[row].ThumbnailPath);
-                    output = output.replace("##IMAGE_PATH##", rowData[row].Filepath);
-                    output = output.replace("##IMAGE_PATH##", rowData[row].Filepath);
+                    output = output.replace(new RegExp("##IMAGE_PATH##", "g"), rowData[row].Filepath);
                     tableOutput += output;
 
                 }

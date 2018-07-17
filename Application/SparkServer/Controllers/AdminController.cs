@@ -699,15 +699,27 @@ namespace SparkServer.Controllers
             return View();
         }
 
-        public ActionResult UploadBanner(HttpPostedFileBase fileBase)
+        public ActionResult UploadBanner(MediaEditViewModel viewModel)
         {
             // TODO: Validation: file content length > 0, valid extension, MIME type?
+            if (viewModel.NewFile.ContentLength > 0)
+                ModelState.AddModelError("NewFile", "File length is zero. File is required.");
 
-            // TODO: Upload file to library folder
+            if (!viewModel.NewFile.FileName.ToLower().EndsWith(".jpg") && viewModel.NewFile.ContentType != "image/jpeg")
+            {
+                ModelState.AddModelError("NewFile", "Image must be a JPG.");
+            }
 
-            // TODO: Create thumbnail
+            if (ModelState.IsValid)
+            {
+                // TODO: Upload file to library folder
 
-            // TODO: Redirect to /Admin/Banners 
+                // TODO: Create thumbnail
+
+                // TODO: Redirect to /Admin/Banners 
+
+            }
+
             return View();
         }
         
