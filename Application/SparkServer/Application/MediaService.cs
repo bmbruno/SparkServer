@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.IO;
 using SparkServer.Models;
 
@@ -47,6 +49,52 @@ namespace SparkServer.Application
         public bool FileExistsByName(string filename)
         {
             return File.Exists($"{_mappedFolderPath}{filename}");
+        }
+
+        public void CreateThumbnail(string newFileMappedPath)
+        {
+            Image image = Image.FromFile(newFileMappedPath);
+            Size size = new Size() { Width = 360, Height = 180 };
+
+            Image thumbnailImage = ResizeImage(image, size, true);
+
+            string thumbnailFilepath = $"{_mappedFolderPath}\\{Path.GetFileNameWithoutExtension(newFileMappedPath)}_thumb.jpg";
+
+            thumbnailImage.Save(thumbnailFilepath);
+
+            thumbnailImage.Dispose();
+            image.Dispose();
+        }
+
+        private Image ResizeImage(Image image, Size size, bool preserveAspectRatio = true)
+        {
+            int newWidth;
+            int newHeight;
+
+            if (preserveAspectRatio)
+            {
+                int originalWidth = image.Width;
+                int originalHeight = image.Height;
+                float percentWidth = (float)size.Width / (float)originalWidth;
+                float percentHeight = (float)size.Height / (float)originalHeight;
+                float percent = percentHeight < percentWidth ? percentHeight : percentWidth;
+                newWidth = (int)(originalWidth * percent);
+                newHeight = (int)(originalHeight * percent);
+            }
+            else
+            {
+                newWidth = size.Width;
+                newHeight = size.Height;
+            }
+
+            Image newImage = new Bitmap(newWidth, newHeight);
+            using (Graphics graphicsHandle = Graphics.FromImage(newImage))
+            {
+                graphicsHandle.InterpolationMode = InterpolationMode.Bicubic;
+                graphicsHandle.DrawImage(image, 0, 0, newWidth, newHeight);
+            }
+
+            return newImage;
         }
     }
 }

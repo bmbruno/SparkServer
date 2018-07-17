@@ -720,12 +720,12 @@ namespace SparkServer.Controllers
                 // Upload file to library folder
                 viewModel.NewFile.SaveAs(newFilePath);
 
-                // TODO: Create thumbnail
+                // Create thumbnail
+                mediaService.CreateThumbnail(newFilePath);
 
-                // TODO: Redirect to /Admin/Banners 
+                // Redirect to /Admin/Banners 
                 TempData["Success"] = $"Image '{viewModel.NewFile.FileName}' uploaded.";
                 return RedirectToAction(actionName: "Banners", controllerName: "Admin");
-
             }
 
             return View("~/Views/Admin/Banners.cshtml", viewModel);
