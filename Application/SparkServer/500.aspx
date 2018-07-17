@@ -35,13 +35,14 @@
         <div class="content">
 
             <header>
-                <img src="/Content/Images/logo_title.png" alt="Sitecore Spark Logo" class="logo" />
+                <a href="/">
+                    <img src="~/Content/Images/logo_title.png" alt="Sitecore Spark Logo" class="logo" />
+                </a>
                 <a class="mobile-menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
             </header>
 
             <nav>
                 <ul class="cf">
-                    <li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
                     <li><a href="/category"><i class="fa fa-book" aria-hidden="true"></i> Articles</a></li>
                     <li><a href="/resources"><i class="fa fa-share-alt" aria-hidden="true"></i> Resources</a></li>
                     <li><a href="/about"><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>

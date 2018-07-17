@@ -58,7 +58,7 @@ namespace SparkServer.Application
 
             Image thumbnailImage = ResizeImage(image, size, true);
 
-            string thumbnailFilepath = $"{_mappedFolderPath}\\{Path.GetFileNameWithoutExtension(newFileMappedPath)}_thumb.jpg";
+            string thumbnailFilepath = GetBannerThumbnailPath(Path.GetFileNameWithoutExtension(newFileMappedPath), true);
 
             thumbnailImage.Save(thumbnailFilepath);
 
@@ -95,6 +95,26 @@ namespace SparkServer.Application
             }
 
             return newImage;
+        }
+
+        private string GetBannerThumbnailPath(string filename, bool mapped)
+        {
+            if (mapped)
+                return $"{_mappedFolderPath}\\{filename}_thumb.jpg";
+            else
+                return $"{_folderPath}\\{filename}_thumb.jpg";
+        }
+
+        public void DeleteBanner(string filename)
+        {
+            string filepath = $"{_mappedFolderPath}\\{filename}";
+            string thumbnailPath = GetBannerThumbnailPath(filename, true);
+
+            if (File.Exists(filepath))
+                File.Delete(filepath);
+
+            if (File.Exists(thumbnailPath))
+                File.Delete(thumbnailPath);
         }
     }
 }

@@ -745,10 +745,30 @@ namespace SparkServer.Controllers
             return View("~/Views/Admin/Banners.cshtml", viewModel);
         }
         
+        public ActionResult DeleteBanner(string filename)
+        {
+            if (!String.IsNullOrEmpty(filename))
+            {
+                MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+
+                try
+                {
+                    mediaService.DeleteBanner(filename);
+                    TempData["Success"] = $"Banner '{filename}' deleted.";
+                }
+                catch (Exception exc)
+                {
+                    TempData["Error"] = $"Exception deleting banner: {exc.ToString()}";
+                }
+            }
+
+            return RedirectToAction(actionName: "Banners", controllerName: "Admin");
+        }
+
         [HttpGet]
         public JsonResult AjaxBannerList()
         {
-            MediaService mediaServices = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+            MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
             List<ImageListItem> imageList = new List<ImageListItem>();
 
             JsonPayload json = new JsonPayload();
@@ -757,7 +777,7 @@ namespace SparkServer.Controllers
             // Load list of images from disk
             try
             {
-                imageList = mediaServices.GetBannerListFromDisk();
+                imageList = mediaService.GetBannerListFromDisk();
                 json.Data = imageList;
             }
             catch (Exception exc)
