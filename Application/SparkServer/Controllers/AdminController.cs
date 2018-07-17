@@ -712,10 +712,11 @@ namespace SparkServer.Controllers
         }
         
         [HttpGet]
-        public JsonResult AjaxBannerImageList()
+        public JsonResult AjaxBannerList()
         {
             JsonPayload json = new JsonPayload();
-            
+            json.Status = JsonStatus.OK.ToString();
+
             // TODO: Load list of images from disk
 
             // TODO: Map list of images to model; assume thumbnail paths and do File.Exists() to check; return "no thumbnail" image if necessary

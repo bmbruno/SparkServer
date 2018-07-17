@@ -358,6 +358,7 @@
     <Content Include="Views\Admin\VideoList.cshtml" />
     <Content Include="Views\Admin\VideoEdit.cshtml" />
     <Content Include="Views\Shared\_Paging.cshtml" />
+    <Content Include="Views\Admin\Banners.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SparkServer.Core\SparkServer.Core.csproj">

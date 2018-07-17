@@ -1,0 +1,63 @@
+﻿@model SparkServer.ViewModels.BlogEditViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Banners";
+}
+
+<h1>@ViewBag.Title</h1>
+
+@using (Html.BeginForm(actionName: "BlogUpdate", controllerName: "Admin", method: FormMethod.Post))
+{
+    <div class="row">
+
+    </div>
+}
+
+<div class="row">
+
+    <table id="BannerTable">
+        <thead>
+            <th>Image</th>
+            <th>Path</th>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/template">
+
+</script>
+
+@section PageScripts {
+    
+    <script>
+
+        $(function () {
+    
+            $.ajax({
+
+                url: "/Admin/AjaxBannerList",
+                type: "GET",
+                data: {}
+
+            }).done(function (response) {
+
+                if (response.Status == "OK") {
+
+                    $("#BannerTable > tbody").html(response.Data);
+
+                } else {
+
+                    alert("Error:\n\n" + response.Message);
+
+                }
+            });
+        });
+
+    </script>
+    
+}

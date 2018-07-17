@@ -8,7 +8,7 @@ namespace SparkServer.Models
 {
     public class JsonPayload
     {
-        public JsonStatus Status { get; set; }
+        public string Status { get; set; }
 
         public string Message { get; set; }
 
