@@ -714,18 +714,17 @@ namespace SparkServer.Controllers
         [HttpGet]
         public JsonResult AjaxBannerList()
         {
+            MediaService mediaServices = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
             JsonPayload json = new JsonPayload();
             json.Status = JsonStatus.OK.ToString();
 
-            // TODO: Load list of images from disk
+            // TODO: ERROR HANDLING
+
+            // Load list of images from disk
+            List<ImageListItem> imageList = mediaServices.GetBannerListFromDisk();
 
             // TODO: Map list of images to model; assume thumbnail paths and do File.Exists() to check; return "no thumbnail" image if necessary
-
-            List<ImageListItem> model = new List<ImageListItem>();
-
-            model.Add(new ImageListItem() { Filepath = "test filepath", ThumbnailPath = "test thumbnail" });
-
-            json.Data = model;
+            json.Data = imageList;
 
             return Json(json, JsonRequestBehavior.AllowGet);
         }
