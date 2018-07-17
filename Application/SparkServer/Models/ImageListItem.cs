@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SparkServer.Models
 {
-    public class ImageList
+    public class ImageListItem
     {
         public string Filename { get; set; }
 

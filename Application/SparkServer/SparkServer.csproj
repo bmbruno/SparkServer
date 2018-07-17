@@ -151,7 +151,7 @@
     <Compile Include="Mapping\MapperExtensions.cs" />
     <Compile Include="Models\ArticleLink.cs" />
     <Compile Include="Models\CategoryWithArticles.cs" />
-    <Compile Include="Models\ImageList.cs" />
+    <Compile Include="Models\ImageListItem.cs" />
     <Compile Include="Models\JsonPayload.cs" />
     <Compile Include="Models\Paging.cs" />
     <Compile Include="ViewModels\Admin\ArticleEditListViewModel.cs" />

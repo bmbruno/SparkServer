@@ -28,8 +28,11 @@
 
 </div>
 
-<script type="text/template">
-
+<script type="text/template" id="BannerTableRow">
+    <tr>
+        <td><img src="##IMAGE_THUMBNAIL_SRC##" alt="Image Preview" /></td>
+        <td>##IMAGE_PATH##</td>
+    </tr>
 </script>
 
 @section PageScripts {
@@ -48,7 +51,9 @@
 
                 if (response.Status == "OK") {
 
-                    $("#BannerTable > tbody").html(response.Data);
+                    var newHTML = buildRows(response.Data);
+
+                    $("#BannerTable > tbody").html(newHTML);
 
                 } else {
 
@@ -56,6 +61,24 @@
 
                 }
             });
+
+            var buildRows = function (responseData) {
+
+                var tableOutput = "";
+                var rowData = responseData;
+
+                for (row in rowData) {
+
+                    var output = $("#BannerTableRow").html();
+                    output = output.replace("##IMAGE_THUMBNAIL_SRC##", rowData[row].ThumbnailPath);
+                    output = output.replace("##IMAGE_PATH##", rowData[row].Filepath);
+                    tableOutput += output;
+
+                }
+
+                return tableOutput;
+            }
+
         });
 
     </script>

@@ -721,6 +721,12 @@ namespace SparkServer.Controllers
 
             // TODO: Map list of images to model; assume thumbnail paths and do File.Exists() to check; return "no thumbnail" image if necessary
 
+            List<ImageListItem> model = new List<ImageListItem>();
+
+            model.Add(new ImageListItem() { Filepath = "test filepath", ThumbnailPath = "test thumbnail" });
+
+            json.Data = model;
+
             return Json(json, JsonRequestBehavior.AllowGet);
         }
 
