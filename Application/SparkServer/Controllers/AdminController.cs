@@ -701,26 +701,34 @@ namespace SparkServer.Controllers
 
         public ActionResult UploadBanner(MediaEditViewModel viewModel)
         {
-            // TODO: Validation: file content length > 0, valid extension, MIME type?
-            if (viewModel.NewFile.ContentLength > 0)
+            MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+
+            // TODO: Validation: file content length > 0, valid extension, MIME type, file exists by name
+            if (viewModel.NewFile.ContentLength == 0)
                 ModelState.AddModelError("NewFile", "File length is zero. File is required.");
 
-            if (!viewModel.NewFile.FileName.ToLower().EndsWith(".jpg") && viewModel.NewFile.ContentType != "image/jpeg")
-            {
+            if (!viewModel.NewFile.FileName.ToLower().EndsWith(".jpg") || viewModel.NewFile.ContentType != "image/jpeg")
                 ModelState.AddModelError("NewFile", "Image must be a JPG.");
-            }
+
+            if (mediaService.FileExistsByName(viewModel.NewFile.FileName))
+                ModelState.AddModelError("NewFile", "Filename alrady exists.");
 
             if (ModelState.IsValid)
             {
-                // TODO: Upload file to library folder
+                string newFilePath = $"{Server.MapPath(Config.MediaBannerPath)}\\{viewModel.NewFile.FileName}";
+
+                // Upload file to library folder
+                viewModel.NewFile.SaveAs(newFilePath);
 
                 // TODO: Create thumbnail
 
                 // TODO: Redirect to /Admin/Banners 
+                TempData["Success"] = $"Image '{viewModel.NewFile.FileName}' uploaded.";
+                return RedirectToAction(actionName: "Banners", controllerName: "Admin");
 
             }
 
-            return View();
+            return View("~/Views/Admin/Banners.cshtml", viewModel);
         }
         
         [HttpGet]

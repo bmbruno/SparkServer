@@ -43,5 +43,10 @@ namespace SparkServer.Application
 
             return imageList;
         }
+
+        public bool FileExistsByName(string filename)
+        {
+            return File.Exists($"{_mappedFolderPath}{filename}");
+        }
     }
 }
