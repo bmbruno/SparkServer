@@ -718,10 +718,24 @@ namespace SparkServer.Controllers
                 string newFilePath = $"{Server.MapPath(Config.MediaBannerPath)}\\{viewModel.NewFile.FileName}";
 
                 // Upload file to library folder
-                viewModel.NewFile.SaveAs(newFilePath);
+                try
+                {
+                    viewModel.NewFile.SaveAs(newFilePath);
+                }
+                catch (Exception exc)
+                {
+                    TempData["Error"] = $"Exception saving image to disk: {exc.ToString()}";
+                }
 
                 // Create thumbnail
-                mediaService.CreateThumbnail(newFilePath);
+                try
+                {
+                    mediaService.CreateThumbnail(newFilePath);
+                }
+                catch (Exception exc)
+                {
+                    TempData["Error"] = $"Exception creating thumbnail: {exc.ToString()}";
+                }
 
                 // Redirect to /Admin/Banners 
                 TempData["Success"] = $"Image '{viewModel.NewFile.FileName}' uploaded.";
@@ -735,16 +749,22 @@ namespace SparkServer.Controllers
         public JsonResult AjaxBannerList()
         {
             MediaService mediaServices = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+            List<ImageListItem> imageList = new List<ImageListItem>();
+
             JsonPayload json = new JsonPayload();
             json.Status = JsonStatus.OK.ToString();
 
-            // TODO: ERROR HANDLING
-
             // Load list of images from disk
-            List<ImageListItem> imageList = mediaServices.GetBannerListFromDisk();
-
-            // TODO: Map list of images to model; assume thumbnail paths and do File.Exists() to check; return "no thumbnail" image if necessary
-            json.Data = imageList;
+            try
+            {
+                imageList = mediaServices.GetBannerListFromDisk();
+                json.Data = imageList;
+            }
+            catch (Exception exc)
+            {
+                json.Status = JsonStatus.EXCEPTION.ToString();
+                json.Message = exc.ToString();
+            }
 
             return Json(json, JsonRequestBehavior.AllowGet);
         }
