@@ -99,6 +99,8 @@ namespace SparkServer.Application
 
         private string GetBannerThumbnailPath(string filename, bool mapped)
         {
+            filename = filename.Replace(".jpg", string.Empty);
+
             if (mapped)
                 return $"{_mappedFolderPath}\\{filename}_thumb.jpg";
             else
