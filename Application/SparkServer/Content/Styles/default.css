@@ -240,23 +240,23 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	.figure.left img, .figure.right img { width: 100%; }
 	
 	ul.grid { text-align: center; }
-	ul.grid > li { text-align: left; float: left; margin: 0; list-style-type: none; padding-bottom: 2em; }
+	ul.grid > li { text-align: left; float: left; margin: 0; list-style-type: none; padding: 1%; }
 
     ul.grid li h3 { margin-bottom: 0.5em; }
 
-	ul.grid.two-up > li { width: 50%; padding-right: 20px; }
+	ul.grid.two-up > li { width: 50%; }
 	ul.grid.two-up > li:nth-child(2n + 1) { clear: both; }
 	
-	ul.grid.three-up > li { width: 33.3333%; padding-right: 20px; }
+	ul.grid.three-up > li { width: 33.3333%; }
 	ul.grid.three-up > li:nth-child(3n + 1) { clear: both; }
 	
-	ul.grid.four-up > li { width: 25%; padding-right: 20px; }
+	ul.grid.four-up > li { width: 25%; }
 	ul.grid.four-up > li:nth-child(4n + 1) { clear: both; }
 
-	ul.grid.five-up > li { width: 20%; padding-right: 20px; }
+	ul.grid.five-up > li { width: 20%; }
 	ul.grid.five-up > li:nth-child(5n + 1) { clear: both; }
 	
-	ul.grid.six-up > li { width: 16.6667%; padding-right: 20px; }
+	ul.grid.six-up > li { width: 16.6667%; }
 	ul.grid.six-up > li:nth-child(6n + 1) { clear: both; }
 	
     .welcome-banner { box-shadow: inset 0 0 100px #000; padding: 6em 2em; }
