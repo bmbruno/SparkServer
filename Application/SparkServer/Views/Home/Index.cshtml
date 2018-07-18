@@ -18,7 +18,7 @@
 
     <h1>Latest Blog Posts</h1>
 
-    <ul class="grid two-up cf blog-list">
+    <ul class="grid two-up cf">
 
         @foreach (var blog in Model.BlogList)
         {
@@ -50,14 +50,15 @@
 
     <h1>Latest Articles</h1>
 
-    <ul class="grid two-up cf blog-list articles">
+    <ul class="grid two-up cf">
 
         @foreach (var article in Model.ArticleList)
         {
             <li class="cf">
-                <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
-                @if (!String.IsNullOrEmpty(article.ArticleSubtitle))
-                { <div class="subtitle">@article.ArticleSubtitle</div> }
+                <div class="card">
+                    <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
+                    @if (!String.IsNullOrEmpty(article.ArticleSubtitle)) {<div class="subtitle">@article.ArticleSubtitle</div>}
+                </div>
             </li>
         }
 
