@@ -4,7 +4,7 @@
 
 <html lang="en-us">
     <head>
-        <title>404 - Sitecore Spark</title>
+        <title>500 - Sitecore Spark</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="Sitecore 101 for .NET Developers - Practical Sitecore by Example">
