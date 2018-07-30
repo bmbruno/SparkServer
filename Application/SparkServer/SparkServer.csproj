@@ -220,7 +220,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\admin.js" />
     <Content Include="Scripts\default.js" />
-    <Content Include="Scripts\highlight.pack.js" />
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\prism.js" />
@@ -267,7 +266,6 @@
     <Content Include="Views\Home\Resources.cshtml" />
     <None Include="Properties\PublishProfiles\File System.pubxml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
-    <Content Include="Views\Shared\HighlightJSInit.cshtml" />
     <Content Include="Views\Blog\Sample.cshtml" />
     <Content Include="Views\Article\Sample.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
