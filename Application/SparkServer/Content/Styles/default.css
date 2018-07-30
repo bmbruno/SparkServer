@@ -76,7 +76,8 @@ aside p:last-of-type { margin-bottom: 0; }
 aside ul:last-of-type { margin-bottom: 0; }
 
 pre { margin-bottom: 1em; }
-pre > code { font-family: monospace; border-radius: 6px; padding: 1em 2em !important; box-shadow: inset 4px 4px 16px #AAA; background-color: #D2D2D2 !important; }
+pre > code { font-size: 0.85em !important; }
+pre > code > span { line-height: 1em !important; }
 
 hr { height: 1px; border: none; background-color: #777; margin: 2em 0; }
 

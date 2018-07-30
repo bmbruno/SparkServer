@@ -14,14 +14,14 @@ namespace SparkServer
                         "~/Content/Styles/fonts/fonts.css",
                         "~/Content/Styles/fonts/font-awesome.min.css",
                         "~/Content/Styles/default.css",
-                        "~/Content/Styles/highlightjs/github.css"));
+                        "~/Content/Styles/prism.css",
+                        "~/Content/Styles/prism-spark.css"));
 
             bundles.Add(new StyleBundle("~/Content/ie").Include(
                         "~/Content/Styles/ie.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery.js"));
-
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
                         "~/Scripts/default.js"));
