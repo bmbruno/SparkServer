@@ -35,6 +35,17 @@ namespace SparkServer.ViewModels
             }
         }
 
+        public string ImageURL
+        {
+            get
+            {
+                if (!String.IsNullOrEmpty(this.ImagePath))
+                    return this.ImagePath;
+                else
+                    return "/Content/Images/default_blog_bg.jpg";
+            }
+        }
+        
         public BlogArticleViewModel()
         {
             BlogTags = new List<BlogTagViewModel>();

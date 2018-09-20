@@ -4,18 +4,9 @@
     ViewBag.Title = Model.Title;
 }
 
-@if (!String.IsNullOrEmpty(Model.ImagePath))
-{
-    <div class="blog-header" style="background-image: url('@Model.ImagePath');">
-        <h1>@ViewBag.Title</h1>
-    </div>
-}
-else
-{
-    <div class="blog-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');">
-        <h1>@ViewBag.Title</h1>
-    </div>
-}
+<div class="blog-header" style="background-image: url('@Model.ImageURL');">
+    <h1>@ViewBag.Title</h1>
+</div>
 
 <article class="blog">
 
@@ -55,5 +46,15 @@ else
 @section PageScripts {
 
     <script src="~/Scripts/prism.js"></script>
+
+}
+
+@section PageMetadata {
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="@Model.Title" />
+    <meta name="twitter:description" content="@Model.Subtitle" />
+    <meta name="twitter:image" content="https://www.sitecorespark.com@(Model.ImageURL)" />
+    <meta name="twitter:site" content="Sitecore Spark" />
 
 }

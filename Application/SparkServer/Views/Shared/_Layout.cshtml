@@ -10,6 +10,8 @@
         <meta name="description" content="Sitecore 101 for .NET Developers - Practical Sitecore by Example">
         <meta name="author" content="Brandon Bruno">
 
+        @RenderSection("PageMetadata", required: false)
+
         <!--[if lt IE 9]>
             @Scripts.Render("~/bundles/html5shiv")
         <![endif]-->
@@ -34,6 +36,9 @@
                 <a href="/">
                     <img src="~/Content/Images/logo_title.png" alt="Sitecore Spark Logo" class="logo" />
                 </a>
+
+                <p style="margin: 0.5em 0 0 0; text-align: center; font-weight: bold;">An Independent Sitecore Learning Resource</p>
+
                 <a class="mobile-menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
             </header>
 
