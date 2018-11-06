@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using HeyRed.MarkdownSharp;
 
 namespace SparkServer.Application.Helpers
 {
@@ -18,6 +15,16 @@ namespace SparkServer.Application.Helpers
             input = input.Replace(" ", "-");
 
             return "";
+        }
+
+        public static string MarkdownToHTML(string markdownInput)
+        {
+            Markdown markdown = new Markdown();
+            markdown.AllowTargetBlank = true;
+
+            string output = markdown.Transform(markdownInput);
+
+            return output;
         }
     }
 }
