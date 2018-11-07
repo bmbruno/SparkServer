@@ -21,7 +21,8 @@ namespace SparkServer.Application.Helpers
         {
             Markdown markdown = new Markdown();
             markdown.AllowTargetBlank = true;
-
+            markdown.AddExtension(new SparkMarkdownExtension());
+            
             string output = markdown.Transform(markdownInput);
 
             return output;

@@ -798,6 +798,7 @@ namespace SparkServer.Controllers
             JsonPayload json = new JsonPayload();
             json.Status = JsonStatus.OK.ToString();
 
+            markdown = Server.UrlDecode(markdown);
 
             try
             {

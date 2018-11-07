@@ -74,6 +74,8 @@ $(function () {
 
         if (sourceText != "") {
 
+            sourceText = encodeURIComponent(sourceText);
+
             $.ajax({
 
                 url: "/Admin/MarkdownToHTML",
