@@ -1,4 +1,4 @@
-﻿using HeyRed.MarkdownSharp;
+﻿using Markdig;
 
 namespace SparkServer.Application.Helpers
 {
@@ -19,11 +19,7 @@ namespace SparkServer.Application.Helpers
 
         public static string MarkdownToHTML(string markdownInput)
         {
-            Markdown markdown = new Markdown();
-            markdown.AllowTargetBlank = true;
-            markdown.AddExtension(new SparkMarkdownExtension());
-            
-            string output = markdown.Transform(markdownInput);
+            string output = Markdown.ToHtml(markdownInput);
 
             return output;
         }
