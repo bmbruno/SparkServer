@@ -11,6 +11,7 @@ using SparkServer.Application.Enum;
 using SparkServer.Application;
 using System.Web.Security;
 using SparkServer.Models;
+using SparkServer.Application.Helpers;
 
 namespace SparkServer.Controllers
 {
@@ -790,5 +791,25 @@ namespace SparkServer.Controllers
         }
 
         #endregion
+
+        [HttpPost]
+        public JsonResult MarkdownToHTML(string markdown)
+        {
+            JsonPayload json = new JsonPayload();
+            json.Status = JsonStatus.OK.ToString();
+
+
+            try
+            {
+                json.Data = FormatHelper.MarkdownToHTML(markdown);
+            }
+            catch (Exception exc)
+            {
+                json.Status = JsonStatus.EXCEPTION.ToString();
+                json.Message = exc.ToString();
+            }
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
     }
 }

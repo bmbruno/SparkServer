@@ -68,4 +68,31 @@ $(function () {
 
     });
 
+    $("#ConvertToHTML").on("click", function () {
+
+        var sourceText = $("#Source").val();
+
+        if (sourceText != "") {
+
+            $.ajax({
+
+                url: "/Admin/MarkdownToHTML",
+                type: "POST",
+                data: { markdown: sourceText }
+
+            }).done(function (response) {
+
+                if (response.Status == "OK") {
+
+                    $("#Body").val(response.Data);
+
+                } else {
+
+                    alert("Error:\n\n" + response.Message);
+
+                }
+            });
+        }
+
+    });
 });

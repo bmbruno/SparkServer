@@ -23,6 +23,9 @@ namespace SparkServer.ViewModels
         [Display(Name = "Subtitle")]
         public string Subtitle { get; set; }
 
+        [Display(Name = "Source (Markdown)")]
+        public string Source { get; set; }
+
         [Required]
         [Display(Name = "Body")]
         public string Body { get; set; }
