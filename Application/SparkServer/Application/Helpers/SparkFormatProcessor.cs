@@ -17,6 +17,9 @@ namespace SparkServer.Application.Helpers
         {
             var anchors = htmlDoc.DocumentNode.SelectNodes("//a");
 
+            if (anchors == null)
+                return htmlDoc;
+
             foreach (var anchor in anchors)
             {
                 string originalHTML = anchor.OuterHtml;
@@ -32,6 +35,36 @@ namespace SparkServer.Application.Helpers
                             anchor.SetAttributeValue("target", "_blank");
                         }
                     }
+                }
+            }
+
+            return htmlDoc;
+        }
+
+        /// <summary>
+        /// Adds DIV with class of "figure" around standalone images. Markdown conversion will create "p/img", and this will convert that to "div/img".
+        /// </summary>
+        /// <param name="htmlDoc">HtmlAgilityPack HtmlDocument object.</param>
+        /// <returns>HtmlDocument object with anchor tags processed.</returns>
+        public static HtmlDocument FrameImagesWithFigure(HtmlDocument htmlDoc)
+        {
+            var images = htmlDoc.DocumentNode.SelectNodes("//img");
+
+            if (images == null)
+                return htmlDoc;
+
+            foreach (var image in images)
+            {
+                if (image.ParentNode.Name.Equals("p"))
+                {
+                    image.ParentNode.Name = "div";
+                    image.ParentNode.AddClass("figure full");
+                }
+
+                if (image.ParentNode.Name.Equals("a") && image.ParentNode.ParentNode.Name.Equals("p"))
+                {
+                    image.ParentNode.ParentNode.Name = "div";
+                    image.ParentNode.ParentNode.AddClass("figure full");
                 }
             }
 

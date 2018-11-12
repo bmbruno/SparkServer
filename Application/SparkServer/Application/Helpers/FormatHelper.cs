@@ -32,8 +32,7 @@ namespace SparkServer.Application.Helpers
             htmlDoc.LoadHtml(htmlValue);
 
             htmlDoc = SparkFormatProcessor.ExternalLinksGetBlankTarget(htmlDoc);
-
-            // TODO: images: a) if image tag is not proceeded by a <div> with class of "figure", add "figure" div; b) if image is proceeded by a <div> with class "figure", then ignore and move on
+            htmlDoc = SparkFormatProcessor.FrameImagesWithFigure(htmlDoc);
             
             return htmlDoc.DocumentNode.OuterHtml;
         }
