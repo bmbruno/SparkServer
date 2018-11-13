@@ -33,7 +33,7 @@ namespace SparkServer.Application.Helpers
 
             htmlDoc = SparkFormatProcessor.ExternalLinksGetBlankTarget(htmlDoc);
             htmlDoc = SparkFormatProcessor.FrameImagesWithFigure(htmlDoc);
-            
+
             return htmlDoc.DocumentNode.OuterHtml;
         }
     }
