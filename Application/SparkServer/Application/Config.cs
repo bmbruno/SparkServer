@@ -46,6 +46,19 @@ namespace SparkServer.Application
                     return string.Empty;
             }
         }
+
+        public static string DomainName
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["domainName"];
+
+                if (value != null)
+                    return value.ToString();
+                else
+                    return string.Empty;
+            }
+        }
     }
 
 }

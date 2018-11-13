@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Markdig;
+using HtmlAgilityPack;
+using System.IO;
 
 namespace SparkServer.Application.Helpers
 {
@@ -18,6 +17,24 @@ namespace SparkServer.Application.Helpers
             input = input.Replace(" ", "-");
 
             return "";
+        }
+
+        /// <summary>
+        /// Converts a string of Markdown to valid HTML for hosting 
+        /// </summary>
+        /// <param name="markdownInput"></param>
+        /// <returns></returns>
+        public static string MarkdownToHTML(string markdownInput)
+        {           
+            string htmlValue = Markdown.ToHtml(markdownInput);
+
+            HtmlDocument htmlDoc = new HtmlDocument();
+            htmlDoc.LoadHtml(htmlValue);
+
+            htmlDoc = SparkFormatProcessor.ExternalLinksGetBlankTarget(htmlDoc);
+            htmlDoc = SparkFormatProcessor.FrameImagesWithFigure(htmlDoc);
+
+            return htmlDoc.DocumentNode.OuterHtml;
         }
     }
 }

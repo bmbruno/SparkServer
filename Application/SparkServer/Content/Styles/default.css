@@ -9,7 +9,7 @@ em { font-style: italic; }
 .center { text-align: center; }
 
 /* BASE */
-body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; }
+body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; font-size: 16px; }
 strong { font-weight: bold; } 
 blockquote { font-style: italic; color: #555; margin: 0 1em 1.5em 1em; line-height: 1.5em; }
 blockquote p:last-of-type { margin-bottom: 0; }
@@ -89,8 +89,7 @@ p + .figure.full { padding-top: 0; }
 h2 + .figure, h3 + .figure { padding-top: 0 !important; }
 
 .caption { padding-top: 8px; margin: 0; font-size: 0.85em; color: #555; }
-.config-path, .mono { font-family: monospace; font-size: 1.25em; }
-.inline-code { background-color: #DEDEDE; padding: 0 4px; }
+.config-path, .mono, p > code, li > code { font-family: monospace; background-color: #EBEBEB; padding: 0 4px; border-radius: 4px; }
 
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 

@@ -36,6 +36,15 @@
     </div>
 
     <div class="row">
+        @Html.LabelFor(x => x.Source)
+        @Html.TextAreaFor(x => x.Source, htmlAttributes: new { style = "height: 400px" })
+        @Html.ValidationMessageFor(x => x.Source)
+        <div>
+            <input type="button" value="Convert" id="ConvertToHTML" class="btn" />
+        </div>
+    </div>
+
+    <div class="row">
         @Html.LabelFor(x => x.Body)
         @Html.TextAreaFor(x => x.Body, htmlAttributes: new { style = "height: 400px" })
         @Html.ValidationMessageFor(x => x.Body)
