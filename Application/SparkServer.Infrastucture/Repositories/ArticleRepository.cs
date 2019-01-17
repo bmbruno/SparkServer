@@ -134,9 +134,12 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
-        public IEnumerable<Article> GetRecent(int numberToLoad)
+        public IEnumerable<Article> GetRecent(int numberToLoad = 4)
         {
             List<Article> blogList = new List<Article>();
+
+            if (numberToLoad == 0)
+                return blogList;
 
             using (var db = new SparkServerEntities())
             {

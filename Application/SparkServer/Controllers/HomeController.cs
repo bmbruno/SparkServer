@@ -30,8 +30,8 @@ namespace SparkServer.Controllers
         {
             HomeViewModel viewModel = new HomeViewModel();
 
-            var articles = _articleRepo.GetRecent(4);
-            var blogs = _blogRepo.GetRecent(2);
+            var articles = _articleRepo.GetRecent(0);
+            var blogs = _blogRepo.GetRecent(4);
         
             viewModel.MapToViewModel(articles, blogs);
             viewModel.MenuSelection = MainMenu.Home;

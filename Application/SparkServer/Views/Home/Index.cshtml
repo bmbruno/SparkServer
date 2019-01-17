@@ -48,26 +48,6 @@
 
 <div class="section">
 
-    <h1>Latest Articles</h1>
-
-    <ul class="grid two-up cf">
-
-        @foreach (var article in Model.ArticleList)
-        {
-            <li class="cf">
-                <div class="card">
-                    <h3><a href="@article.URL">@article.ArticleTitle</a></h3>
-                    @if (!String.IsNullOrEmpty(article.ArticleSubtitle)) {<div class="subtitle">@article.ArticleSubtitle</div>}
-                </div>
-            </li>
-        }
-
-    </ul>
-
-</div>
-
-<div class="section">
-
     <h1>Start With a Spark</h1>
 
     <h2>Blog</h2>
