@@ -202,6 +202,9 @@ footer.page p:last-of-type { margin-bottom: 0; }
 .image-list td { text-align: center; vertical-align: middle; }
 .image-list img { max-width: 360px; box-shadow: 0 0 16px #AAA; }
 
+.about-mvp-logo { max-width: 100%; text-align: center; }
+.about-mvp-logo img { max-width: 50%; }
+
 @media (min-width: 600px)
 {		
     blockquote { margin: 0 3em 1.5em 3em; }
@@ -299,6 +302,9 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
     .resource-links li { padding: 1em; }
     .resource-links a { font-size: 1.25em; }
+
+    .about-mvp-logo { max-width: 25%; }
+    .about-mvp-logo img { max-width: 100%; }
 }
 
 @media (min-width: 820px)
