@@ -43,7 +43,9 @@ namespace SparkServer.Controllers
         [AllowAnonymous]
         public ActionResult Login(string token)
         {
-            if (token == Config.AdminToken)
+            string ipAddress = Request.UserHostAddress;
+
+            if (Config.AdminWhitelist.Contains(ipAddress) && (token == Config.AdminToken))
             {
                 FormsAuthentication.SetAuthCookie("1", true);
                 return RedirectToAction(actionName: "Index", controllerName: "Admin");

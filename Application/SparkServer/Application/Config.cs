@@ -59,6 +59,23 @@ namespace SparkServer.Application
                     return string.Empty;
             }
         }
+
+        public static string[] AdminWhitelist
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["adminWhitelist"];
+
+                if (value != null)
+                {
+                    return value.Split(',');
+                }
+                else
+                {
+                    return new string[0];
+                }
+            }
+        }
     }
 
 }
