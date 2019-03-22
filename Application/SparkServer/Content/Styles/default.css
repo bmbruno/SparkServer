@@ -226,7 +226,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     
     article.blog > h1.blog-title-only { display: none; }
     article.blog > h1.blog-header-title-only { display: block; }
-    .blog-header { display: block; background-size: cover; background-position: center top; position: relative; height: 420px; margin-bottom: 1em; }
+    .blog-header { display: block; background-size: cover; background-position: center; position: relative; height: 420px; margin-bottom: 1em; }
     .blog-header h1 { position: absolute; bottom: 0; padding: 0.5em; background-color: rgba(0, 0, 0, 0.85); text-shadow: 2px 2px 0 #000; color: #DEDEDE; }
 
     table.fluid { width: auto; min-width: 50%; }
@@ -309,6 +309,9 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 @media (min-width: 820px)
 {
+    p, ul { font-size: 1.1em; }
+    h3 { font-size: 1.5em; }
+
 	nav { margin: 1em 0; font-family: 'OSBold', arial, sans-serif; }
 	nav ul { display: block; border-top: 1px solid #DC291E; border-bottom: 1px solid #DC291E; }
 	nav ul li { float: left; width: 25%; border: none; }
