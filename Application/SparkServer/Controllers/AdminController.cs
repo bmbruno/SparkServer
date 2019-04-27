@@ -706,7 +706,13 @@ namespace SparkServer.Controllers
         {
             MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
 
-            // TODO: Validation: file content length > 0, valid extension, MIME type, file exists by name
+            // Validation: file content length > 0, valid extension, MIME type, file exists by name
+            if (viewModel.NewFile == null)
+            {
+                ModelState.AddModelError("NewFile", "No image uploaded.");
+                return View("~/Views/Admin/Banners.cshtml", viewModel);
+            }
+
             if (viewModel.NewFile.ContentLength == 0)
                 ModelState.AddModelError("NewFile", "File length is zero. File is required.");
 
