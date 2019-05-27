@@ -36,7 +36,9 @@ header img.logo { width: 50%; }
 p, ul { line-height: 1.5em; margin-bottom: 1.5em; font-size: 1em; text-align: justify;  color: #444;}
 p.subtitle { font-weight: bold; font-size: 1.25em; }
 
-li { list-style-type: disc; margin-left: 3em; text-align: left; }
+li { margin-left: 3em; text-align: left; }
+ul > li { list-style-type: disc; }
+ol > li { list-style-type: decimal; }
 
 .section { margin-bottom: 2em;}
 .section > h1 { text-align: center; }
