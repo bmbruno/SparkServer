@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer", "SparkServer\SparkServer.csproj", "{8CE9F4CF-1D40-4F2B-B1F3-AB75DC5AF2C8}"
 EndProject
@@ -12,6 +12,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer.Data", "SparkServer.Data\SparkServer.Data.csproj", "{B77260A4-FFA2-49E9-9F99-992CEDEC12AA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SparkServer.Tests", "SparkServer.Tests\SparkServer.Tests.csproj", "{ADF05E9A-82A4-41EB-A7E5-63FBA93437F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F840CDEB-A1F9-46D0-8091-DBC32A638B41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{B9619D61-8BE9-4FC8-B21C-092858C24A1F}"
+	ProjectSection(SolutionItems) = preProject
+		lib\Newtonsoft.Json.dll = lib\Newtonsoft.Json.dll
+		lib\QuickSSO.Client.dll = lib\QuickSSO.Client.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,5 +50,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B9619D61-8BE9-4FC8-B21C-092858C24A1F} = {F840CDEB-A1F9-46D0-8091-DBC32A638B41}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {70A8377B-A2E0-4D4D-BFBC-A62D52FD8CE5}
 	EndGlobalSection
 EndGlobal
