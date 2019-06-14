@@ -25,15 +25,33 @@ namespace SparkServer.Controllers
         {
             if (String.IsNullOrEmpty(token))
             {
-                TempData["Info"] = "Token is empty.";
+                TempData["Error"] = "Token is empty.";
                 return RedirectToAction(actionName: "Index", controllerName: "Home");
             }
 
-            if (!TokenService.TokenIsValid(token, Config.SigningKey))
+            // DEBUG
+            bool isValidToken = false;
+
+            try
             {
-                TempData["Info"] = "Token not valid. Possible signature error.";
+                isValidToken = TokenService.TokenIsValidDebug(token, Config.SigningKey);
+            }
+            catch (Exception exc)
+            {
+                TempData["Error"] = exc.ToString();
                 return RedirectToAction(actionName: "Index", controllerName: "Home");
             }
+
+            if (!isValidToken)
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
+
+            // ORIGINAL CODE
+
+            //if (!TokenService.TokenIsValid(token, Config.SigningKey))
+            //{
+            //    TempData["Error"] = "Token not valid. Possible signature error." + "\n\nTOKEN: " + token;
+            //    return RedirectToAction(actionName: "Index", controllerName: "Home");
+            //}
 
             TokenPayload payload = TokenService.GetPayload(token);
 

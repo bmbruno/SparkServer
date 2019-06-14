@@ -53,6 +53,20 @@
 
             <div class="container cf">
 
+                @if (TempData["Success"] != null)
+                {
+                    <div class="status-message success">
+                        @TempData["Success"]
+                    </div>
+                }
+
+                @if (TempData["Error"] != null)
+                {
+                    <div class="status-message error">
+                        @TempData["Error"]
+                    </div>
+                }
+
                 @RenderBody()
 
             </div>
