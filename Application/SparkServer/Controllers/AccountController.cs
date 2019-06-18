@@ -53,7 +53,11 @@ namespace SparkServer.Controllers
             //    return RedirectToAction(actionName: "Index", controllerName: "Home");
             //}
 
+            // TODO: if user ID doesn't exist, create a new user and display welcome message
+            
+
             TokenPayload payload = TokenService.GetPayload(token);
+
 
             FormsAuthentication.SetAuthCookie(payload.uid.ToString(), true);
 
