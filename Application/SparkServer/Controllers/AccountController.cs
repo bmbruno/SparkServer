@@ -1,5 +1,7 @@
 ﻿using QuickSSO.Client;
 using SparkServer.Application;
+using SparkServer.Core.Repositories;
+using SparkServer.Data;
 using System;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -8,6 +10,13 @@ namespace SparkServer.Controllers
 {
     public class AccountController : Controller
     {
+        private IAuthorRepository<Author> _authorRepo;
+
+        public AccountController(IAuthorRepository<Author> authorRepo)
+        {
+            _authorRepo = authorRepo;
+        }
+
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
@@ -29,7 +38,6 @@ namespace SparkServer.Controllers
                 return RedirectToAction(actionName: "Index", controllerName: "Home");
             }
 
-            // DEBUG
             bool isValidToken = false;
 
             try
@@ -53,11 +61,28 @@ namespace SparkServer.Controllers
             //    return RedirectToAction(actionName: "Index", controllerName: "Home");
             //}
 
-            // TODO: if user ID doesn't exist, create a new user and display welcome message
-            
-
             TokenPayload payload = TokenService.GetPayload(token);
 
+            // If user ID doesn't exist, create a new user and display welcome message           
+            Author existingAuthor = _authorRepo.Get(payload.uid);
+
+            if (existingAuthor == null)
+            {
+                _authorRepo.Create(new Author() {
+
+                    SSOID = payload.uid,
+
+                    FirstName = payload.fname,
+                    LastName = payload.lname,
+                    Email = payload.eml,
+
+                    CreateDate = DateTime.Now,
+                    Active = true
+
+                });
+            }
+
+            // Set authentication for user
 
             FormsAuthentication.SetAuthCookie(payload.uid.ToString(), true);
 

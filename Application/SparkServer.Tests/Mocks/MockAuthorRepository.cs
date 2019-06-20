@@ -19,11 +19,17 @@ namespace SparkServer.Infrastructure.Repositories
             item.ID = 1;
             item.FirstName = "FirstName";
             item.LastName = "LastName";
+            item.SSOID = Guid.NewGuid();
 
             item.Active = true;
             item.CreateDate = new DateTime(year: 2016, month: 1, day: 5);
 
             return item;
+        }
+
+        public Author Get(Guid ssoID)
+        {
+            return this.Get(ID: 1);
         }
 
         public IEnumerable<Author> Get(Expression<Func<Author, bool>> whereClause)

@@ -3,5 +3,5 @@ GO
 
 ALTER TABLE [Article]
 ADD
-	[SortOrder] VARCHAR(500) NULL
+	[SortOrder] INT NULL
 GO
