@@ -23,6 +23,18 @@ namespace SparkServer.Infrastructure.Repositories
             return item;
         }
 
+        public Author Get(Guid ssoID)
+        {
+            Author item;
+
+            using (var db = new SparkServerEntities())
+            {
+                item = db.Author.FirstOrDefault(u => u.SSOID == ssoID);
+            }
+
+            return item;
+        }
+
         public IEnumerable<Author> Get(Expression<Func<Author, bool>> whereClause)
         {
             // CALLING: ArticleRepo.Get(x => x.Title == "abcdef");

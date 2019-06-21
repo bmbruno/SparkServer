@@ -44,6 +44,7 @@
           <Property Name="Email" Type="varchar" MaxLength="250" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="SSOID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -187,7 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ArticleRelatedLinks_ArticleSource">
+        <Association Name="FK_RelatedArticleLinks_ArticleSource">
           <End Role="Article" Type="Self.Article" Multiplicity="1" />
           <End Role="ArticleRelatedLinks" Type="Self.ArticleRelatedLinks" Multiplicity="*" />
           <ReferentialConstraint>
@@ -245,7 +246,7 @@
             <End Role="BlogTag" EntitySet="BlogTag" />
             <End Role="BlogsTags" EntitySet="BlogsTags" />
           </AssociationSet>
-          <AssociationSet Name="FK_ArticleRelatedLinks_ArticleSource" Association="Self.FK_ArticleRelatedLinks_ArticleSource">
+          <AssociationSet Name="FK_RelatedArticleLinks_ArticleSource" Association="Self.FK_RelatedArticleLinks_ArticleSource">
             <End Role="Article" EntitySet="Article" />
             <End Role="ArticleRelatedLinks" EntitySet="ArticleRelatedLinks" />
           </AssociationSet>
@@ -294,6 +295,7 @@
           <NavigationProperty Name="Article" Relationship="Self.FK_Article_Author" FromRole="Author" ToRole="Article" />
           <NavigationProperty Name="Blog" Relationship="Self.FK_Blog_Author" FromRole="Author" ToRole="Blog" />
           <NavigationProperty Name="Video" Relationship="SparkServerModel.FK_Video_Author" FromRole="Author" ToRole="Video" />
+          <Property Name="SSOID" Type="Guid" Nullable="false" />
         </EntityType>
         <EntityType Name="Blog">
           <Key>
@@ -568,6 +570,7 @@
           <EntitySetMapping Name="Author">
             <EntityTypeMapping TypeName="SparkServerModel.Author">
               <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="SSOID" ColumnName="SSOID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />

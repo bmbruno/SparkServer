@@ -40,20 +40,6 @@ namespace SparkServer.Controllers
             _sitecoreVersionRepo = sitecoreVersionRepo;
         }
 
-        [AllowAnonymous]
-        public ActionResult Login(string token)
-        {
-            string ipAddress = Request.UserHostAddress;
-
-            if (Config.AdminWhitelist.Contains(ipAddress) && (token == Config.AdminToken))
-            {
-                FormsAuthentication.SetAuthCookie("1", true);
-                return RedirectToAction(actionName: "Index", controllerName: "Admin");
-            }
-
-            return RedirectToAction(actionName: "Index", controllerName: "Home");
-        }
-
         public ActionResult Index()
         { 
             return View();

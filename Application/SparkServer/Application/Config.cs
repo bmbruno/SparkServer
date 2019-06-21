@@ -76,6 +76,58 @@ namespace SparkServer.Application
                 }
             }
         }
+
+        public static string SigningKey
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["ssoSigningKey"];
+
+                if (value != null)
+                    return value.ToString();
+
+                return string.Empty;
+            }
+        }
+
+        public static string SSOLoginURL
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["ssoLoginURL"];
+
+                if (value != null)
+                    return value.ToString();
+
+                return string.Empty;
+            }
+        }
+
+        public static string SSOLogoutURL
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["ssoLogoutURL"];
+
+                if (value != null)
+                    return value.ToString();
+
+                return string.Empty;
+            }
+        }
+
+        public static Guid SiteID
+        {
+            get
+            {
+                var value = ConfigurationManager.AppSettings["ssoSiteID"];
+
+                if (value != null)
+                    return Guid.Parse(value);
+
+                return Guid.Empty;
+            }
+        }
     }
 
 }
