@@ -32,34 +32,19 @@ namespace SparkServer.Controllers
 
         public ActionResult Authenticate(string token)
         {
-            if (String.IsNullOrEmpty(token))
+            // Validate the token
+            TokenStatus status = TokenService.ValidateToken(token, Config.SigningKey);
+
+            if (status != TokenStatus.Valid)
             {
-                TempData["Error"] = "Token is empty.";
+                // Expired tokens should request a new token from the server
+                if (status == TokenStatus.Expired)
+                    return RedirectToAction(actionName: "Login", controllerName: "Account");
+
+                // Something else is wrong with the token and it can't be trusted
+                TempData["Error"] = $"Token not valid. Status: {status.ToString()}";
                 return RedirectToAction(actionName: "Index", controllerName: "Home");
             }
-
-            bool isValidToken = false;
-
-            try
-            {
-                isValidToken = TokenService.TokenIsValidDebug(token, Config.SigningKey);
-            }
-            catch (Exception exc)
-            {
-                TempData["Error"] = exc.ToString();
-                return RedirectToAction(actionName: "Index", controllerName: "Home");
-            }
-
-            if (!isValidToken)
-                return RedirectToAction(actionName: "Index", controllerName: "Home");
-
-            // ORIGINAL CODE
-
-            //if (!TokenService.TokenIsValid(token, Config.SigningKey))
-            //{
-            //    TempData["Error"] = "Token not valid. Possible signature error." + "\n\nTOKEN: " + token;
-            //    return RedirectToAction(actionName: "Index", controllerName: "Home");
-            //}
 
             TokenPayload payload = TokenService.GetPayload(token);
 
@@ -80,10 +65,11 @@ namespace SparkServer.Controllers
                     Active = true
 
                 });
+
+                TempData["Success"] = $"Welcome, {payload.fname} {payload.lname}.";
             }
 
-            // Set authentication for user
-
+            // Set local authentication for user
             FormsAuthentication.SetAuthCookie(payload.uid.ToString(), true);
 
             return RedirectToAction(actionName: "Index", controllerName: "Admin");
