@@ -16,9 +16,9 @@
 
 @if (Model.BlogList.Count > 0)
 {
-    <div class="section">
+    string styleAttribute = string.Empty;
 
-        @{ string styleAttribute = string.Empty; }
+    <div class="section">
         @if (!String.IsNullOrEmpty(Model.BlogList[0].ImagePath))
         {
             styleAttribute = string.Format("background-image: url('{0}'); background-size: cover;", Model.BlogList[0].ImagePath);
@@ -27,17 +27,16 @@
         {
             styleAttribute = "background-image: url('/Content/Images/default_blog_bg.jpg'); background-size: cover;";
         }
-
-        <div class="section welcome-banner" style="@styleAttribute">
-
-            <h1><a href="/">@Model.BlogList[0].Title</a></h1>
-            <h2>@Model.BlogList[0].Subtitle</h2>
-
-        </div>
-
-        @{ Model.BlogList.RemoveAt(0); }
-
+        <a href="@Model.BlogList[0].URL" style="display: block;">
+            <div class="section welcome-banner" style="@styleAttribute">
+                <div class="header">Latest Blog Post</div>
+                <h1>@Model.BlogList[0].Title</h1>
+                <h2>@Model.BlogList[0].Subtitle</h2>
+            </div>
+        </a>
     </div>
+
+    Model.BlogList.RemoveAt(0);
 }
 
 <div class="gutter">&nbsp;</div>
