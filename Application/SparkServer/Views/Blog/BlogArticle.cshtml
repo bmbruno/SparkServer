@@ -17,7 +17,7 @@
         <p>@Model.AuthorFullName</p>
 
         <div class="label">Published</div>
-        <p>@Model.PublishDate.ToShortDateString()</p>
+        <p>@Model.PublishDate.ToString(format: "MMMM dd, yyyy")</p>
 
         <div class="label">Tags</div>
         <ul class="tags cf">
