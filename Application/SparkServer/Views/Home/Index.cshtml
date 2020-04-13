@@ -2,21 +2,48 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Welcome to Sitecore Spark!";
+    ViewBag.Title = "Welcome!";
 }
 
+<!--
 <div class="section welcome-banner">
 
     <h1>Practical Sitecore by Example</h1>
     <h2>Succinct articles. Core concepts. Sitecore simplified.</h2>
 
 </div>
+-->
+
+@if (Model.BlogList.Count > 0)
+{
+    string styleAttribute = string.Empty;
+
+    <div class="section">
+        @if (!String.IsNullOrEmpty(Model.BlogList[0].ImagePath))
+        {
+            styleAttribute = string.Format("background-image: url('{0}'); background-size: cover;", Model.BlogList[0].ImagePath);
+        }
+        else
+        {
+            styleAttribute = "background-image: url('/Content/Images/default_blog_bg.jpg'); background-size: cover;";
+        }
+        <a href="@Model.BlogList[0].URL" style="display: block;">
+            <div class="section welcome-banner" style="@styleAttribute">
+                <div class="header">Latest Blog Post</div>
+                <h1>@Model.BlogList[0].Title</h1>
+                <h2>@Model.BlogList[0].Subtitle</h2>
+            </div>
+        </a>
+    </div>
+
+    Model.BlogList.RemoveAt(0);
+}
 
 <div class="gutter">&nbsp;</div>
 
 <div class="section">
 
-    <h1>Latest Blog Posts</h1>
+    <h1>Recent Blog Posts</h1>
 
     <ul class="grid two-up cf">
 
@@ -36,7 +63,7 @@
                     <div class="blog-list-intro">
                         <h3><a href="@blog.URL">@blog.Title</a></h3>
                         <div class="subtitle">@blog.Subtitle</div>
-                        <div class="date">@blog.PublishDate.ToString("dd MMM yyyy") - <span style="font-style: italic;">@blog.AuthorFullName</span></div>
+                        <div class="date">@blog.PublishDate.ToString("MMMM dd, yyyy") - <span style="font-style: italic;">@blog.AuthorFullName</span></div>
                     </div>
                 </div>
             </li>
@@ -59,8 +86,5 @@
 
     <h2>Sitecore Resources</h2>
     <p>A one-stop resource for information and links to all-things Sitecore. From official Sitecore documentation to information on the most-popular community resources. <a href="https://www.youtube.com/channel/UCrv7Ux-1OIM31ZMaIrp2Nog" target="_blank">The Sitecore Spark YouTube Channel</a> is also available, focusing on short videos (60-90 seconds) that demonstrate core Sitecore features in action.</p>
-
-    <h2>Community Contributions</h2>
-    <p>Sitecore Spark is accepting contributions from the community for articles, blogs, and video presentations. If you'd like to write for Spark and reach the larger Sitecore community, please <a href="/about">contact me to get started</a>.</p>
 
 </div>
