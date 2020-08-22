@@ -27,6 +27,13 @@ namespace SparkServer.Controllers
         public ActionResult Login()
         {
             // Request login/authentication from sso.brandonbrun.com
+            if (Config.DebugMode)
+            {
+                FormsAuthentication.SetAuthCookie("1", true);
+                return RedirectToAction(actionName: "Index", controllerName: "Admin");
+            }
+
+
             return Redirect(url: Config.SSOLoginURL + Config.SiteID);
         }
 

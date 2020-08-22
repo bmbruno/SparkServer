@@ -81,14 +81,25 @@ namespace SparkServer.Controllers
                 viewModel.Title = $"[PREVIEW] - {viewModel.Title}";
             }
 
-            // Should this blog post be displayed at all?
-            // TODO: redirect to a custom 404
-            if (!User.Identity.IsAuthenticated && !preview && viewModel.PublishDate > DateTime.Now)
+            // Should this blog post be displayed at all? (Preview flag overrides denied access in some cases)
+            bool shouldDisplay = false;
+
+            // Has published date passed?
+            if (viewModel.PublishDate <= DateTime.Now)
             {
-                return RedirectToAction(actionName: "Index", controllerName: "Home");
+                shouldDisplay = true;
             }
 
-            return View(viewModel);
+            // Is preview mode being used with an authenticated user?
+            if (preview && User.Identity.IsAuthenticated)
+            {
+                shouldDisplay = true;
+            }
+
+            if (shouldDisplay)
+                return View(viewModel);
+            else
+                return RedirectToAction(actionName: "Index", controllerName: "Home");
         }
 
         public ActionResult ListByTag(string tagName, int? page)
