@@ -150,6 +150,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Content Include="Content\Images\default_banners\01.jpg" />
+    <Content Include="Content\Images\default_banners\02.jpg" />
+    <Content Include="Content\Images\default_banners\03.jpg" />
+    <Content Include="Content\Images\default_banners\04.jpg" />
+    <Content Include="Content\Images\default_banners\05.jpg" />
+    <Content Include="Content\Images\default_banners\06.jpg" />
+    <Content Include="Content\Images\default_banners\07.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2018.jpg" />
     <Content Include="Content\Styles\prism-spark.css" />
     <Compile Include="Controllers\AccountController.cs" />
