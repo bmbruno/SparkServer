@@ -72,7 +72,8 @@
 
     <div class="row">
         @Html.LabelFor(x => x.ImagePath)
-        @Html.TextBoxFor(x => x.ImagePath)
+        @Html.TextBoxFor(x => x.ImagePath, htmlAttributes: new { @class = "half" })
+        <input type="button" value="Get Default Banner" id="GetDefaultBanner" class="btn" />
         @Html.ValidationMessageFor(x => x.ImagePath)
     </div>
 

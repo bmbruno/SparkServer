@@ -315,7 +315,7 @@ namespace SparkServer.Controllers
                 viewModel.PublishDate = blog.PublishDate;
                 viewModel.AuthorID = blog.AuthorID;
                 viewModel.UniqueURL = blog.UniqueURL;
-                viewModel.ImagePath = blog.ImagePath;
+                viewModel.ImagePath = blog.ImagePath; // TODO: pick a default blog background
                 viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
                 viewModel.BlogURL = $"/blog/{blog.PublishDate.Value.Year}/{blog.PublishDate.Value.Month}/{blog.UniqueURL}";
 
@@ -803,6 +803,42 @@ namespace SparkServer.Controllers
                 json.Status = JsonStatus.EXCEPTION.ToString();
                 json.Message = exc.ToString();
             }
+
+            return Json(json, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpGet]
+        public JsonResult GetDefaultBlogBanner()
+        {
+            JsonPayload json = new JsonPayload();
+            int nextNumber = 0;
+
+            // Get last blog post that used a default blog banner
+            Blog mostRecentBanner = _blogRepo.Get(u => u.ImagePath.Contains("/default_banners/")).OrderByDescending(u => u.PublishDate).FirstOrDefault();
+
+            if (mostRecentBanner == null)
+            {
+                nextNumber = 1;
+            }
+            else
+            {
+                // Increment to next number
+                string[] chunks = mostRecentBanner.ImagePath.Split('/');
+                string lastBannerFilename = chunks.Last();
+                string lastBannerNumber = lastBannerFilename.Substring(0, 2);
+                nextNumber = Convert.ToInt32(lastBannerNumber) + 1;
+            }
+
+            // Check filesystem to ensure the next file exists; loop back to first image if nothing found
+            string newFilename = string.Format("/Content/Images/default_banners/{0:00}.jpg", nextNumber);
+
+            if (!System.IO.File.Exists(Server.MapPath($"~{newFilename}")))
+            {
+                newFilename = "/Content/Images/default_banners/01.jpg";
+            }
+
+            json.Status = JsonStatus.OK.ToString();
+            json.Data = newFilename;
 
             return Json(json, JsonRequestBehavior.AllowGet);
         }

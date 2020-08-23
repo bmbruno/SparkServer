@@ -97,4 +97,32 @@ $(function () {
         }
 
     });
+
+    $("#GetDefaultBanner").on("click", function () {
+
+        if ($("#ImagePath").val() != "") {
+            alert("Image Path should be empty to use a default banner.");
+            return;
+        }
+
+        $.ajax({
+
+            url: "/Admin/GetDefaultBlogBanner",
+            type: "GET",
+            data: { }
+
+        }).done(function (response) {
+
+            if (response.Status == "OK") {
+
+                $("#ImagePath").val(response.Data);
+
+            } else {
+
+                alert("Error:\n\n" + response.Message);
+
+            }
+        });
+
+    });
 });
