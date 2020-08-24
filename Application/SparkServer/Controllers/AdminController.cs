@@ -315,7 +315,7 @@ namespace SparkServer.Controllers
                 viewModel.PublishDate = blog.PublishDate;
                 viewModel.AuthorID = blog.AuthorID;
                 viewModel.UniqueURL = blog.UniqueURL;
-                viewModel.ImagePath = blog.ImagePath; // TODO: pick a default blog background
+                viewModel.ImagePath = blog.ImagePath;
                 viewModel.ImageThumbnailPath = blog.ImageThumbnailPath;
                 viewModel.BlogURL = $"/blog/{blog.PublishDate.Value.Year}/{blog.PublishDate.Value.Month}/{blog.UniqueURL}";
 
@@ -813,8 +813,8 @@ namespace SparkServer.Controllers
             JsonPayload json = new JsonPayload();
             int nextNumber = 0;
 
-            // Get last blog post that used a default blog banner
-            Blog mostRecentBanner = _blogRepo.Get(u => u.ImagePath.Contains("/default_banners/")).OrderByDescending(u => u.PublishDate).FirstOrDefault();
+            // Get last blog post that use a default blog banner
+            Blog mostRecentBanner = _blogRepo.Get(u => u.Active && u.ImagePath.Contains("/default_banners/")).OrderByDescending(u => u.PublishDate).ThenByDescending(u => u.ImagePath).FirstOrDefault();
 
             if (mostRecentBanner == null)
             {
