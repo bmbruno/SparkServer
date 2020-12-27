@@ -33,7 +33,6 @@ namespace SparkServer.Controllers
                 return RedirectToAction(actionName: "Index", controllerName: "Admin");
             }
 
-
             return Redirect(url: Config.SSOLoginURL + Config.SiteID);
         }
 
