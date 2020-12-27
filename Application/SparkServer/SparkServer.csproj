@@ -251,7 +251,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\AddEdit.cshtml" />
     <Content Include="Views\Article\Article.cshtml" />
     <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
@@ -275,7 +274,6 @@
     <Content Include="Content\Styles\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\Styles\fonts\FontAwesome.otf" />
     <Content Include="Content\Styles\fonts\Matiz-webfont.woff" />
-    <None Include="Project_Readme.html" />
     <Content Include="Views\Blog\BlogArticle.cshtml" />
     <Content Include="Views\Blog\IndexList.cshtml" />
     <Content Include="Views\Blog\IndexOverview.cshtml" />
