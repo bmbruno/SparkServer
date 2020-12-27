@@ -5,6 +5,9 @@ using System.Web;
 
 namespace SparkServer.Application.Enum
 {
+    /// <summary>
+    /// Identifies the status of a JSON payload.
+    /// </summary>
     public enum JsonStatus
     {
         /// <summary>

@@ -1,9 +1,11 @@
 ﻿using Markdig;
 using HtmlAgilityPack;
-using System.IO;
 
 namespace SparkServer.Application.Helpers
 {
+    /// <summary>
+    /// Provides helpers for converting text between various formats and designs.
+    /// </summary>
     public static class FormatHelper
     {
         /// <summary>

@@ -137,16 +137,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Attributes\ValidAdminAttribute.cs" />
     <Compile Include="Application\Config.cs" />
     <Compile Include="Application\Enum\MainMenu.cs" />
     <Compile Include="Application\Enum\JsonStatus.cs" />
-    <Compile Include="Application\Enum\ViewMode.cs" />
     <Compile Include="Application\Enum\EditMode.cs" />
     <Compile Include="Application\FilterData.cs" />
     <Compile Include="Application\Helpers\FormatHelper.cs" />
     <Compile Include="Application\Helpers\SparkFormatProcessor.cs" />
-    <Compile Include="Application\MediaService.cs" />
+    <Compile Include="Application\ImageService.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -158,6 +156,8 @@
     <Content Include="Content\Images\default_banners\06.jpg" />
     <Content Include="Content\Images\default_banners\07.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2018.jpg" />
+    <Content Include="Content\Images\sitecore_mvp_2019.jpg" />
+    <Content Include="Content\Images\sitecore_mvp_2020.jpg" />
     <Content Include="Content\Styles\prism-spark.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
@@ -256,6 +256,7 @@
     <Content Include="Views\Category\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Application\Attributes\" />
     <Folder Include="App_Data\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Base\" />

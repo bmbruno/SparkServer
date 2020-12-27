@@ -690,7 +690,7 @@ namespace SparkServer.Controllers
 
         public ActionResult UploadBanner(MediaEditViewModel viewModel)
         {
-            MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+            ImageService mediaService = new ImageService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
 
             // Validation: file content length > 0, valid extension, MIME type, file exists by name
             if (viewModel.NewFile == null)
@@ -744,7 +744,7 @@ namespace SparkServer.Controllers
         {
             if (!String.IsNullOrEmpty(filename))
             {
-                MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+                ImageService mediaService = new ImageService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
 
                 try
                 {
@@ -763,7 +763,7 @@ namespace SparkServer.Controllers
         [HttpGet]
         public JsonResult AjaxBannerList()
         {
-            MediaService mediaService = new MediaService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
+            ImageService mediaService = new ImageService(Config.MediaBannerPath, Server.MapPath(Config.MediaBannerPath));
             List<ImageListItem> imageList = new List<ImageListItem>();
 
             JsonPayload json = new JsonPayload();

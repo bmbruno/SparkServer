@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace SparkServer.Application.Enum
+﻿namespace SparkServer.Application.Enum
 {
+    /// <summary>
+    /// Identifies the edit mode of an article, blog, etc.
+    /// </summary>
     public enum EditMode
     {
         Add = 0,

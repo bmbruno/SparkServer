@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.IO;
@@ -7,13 +6,16 @@ using SparkServer.Models;
 
 namespace SparkServer.Application
 {
-    public class MediaService
+    /// <summary>
+    /// Provides methods for loading, resizing, creating thumbnails, and other image tasks.
+    /// </summary>
+    public class ImageService
     {
         private string _folderPath = string.Empty;
         private string _mappedFolderPath = string.Empty;
         private const string _noThumbnailPath = "/Content/Images/nothumbnail.png";
 
-        public MediaService(string folderPath, string mappedFolderPath)
+        public ImageService(string folderPath, string mappedFolderPath)
         {
             _folderPath = folderPath;
             _mappedFolderPath = mappedFolderPath;

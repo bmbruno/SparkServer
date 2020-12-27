@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 
 namespace SparkServer.Application
 {
+    /// <summary>
+    /// Provides strongly-typed access to configuration settings.
+    /// </summary>
     public static class Config
     {
         public static bool DebugMode

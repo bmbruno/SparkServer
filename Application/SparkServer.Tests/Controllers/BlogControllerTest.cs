@@ -39,7 +39,6 @@ namespace SparkServer.Tests.Controllers
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
-            Assert.AreEqual(ViewMode.Overview, viewModel.ViewMode);
             Assert.IsNotNull(viewModel);
         }
 
@@ -54,7 +53,6 @@ namespace SparkServer.Tests.Controllers
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
-            Assert.AreEqual(ViewMode.List, viewModel.ViewMode);
             Assert.IsNotNull(viewModel);
         }
 
@@ -69,7 +67,6 @@ namespace SparkServer.Tests.Controllers
             BlogListViewModel viewModel = result.Model as BlogListViewModel;
 
             // Assert
-            Assert.AreEqual(ViewMode.List, viewModel.ViewMode);
             Assert.IsNotNull(viewModel);
         }
 

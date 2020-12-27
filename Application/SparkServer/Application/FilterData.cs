@@ -1,13 +1,14 @@
 ﻿using SparkServer.Core.Repositories;
 using SparkServer.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SparkServer.Application
 {
+    /// <summary>
+    /// Returns common data for HTML dropdowns.
+    /// </summary>
     public static class FilterData
     {
         public static List<SelectListItem> Authors(IAuthorRepository<Author> repo, int? selected)
