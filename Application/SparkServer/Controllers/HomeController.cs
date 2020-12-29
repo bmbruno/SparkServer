@@ -18,7 +18,6 @@ namespace SparkServer.Controllers
     {
         private IArticleRepository<Article> _articleRepo;
         private IBlogRepository<Blog> _blogRepo;
-        private IVideoRepository<Video> _videoRepo;
 
         public HomeController(IArticleRepository<Article> articleRepo, IBlogRepository<Blog> blogRepo)
         {

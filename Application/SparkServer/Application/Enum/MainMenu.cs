@@ -5,6 +5,9 @@ using System.Web;
 
 namespace SparkServer.Application.Enum
 {
+    /// <summary>
+    /// Identifies various site sections.
+    /// </summary>
     public enum MainMenu
     {
         Home = 0,

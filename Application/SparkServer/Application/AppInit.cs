@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using SimpleInjector;
+﻿using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using System.Web.Mvc;
 using SparkServer.Data;
@@ -22,7 +18,6 @@ namespace SparkServer.Application
             container.Register<Core.Repositories.ICategoryRepository<Category>, Infrastructure.Repositories.CategoryRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.IAuthorRepository<Author>, Infrastructure.Repositories.AuthorRepository>(Lifestyle.Transient);
             container.Register<Core.Repositories.ISitecoreVersionRepository<SitecoreVersion>, Infrastructure.Repositories.SitecoreVersionRepository>(Lifestyle.Transient);
-            container.Register<Core.Repositories.IVideoRepository<Video>, Infrastructure.Repositories.VideoRepository>(Lifestyle.Transient);
 
             container.Verify();
 

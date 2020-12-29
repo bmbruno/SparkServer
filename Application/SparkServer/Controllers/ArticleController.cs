@@ -47,19 +47,6 @@ namespace SparkServer.Controllers
                 return RedirectToAction("/");
             }
         }
-
-        public ActionResult Sample()
-        {
-            ArticleViewModel viewModel = new ArticleViewModel();
-            viewModel.ArticleTitle = "Introduction to Templates in Sitecore";
-            viewModel.AuthurFullName = "Brandon Bruno";
-            viewModel.CategoryID = 1;
-            viewModel.CategoryName = "Introduction to Sitecore";
-            viewModel.PublishDateLong = "April 25, 2017";
-            viewModel.SitecoreVersionDescription = "Sitecore 8.2.1";
-
-            return View(viewModel);
-        }
     }
 }
 

@@ -14,8 +14,6 @@ namespace SparkServer.ViewModels
 
         public string Header { get; set; }
 
-        public ViewMode ViewMode { get; set; }
-
         public BlogListViewModel()
         {
             BlogList = new List<BlogArticleViewModel>();

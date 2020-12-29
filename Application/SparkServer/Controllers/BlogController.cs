@@ -125,17 +125,5 @@ namespace SparkServer.Controllers
 
             return View(viewName: "IndexList", model: viewModel);
         } 
-
-        public ActionResult Sample()
-        {
-            BlogArticleViewModel viewModel = new BlogArticleViewModel();
-            viewModel.AuthorFullName = "Brandon Bruno";
-            viewModel.BlogTags = new List<BlogTagViewModel>() { new BlogTagViewModel() { BlogTagID = 0, BlogTagName = "Community" } };
-            viewModel.PublishDate = new DateTime(year: 2017, month: 4, day: 25);
-            viewModel.Title = "Fun with Sitecore Powershell Extensions: Learn Something Now";
-            viewModel.Subtitle = "This is Great Subtitle For a Blog Post";
-
-            return View(viewModel);
-        }
     }
 }
