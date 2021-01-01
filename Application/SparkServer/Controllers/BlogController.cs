@@ -123,7 +123,7 @@ namespace SparkServer.Controllers
             viewModel.Paging.PageCount = (totalItems + this.ItemsPerPage - 1) / this.ItemsPerPage;
             viewModel.Paging.CurrentPage = this.Page;
 
-            return View(viewName: "IndexList", model: viewModel);
+            return View(viewName: "IndexOverview", model: viewModel);
         } 
     }
 }
