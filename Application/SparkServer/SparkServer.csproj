@@ -275,7 +275,6 @@
     <Content Include="Content\Styles\fonts\FontAwesome.otf" />
     <Content Include="Content\Styles\fonts\Matiz-webfont.woff" />
     <Content Include="Views\Blog\BlogArticle.cshtml" />
-    <Content Include="Views\Blog\IndexList.cshtml" />
     <Content Include="Views\Blog\IndexOverview.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Resources.cshtml" />
