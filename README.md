@@ -2,7 +2,7 @@
 
 This is the ASP.NET MVC backend and frontend for the blogging engine that powers SitecoreSpark.com.
 
-Written and originally maintained by Brandon Bruno, copyright (c) 2017 - 2020. This code is provided as-is. See LICENSE file for further details.
+Written and originally maintained by Brandon Bruno, copyright (c) 2017 - 2021. This code is provided as-is. See LICENSE file for further details.
 
 # Notes
 
