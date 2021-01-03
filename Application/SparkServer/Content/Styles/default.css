@@ -9,7 +9,8 @@ em { font-style: italic; }
 .center { text-align: center; }
 
 /* BASE */
-body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; font-size: 16px; }
+body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; font-size: 16px; background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(195,195,195,1) 100%);
+}
 strong { font-weight: bold; } 
 blockquote { font-style: italic; color: #555; margin: 0 1em 1.5em 1em; line-height: 1.5em; }
 blockquote p:last-of-type { margin-bottom: 0; }
@@ -127,7 +128,7 @@ table.fluid { margin-left: auto; margin-right: auto; }
 .explore-tags li { display: inline-block;  margin: 0 1em 0 0; list-style-type: none; }
 .explore-tags a, .explore-tags a:visited { display: block; padding: 0.5em; font-size: 1.25em; text-decoration: none !important; }
 
-.blog-card { margin: 0 0 1em 0; box-shadow: 0 0 24px #CCC; }
+.blog-card { margin: 0 0 1em 0; box-shadow: 0 0 24px #868686; }
 .blog-card h3 { font-size: 1.25em; font-weight: bold; overflow: hidden; margin-bottom: 0.5em !important; }
 .blog-card p { margin: 0; }
 .blog-card > .subtitle { }
