@@ -9,8 +9,7 @@ em { font-style: italic; }
 .center { text-align: center; }
 
 /* BASE */
-body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; font-size: 16px; background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(195,195,195,1) 100%);
-}
+body { min-width: 240px; text-align: center; font-family: 'OSRegular', arial, sans-serif; background-color: #F1F1F1; font-size: 16px; }
 strong { font-weight: bold; } 
 blockquote { font-style: italic; color: #555; margin: 0 1em 1.5em 1em; line-height: 1.5em; }
 blockquote p:last-of-type { margin-bottom: 0; }
