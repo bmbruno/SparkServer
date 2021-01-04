@@ -13,3 +13,7 @@ Written and originally maintained by Brandon Bruno, copyright (c) 2017 - 2021. T
 * This application is provided as-is: I will generally NOT be available to provide troubleshooting or support should you choose to compile and run it.
 
 * Don't be surprised if you find plenty of half-finished code or interfaces without implementations - new features are always being worked on and aren't fully baked yet (and being a personal project, I don't always follow good branching strategies).
+
+# Setup Instructions (local development)
+
+Coming Soon
