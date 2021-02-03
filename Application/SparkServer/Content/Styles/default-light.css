@@ -338,14 +338,3 @@ footer.page p:last-of-type { margin-bottom: 0; }
 {
 	.content { max-width: 1100px; }
 }
-
-/* DARK MODE */
-
-body { background-color: #424242; color: #e0e0e0; }
-a, a:visited { color: #ff1c1c; }
-nav ul li a, nav ul li a:visited { color: #DEDEDE; }
-nav ul li a.active { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
-nav ul li a:hover { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
-p, ul { color: #DEDEDE; }
-.blog-card { box-shadow: 0 0 24px #000; }
-.blog-card > .blog-list-intro { background-color: #121212; }
