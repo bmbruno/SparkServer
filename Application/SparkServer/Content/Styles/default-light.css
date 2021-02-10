@@ -2,7 +2,7 @@
 * { box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; }
 html { overflow-y: scroll; }
 img { max-width: 100%; }
-a, a:visited { text-decoration: none; color: #F00; transition: all 0.1s ease-in-out; transition: all 0.1s ease-in-out; }
+a, a:visited { text-decoration: none; color: #F00; -webkit-transition: all 0.1s ease-in-out; transition: all 0.1s ease-in-out; }
 a:hover { color: #FA0; }
 .cf:after { content: ""; display: table; clear: both; }
 em { font-style: italic; }
@@ -134,7 +134,7 @@ table.fluid { margin-left: auto; margin-right: auto; }
 .blog-card > .date { font-size: 0.75em; }
 .blog-card > .blog-list-header { background-position: center; background-size: cover; height: 150px; }
 .blog-card > .blog-list-intro { padding: 1em; background-color: #FFF; }
-.blog-card > .blog-list-intro h3 { font-size: 1.25em; border: none; line-height: 1.25e; overflow: visible; margin-bottom: 0.25em !important; }
+.blog-card > .blog-list-intro h3 { font-size: 1.25em; border: none; line-height: 1.25em; overflow: visible; margin-bottom: 0.25em !important; }
 .blog-card > .blog-list-intro .date { font-size: 0.85em; }
 
 ul.blog-list li { list-style-type: none; margin: 0; }
@@ -337,34 +337,4 @@ footer.page p:last-of-type { margin-bottom: 0; }
 @media (min-width: 1600px)
 {
 	.content { max-width: 1100px; }
-}
-
-/* DARK MODE */
-
-@media (prefers-color-scheme: dark)
-{
-    body { background-color: #292929; color: #e0e0e0; }
-    a, a:visited { color: #FA0; }
-    a:hover { color: #FF0; }
-
-    nav ul li a, nav ul li a:visited { color: #DEDEDE; }
-    nav ul li a.active { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
-    nav ul li a:hover { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
-    p, ul { color: #DEDEDE; }
-    .welcome-banner { color: #e0e0e0; }
-    .blog-card { box-shadow: 0 0 24px #000; }
-    .blog-card > .blog-list-intro { background-color: #121212; }
-    .blog-list-intro > h3 > a { color: #E00; }
-    .blog-list-intro > h3 > a:hover { color: #FF0; }
-    footer.page { background-color: #2b2b2b; }
-    article { background-color: #232323; box-shadow: 0 0 24px #000; }
-    .figure img { box-shadow: none; }
-    .config-path, .mono, p > code, li > code { background-color: #000; color: #AAA; padding: 2px; }
-    pre { border: 1px solid #8a8a8a; }
-    .caption { color: #bdbdbd; }
-    tr:nth-child(even) { background-color: #555; }
-    a.btn { color: #FFF; }
-    a.btn { background-color: #C00; box-shadow: 0 3px 0 #6f0000; }
-    .resource-links li:nth-child(odd) { background-color: #0d0d0d; }
-    .resource-links li:nth-child(even) { background-color: #171717; }
 }
