@@ -155,6 +155,8 @@
     <Content Include="Content\Images\default_banners\05.jpg" />
     <Content Include="Content\Images\default_banners\06.jpg" />
     <Content Include="Content\Images\default_banners\07.jpg" />
+    <Content Include="Content\Images\logo_title_dark.png" />
+    <Content Include="Content\Images\sitecore_mvp_2021.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2018.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2019.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2020.jpg" />
