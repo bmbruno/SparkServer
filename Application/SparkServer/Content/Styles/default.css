@@ -343,7 +343,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 @media (prefers-color-scheme: dark)
 {
-    body { background-color: #292929; color: #e0e0e0; }
+    body { background-color: #333; color: #e0e0e0; }
     a, a:visited { color: #FA0; }
     a:hover { color: #FF0; }
 
@@ -367,4 +367,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     a.btn { background-color: #C00; box-shadow: 0 3px 0 #6f0000; }
     .resource-links li:nth-child(odd) { background-color: #0d0d0d; }
     .resource-links li:nth-child(even) { background-color: #171717; }
+    aside { background-color: #333; box-shadow: 0 0 12px #000; }
+    aside h3 { color: #e0e0e0; }
+    aside p { color: #cacaca; }
 }
