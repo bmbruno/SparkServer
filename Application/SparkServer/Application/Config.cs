@@ -60,23 +60,6 @@ namespace SparkServer.Application
             }
         }
 
-        public static string[] AdminWhitelist
-        {
-            get
-            {
-                var value = ConfigurationManager.AppSettings["adminWhitelist"];
-
-                if (value != null)
-                {
-                    return value.Split(',');
-                }
-                else
-                {
-                    return new string[0];
-                }
-            }
-        }
-
         public static string SigningKey
         {
             get
