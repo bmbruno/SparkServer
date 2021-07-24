@@ -341,6 +341,11 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 /* DARK MODE */
 
+@media (prefers-color-scheme: dark) and (max-width: 600px)
+{
+    
+}
+
 @media (prefers-color-scheme: dark)
 {
     body { background-color: #333; color: #e0e0e0; }
@@ -352,6 +357,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     nav ul li a:hover { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
     p, ul { color: #DEDEDE; }
     .welcome-banner { color: #e0e0e0; }
+    .blog-about { background-color: #191919; }
     .blog-card { box-shadow: 0 0 24px #000; }
     .blog-card > .blog-list-intro { background-color: #121212; }
     .blog-list-intro > h3 > a { color: #E00; }
