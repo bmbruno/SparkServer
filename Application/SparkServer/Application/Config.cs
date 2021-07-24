@@ -21,19 +21,6 @@ namespace SparkServer.Application
             }
         }
 
-        public static string AdminToken
-        {
-            get
-            {
-                var value = ConfigurationManager.AppSettings["adminToken"];
-
-                if (value != null)
-                    return value.ToString();
-                else
-                    return string.Empty;
-            }
-        }
-
         public static string MediaBannerPath
         {
             get
