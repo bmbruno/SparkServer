@@ -16,4 +16,34 @@ Written and originally maintained by Brandon Bruno, copyright (c) 2017 - 2021. T
 
 # Setup Instructions (local development)
 
-Coming Soon
+_SparkServer_ requires the following software to build and run locally:
+
+* Visual Studio 2019
+* SQL Server 2016 or newer (Express is fine)
+
+## Step 1
+
+Clone repository.
+
+## Step 2
+
+Open the following file: `\SparkServer\SQLScripts\batchsql.bat`
+
+Configure the `BLD_SQLSERV` variable to point to your SQL Server instance (line 7 by default):
+
+```
+SET BLD_SQLSERV=localhost
+```
+
+## Step 3
+
+Create a SQL Server user in the `SparkServer` database. By default, the database connection string expects the following credentials:
+
+Username: `sitecorespark`
+Password: `spark1`
+
+The connection string is located in `\SparkServer\Application\SparkServer\Web.config` (in `SparkServerEntities`) and can be modified as you see fit.
+
+## Step 4
+
+Debug in Visual Studio.

@@ -33,7 +33,7 @@ header img.logo { width: 50%; }
 
 .content { width: 90%; text-align: left; margin: 0 auto; padding-top: 1em; }
 
-p, ul { line-height: 1.5em; margin-bottom: 1.5em; font-size: 1em; text-align: justify;  color: #444;}
+p, ul { line-height: 1.5em; margin-bottom: 1.5em; font-size: 1em; text-align: left;  color: #444;}
 p.subtitle { font-weight: bold; font-size: 1.25em; }
 
 li { margin-left: 3em; text-align: left; }

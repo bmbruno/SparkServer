@@ -161,7 +161,6 @@
     <Content Include="Content\Images\sitecore_mvp_2019.jpg" />
     <Content Include="Content\Images\sitecore_mvp_2020.jpg" />
     <Content Include="Content\Images\zoom.png" />
-    <Content Include="Content\Styles\default-light.css" />
     <Content Include="Content\Styles\prism-spark.css" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
