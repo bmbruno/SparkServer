@@ -220,7 +220,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     article { padding: 2em; box-shadow: 0 0 24px #CCC; border-radius: 4px; }
 	article h1, .container h1 { font-size: 3em; }
 	article h2, .container h2 { font-size: 2.5em; }
-    article h2, .container h2 { font-size: 1.65em; }
+    article h3, .container h3 { font-size: 1.65em; }
 
 	article > .about { text-align: right; }
 	article > .about li { display: inline-block; margin-left: 1em;  }
