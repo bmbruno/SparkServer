@@ -8,34 +8,34 @@
     <h1>@ViewBag.Title</h1>
 </div>
 
+<div class="blog-about">
+    <div class="label">Author</div>
+    <p>@Model.AuthorFullName</p>
+
+    <div class="label">Published</div>
+    <p>@Model.PublishDate.ToString(format: "MMMM dd, yyyy")</p>
+
+    <div class="label">Tags</div>
+    <ul class="tags cf">
+
+        @if (Model.BlogTags.Count > 0)
+        {
+            foreach (var tag in Model.BlogTags)
+            {
+                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+            }
+        }
+        else
+        {
+            <li>No tags defined</li>
+        }
+    </ul>
+
+</div>
+
 <article class="blog">
 
     <h1 class="blog-title-only">@ViewBag.Title</h1>
-
-    <div class="blog-about">
-        <div class="label">Author</div>
-        <p>@Model.AuthorFullName</p>
-
-        <div class="label">Published</div>
-        <p>@Model.PublishDate.ToString(format: "MMMM dd, yyyy")</p>
-
-        <div class="label">Tags</div>
-        <ul class="tags cf">
-
-            @if (Model.BlogTags.Count > 0)
-            {
-                foreach (var tag in Model.BlogTags)
-                {
-                    <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
-                }
-            }
-            else
-            {
-                <li>No tags defined</li>
-            }
-        </ul>
-
-    </div>
 
     @Html.Raw(Model.Body)
 
