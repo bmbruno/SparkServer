@@ -8,6 +8,16 @@
     <h1>@ViewBag.Title</h1>
 </div>
 
+@if (Model.IsPreview)
+{
+    <div style="font-size: 3em; font-weight: bold; text-align: center; color: #FFF; background-color: #DC291E; padding: 0.5em;">BLOG PREVIEW</div>
+
+    <div style="background-color: #FFF; padding: 1em; margin: 2em auto;">
+        <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 0.5em;">Subtitle (Preview Only)</div>
+        @Html.Raw(Model.Subtitle)
+    </div>
+}
+
 <div class="blog-about">
     <div class="label">Author</div>
     <p>@Model.AuthorFullName</p>
