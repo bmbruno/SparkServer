@@ -7,11 +7,18 @@
 
 <h1>@ViewBag.Title</h1>
 
+
+
 @if (Model.Mode == SparkServer.Application.Enum.EditMode.Edit)
 {
     <h2>ID: @Model.ID</h2>
 
     <a href="/Admin/BlogDelete?ID=@Model.ID" class="btn delete">Delete</a>
+
+    if (Model.ID > 0)
+    {
+        <a href="@Model.BlogURL?preview=true" target="_blank" class="btn">Preview</a>
+    }
 }
 
 @using (Html.BeginForm(actionName: "BlogUpdate", controllerName: "Admin", method: FormMethod.Post))
@@ -88,11 +95,6 @@
 
     <div class="row">
         <input type="submit" value="Submit" class="btn primary" />
-
-        @if (Model.ID > 0)
-        {
-            <text>&nbsp;&nbsp;</text><a href="@Model.BlogURL?preview=true" target="_blank" class="btn">Preview</a>
-        }
     </div>
 
 }

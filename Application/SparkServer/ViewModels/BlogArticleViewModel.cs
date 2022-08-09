@@ -9,6 +9,8 @@ namespace SparkServer.ViewModels
     {
         public int BlogID { get; set; }
 
+        public bool IsPreview { get; set; }
+
         public string UniqueURL { get; set; }
 
         public string Title { get; set; }

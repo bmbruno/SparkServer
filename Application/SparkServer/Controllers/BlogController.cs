@@ -75,11 +75,7 @@ namespace SparkServer.Controllers
             var blogTags = _blogTagRepo.GetFromList(blog.BlogsTags.Select(u => u.TagID));
 
             viewModel.MapToViewModel(blog, blogTags);
-
-            if (preview)
-            {
-                viewModel.Title = $"[PREVIEW] - {viewModel.Title}";
-            }
+            viewModel.IsPreview = preview;
 
             // Should this blog post be displayed at all? (Preview flag overrides denied access in some cases)
             bool shouldDisplay = false;
