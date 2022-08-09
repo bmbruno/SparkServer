@@ -165,6 +165,7 @@ namespace SparkServer.Infrastructure.Repositories
                 blogList = db.BlogsTags.Where(u => u.TagID == tagID)
                                        .Select(p => p.Blog)
                                        .Where(p => p.PublishDate <= DateTime.Now)
+                                       .Where(p => p.Active)
                                        .Include(a => a.Author)
                                        .Include(a => a.BlogsTags)
                                        .ToList();
