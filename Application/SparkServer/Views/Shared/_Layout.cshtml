@@ -33,26 +33,15 @@
         <div class="content">
 
             <header>
+                
                 <a href="/">
-                    <picture>
-                        <source srcset="~/Content/Images/logo_title_dark.png" media="(prefers-color-scheme: dark)" />
-                        <img src="~/Content/Images/logo_title.png" alt="Sitecore Spark Logo" class="logo" />
-                    </picture>
+                    <h1>Sitecore Spark</h1>
                 </a>
 
-                <p style="margin: 0.5em 0 0 0; text-align: center; font-weight: bold;">An Independent Sitecore Learning Resource</p>
-
+                <p style="margin: 1em 0 0 0; text-align: center; font-weight: bold; font-size: 1.25em; ">An Independent Sitecore &amp; Technology Blog</p>
                 <a class="mobile-menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i> Menu</a>
-            </header>
 
-            <nav>
-                <ul class="cf">
-                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Blog</a></li>
-                    <li><a href="/resources" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Resources) { @Html.Raw("class='active'") }><i class="fa fa-share-alt" aria-hidden="true"></i> Resources</a></li>
-                    <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category || Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Article) { @Html.Raw("class='active'") }><i class="fa fa-book" aria-hidden="true"></i> Articles</a></li>
-                    <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
-                </ul>
-            </nav>
+            </header>
 
             <div class="container cf">
 
@@ -90,6 +79,15 @@
                     </li>
                 </ul>
             </div>
+
+            <nav>
+                <ul class="cf">
+                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Blog</a></li>
+                    <li><a href="/resources" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Resources) { @Html.Raw("class='active'") }><i class="fa fa-share-alt" aria-hidden="true"></i> Resources</a></li>
+                    <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category || Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Article) { @Html.Raw("class='active'") }><i class="fa fa-book" aria-hidden="true"></i> Articles</a></li>
+                    <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
+                </ul>
+            </nav>
 
         </footer>
 

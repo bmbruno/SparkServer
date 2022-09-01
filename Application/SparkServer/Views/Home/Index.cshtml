@@ -18,7 +18,7 @@
 {
     string styleAttribute = string.Empty;
 
-    <div class="section">
+    <div class="section" style="margin-bottom: 0;">
         @if (!String.IsNullOrEmpty(Model.BlogList[0].ImagePath))
         {
             styleAttribute = string.Format("background-image: url('{0}'); background-size: cover;", Model.BlogList[0].ImagePath);
@@ -28,7 +28,7 @@
             styleAttribute = "background-image: url('/Content/Images/default_blog_bg.jpg'); background-size: cover;";
         }
         <a href="@Model.BlogList[0].URL" style="display: block;">
-            <div class="section welcome-banner" style="@styleAttribute">
+            <div class="section welcome-banner" style="@styleAttribute margin-bottom: 0;">
                 <div class="header">Latest Blog Post</div>
                 <h1>@Model.BlogList[0].Title</h1>
                 <h2>@Model.BlogList[0].Subtitle</h2>
