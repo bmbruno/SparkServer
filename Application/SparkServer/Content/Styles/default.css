@@ -221,8 +221,10 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
     header { margin-bottom: 0; }
 	header img.logo { width: auto;  }
-    header .logo-wrapper, header .byline-wrapper { display: table-cell; width: 50%; vertical-align: middle; }
-    header .byline-wrapper p { margin: 0 0 0 0; text-align: right; font-size: 1.25em; }
+    header .logo-wrapper, header .byline-wrapper { width: 50%; vertical-align: middle; }
+    header .logo-wrapper { float: left; }
+    header .byline-wrapper { float: right; }
+    header .byline-wrapper p { margin: 2em 0 0 0; text-align: right; font-size: 0.95em; }
 
     .welcome-banner h2 { font-size: 1.5em; }
 
@@ -330,6 +332,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 @media (min-width: 820px)
 {
+    header .byline-wrapper p { margin: 2.5em 0 0 0; font-size: 1em; }
+
     p, ul { font-size: 1em; }
     h3 { font-size: 1.5em; }
 
@@ -349,6 +353,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
 @media (min-width: 1100px)
 {
+    header .byline-wrapper p { font-size: 1.25em; }
+
     article { padding: 2em 9em; }
 	.content { max-width: 80%; }
 }
