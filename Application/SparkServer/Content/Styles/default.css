@@ -220,17 +220,17 @@ footer.page p:last-of-type { margin-bottom: 0; }
 
     header { margin-bottom: 0; }
 	header img.logo { width: auto;  }
-    header .logo-wrapper { float: left; }
-    header .byline-wrapper { float: right; }
-    header .byline-wrapper p { margin: 2em 0 0 0; text-align: right; font-size: 0.95em; }
+    header .logo-wrapper { float: left; width: 50%; }
+    header .byline-wrapper { float: right; width: 50%; }
+    header .byline-wrapper p { margin: 2em 0 0 0; text-align: right; font-size: 0.8em; }
 
     .welcome-banner h2 { font-size: 1.5em; }
 
     .gutter { height: 2em; }
 
     article { padding: 2em; box-shadow: 0 0 24px #CCC; border-radius: 4px; }
-	article h1, .container h1 { font-size: 3em; }
-	article h2, .container h2 { font-size: 2.5em; }
+	article h1, .container h1 { font-size: 2.5em; }
+	article h2, .container h2 { font-size: 2.1em; }
     article h3, .container h3 { font-size: 1.65em; }
 
 	article > .about { text-align: right; }
@@ -238,9 +238,10 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	
 	article > footer > .related { max-width: 60%; }
     
+    article.blog { border-bottom-left-radius: 24px; border-bottom-right-radius: 24px; }
     article.blog > h1.blog-title-only { display: none; }
     article.blog > h1.blog-header-title-only { display: block; }
-    .blog-header { display: block; background-size: cover; background-position: center; position: relative; height: 420px; margin-bottom: 1em; }
+    .blog-header { display: block; background-size: cover; background-position: center; position: relative; height: 300px; border-top-left-radius: 24px; border-top-right-radius: 24px; }
     .blog-header h1 { position: absolute; bottom: 0; padding: 0.5em; background-color: rgba(0, 0, 0, 0.25); backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); text-shadow: 2px 2px 0 #000; color: #FFF; }
 
     table.fluid { width: auto; min-width: 50%; }
@@ -328,14 +329,19 @@ footer.page p:last-of-type { margin-bottom: 0; }
     .about-mvp-logo img { max-width: 100%; }
 }
 
-@media (min-width: 820px)
+@media (min-width: 825px)
 {
     header .byline-wrapper p { margin: 2.5em 0 0 0; font-size: 1em; }
 
     p, ul { font-size: 1em; }
     h3 { font-size: 1.5em; }
 
+    .blog-header { height: 420px; }
+    .blog-about { margin: 4em; }
+
+    article h1, .container h1 { font-size: 3em; }
     article { padding: 2em 6em; }
+    article.blog { padding-top: 4em; }
 	nav { margin: 1em 0; font-family: 'OSBold', arial, sans-serif; }
 	nav ul { display: block; border-top: 1px solid #DC291E; border-bottom: 1px solid #DC291E; }
 	nav ul li { float: left; width: 25%; border: none; }
