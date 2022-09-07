@@ -6,25 +6,7 @@
 
 <div class="gutter">&nbsp;</div>
     
-<div class="section">
-
-    <h1>Explore Tags</h1>
-
-    @if (Model.BlogTagList.Count > 0)
-    {
-        <ul class="explore-tags">
-
-            @foreach (var tag in Model.BlogTagList)
-            {
-                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
-            }
-
-        </ul>
-    }
-
-</div>
-
-<div class="section">
+<div class="section" style="max-width: 1100px; margin: 0 auto;">
 
     <h1>@ViewBag.Title</h1>
 
@@ -48,7 +30,7 @@
                     <div class="blog-list-intro">
                         <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>
                         <div class="subtitle">@Model.BlogList[i].Subtitle</div>
-                        <div class="date">@Model.BlogList[i].PublishDate.ToString("MMMM dd, yyyy") - <span style="font-style: italic;">@Model.BlogList[i].AuthorFullName</span></div>
+                        <div class="date">@Model.BlogList[i].PublishDate.ToString("MMMM dd, yyyy")</div>
                     </div>
 
                 </div>
@@ -58,5 +40,23 @@
     </ul>
 
     @Html.Partial("_Paging", Model.Paging)
+
+</div>
+
+<div class="section">
+
+    <h1>Explore Tags</h1>
+
+    @if (Model.BlogTagList.Count > 0)
+    {
+        <ul class="explore-tags">
+
+            @foreach (var tag in Model.BlogTagList)
+            {
+                <li><a href="/blog/tag/@tag.BlogTagName">@tag.BlogTagName</a></li>
+            }
+
+        </ul>
+    }
 
 </div>

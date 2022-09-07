@@ -53,22 +53,26 @@
                 <div class="blog-card homepage">
                     @if (!String.IsNullOrEmpty(blog.ImagePath))
                     {
-                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath'); height: 200px;"></div>
+                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath');"></div>
                     }
                     else
                     {
-                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg'); height: 200px;"></div>
+                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"></div>
                     }
 
                     <div class="blog-list-intro">
                         <h3><a href="@blog.URL">@blog.Title</a></h3>
                         <div class="subtitle">@blog.Subtitle</div>
-                        <div class="date">@blog.PublishDate.ToString("MMMM dd, yyyy") - <span style="font-style: italic;">@blog.AuthorFullName</span></div>
+                        <div class="date">@blog.PublishDate.ToString("MMMM dd, yyyy")</div>
                     </div>
                 </div>
             </li>
         }
 
     </ul>
+
+    <div style="text-align: center;">
+        <a href="/Blog" class="btn" style="padding: 1.5em 4em; font-weight: bold;">See All Blog Posts</a>
+    </div>
 
 </div>
