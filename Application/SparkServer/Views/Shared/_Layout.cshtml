@@ -72,25 +72,16 @@
             <div class="content">
                 <ul class="grid two-up cf" style="margin-bottom: 0;">
                     <li>
-                        <p><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://www.twitter.com/sitecorespark" target="_blank">@@SitecoreSpark</a></p>
-                        <p><i class="fa fa-slack" aria-hidden="true"></i> @@brandon.bruno</p>
+                        <p><i class="fa fa-twitter" aria-hidden="true"></i> <a href="https://www.twitter.com/brandonmbruno" target="_blank">@@BrandonMBruno</a></p>
+                        <p><i class="fa fa-slack" aria-hidden="true"></i> <a href="https://sitecorechat.slack.com/" target="_blank">@@brandon.bruno</a></p>
                         <p><i class="fa fa-envelope" aria-hidden="true"></i> <a href="mailto:bmbruno+sitecorespark@gmail.com">bmbruno+sitecorespark@gmail.com</a></p>
                     </li>
                     <li>
                         <p>&copy; @DateTime.Today.Year.ToString() Sitecore Spark. All rights reserved.</p>
-                        <p>Not affiliated with <a href="http://www.sitecore.net">Sitecore Corporation A/S</a>. Sitecore&reg; and Own the Experience&reg; are registered U.S. trademarks.</p>
+                        <p>Not affiliated with <a href="http://www.sitecore.com" target="_blank" style="font-weight: bold;">Sitecore Corporation A/S</a>. Sitecore&reg; is a registered U.S. trademark.</p>
                     </li>
                 </ul>
             </div>
-
-            <nav>
-                <ul class="cf">
-                    <li><a href="/blog" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Blog) { @Html.Raw("class='active'") }><i class="fa fa-lightbulb-o" aria-hidden="true"></i> Blog</a></li>
-                    <li><a href="/resources" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Resources) { @Html.Raw("class='active'") }><i class="fa fa-share-alt" aria-hidden="true"></i> Resources</a></li>
-                    <li><a href="/category" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Category || Model.MenuSelection == SparkServer.Application.Enum.MainMenu.Article) { @Html.Raw("class='active'") }><i class="fa fa-book" aria-hidden="true"></i> Articles</a></li>
-                    <li><a href="/about" @if (Model.MenuSelection == SparkServer.Application.Enum.MainMenu.About) { @Html.Raw("class='active'") }><i class="fa fa-info-circle" aria-hidden="true"></i> About</a></li>
-                </ul>
-            </nav>
 
         </footer>
 

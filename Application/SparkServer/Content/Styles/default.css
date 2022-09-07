@@ -170,9 +170,10 @@ select.quarter { width: 100%; }
 
 input:focus, select:focus, textarea:focus { background-color: #FEFEFE; box-shadow: inset 0 0 8px #666;}
 
-footer.page { margin-top: 2em; padding: 2em; background-color: #515151; font-size: 0.8em; box-shadow: inset 0 0 50px #000; }
+footer.page { margin-top: 2em; padding: 2em; background-color: #515151; font-size: 1em; box-shadow: inset 0 0 50px #000; }
 footer.page p { margin-bottom: 1em; text-align: left; color: #DEDEDE; }
-footer.page a, footer.page a:visited { color: #DEDEDE; text-decoration: underline; }
+footer.page a, footer.page a:visited { color: #DEDEDE; text-decoration: none; }
+footer.page a:hover { color: #FFF; text-decoration: underline; }
 footer.page p:last-of-type { margin-bottom: 0; }
 
 .status-message { padding: 1em; margin: 2em 0; font-weight: bold; color: #FFF; text-shadow: 2px 2px 0 #000; border-radius: 3px; }
