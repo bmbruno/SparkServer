@@ -44,7 +44,7 @@ ol > li { list-style-type: decimal; }
 .section { margin-bottom: 2em;}
 .section > h1 { text-align: center; }
 
-.gutter { height: 0em; }
+.gutter { height: 1em; }
 
 article, .container { text-align: left; }
 article { background-color: #FFF; padding: 1em; margin-bottom: 2em; }
@@ -97,8 +97,9 @@ h2 + .figure, h3 + .figure { padding-top: 0 !important; }
 ul.grid > li { list-style-type: none; margin: 0 0 2em 0; }
 ul.grid > li:last-of-type { margin: 0; } 
 
-.welcome-banner { text-align: center; background: linear-gradient(135deg, #dc291e 0%,rgb(78, 20, 20) 100%); color: #FFF; text-shadow: 0 4px 16px #000; padding: 2em 1em; box-shadow: inset 0 0 200px #000; }
-.welcome-banner h1, .welcome-banner h2 { }
+.welcome-banner { text-align: center; background: linear-gradient(135deg, #dc291e 0%,rgb(78, 20, 20) 100%); color: #FFF; text-shadow: 0 4px 16px #000; padding: 2em 1em; box-shadow: inset 0 0 200px #000; margin: 0 0 1em 0; }
+.welcome-banner .header { padding-bottom: 1em; }
+.welcome-banner h2 { font-family: 'OSRegular', Arial, sans-serif; font-weight: bold; font-size: 1.25em; }
 
 .master-search { text-align: center; margin: 1em; display: none; }
 .master-search input { padding: 0.75em; border: 1px solid #666; border-radius: 6px; background-color: #EEE; font-weight: bold; width: 100%; }
@@ -219,6 +220,8 @@ footer.page p:last-of-type { margin-bottom: 0; }
 	header img.logo { width: auto;  }
     header .logo-wrapper, header .byline-wrapper { display: table-cell; width: 50%; vertical-align: middle; }
     header .byline-wrapper p { margin: 0 0 0 0; text-align: right; font-size: 1.25em; }
+
+    .welcome-banner h2 { font-size: 1.5em; }
 
     .gutter { height: 2em; }
 
