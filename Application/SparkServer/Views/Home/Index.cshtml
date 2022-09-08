@@ -2,7 +2,7 @@
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    ViewBag.Title = "Welcome!";
+    ViewBag.Title = "Home";
 }
 
 <!--
@@ -18,7 +18,7 @@
 {
     string styleAttribute = string.Empty;
 
-    <div class="section">
+    <div class="section" style="margin-bottom: 0;">
         @if (!String.IsNullOrEmpty(Model.BlogList[0].ImagePath))
         {
             styleAttribute = string.Format("background-image: url('{0}'); background-size: cover;", Model.BlogList[0].ImagePath);
@@ -28,7 +28,7 @@
             styleAttribute = "background-image: url('/Content/Images/default_blog_bg.jpg'); background-size: cover;";
         }
         <a href="@Model.BlogList[0].URL" style="display: block;">
-            <div class="section welcome-banner" style="@styleAttribute">
+            <div class="section welcome-banner" style="@styleAttribute margin-bottom: 0;">
                 <div class="header">Latest Blog Post</div>
                 <h1>@Model.BlogList[0].Title</h1>
                 <h2>@Model.BlogList[0].Subtitle</h2>
@@ -53,17 +53,17 @@
                 <div class="blog-card homepage">
                     @if (!String.IsNullOrEmpty(blog.ImagePath))
                     {
-                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath'); height: 200px;"></div>
+                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
                     }
                     else
                     {
-                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg'); height: 200px;"></div>
+                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
                     }
 
                     <div class="blog-list-intro">
                         <h3><a href="@blog.URL">@blog.Title</a></h3>
                         <div class="subtitle">@blog.Subtitle</div>
-                        <div class="date">@blog.PublishDate.ToString("MMMM dd, yyyy") - <span style="font-style: italic;">@blog.AuthorFullName</span></div>
+                        <div class="date">@blog.PublishDate.ToString("MMMM dd, yyyy")</div>
                     </div>
                 </div>
             </li>
@@ -71,16 +71,8 @@
 
     </ul>
 
-</div>
-
-<div class="section">
-
-    <h1>Start With a Spark</h1>
-
-    <h2>Blog</h2>
-    <p><a href="/blog">Check out the blog</a> for tips, news, insights, and the latest updates on Sitecore Spark.</p>
-
-    <h2>Sitecore Resources</h2>
-    <p>A one-stop resource for information and links to all-things Sitecore. From official Sitecore documentation to information on the most-popular community resources.</p>
+    <div style="text-align: center;">
+        <a href="/Blog" class="btn" style="padding: 1.5em 4em; font-weight: bold;">See All Blog Posts</a>
+    </div>
 
 </div>
