@@ -28,6 +28,10 @@
         <![endif]-->
     </head>
 
+    @{ 
+        bool showHomeLink = (Model.MenuSelection != SparkServer.Application.Enum.MainMenu.Home);
+    }
+
     <body>
 
         <div class="content">
@@ -41,7 +45,27 @@
                 </div>
 
                 <div class="byline-wrapper">
-                    <p style="">An Independent Sitecore &amp; Technology Blog</p>
+                    <nav class="cf">
+                        <ul class="main-menu cf">
+                            @if (showHomeLink)
+                            {
+                                <li><a href="/">Home</a></li>
+                            }
+                            <li @if (!showHomeLink) { <text>style="float: right;"</text> }><a href="/Blog">All Posts</a></li>
+                        </ul>
+                        <ul class="mobile-menu cf">
+                            @if (showHomeLink)
+                            {
+                                <li><a href="/">Home</a></li>
+                                <li><a href="/Blog">All Posts</a></li>
+                            }
+                            else
+                            {
+                                <li style="margin: 0 auto; float: none;"><a href="/Blog">All Posts</a></li>
+                            }
+
+                        </ul>
+                    </nav>
                 </div>
 
             </header>
