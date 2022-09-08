@@ -53,11 +53,11 @@
                 <div class="blog-card homepage">
                     @if (!String.IsNullOrEmpty(blog.ImagePath))
                     {
-                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath');"></div>
+                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
                     }
                     else
                     {
-                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"></div>
+                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
                     }
 
                     <div class="blog-list-intro">
