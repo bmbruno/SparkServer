@@ -18,7 +18,7 @@ nav { }
 nav ul { display: block; margin: 0 0 1em 0; }
 nav ul li { width: 50%; float:left; list-style-type: none; margin: 0; text-align: center; padding: 0.5em; }
 nav ul li:first-of-type { border-top: none; }
-nav ul li a, nav ul li a:visited { display: block; padding: 1em; color: #454545; font-family: 'MatizRegular', arial, sans-serif; font-size: 1em; background-color: #e1e1e1; border-radius: 8px; box-shadow: 2px 2px 0 #c3c3c3; }
+nav ul li a, nav ul li a:visited { display: block; padding: 1em; color: #454545; font-family: 'MatizRegular', arial, sans-serif; font-size: 1em; background-color: #d7d7d7; border-radius: 8px; box-shadow: 2px 2px 0 #b0b0b0; }
 nav ul li a.active { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
 nav ul li a:active { position: relative; left: 2px; top: 2px; box-shadow: none; }
 nav ul li a:hover { background-color: #000; color: #EEE; }
@@ -392,7 +392,7 @@ footer.page p:last-of-type { margin-bottom: 0; }
     a, a:visited { color: #FA0; }
     a:hover { color: #FF0; }
 
-    nav ul li a, nav ul li a:visited { color: #DEDEDE; }
+    nav ul li a, nav ul li a:visited { color: #DEDEDE; background-color: #565656; box-shadow: 2px 2px 0 #000; }
     nav ul li a.active { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
     nav ul li a:hover { background-color: #DC291E; color: #FFF; text-shadow: 2px 2px 0 #000; }
     p, ul { color: #DEDEDE; }
