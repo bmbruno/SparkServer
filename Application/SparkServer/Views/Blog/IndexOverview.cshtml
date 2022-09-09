@@ -18,14 +18,7 @@
 
                 <div class="blog-card">
 
-                    @if (!String.IsNullOrEmpty(Model.BlogList[i].ImagePath))
-                    {
-                        <div class="blog-list-header" style="background-image: url('@Model.BlogList[i].ImagePath');"></div>
-                    }
-                    else
-                    {
-                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"></div>
-                    }
+                    <div class="blog-list-header" style="background-image: url('@Model.BlogList[i].ImageURL');"><a href="@Model.BlogList[i].URL" style="display: block; height: 100%;" title="@Model.BlogList[i].Title">&nbsp;</a></div>
 
                     <div class="blog-list-intro">
                         <h3><a href="@Model.BlogList[i].URL">@Model.BlogList[i].Title</a></h3>

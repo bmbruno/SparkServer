@@ -19,16 +19,8 @@
     string styleAttribute = string.Empty;
 
     <div class="section" style="margin-bottom: 0;">
-        @if (!String.IsNullOrEmpty(Model.BlogList[0].ImagePath))
-        {
-            styleAttribute = string.Format("background-image: url('{0}'); background-size: cover;", Model.BlogList[0].ImagePath);
-        }
-        else
-        {
-            styleAttribute = "background-image: url('/Content/Images/default_blog_bg.jpg'); background-size: cover;";
-        }
         <a href="@Model.BlogList[0].URL" style="display: block;">
-            <div class="section welcome-banner" style="@styleAttribute margin-bottom: 0;">
+            <div class="section welcome-banner" style="background-image: url('@Model.BlogList[0].ImageURL'); background-size: cover; margin-bottom: 0;">
                 <div class="header">Latest Blog Post</div>
                 <h1>@Model.BlogList[0].Title</h1>
                 <h2>@Model.BlogList[0].Subtitle</h2>
@@ -51,14 +43,7 @@
         {
             <li class="cf">
                 <div class="blog-card homepage">
-                    @if (!String.IsNullOrEmpty(blog.ImagePath))
-                    {
-                        <div class="blog-list-header" style="background-image: url('@blog.ImagePath');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
-                    }
-                    else
-                    {
-                        <div class="blog-list-header" style="background-image: url('/Content/Images/default_blog_bg.jpg');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
-                    }
+                    <div class="blog-list-header" style="background-image: url('@blog.ImageURL');"><a href="@blog.URL" title="@blog.Title" style="display: block; height:100%;">&nbsp</a></div>
 
                     <div class="blog-list-intro">
                         <h3><a href="@blog.URL">@blog.Title</a></h3>
